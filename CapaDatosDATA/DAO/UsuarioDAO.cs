@@ -24,6 +24,7 @@ namespace CapaDatosDATA.DAO
                 //llenar los datos del usuario
                 resultado.intRut = Int32.Parse(r["RUT"].ToString());
                 resultado.strPass = r["Password"].ToString();
+                resultado.strNombre = r["Nombre"].ToString();
                 // para modo de prueba aceptados ingresar a cuaqluier usuario
                 resultado.boolGenerica = false;
                 resultado.boolVigente = true;

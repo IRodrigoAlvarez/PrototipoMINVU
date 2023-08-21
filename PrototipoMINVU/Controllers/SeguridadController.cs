@@ -38,7 +38,6 @@ namespace PrototipoMINVU.Controllers
                 // Si el usuario está validado, retornará un objeto.
                 var UsuarioValidado = Certificador.validaUsuario(UsuarioLogin);
 
-                UsuarioValidado.strNombre = "Usuario Prueba";
                 //si el objeto es distinto de null, entonces la cuenta no está registrado
                 if (UsuarioValidado != null)
                 {
