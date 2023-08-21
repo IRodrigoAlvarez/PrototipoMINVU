@@ -1,0 +1,162 @@
+﻿@model PrototipoMINVU.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/css/sweetalert2.css" rel="stylesheet" />
+    <script src="~/js/sweetalert2.js"></script>
+
+
+    <title>Prototipo de Sistemas MINVU</title>
+    <!-- Custom fonts for this template-->
+
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/css/css-prototipo.css" rel="stylesheet">
+</head>
+
+
+<body class="bodyClass" id="bodyLogin">
+    <div id="div-containerAll" class="container ">
+
+        <div id="div-allLoginContent" class="row justify-content-center ">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div id="div-loginContent" class="row ">
+                            <div id="divLogoImage" class="col-lg-6 d-none d-lg-block align-bottom   ">
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div id="div-login" class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h3 text-gray-800 mb-4">Inicio de sesión.</h1>
+                                    </div>
+                                    @using (Html.BeginForm("ValidaUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                    {
+
+                                        <div class="form-group ">
+
+                                            @Html.TextBoxFor(m => m.Rut, new { @class = "form-control box-success", @placeholder = "Usuario(RUT)", @type = "text", @onkeypress = "return solonumeros(event)", @maxlength = "8", @required = "required", @title = "Ingrese parámetros" })
+                                            @Html.ValidationMessageFor(m => m.Rut, null, new { @class = "text-danger" })
+
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control box-success", @placeholder = "Contraseña", @type = "password", @required = "required", @title = "Ingrese parámetros" })
+                                            @Html.ValidationMessageFor(m => m.Contrasena, null, new { @class = "text-danger" })
+
+                                        </div>
+                                        <div class="form-group">
+
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-success btn-user btn-block "><b>Iniciar Sesión</b></button>
+
+
+                                        <hr>
+                                        <div>
+                                            <footer class="sticky-footer ">
+                                                <div class="container my-auto">
+                                                    <div class="copyright text-center my-auto">
+                                                        <span>Copyright &copy; Universidad Tecnológica Metropolitana</span>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.min.js"></script>
+    <script>
+        /*Funcion error de autenticacion*/
+        function AlertExito(valor) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                allowOutsideClick: false,
+                title: valor,
+                timer: 4000
+            })
+        }
+        function AlertError(valor) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de autenticación...',
+                showConfirmButton: true,
+                text: valor,
+                footer: '<a href=""></a>'
+            })
+        }
+
+        function AlertError2(valor) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de validación...',
+                showConfirmButton: true,
+                text: valor,
+                footer: '<a href=""></a>'
+            })
+        }
+    </script>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+
+
+    @if (ViewBag.resp != null)
+    {
+        <script>
+
+            if (@ViewBag.mensaje < 0) {
+
+                AlertError("Error en validación: Rut o Contraseña incorrecta");
+
+
+            } else {
+
+                AlertExito("Contraseña actualizada con Exito!");
+
+            }
+
+            if (@ViewBag.mensaje < -1) {
+
+                AlertError2("Cuenta inhabilitada, porfavor contacte a soporte.");
+
+            }
+
+
+        </script>
+
+    }
+
+</body>
+
+</html>

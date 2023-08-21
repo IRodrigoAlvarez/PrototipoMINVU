@@ -1,0 +1,231 @@
+/*Modals*/
+div #div-allContent {
+    border-color: #4268d6;
+    border-width: 1px;
+    border-style: groove;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1000px) {
+    #div-allContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+#div-btns {
+    padding: 10px;
+
+}
+
+.custombtn {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+}
+
+#div-btnsModal {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 2em;
+}
+#btnExportar2, #btnExportar3, #btnExportar4{
+    float: right;
+}
+
+/*Login*/
+#id-LI {
+    font-family: 'Oleo Script', cursive;
+    font-family: 'Oswald', sans-serif;
+    color: #0fa58a
+}
+
+#tBuscarPac {
+    color: #0fa58a
+}
+
+#div-loginContent {
+    background: rgb(0,212,255);
+    background: linear-gradient(90deg, rgba(0,212,255,0.35) 0%, rgba(255,255,255,0.35898109243697474) 51%, rgba(0,212,255,0.35) 100%);
+}
+
+
+.bodyClass {
+    height: 400px;
+    background-image: url('../img/edificio-MINVU.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#body404 {
+    /* height: 400px;*/
+    background-image: url('../img/img-view-error.png');
+    /*    background-size: cover;
+    background-repeat: no-repeat;*/
+    background-position: center center;
+}
+
+#divLogoImage {
+    background-image: url('../img/logo-portada.png');
+    background-position: center center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    position:relative;
+    left:30px
+}
+
+#imgLogo {
+    margin-top: 90px;
+    padding: 30px;
+    width: 510px;
+}
+
+#div-containerAll {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+/*Index*/
+
+/*#idTHCE {
+        background-image: url('..\img\casoEspecial.png');*/
+/*    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;*/
+    /*width: 40px;
+    height: 25px;
+}*/
+.table-responsive .tablaparainterconsultas {
+    position: relative;
+    height: 63vh;
+    overflow-y: scroll;
+}
+
+.table-responsive-y {
+ display: block;
+}
+
+.table-responsive-y  thead {
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+}
+table {
+    font-size: 12px;
+}
+thead {
+    width: 100%;
+    overflow-x: scroll;
+    background: #e1f0f4;
+    color: #11a4d6
+}
+
+table #tDiag {
+   padding-left:7em !important;
+   padding-right: 7em !important;
+
+}
+
+table #tRut {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+
+
+#datatablePriori thead {
+    background-color: #e1f0f4;
+    color: #11a4d6;
+}
+#cololetrapriorizador h4 {
+    color : #0fa58a;
+}
+
+#datatablehistorialderivacion thead {
+    background-color: #e1f0f4;
+    color: #11a4d6;
+    width: 100%;
+    overflow-x: scroll;
+}
+#datatablehistorialestado thead {
+    background-color: #e1f0f4;
+    color: #11a4d6;
+}
+
+#tableModal1 thead {
+    background-color: #4268d6;
+    color: #FDFDFD;
+}
+#tableModal2 thead {
+    background-color: #4268d6;
+    color: #FDFDFD;
+}
+
+.custom {
+    width: 280px !important;
+    height: 50px;
+}
+
+
+/*Layout*/
+    #content {
+    background: #b4ecfc;
+    height: max-content;
+    /*   background-image: url('/img/hospital-HPH.jpg');
+    background-size: cover;*/
+    /*background: #B2FEFA;*/ /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to bottom, #0ED2F7, #B2FEFA);*/ /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to top, #0ED2F7, #B2FEFA);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black
+}
+
+    .bootstrap-iso form button, .bootstrap-iso form button:hover {
+        color: white !important;
+    }
+
+.asteriskField {
+    color: red;
+}
+
+#div-form-filtros {
+    padding: 10px;
+}
+
+#collapseTwo, #collapseThree, #collapseFour {
+    width: 220px;
+    height: max-content;
+}
+
+#btnExportar{
+    margin-left:2rem;
+    margin-bottom:2rem;
+}
+
+#divLeyenda {
+    border-radius: 22px;
+}
+
+.modal-backdrop {
+    background-color: black;
+    opacity: 0.68 !important;
+}
+
+.bg-gradient-primary {
+    /*    background-color: #4e73df;
+    background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
+    background-size: cover*/
+    background: #2980B9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
