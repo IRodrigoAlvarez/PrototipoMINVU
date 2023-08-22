@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.33927.289
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototipoMINVU", "PrototipoMINVU\PrototipoMINVU.csproj", "{F0C4ACBB-1706-49C5-B36A-9597DB3192BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{417E4FD3-D845-4535-B53D-AC070D697FE6} = {417E4FD3-D845-4535-B53D-AC070D697FE6}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatosBO", "CapaDatosBO\CapaDatosBO.csproj", "{FE7C7369-0D7C-45DA-B1BD-38E72F47F7B0}"
 EndProject

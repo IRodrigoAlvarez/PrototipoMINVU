@@ -1,0 +1,96 @@
+﻿@model PrototipoMINVU.Models.Sistemas
+
+<body style="background-color: #B2FEFA;">
+
+    <div class="container-fluid">
+        <div class="bg-gradient-primary py-3 shadow-sm">
+            <div class="card">
+                <div class="card shadow">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card shadow">
+                                    <div class="font_registro">
+                                        <h1> Bienvenida /o al registro de datos de los Sistemas del MINVU</h1>
+                                        <hr />
+                                        Bienvenidos al prototipo de sistemas de registro y control de los sistemas del MINVU. Este prototipo está desarrollado
+                                        con fines educativos y no lucrativos. Está hecho con el fin de obtener el título de ingeniería civil en computación, mención
+                                        informática en la UTEM.<br />
+                                        En esta pantalla se podrán registrar, actualizar o eliminar registros de los principales proyectos y/p asociados del
+                                        conjunto de sistemas del MINVU.<br />
+                                        Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
+                                        modo de prueba según las límitaciones del proyecto.<br />
+
+
+                                        Universidad Tecnológica Metropolitana.<br />
+
+                                        <b>Profesor Guía:</b> Yelka Ruiz.<br />
+
+
+                                        <b>Rodrigo Álvarez.</b>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="font_registro">
+                                <div class="col-lg-6">
+                                    <label>Seleccione sistemas:</label>
+
+                                </div>
+                                <div class="col-lg-6">
+
+                                    @Html.DropDownListFor(m => m.ListaSistemas, new SelectList(Model.ListaSistemas), "Seleccione");
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row text-muted">
+            <div class="col-6 text-start">
+                <p class="mb-0">
+                    <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                </p>
+            </div>
+            <div class="col-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+
+
+</script>
+
+</body>
+
+</html>

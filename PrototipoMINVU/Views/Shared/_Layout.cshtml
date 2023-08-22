@@ -11,17 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
     <link href="../css/app.css" rel="stylesheet">
     <link href="../css/css-prototipo.css" rel="stylesheet">
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
 
-    <script src="../js/reporteria-JS.js"></script>
-
-    <script src="~/js/xlsx.full.min.js"></script>
-    <script src="~/js/FileSaver.min.js"></script>
-    <script src="~/js/tableexport.min.js"></script>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.dataTables.js" type="text/javascript"></script>
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
@@ -54,22 +48,25 @@
                                 </a>
                             </h5>
                         </div>
-                        <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
+                        <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-database-add"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Registro y carga de datos.
+                                @using (Html.BeginForm("RegistroSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                {
+                                    <button type="submit" class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-2">
+                                                <i class="bi bi-database-add"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">
+                                                    Registro y carga de datos.
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </button>
+                                }
+                                </div>
 
                             <div class="card-body">
                                 <a href="#" class="list-group-item">

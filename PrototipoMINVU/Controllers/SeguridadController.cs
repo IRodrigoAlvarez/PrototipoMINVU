@@ -83,13 +83,12 @@ namespace PrototipoMINVU.Controllers
             }
             return View("Login");
         }
+
+
         public ActionResult CerrarSesion()
         {
-
-
             Session["objUsuarioBO"] = null;
             Session["strNombre"] = null;
-
             Session.Abandon();
             return View("Login");
 
