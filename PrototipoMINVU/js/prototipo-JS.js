@@ -1,3 +1,85 @@
+// javascript para abrir el formulario de los sistemas 
+
+
+function GenerarListaproyectos()
+{
+    let IDseleccion = document.getElementById("idSistema").value;
+
+
+    if (IDseleccion == 1) {
+
+        $("#proyectos").show();
+    }
+    if (IDseleccion == 2) {
+        $("#idCategorizador").show();
+        $("#idPriorizador").show();
+        $("#idRECHAZADOR").hide();
+    }
+    if (IDseleccion == 3) {
+
+        $("#idCategorizador").hide();
+        $("#idPriorizador").hide();
+        $("#idRECHAZADOR").hide();
+    }
+    if (IDseleccion == 4) {
+
+        $("#idCategorizador").hide();
+        $("#idPriorizador").hide();
+        $("#idRECHAZADOR").hide();
+    }
+    if (IDseleccion == 5) {
+        $("#idCategorizador").hide();
+        $("#idPriorizador").hide();
+        $("#idRECHAZADOR").show();
+    }
+    if (IDseleccion == 6) {
+        $("#idCategorizador").hide();
+        $("#idPriorizador").hide();
+        $("#idRECHAZADOR").show();
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//examples
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*filtro de busqueda, paginacion y cantidad de registros.*/
 $(document).ready(function () {
     GeneraDatatable();

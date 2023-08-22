@@ -40,10 +40,6 @@ namespace PrototipoMINVU.Controllers
                 return RedirectToAction("Login", "Seguridad");
         }
 
-
-
-
-
         // Funciones backen para la carga o visualización de datos.
 
        

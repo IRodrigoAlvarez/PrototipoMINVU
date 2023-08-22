@@ -15,6 +15,7 @@
     <link href="../css/app.css" rel="stylesheet">
     <link href="../css/css-prototipo.css" rel="stylesheet">
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/js/prototipo-JS.js"></script>
 
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.dataTables.js" type="text/javascript"></script>
@@ -368,15 +369,14 @@
                 </div>
 
                 <div class="col-3" style="margin-left: 750px">
-                    <div class="navbar-collapse collapse" >
-
-                        <div style="font:22px calibri">
-                            Bienvenido: <b>@Session["strNombre"]</b>
-                        </div>
+                    <div style="font:22px calibri">
+                        Bienvenida/o : <b>@Session["strNombre"]</b>
+                    </div>
+                    <div class="navbar-collapse collapse">
 
                         <ul class="navbar-nav navbar-align">
                             <li class="nav-item dropdown">
-                                <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">                                    
+                                <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                                     <div class="position-relative">
                                         <i class="bi bi-bell"></i>
                                         <span class="indicator">4</span>

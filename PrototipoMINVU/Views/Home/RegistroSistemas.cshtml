@@ -41,11 +41,10 @@
                             <div class="font_registro">
                                 <div class="col-lg-6">
                                     <label>Seleccione sistemas:</label>
-
+                                    @Html.DropDownListFor(m => m.ListaSistemas, new SelectList(Model.ListaSistemas), "Seleccione", new { @id = "idSistema", @class = "form-control", @onchange = "MostrarSegunTipoUsuario(this.value)" })
                                 </div>
                                 <div class="col-lg-6">
 
-                                    @Html.DropDownListFor(m => m.ListaSistemas, new SelectList(Model.ListaSistemas), "Seleccione");
                                 </div>
                         </div>
                     </div>
