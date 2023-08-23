@@ -8,40 +8,31 @@ function GenerarListaproyectos()
 
     if (IDseleccion == 1) {
 
-        $("#proyectos").show();
+        $("#textindexregistro").hide();
+        $("#proyectosMUNIN").show();
     }
     if (IDseleccion == 2) {
-        $("#idCategorizador").show();
-        $("#idPriorizador").show();
-        $("#idRECHAZADOR").hide();
+        $("#proyectosTraza").show();
+
     }
     if (IDseleccion == 3) {
 
-        $("#idCategorizador").hide();
-        $("#idPriorizador").hide();
-        $("#idRECHAZADOR").hide();
+        $("#proyectosRUKAN").show();
+
     }
     if (IDseleccion == 4) {
 
-        $("#idCategorizador").hide();
-        $("#idPriorizador").hide();
-        $("#idRECHAZADOR").hide();
+        $("#proyectosUMBRAL").show();
+
     }
     if (IDseleccion == 5) {
-        $("#idCategorizador").hide();
-        $("#idPriorizador").hide();
-        $("#idRECHAZADOR").show();
+        $("#proyectosSNAT").show();
+
     }
     if (IDseleccion == 6) {
-        $("#idCategorizador").hide();
-        $("#idPriorizador").hide();
-        $("#idRECHAZADOR").show();
+        $("#proyectosSPS").show();
+
     }
-
-
-
-
-
 }
 
 

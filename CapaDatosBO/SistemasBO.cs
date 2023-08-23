@@ -9,7 +9,7 @@ namespace CapaDatosBO
     {
         public int idSistema { get; set; }
         public string NombreSistema { get; set; }
-        public List<string> ListaSistemas { get; set; }
+        public List<SistemasBO> ListaSistemas { get; set; }
 
     }
 }

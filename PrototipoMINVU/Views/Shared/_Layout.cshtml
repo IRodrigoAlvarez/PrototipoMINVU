@@ -330,11 +330,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </nav>
 
         <div data-backdrop="static" data-keyboard="false" class="modal" id="cambioPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -356,60 +351,67 @@
         </div>
 
 
-        <div class="main">
+        <div class="main" >
 
-            <nav class="navbar navbar-expand navbar-light navbar-bg">
+            <nav class="navbar navbar-expand navbar-light navbar-bg" style="border:1px solid red">
 
                 <img id="img-logoHPH" src="..\img\logocircular.png" class="img-fluid" style="width: 80px; height: 80px; " alt="Responsive image">
 
-                <div class="col-2">
+                <div class="col-1" style="border:1px solid red">
                     <a class="sidebar-toggle js-sidebar-toggle">
                         <i class="hamburger align-self-center"></i>
                     </a>
                 </div>
 
-                <div class="col-3" style="margin-left: 750px">
-                    <div style="font:22px calibri">
-                        Bienvenida/o : <b>@Session["strNombre"]</b>
-                    </div>
-                    <div class="navbar-collapse collapse">
+                <div class="col-10" >
+                    <div class="row" style="border:1px solid blue">
+                        <div class="col-6">
+                            <div style="font:22px calibri">
+                                Bienvenida/o : <b>@Session["strNombre"]</b>
+                            </div>
 
-                        <ul class="navbar-nav navbar-align">
-                            <li class="nav-item dropdown">
-                                <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-                                    <div class="position-relative">
-                                        <i class="bi bi-bell"></i>
-                                        <span class="indicator">4</span>
+                        </div>
+
+                        <div class="col-6" style="margin-left:-64px">
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="navbar-nav navbar-align">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                                            <div class="position-relative">
+                                                <i class="bi bi-bell"></i>
+                                                <span class="indicator">4</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown show">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-gear-fill"></i>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+
+                                        <button class="dropdown-item btnPass" href="#" data-toggle="modal" data-target="#cambioPassword" onclick="">
+                                            <i class="align-middle me-1" data-feather="settings"></i>
+                                            Cambiar Contraseña
+                                        </button>
+
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Salir</a>
                                     </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="dropdown show">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-gear-fill"></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
-
-                                <button class="dropdown-item btnPass" href="#" data-toggle="modal" data-target="#cambioPassword" onclick="">
-                                    <i class="align-middle me-1" data-feather="settings"></i>
-                                    Cambiar Contraseña
-                                </button>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Salir</a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
             </nav>
 
             
-
             <div class="container-fluid" style="margin-top:10px">
                 <div class="body-content">
                     @RenderBody()

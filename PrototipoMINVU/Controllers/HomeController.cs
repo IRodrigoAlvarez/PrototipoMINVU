@@ -31,6 +31,8 @@ namespace PrototipoMINVU.Controllers
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {
+
+
                 Models.Sistemas cargadorSis = new Models.Sistemas();
                 cargadorSis.CargaSistemas();
 
@@ -41,13 +43,6 @@ namespace PrototipoMINVU.Controllers
         }
 
         // Funciones backen para la carga o visualización de datos.
-
-       
-
-
-
-
-
 
 
 

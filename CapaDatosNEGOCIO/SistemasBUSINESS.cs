@@ -8,10 +8,14 @@ namespace CapaDatosNEGOCIO
 {
     public class SistemasBUSINESS
     {
-        public List<string> obtenerSistemas()
+        public List<SistemasBO> obtenerSistemas()
         {
             //se cargan los sistemas en la capa de datos DAO
             CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+
+
+
+
             return back_usuario.cargaSistemas();
 
         }

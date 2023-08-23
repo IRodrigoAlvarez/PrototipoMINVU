@@ -11,12 +11,13 @@ namespace PrototipoMINVU.Models
     {
         public int idSistemas { get; set; }
         public string NombreSistemas { get; set; }
-        public List<string> ListaSistemas { get; set; }
+        public List<SistemasBO> ListaSistemas { get; set; }
         
 
         public void CargaSistemas()
         {
             SistemasBO sis_Minvu = new SistemasBO();
+
             SistemasBUSINESS cargador = new SistemasBUSINESS();
 
             // Se le cargan los sistemas a la variable declarada.
