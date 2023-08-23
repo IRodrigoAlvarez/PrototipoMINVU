@@ -16,13 +16,13 @@ namespace CapaDatosDATA.DAO
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
             List<SistemasBO> resultado = new List<SistemasBO>();
+
+
             DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();  
+            
 
-            SistemasDA Conexion = new SistemasDA();
-                
             ds=Conexion.obtenerSistemas();
-
-
             
             foreach (DataRow r in ds.Tables[0].Rows)
             {

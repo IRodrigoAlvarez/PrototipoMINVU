@@ -1,15 +1,24 @@
 // javascript para abrir el formulario de los sistemas 
 
 
-function GenerarListaproyectos()
-{
+
+function GenerarListaproyectos() {
     let IDseleccion = document.getElementById("idSistema").value;
 
 
     if (IDseleccion == 1) {
 
         $("#textindexregistro").hide();
-        $("#proyectosMUNIN").show();
+        $("#tablaMunin").show();
+        $("#comboProyectosMUNIN").show();
+
+
+    } else {
+        $("#textindexregistro").show();
+        $("#tablaMunin").hide();
+        $("#comboProyectosMUNIN").hide();
+
+
     }
     if (IDseleccion == 2) {
         $("#proyectosTraza").show();
@@ -48,14 +57,6 @@ function GenerarListaproyectos()
 
 
 
-
-
-
-
-
-
-
-
 //examples
 
 
@@ -73,7 +74,7 @@ function GenerarListaproyectos()
 
 /*filtro de busqueda, paginacion y cantidad de registros.*/
 $(document).ready(function () {
-    GeneraDatatable();
+    //GeneraDatatable();
 
     $("#indexCrilla").val();
 
@@ -89,7 +90,7 @@ $(document).ready(function () {
 
 
 function GeneraDatatable() {
-    $('#datatablePriori').DataTable({
+    $('#datatableReg').DataTable({
         "dom": 'B<"float-right"i><"float-left"f>t<"float-left"l><"float-right"p><"clearfix">',
         "scrollY": "50vh",
         "scrollX": "100px",
@@ -102,12 +103,9 @@ function GeneraDatatable() {
         "sScrollXInner": "110%",     
         language: {
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ Interconsultas",
             "sZeroRecords": "No se encontraron coincidencias",
             "sEmptyTable": "",
-            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ Interconsultas",
             "sInfoEmpty": "",
-            "sInfoFiltered": "(filtrado de un total de _MAX_ Interconsultas)",
             "sInfoPostFix": "",
             "sSearch": "Buscar:",
             "sUrl": "",
@@ -263,11 +261,11 @@ function fModalPriorizar2(idIC) {
 /* funcion exportar index */
 function fBtnExportar() {
     const $btnExportar = document.querySelector("#btnExportar"),
-        $datatablePriori = document.querySelector("#datatablePriori");
+        $datatablePriori = document.querySelector("#datatableReg");
 
     //Quitar ver y PDF
-    $("#datatablePriori th:first-child, #datatablePriori td:first-child").remove();
-    $("#datatablePriori th:first-child, #datatablePriori td:first-child").remove();   
+    $("#datatableReg th:first-child, #datatableReg td:first-child").remove();
+    $("#datatableReg th:first-child, #datatableReg td:first-child").remove();   
 
     let tableExport = new TableExport($datatablePriori,
         {

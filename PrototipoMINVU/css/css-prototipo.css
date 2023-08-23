@@ -102,9 +102,9 @@ div #div-allContent {
     /*width: 40px;
     height: 25px;
 }*/
-.table-responsive .tablaparainterconsultas {
-    position: relative;
-    height: 63vh;
+.table-responsive .tablaparaproyectos {
+    position: static;
+    height: 80vh;
     overflow-y: scroll;
 }
 
@@ -118,7 +118,7 @@ div #div-allContent {
     top: 0;
 }
 table {
-    font-size: 12px;
+    font-size: 14px;
 }
 thead {
     width: 100%;
@@ -126,6 +126,13 @@ thead {
     background: #e1f0f4;
     color: #11a4d6
 }
+
+td {
+    text-align:center;
+}
+
+
+
 
 table #tDiag {
    padding-left:7em !important;
@@ -140,24 +147,30 @@ table #tRut {
 
 
 
-#datatablePriori thead {
-    background-color: #e1f0f4;
-    color: #11a4d6;
-}
-#cololetrapriorizador h4 {
-    color : #0fa58a;
+
+
+.font_calibri {
+    font: 22px calibri;
 }
 
-#datatablehistorialderivacion thead {
-    background-color: #e1f0f4;
-    color: #11a4d6;
-    width: 100%;
-    overflow-x: scroll;
+
+
+.font_registro {
+    font: 22px calibri;
 }
-#datatablehistorialestado thead {
-    background-color: #e1f0f4;
-    color: #11a4d6;
+
+
+
+
+
+
+#datatableReg thead {
+    background-color: #EB3C46;
+    color: white;
+
 }
+
+
 
 #tableModal1 thead {
     background-color: #4268d6;
@@ -228,15 +241,9 @@ table #tRut {
     background: #2980B9; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-/*}*/
+    /*}*/
 
-
-.font_calibri{
-        font: 22px calibri;
-    }
-
-
-
-.font_registro {
-    font: 20px calibri;
+    
 }
+
+
