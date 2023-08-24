@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PrototipoMINVU.Models
 {
-    public class Sistemas
+    public class Registro
     {
 
         // PROTOTIPO
@@ -30,32 +30,20 @@ namespace PrototipoMINVU.Models
         public void CargaSistemas()
         {
             SistemasBO sis_Minvu = new SistemasBO();
-
             SistemasBUSINESS cargador = new SistemasBUSINESS();
-
             // Se le cargan los sistemas a la variable declarada.
-
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
             ListaSistemas = sis_Minvu.ListaSistemas;
         }
 
 
-
-
-
-
         public void CargaProyectosMUNIN()
         {
             ProyectosBO Proyecto_MUNIN = new ProyectosBO();
-
             MuninBUSINESS cargador = new MuninBUSINESS();
-
             // Se le cargan los sistemas a la variable declarada.
 
             Proyecto_MUNIN.ListaProyectosMUNIN = cargador.obtenerProyectos();
-
-
-
             ListaProyectosMUNIN = Proyecto_MUNIN.ListaProyectosMUNIN;
         }
     }

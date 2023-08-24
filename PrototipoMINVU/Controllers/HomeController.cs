@@ -33,7 +33,7 @@ namespace PrototipoMINVU.Controllers
             {
 
 
-                Models.Sistemas cargadorSis = new Models.Sistemas();
+                Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaSistemas();
                 cargadorSis.CargaProyectosMUNIN();
 
