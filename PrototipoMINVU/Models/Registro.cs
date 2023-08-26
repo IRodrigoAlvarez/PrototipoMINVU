@@ -16,11 +16,6 @@ namespace PrototipoMINVU.Models
         public string NombreSistemas { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
 
-
-
-
-
-
         // MUNIN
         public int idProyecto { get; set; }
         public string NombreProyectos { get; set; }

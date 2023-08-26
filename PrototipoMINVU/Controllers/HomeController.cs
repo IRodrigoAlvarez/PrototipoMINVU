@@ -31,8 +31,6 @@ namespace PrototipoMINVU.Controllers
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {
-
-
                 Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaSistemas();
                 cargadorSis.CargaProyectosMUNIN();
@@ -43,7 +41,23 @@ namespace PrototipoMINVU.Controllers
                 return RedirectToAction("Login", "Seguridad");
         }
 
+
+
+
+
+
         // Funciones backen para la carga o visualización de datos.
+
+        public ActionResult ActionMUNIN(FormCollection formulario)
+        {
+
+            string id_sistemas_drop = formulario["selectAction"];
+
+
+            return RedirectToAction("RegistroSistemas");
+        }
+
+
 
 
 

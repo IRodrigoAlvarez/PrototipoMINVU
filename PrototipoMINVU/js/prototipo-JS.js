@@ -4,14 +4,13 @@
 
 function GenerarListaproyectos() {
     let IDseleccion = document.getElementById("idSistema").value;
-
+    $("#textindexregistro").hide();
 
     if (IDseleccion == 1) {
-
-        $("#textindexregistro").hide();
-        $("#tablaMunin").show();
         $("#comboProyectosMUNIN").show();
-
+        $("#tablaMunin").show();
+        
+        
 
     } else {
         $("#textindexregistro").show();
@@ -20,6 +19,18 @@ function GenerarListaproyectos() {
 
 
     }
+
+
+
+
+
+
+  
+
+
+
+
+
     if (IDseleccion == 2) {
         $("#proyectosTraza").show();
 
@@ -45,9 +56,10 @@ function GenerarListaproyectos() {
 }
 
 
+function GenerarComboAction() {
+    $("#comboAction").show();
 
-
-
+}
 
 
 

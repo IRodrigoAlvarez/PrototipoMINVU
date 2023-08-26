@@ -12,7 +12,7 @@
 
                         <div class="row">
                             <div class="font_registro">
-                                <h1> Bienvenida /o al registro de datos de los Sistemas del MINVU</h1>
+                                <h1> Bienvenida /o al Registro de datos de los Sistemas del MINVU</h1>
                                 <hr />
                             </div>
                         </div>
@@ -47,16 +47,54 @@
                             <div class="col-lg-6">
                                 <div class="font_registro">
                                     Seleccione Sistema:
-                                    @Html.DropDownListFor(m => m.idSistemas, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistema", @onchange = "GenerarListaproyectos(this.value)" })
-
-                                    <hr />
+                                    @Html.DropDownListFor(m => m.idSistemas, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new {@id="idSistema", @onchange = "GenerarListaproyectos(this.value)" })
                                 </div>
 
+                                @* FORMULARIOS DE ACCIONES PARA LOS PROYECTOS DEL SISTEMA MUNIN *@
                                 <div class="font_registro" id="comboProyectosMUNIN" style="display: none;">
+                                    <hr />
                                     <label>Seleccione Proyecto del Sistema MUNIN:</label>
-                                    @Html.DropDownListFor(m => m.idProyecto, new SelectList(Model.ListaProyectosMUNIN, "idProyecto", "Nombre_proyecto"), "Seleccione Proyecto")
+                                    @Html.DropDownListFor(m => m.idProyecto, new SelectList(Model.ListaProyectosMUNIN, "idProyecto", "Nombre_proyecto"), "Seleccione Proyecto", new { @name = "id_proyecto_drop", @onchange = "GenerarComboAction()" })
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-lg-12" id="comboAction" style="display:none;">
+
+
+                                            <label>Seleccione Acción:</label>
+                                            <select name="selectAction" onchange="GenerarFormulario(this.value)">
+                                                <option value="1">Agregar Proyecto</option>
+                                                <option value="2">Modificar Proyecto</option>
+                                                <option value="3">Eliminar Proyecto</option>
+                                            </select>
+                                            <input type="submit" placeholder="Aceptar" />
+
+
+                                        </div>
+
+                                        <div id="FormularioAgregarProyecto" style="display:none;">
+
+                                        </div>
+                                        <div id="FormularioModificarProyecto" style="display:none;">
+
+                                        </div>
+                                        <div id="FormularioAgregarProyecto" style="display:none;">
+
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
                             </div>
+
+
+
+
+
+
+
+
 
 
                             <div class="col-lg-6" id="tablaMunin" style="display: none; margin-top:3px;">
@@ -116,18 +154,19 @@
                                 </div>
                             </div>
 
+
                             <div class="col-lg-6" id="tablaTrazabilidad" style="display: none; margin-top:3px;">
                                 <div class="font_registro">
-                                    <div style="text-align: center;">Proyectos MUNIN Activos</div>
+                                    <div style="text-align: center;">Proyectos Trazabilidad Activos</div>
                                     <hr />
                                     <div class="table-responsive-y table-responsive tablaparaproyectos">
                                         <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                             <thead>
                                                 <tr>
-                                                    <th>N° Proyecto</th>
-                                                    <th>Nombre Proyecto</th>
-                                                    <th>Jefe del proyecto</th>
-                                                    <th>Estado proyecto</th>
+                                                    <th>N° Contrato</th>
+                                                    <th>Contratista</th>
+                                                    <th>Entidad beneficiada</th>
+                                                    <th>Estado Contrato</th>
                                                     <th>Editar</th>
                                                 </tr>
                                             </thead>
