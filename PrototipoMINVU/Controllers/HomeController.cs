@@ -14,10 +14,7 @@ namespace PrototipoMINVU.Controllers
 
         //Control de vistas
         public ActionResult Index()
-        {
-
-
-            
+        {            
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {
@@ -48,14 +45,7 @@ namespace PrototipoMINVU.Controllers
 
         // Funciones backen para la carga o visualización de datos.
 
-        public ActionResult ActionMUNIN(FormCollection formulario)
-        {
-
-            string id_sistemas_drop = formulario["selectAction"];
-
-
-            return RedirectToAction("RegistroSistemas");
-        }
+      
 
 
 

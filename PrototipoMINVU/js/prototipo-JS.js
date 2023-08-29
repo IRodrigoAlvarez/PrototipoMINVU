@@ -62,7 +62,18 @@ function GenerarComboAction() {
 }
 
 
+function GenerarFormulario(){
 
+    let IDseleccion = document.getElementById("id_accion_drop").value;
+
+    //agregar proyecto
+    if (IDseleccion == 1) {
+        $("#FormularioAgregarProyecto").show();
+        
+    }
+
+
+}
 
 
 

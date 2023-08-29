@@ -22,6 +22,12 @@ div #div-allContent {
 
 }
 
+textarea{
+
+    resize:none;
+}
+
+
 .custombtn {
     width: 100px;
     height: 80px;
@@ -159,7 +165,19 @@ table #tRut {
     font: 22px calibri;
 }
 
+.formAddproy {
+    background: #DADEE2;
+    width: contain;
+    height: contain;
+    border: 2px solid gray;
+    border-radius: 3px 5px;
+    
+}
 
+.rowNorm {
+    margin-left: 40px;
+    margin-top: 10px
+}
 
 
 

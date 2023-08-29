@@ -16,5 +16,26 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaProyectos();
 
         }
+
+
+        public List<AccionBO> obtenerAcciones()
+        {
+            //se cargan las acciones para los proyectos de MUNIN.
+
+            CapaDatosDATA.DAO.MuninDAO back_usuario = new CapaDatosDATA.DAO.MuninDAO();
+
+            return back_usuario.cargaAcciones();
+
+        }
+
+        public List<EstadosBO> obtenerEstados()
+        {
+            //se cargan las acciones para los proyectos de MUNIN.
+
+            CapaDatosDATA.DAO.MuninDAO back_usuario = new CapaDatosDATA.DAO.MuninDAO();
+
+            return back_usuario.cargaEstados();
+
+        }
     }
 }
