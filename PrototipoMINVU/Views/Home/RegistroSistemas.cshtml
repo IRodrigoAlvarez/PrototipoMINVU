@@ -71,117 +71,121 @@
                                                     <div class="card">
                                                         <div class="card shadow formAddproy">
                                                             <div class="row rowNorm">
-                                                                <div class="font_registro">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Nombre Proyecto:</label>
-                                                                            </b>
+                                                                @using (Html.BeginForm("AgregarProyecto", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                {
+                                                                    <div class="font_registro">
+
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Nombre Proyecto:</label>
+                                                                                </b>
+                                                                            </div>
+
+                                                                            <div class="col-lg-8">
+
+                                                                                @Html.TextBoxFor(m => m.NombreProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del proyecto solo debe contener letras", @maxlength = "50" })
+                                                                            </div>
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Jefe proyecto:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
 
-                                                                        <div class="col-lg-8">
+                                                                                @Html.TextBoxFor(m => m.JefeProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Jefe Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del Jefe de proyecto solo debe contener letras", @maxlength = "50" })
 
-                                                                            @Html.TextBoxFor(m => m.NombreProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del proyecto solo debe contener letras", @maxlength = "50" })
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Estado Proyecto:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
+
+
+                                                                                @Html.DropDownListFor(m => m.idEstadoProyecto, new SelectList(Model.ListaEstadoProyectosMUNIN, "idEstado", "DescripcionEstado"), "Seleccione Estado", new { @id = "id_estado_drop" })
+
+                                                                                @* DROPDOWN LIST ESTADO PROYECTOS *@
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Fecha Inicio proyecto:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
+
+                                                                                @Html.EditorFor(model => model.Fecha_Inicio_Proyecto, new { htmlAttributes = new { @id = "id_fecha_inicio", @size = "24", @class = "datepicker", @type = "datetime-local" } })
+                                                                                @Html.ValidationMessageFor(model => model.Fecha_Inicio_Proyecto, "", new { @class = "text-danger" })
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Fecha Término:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
+
+                                                                                @Html.EditorFor(model => model.Fecha_Inicio_Proyecto, new { htmlAttributes = new { @id = "id_fecha_termino", @class = "datepicker", @size = "24", @type = "datetime-local" } })
+                                                                                @Html.ValidationMessageFor(model => model.Fecha_Termino_Proyecto, "", new { @class = "text-danger" })
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Costo Proyecto:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
+
+
+                                                                                @Html.TextBoxFor(m => m.Costo_Proyecto, new { @id = "idCostoProyecto", @placeholder = "Ingrese Costo proyecto", @type = "number", @size = "24", @title = "El formato del costo del proyecto solo debe contener números enteros", @maxlength = "50" })
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">
+                                                                                <b>
+                                                                                    <label>Presupuesto:</label>
+                                                                                </b>
+                                                                            </div>
+                                                                            <div class="col-lg-8">
+
+                                                                                @Html.TextBoxFor(m => m.Presupuesto, new { @id = "idPresupuestoProyecto", @placeholder = "Ingrese Presupuesto proyecto", @size = "24", @type = "number", @title = "El formato del Presupuesto del proyecto solo debe contener números enteros", @maxlength = "50" })
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12">
+                                                                                <b>
+                                                                                    <label>Descripción:</label><br />
+                                                                                </b>
+                                                                                @Html.TextAreaFor(m => m.Descripcion, new { @autocomplete = "off", @id = "idDescripcionProyecto", @rows = "4", @cols = "50", @placeholder = "Ingrese una descripción del Proyecto", @type = "text", @resize = "none", @maxlength = "500" })
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-lg-8">
+
+                                                                            </div>
+                                                                            <div class="col-lg-4">
+
+                                                                                <button type="submit"><b>Aceptar</b></button>
+                                                                                <button type="submit"><b>Cancelar</b></button>
+
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Jefe proyecto:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-                                                                            @Html.TextBoxFor(m => m.JefeProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Jefe Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del Jefe de proyecto solo debe contener letras", @maxlength = "50" })
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Estado Proyecto:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-
-                                                                            @Html.DropDownListFor(m => m.idEstadoProyecto, new SelectList(Model.ListaEstadoProyectosMUNIN, "idEstado", "DescripcionEstado"), "Seleccione Estado", new { @id = "id_estado_drop" })
-
-                                                                            @* DROPDOWN LIST ESTADO PROYECTOS *@
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Fecha Inicio proyecto:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-                                                                            @Html.EditorFor(model => model.Fecha_Inicio_Proyecto, new { htmlAttributes = new { @id = "id_fecha_inicio", @size = "24", @class = "datepicker", @type = "datetime-local" } })
-                                                                            @Html.ValidationMessageFor(model => model.Fecha_Inicio_Proyecto, "", new { @class = "text-danger" })
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Fecha Término:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-                                                                            @Html.EditorFor(model => model.Fecha_Inicio_Proyecto, new { htmlAttributes = new { @id = "id_fecha_termino", @class = "datepicker", @size = "24", @type = "datetime-local" } })
-                                                                            @Html.ValidationMessageFor(model => model.Fecha_Termino_Proyecto, "", new { @class = "text-danger" })
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Costo Proyecto:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-
-                                                                            @Html.TextBoxFor(m => m.Costo_Proyecto, new { @id = "idCostoProyecto", @placeholder = "Ingrese Costo proyecto", @type = "number", @size = "24", @title = "El formato del costo del proyecto solo debe contener números enteros", @maxlength = "50" })
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Presupuesto:</label>
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="col-lg-8">
-
-                                                                            @Html.TextBoxFor(m => m.Presupuesto, new { @id = "idPresupuestoProyecto", @placeholder = "Ingrese Presupuesto proyecto", @size = "24", @type = "number", @title = "El formato del Presupuesto del proyecto solo debe contener números enteros", @maxlength = "50" })
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12">
-                                                                            <b>
-                                                                                <label>Descripción:</label><br />
-                                                                            </b>
-                                                                            @Html.TextAreaFor(m => m.Descripcion, new { @autocomplete = "off", @id = "idDescripcionProyecto", @rows = "4", @cols = "50", @placeholder = "Ingrese una descripción del Proyecto", @type = "text", @resize = "none", @maxlength = "500" })
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-lg-8">
-
-                                                                        </div>
-                                                                        <div class="col-lg-4">
-
-                                                                            <button type="submit"><b>Aceptar</b></button>
-                                                                            <button type="submit"><b>Cancelar</b></button>
-
-                                                                        </div>
-                                                                    </div>
+                                                                }
                                                                 </div>
-                                                            </div>
                                                             <br />
                                                         </div> 
                                                     </div>                                                   

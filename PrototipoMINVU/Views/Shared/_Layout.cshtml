@@ -45,15 +45,14 @@
                                 <i class="bi bi-file-earmark-bar-graph-fill"></i>
 
                                 <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>Sistema MUNIN</b>
+                                    <b>REGISTRO DE SISTEMAS</b>
                                 </a>
                             </h5>
                         </div>
 
                         <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                @using (Html.BeginForm("RegistroSistemas", "Home", FormMethod.Post, new { @class = "user" }))
-                                {
+                                
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col-2">
@@ -61,29 +60,31 @@
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
-                                                    Registro y carga de datos.
+                                                    - Agregar Sistema.
                                                 </div>
                                             </div>
                                         </div>
                                     </button>
-                                }
-                                </div>
-
-                            <div class="card-body">
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Visualización de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                               
                             </div>
 
+                            <div class="card-body">
+                                @using (Html.BeginForm("RegistroSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                {
+                                    <a href="#" class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="bi bi-bar-chart-line-fill"></i>
+                                            </div>
+                                            <div class="col-10" style="margin-left: 9px">
+                                                <div class="text-dark">
+                                                    - Editar Sistema.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
+                             </div>                           
                         </div>
                     </div>
                     <div class="card">
@@ -92,7 +93,7 @@
                                 <i class="bi bi-graph-up-arrow"></i>
 
                                 <a class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>Sistema Trazabilidad</b>
+                                    <b>CONTROL DE SISTEMAS</b>
                                 </a>
                             </h5>
                         </div>
@@ -135,199 +136,10 @@
 
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <i class="bi bi-diagram-3"></i>
-
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>Sistema RUKAN</b>
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapse3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-database-add"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Registro y carga de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Visualización de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <i class="bi bi-person-square"></i>
-
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>Sistema UMBRAL</b>
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapse4" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-database-add"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Registro y carga de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Visualización de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-
-                            <h5 class="mb-0">
-                                <i class="bi bi-gear-wide-connected"></i>
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>S. Asistencia Técnica</b>
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapse5" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-database-add"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Registro y carga de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Visualización de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <i class="bi bi-cash"></i>
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse3">
-                                    <b>S. Pago de Subsidios</b>
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapse6" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-
-                            <div class="card-body">
-
-                                <a href="/Home/RegistrosInterconsulta" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-database-add"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Registro y carga de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Visualización de datos.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </nav>

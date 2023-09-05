@@ -45,8 +45,14 @@ namespace PrototipoMINVU.Controllers
 
         // Funciones backen para la carga o visualización de datos.
 
-      
 
+        public void EditarProyecto(Models.Registro Modelo)
+        {
+
+
+
+            
+        }
 
 
 
