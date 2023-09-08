@@ -11,5 +11,8 @@ namespace CapaDatosBO
         public string NombreSistema { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
 
+        public List<JefesBO> ListaJefesProyectos { get; set; }
+
+
     }
 }

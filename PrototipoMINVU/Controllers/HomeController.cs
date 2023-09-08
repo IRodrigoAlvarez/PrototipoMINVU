@@ -23,6 +23,10 @@ namespace PrototipoMINVU.Controllers
             else
                 return RedirectToAction("Login", "Seguridad");
         }
+
+
+
+
         public ActionResult RegistroSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
@@ -30,7 +34,7 @@ namespace PrototipoMINVU.Controllers
             {
                 Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaSistemas();
-                cargadorSis.CargaProyectosMUNIN();
+                //cargadorSis.CargaProyectosMUNIN();
 
                 return View(cargadorSis);
             }
@@ -46,7 +50,7 @@ namespace PrototipoMINVU.Controllers
         // Funciones backen para la carga o visualización de datos.
 
 
-        public void EditarProyecto(Models.Registro Modelo)
+        public void AgregarSubSistema(Models.Registro Modelo)
         {
 
 

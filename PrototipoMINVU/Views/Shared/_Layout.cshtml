@@ -55,7 +55,7 @@
                                 
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
-                                            <div class="col-2">
+                                            <div class="col-1">
                                                 <i class="bi bi-database-add"></i>
                                             </div>
                                             <div class="col-10">
@@ -71,18 +71,18 @@
                             <div class="card-body">
                                 @using (Html.BeginForm("RegistroSistemas", "Home", FormMethod.Post, new { @class = "user" }))
                                 {
-                                    <a href="#" class="list-group-item">
+                                    <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col-1">
                                                 <i class="bi bi-bar-chart-line-fill"></i>
                                             </div>
-                                            <div class="col-10" style="margin-left: 9px">
+                                            <div class="col-10">
                                                 <div class="text-dark">
                                                     - Editar Sistema.
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </button>
                                 }
                              </div>                           
                         </div>
@@ -143,25 +143,6 @@
                 </div>
             </div>
         </nav>
-
-        <div data-backdrop="static" data-keyboard="false" class="modal" id="cambioPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document" id="modalparacambiocontrasena">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cambio de Contraseña</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body  contenidocambiopass">
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <div class="main" >
 

@@ -47,44 +47,37 @@
                             <div class="col-lg-6">
                                 <div class="font_registro">
                                     <label>Seleccione Sistema:</label>
-                                    @Html.DropDownListFor(m => m.idSistemas, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistema", @onchange = "GenerarListaproyectos(this.value)" })
+                                    @Html.DropDownListFor(m => m.idSistemas, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistema", @type = "text", @onchange = "GenerarListasubsistemas(this.value)" })
                                 </div>
 
-                                @* FORMULARIOS DE ACCIONES PARA LOS PROYECTOS DEL SISTEMA MUNIN *@
-                                <div class="font_registro" id="comboProyectosMUNIN" style="display: none;">
+                                @* FORMULARIOS DE EDICION PARA LOS SISTEMAS DEL SISTEMA*@
+                                <div class="font_registro" id="containerSubSI" style="display: none;">
                                     <hr />
-                                    <label>Seleccione Proyecto del Sistema MUNIN:</label>
-                                    @Html.DropDownListFor(m => m.idProyecto, new SelectList(Model.ListaProyectosMUNIN, "idProyecto", "Nombre_proyecto"), "Seleccione Proyecto", new { @name = "id_proyecto_drop", @onchange = "GenerarComboAction()" })
+                                    <label>Seleccione Sub Sistema:</label>
+                                    @Html.DropDownListFor(m => m.idSubSistema, new SelectList(Model.ListaSubSistemas, "idSubSistema", "NombreSubSistema"), "Seleccione SubSistema", new { @id = "id_subsistema", @onchange = "GenerarFormulario()" })
                                     <hr />
 
                                     <div class="row">
-                                        <div class="col-lg-12" id="comboAction" style="display:none;">
-                                            <label>Seleccione Acción:</label>                                        
-                                            @Html.DropDownListFor(m => m.idAccion, new SelectList(Model.ListaAccionMUNIN, "idAccion", "DescripcionAccion"), "Seleccione Accion", new { @id = "id_accion_drop", @onchange = "GenerarFormulario(this.value)" })
-                                        </div>
-
-
-                                        <div id="FormularioAgregarProyecto" style="display:none;">
+                                        <div id="FormularioEditarSistema" style="display:none;">
                                             <div class="font_registro">
-                                                <hr />
-                                                <div class="container-fluid" >
+                                                <div class="container-fluid">
                                                     <div class="card">
                                                         <div class="card shadow formAddproy">
                                                             <div class="row rowNorm">
-                                                                @using (Html.BeginForm("AgregarProyecto", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                @using (Html.BeginForm("AgregarSubSistema", "Home", FormMethod.Post, new { @class = "user" }))
                                                                 {
                                                                     <div class="font_registro">
 
                                                                         <div class="row">
                                                                             <div class="col-lg-4">
                                                                                 <b>
-                                                                                    <label>Nombre Proyecto:</label>
+                                                                                    <label>Nombre SubSistema:</label>
                                                                                 </b>
                                                                             </div>
 
                                                                             <div class="col-lg-8">
 
-                                                                                @Html.TextBoxFor(m => m.NombreProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del proyecto solo debe contener letras", @maxlength = "50" })
+                                                                                @Html.TextBoxFor(m => m.NombreSubSistema, new { @autocomplete = "off", @id = "idSubSistema", @placeholder = "Ingrese Nombre Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del proyecto solo debe contener letras", @maxlength = "50" })
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
@@ -95,7 +88,7 @@
                                                                             </div>
                                                                             <div class="col-lg-8">
 
-                                                                                @Html.TextBoxFor(m => m.JefeProyecto, new { @autocomplete = "off", @id = "idNombreProyecto", @placeholder = "Ingrese Nombre Jefe Proyecto", @size = "24", @type = "text", @pattern = "^[a-zA-Z ]*$", @title = "El formato del nombre del Jefe de proyecto solo debe contener letras", @maxlength = "50" })
+                                                                                @Html.DropDownListFor(m => m.idJefeProyecto, new SelectList(Model.ListaJefesProyectos, "idJefeProyecto", "NombreJefeProyecto"), "Seleccione Jefe Proyecto", new { @id = "id_estado_drop" })
 
                                                                             </div>
                                                                         </div>
@@ -108,7 +101,7 @@
                                                                             <div class="col-lg-8">
 
 
-                                                                                @Html.DropDownListFor(m => m.idEstadoProyecto, new SelectList(Model.ListaEstadoProyectosMUNIN, "idEstado", "DescripcionEstado"), "Seleccione Estado", new { @id = "id_estado_drop" })
+                                                                                @Html.DropDownListFor(m => m.idEstados, new SelectList(Model.ListaEstados, "idEstado", "DescripcionEstado"), "Seleccione Estado Sistema", new { @id = "id_estado_drop" })
 
                                                                                 @* DROPDOWN LIST ESTADO PROYECTOS *@
                                                                             </div>
@@ -185,10 +178,10 @@
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                                </div>
+                                                            </div>
                                                             <br />
-                                                        </div> 
-                                                    </div>                                                   
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,6 +204,12 @@
 
 
                                 </div>
+
+
+                                @* FORMULARIOS DE EDICION PARA LOS SISTEMAS DEL SISTEMA MUNIN *@
+
+
+
                             </div>
 
 
@@ -222,18 +221,18 @@
 
 
 
-                            <div class="col-lg-6" id="tablaMunin" style="display: none; margin-top:3px;">
+                            <div class="col-lg-6" id="tablaSISTEMAS" style="display: none; margin-top:3px;">
                                 <div class="font_registro">
-                                    <div style="text-align: center;"> <b>Proyectos MUNIN Activos</b></div>
+                                    <div style="text-align: center;"> <b>Sistemas en Produccion Activos</b></div>
                                     <hr />
-                                    <div class="table-responsive-y table-responsive tablaparaproyectos">
+                                    <div class="table-responsive-y table-responsive tablaparasistemas">
                                         <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                             <thead>
                                                 <tr>
-                                                    <th>N° Proyecto</th>
-                                                    <th>Nombre Proyecto</th>
+                                                    <th>N° Sistema</th>
+                                                    <th>Nombre Sistema</th>
                                                     <th>Jefe del proyecto</th>
-                                                    <th>Estado proyecto</th>
+                                                    <th>Estado Sistema</th>
                                                     <th>Editar</th>
                                                 </tr>
                                             </thead>
@@ -284,7 +283,7 @@
                                 <div class="font_registro">
                                     <div style="text-align: center;">Proyectos Trazabilidad Activos</div>
                                     <hr />
-                                    <div class="table-responsive-y table-responsive tablaparaproyectos">
+                                    <div class="table-responsive-y table-responsive tablaparasistemas">
                                         <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                             <thead>
                                                 <tr>

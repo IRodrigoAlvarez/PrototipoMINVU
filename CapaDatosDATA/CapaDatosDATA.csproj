@@ -70,10 +70,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\MuninDAO.cs" />
     <Compile Include="DAO\SistemasDAO.cs" />
+    <Compile Include="DAO\SubSistemaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
-    <Compile Include="DA\MuninDA.cs" />
+    <Compile Include="DA\JefesDA.cs" />
     <Compile Include="DA\SistemasDA.cs" />
     <Compile Include="DA\UsuarioDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

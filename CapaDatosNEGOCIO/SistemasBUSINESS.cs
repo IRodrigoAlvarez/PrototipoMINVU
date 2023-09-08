@@ -15,5 +15,33 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaSistemas();
 
         }
+
+
+
+        public List<EstadosBO> obtenerEstados()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaEstados();
+
+        }
+
+
+        public List<SubSistemasBO> obtenerSubSistemas()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
+            return back_usuario.cargaSubSistemas();
+
+        }
+
+
+        public List<JefesBO> obtenerJefesProyectos()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaJefesproyectos();
+
+        }
     }
 }

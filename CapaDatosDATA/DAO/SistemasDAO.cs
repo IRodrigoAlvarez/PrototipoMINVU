@@ -29,13 +29,75 @@ namespace CapaDatosDATA.DAO
                 //Se llena la lista con los sistemas
                 SistemasBO sistema = new SistemasBO();
 
-                sistema.idSistema = Int32.Parse(r["idSistema"].ToString());
-                sistema.NombreSistema = r["Nombre_Sistema"].ToString();
+                sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
+                sistema.NombreSistema = r["nombre_sistema"].ToString();
                 resultado.Add(sistema);
             }
 
 
             return resultado;
         }
+
+
+        public List<JefesBO> cargaJefesproyectos()
+        {
+
+            List<JefesBO> resultado = new List<JefesBO>();
+
+            DataSet ds = new DataSet();
+            JefesDA Conexion = new JefesDA();
+
+            ds = Conexion.obtenerJefes();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los jefes de proyectos que Existen en la bddd
+                JefesBO estado = new JefesBO();
+
+
+
+
+                estado.idJefeProyecto = Int32.Parse(r["idJefe"].ToString());
+                estado.NombreJefeProyecto = r["nombreJefe"].ToString();
+                estado.RUT = Int32.Parse(r["rut"].ToString());
+                estado.Titulo = r["titulo"].ToString();
+                estado.Experiencia = r["experiencia"].ToString();
+                estado.Descripcion = r["descripcion"].ToString();
+
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+
+        public List<EstadosBO> cargaEstados()
+        {
+            List<EstadosBO> resultado = new List<EstadosBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerEstados();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                EstadosBO estado = new EstadosBO();
+
+                estado.idEstado = Int32.Parse(r["id_estado"].ToString());
+                estado.DescripcionEstado = r["descripcion_estado"].ToString();
+
+                resultado.Add(estado);
+            }
+            return resultado;
+        }
+
+
+
+
+
+
+
     }
 }

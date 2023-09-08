@@ -2,73 +2,37 @@
 
 
 
-function GenerarListaproyectos() {
+function GenerarListasubsistemas() {
     let IDseleccion = document.getElementById("idSistema").value;
     $("#textindexregistro").hide();
 
+
+
     if (IDseleccion == 1) {
-        $("#comboProyectosMUNIN").show();
-        $("#tablaMunin").show();
+        $("#contSubSI").show();
+        $("#tablaSISTEMAS").show();
         
         
 
     } else {
         $("#textindexregistro").show();
-        $("#tablaMunin").hide();
-        $("#comboProyectosMUNIN").hide();
+        $("#tablaSISTEMAS").hide();
+        $("#containerSubSI").hide();
 
 
     }
 
-
-
-
-
-
-  
-
-
-
-
-
-    if (IDseleccion == 2) {
-        $("#proyectosTraza").show();
-
-    }
-    if (IDseleccion == 3) {
-
-        $("#proyectosRUKAN").show();
-
-    }
-    if (IDseleccion == 4) {
-
-        $("#proyectosUMBRAL").show();
-
-    }
-    if (IDseleccion == 5) {
-        $("#proyectosSNAT").show();
-
-    }
-    if (IDseleccion == 6) {
-        $("#proyectosSPS").show();
-
-    }
 }
 
-
-function GenerarComboAction() {
-    $("#comboAction").show();
-
-}
 
 
 function GenerarFormulario(){
 
-    let IDseleccion = document.getElementById("id_accion_drop").value;
+    let IDseleccion = document.getElementById("id_subsistema").value;
 
     //agregar proyecto
     if (IDseleccion == 1) {
-        $("#FormularioAgregarProyecto").show();
+        $("#FormularioEditarSistema").show();
         
     }
 

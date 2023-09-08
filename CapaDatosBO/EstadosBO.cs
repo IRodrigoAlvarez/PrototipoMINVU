@@ -10,7 +10,7 @@ namespace CapaDatosBO
        
         public int idEstado { get; set; }
         public String DescripcionEstado { get; set; }
-        public List<EstadosBO> ListaEstadoProyectosMUNIN { get; set; }
+        public List<EstadosBO> ListaEstados { get; set; }
 
 
     }
