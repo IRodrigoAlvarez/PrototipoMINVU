@@ -1,5 +1,35 @@
 // javascript para abrir el formulario de los sistemas 
 
+function GenerarListaAmbiente() {
+
+    let IDseleccion = document.getElementById("idAmbiente").value;
+    $("#textindexregistro").hide();
+    $("#tablaSISTEMAS").hide();
+
+
+
+    if (IDseleccion == 3) {
+        $("#containerSubSI").show();
+        $("#tablaSISTEMAS").show();
+
+
+
+    } else {
+        $("#textindexregistro").show();
+        $("#tablaSISTEMAS").hide();
+        $("#containerSubSI").hide();
+
+
+    }
+
+
+}
+
+
+
+
+
+
 
 
 function GenerarListasubsistemas() {

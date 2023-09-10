@@ -133,8 +133,11 @@ thead {
     color: #11a4d6
 }
 
-td {
-    text-align:center;
+.id {
+    text-align: center;
+}
+th {
+    text-align: center;
 }
 
 

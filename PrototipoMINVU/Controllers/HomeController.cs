@@ -33,8 +33,7 @@ namespace PrototipoMINVU.Controllers
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaSistemas();
-                //cargadorSis.CargaProyectosMUNIN();
+                cargadorSis.CargaParametros();
 
                 return View(cargadorSis);
             }

@@ -31,6 +31,9 @@ namespace CapaDatosDATA.DAO
 
                 sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
+                sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
+                sistema.NombreJefeProyecto= r["nombre_jefe_proyecto"].ToString();
+                sistema.estado = r["estado_sistema"].ToString();
                 resultado.Add(sistema);
             }
 
@@ -53,10 +56,6 @@ namespace CapaDatosDATA.DAO
             {
                 //Se llena la lista con los jefes de proyectos que Existen en la bddd
                 JefesBO estado = new JefesBO();
-
-
-
-
                 estado.idJefeProyecto = Int32.Parse(r["idJefe"].ToString());
                 estado.NombreJefeProyecto = r["nombreJefe"].ToString();
                 estado.RUT = Int32.Parse(r["rut"].ToString());
@@ -94,7 +93,27 @@ namespace CapaDatosDATA.DAO
         }
 
 
+        public List<AmbienteBO> cargaAmbientes()
+        {
+            List<AmbienteBO> resultado = new List<AmbienteBO>();
 
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerAmbientes();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                AmbienteBO estado = new AmbienteBO();
+
+                estado.idAmbiente = Int32.Parse(r["id_ambiente"].ToString());
+                estado.DescripcionAmbiente = r["nombre_ambiente"].ToString();
+
+                resultado.Add(estado);
+            }
+            return resultado;
+        }
 
 
 

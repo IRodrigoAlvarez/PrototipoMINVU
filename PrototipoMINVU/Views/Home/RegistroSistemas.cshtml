@@ -44,11 +44,59 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
+
                                 <div class="font_registro">
-                                    <label>Seleccione Sistema:</label>
-                                    @Html.DropDownListFor(m => m.idSistemas, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistema", @type = "text", @onchange = "GenerarListasubsistemas(this.value)" })
+                                    <label>Seleccione Ambiente:</label>
+                                    @Html.DropDownListFor(m => m.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente", new { @id = "idAmbiente", @type = "text", @onchange = "GenerarListaAmbiente(this.value)" })
                                 </div>
+
+                                <div class="col-lg-12" id="tablaSISTEMAS" >
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Sistemas en Produccion Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y table-responsive tablaparasistemas">
+                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N° Sistema</th>
+                                                        <th>Nombre Sistema</th>
+                                                        <th>Sub Sistema</th>
+                                                        <th>Jefe del proyecto</th>
+                                                        <th>Estado Sistema</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaSistemas != null)
+                                                    {
+                                                        foreach (var item in Model.ListaSistemas)
+                                                        {
+                                                            <tr>
+                                                                <td class="id">@item.idSistema</td>
+                                                                <td>@item.NombreSistema</td>
+                                                                <td>@item.NombreSubSistema</td>
+                                                                <td>@item.NombreJefeProyecto</td>
+                                                                <td>@item.estado</td>
+                                                                <td></td>
+
+                                                            </tr>
+                                                        }
+                                                    }                                                           
+                                                        </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
 
                                 @* FORMULARIOS DE EDICION PARA LOS SISTEMAS DEL SISTEMA*@
                                 <div class="font_registro" id="containerSubSI" style="display: none;">
@@ -272,9 +320,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-
-
                                 </div>
                             </div>
 
