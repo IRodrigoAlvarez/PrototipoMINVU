@@ -27,7 +27,7 @@ namespace PrototipoMINVU.Controllers
 
 
 
-        public ActionResult RegistroSistemas()
+        public ActionResult EditarSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
