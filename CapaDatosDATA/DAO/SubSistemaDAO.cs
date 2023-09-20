@@ -30,7 +30,12 @@ namespace CapaDatosDATA.DAO
                 SubSistemasBO sistema = new SubSistemasBO();
 
                 sistema.idSubSistema = Int32.Parse(r["id_subsistema"].ToString());
-                sistema.NombreSubSistema = r["nombre_sistema"].ToString();
+                sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
+                sistema.NombreJefeProyecto = r["nombreJefe"].ToString();
+                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();
+                //sistema.URLinicio = r["URLinicio"].ToString();
+                //sistema.URLdatos = r["URLdatos"].ToString();
+                sistema.Descripcion = r["descripcion"].ToString();
                 resultado.Add(sistema);
             }
 

@@ -9,7 +9,7 @@ function GenerarListaAmbiente() {
 
 
     if (IDseleccion == 3) {
-        $("#containerSubSI").show();
+        $("#containerEditSistema").show();
         $("#tablaSISTEMAS").show();
 
 
@@ -17,17 +17,16 @@ function GenerarListaAmbiente() {
     } else {
         $("#textindexregistro").show();
         $("#tablaSISTEMAS").hide();
-        $("#containerSubSI").hide();
-
 
     }
-
-
 }
 
 
 
+function abreForm() {
 
+    $("#containerEditSistema").show();
+}
 
 
 

@@ -21,11 +21,9 @@ namespace PrototipoMINVU.Models
 
         public string NombreSistemas { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
-   
+        public string DescripcionSistema { get; set; }
+        public int FkSubSistema { get; set; }
 
-        public int idEstados { get; set; }
-
-        public int idAmbiente { get; set; }
 
 
 
@@ -35,6 +33,7 @@ namespace PrototipoMINVU.Models
         
         public int idJefeProyecto { get; set; }
 
+        public int idAmbiente { get; set; }
 
 
         public List<AmbienteBO> ListaAmbientes { get; set; }
@@ -45,8 +44,6 @@ namespace PrototipoMINVU.Models
         
 
 
-        public DateTime Fecha_Inicio_Proyecto { get; set; }
-        public DateTime Fecha_Termino_Proyecto { get; set; }
         public int Costo_Proyecto { get; set; }
         public int Presupuesto { get; set; }
         public string Descripcion { get; set; }
