@@ -58,7 +58,6 @@ namespace PrototipoMINVU.Models
         public void CargaParametros()
         {
             SistemasBO sis_Minvu = new SistemasBO();
-            SubSistemasBO subsis = new SubSistemasBO();       
             EstadosBO estadosBO = new EstadosBO();
             AmbienteBO ambientes = new AmbienteBO();
 
@@ -76,13 +75,7 @@ namespace PrototipoMINVU.Models
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
             ListaSistemas = sis_Minvu.ListaSistemas;
 
-            sis_Minvu.ListaJefesProyectos = cargador.obtenerJefesProyectos();
-            ListaJefesProyectos = sis_Minvu.ListaJefesProyectos;
                 
-
-
-            subsis.ListaSubSistemas = cargador.obtenerSubSistemas();
-            ListaSubSistemas = subsis.ListaSubSistemas;
 
             estadosBO.ListaEstados = cargador.obtenerEstados();
             ListaEstados = estadosBO.ListaEstados;
@@ -90,9 +83,32 @@ namespace PrototipoMINVU.Models
         }
 
 
-       
+        public void CargaSubsistemasbyID(int id_sistema)
+        {
 
-     
+            SistemasBO sis_Minvu = new SistemasBO();
+
+            SubSistemasBO subsis = new SubSistemasBO();
+
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            // Se le cargan los sistemas a la variable declarada.
+
+
+
+
+            subsis.ListaSubSistemas = cargador.obtenerSubSistemasbyID(id_sistema);
+            ListaSubSistemas = subsis.ListaSubSistemas;
+
+
+            sis_Minvu.ListaJefesProyectos = cargador.obtenerJefesProyectos();
+            ListaJefesProyectos = sis_Minvu.ListaJefesProyectos;
+
+        }
+
+
+
+
+
 
 
 

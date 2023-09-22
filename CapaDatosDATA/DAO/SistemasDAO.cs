@@ -31,9 +31,6 @@ namespace CapaDatosDATA.DAO
 
                 sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
-                sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
-                sistema.NombreJefeProyecto = r["nombre_jefe_proyecto"].ToString();
-                sistema.estado = r["estado_sistema"].ToString();
                 sistema.descripcion = r["descripcion"].ToString();
                 resultado.Add(sistema);
             }

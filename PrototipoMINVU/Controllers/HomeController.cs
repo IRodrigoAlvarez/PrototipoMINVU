@@ -45,25 +45,22 @@ namespace PrototipoMINVU.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult FormularioSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema)
+        [HttpPost]
+        public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema)
         {
+
+
+
+
             var alerta = Session["UsuarioConfirmado"];
-
-
-
-
             Session["ID_SISTEMA"] = id_sistemasedit;
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
             Session["DESCRIPCION"] = descripcion_sistema;
 
-
-
-
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaParametros();
+                cargadorSis.CargaSubsistemasbyID(Int32.Parse(id_sistemasedit));
                 return View(cargadorSis);
             }
             else
@@ -82,7 +79,7 @@ namespace PrototipoMINVU.Controllers
             // Puedes usar el valor de "nombreSistema" como sea necesario en tu controlador
             // ...
 
-            return RedirectToAction("FormularioSistremas","Home");
+            return RedirectToAction("FrmSistemas","Home");
         }
 
 

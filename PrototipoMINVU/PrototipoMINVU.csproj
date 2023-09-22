@@ -199,7 +199,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Seguridad\Login.cshtml" />
     <Content Include="Views\Home\EditarSistemas.cshtml" />
-    <Content Include="Views\Home\FormularioSistemas.cshtml" />
+    <Content Include="Views\Home\FrmSistemas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

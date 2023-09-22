@@ -11,18 +11,19 @@ namespace CapaDatosDATA.DAO
     public class SubSistemaDAO
     {
 
-        public List<SubSistemasBO> cargaSubSistemas()
+        public List<SubSistemasBO> cargaSubSistemasbyID(int id_sistema)
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
             List<SubSistemasBO> resultado = new List<SubSistemasBO>();
 
 
+
             DataSet ds = new DataSet();
             SistemasDA Conexion = new SistemasDA();
 
 
-            ds = Conexion.obtenerSubSistemas();
+            ds = Conexion.obtenerSubSistemasbyID(id_sistema);
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
@@ -32,20 +33,10 @@ namespace CapaDatosDATA.DAO
                 sistema.idSubSistema = Int32.Parse(r["id_subsistema"].ToString());
                 sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
                 sistema.NombreJefeProyecto = r["nombreJefe"].ToString();
-                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();
-                //sistema.URLinicio = r["URLinicio"].ToString();
-                //sistema.URLdatos = r["URLdatos"].ToString();
-                sistema.Descripcion = r["descripcion"].ToString();
+                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();              
                 resultado.Add(sistema);
             }
-
-
             return resultado;
-
-
-
-
-
         }
     }
 }

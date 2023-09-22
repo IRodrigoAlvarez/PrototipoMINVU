@@ -64,7 +64,7 @@
                                                     <tr>
                                                         <th>N° Sistema</th>
                                                         <th>Nombre Sistema</th>
-                                                        <th>Estado Sistema</th>
+                                                        <th>Descripcion sistema</th>
                                                         <th>Editar</th>
                                                     </tr>
                                                 </thead>
@@ -76,10 +76,10 @@
                                                             <tr>
                                                                 <td class="id">@item.idSistema</td>
                                                                 <td>@item.NombreSistema</td>
-                                                                <td>@item.estado</td>
+                                                                <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FormularioSistemas", "Home", FormMethod.Get, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
