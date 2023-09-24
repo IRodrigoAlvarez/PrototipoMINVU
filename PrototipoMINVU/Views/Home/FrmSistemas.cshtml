@@ -23,9 +23,7 @@
                                         <div class="container-fluid">
                                             <div class="card">
                                                 <div class="card shadow formAddproy">
-                                                    <div class="row rowNorm">
-                                                        @using (Html.BeginForm("EditarSubSistema", "Home", FormMethod.Get, new { @class = "user" }))
-                                                        {
+                                                    <div class="row rowNorm">                                                       
                                                             <div class="font_registro">
 
                                                                 <div class="row" style="border:1px solid blue">
@@ -82,11 +80,11 @@
                                                                                             <td>@item.EstadoSubSistema</td>
                                                                                             <td class="id">
 
-                                                                                                @using (Html.BeginForm("FormularioSubSistemas", "Home", FormMethod.Get, new { @class = "user" }))
+                                                                                                @using (Html.BeginForm("FrmSubsistemas", "Home", FormMethod.Post, new { @class = "user" }))
                                                                                                 {
-                                                                                                    @*<input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                                                    <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-                                                                                                    <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />*@
+                                                                                                    <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
+                                                                                                    <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
+                                                                                                    <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
 
                                                                                                     <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
@@ -99,27 +97,11 @@
                                                                             </tbody>
                                                                         </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                                     </div>
                                                                 </div>
                                                                                                                                 
                                                             </div>
-                                                        }
+                                                        
                                                     </div>
                                                     <br />
                                                 </div>
@@ -128,19 +110,7 @@
                                     </div>
                                 </div>
 
-
-                                <div id="FormularioModificarProyecto" style="display:none;">
-                                    <div class="font_registro">
-                                        FORMULARIO MODIFICAR PROYECTO.
-                                    </div>
-                                </div>
-
-
-                                <div id="FormularioQuitarProyecto" style="display:none;">
-                                    <div class="font_registro">
-                                        FORMULARIO Quitar PROYECTO.
-                                    </div>
-                                </div>
+                               
 
                             </div>
 

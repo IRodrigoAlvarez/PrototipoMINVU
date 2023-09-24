@@ -15,9 +15,6 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaSistemas();
 
         }
-
-
-
         public List<EstadosBO> obtenerEstados()
         {
             //se cargan los sistemas en la capa de datos DAO
@@ -25,8 +22,6 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaEstados();
 
         }
-
-
         public List<SubSistemasBO> obtenerSubSistemasbyID(int id_sistema)
         {
             //se cargan los sistemas en la capa de datos DAO
@@ -34,13 +29,6 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaSubSistemasbyID(id_sistema);
 
         }
-
-
-
-
-
-
-
         public List<JefesBO> obtenerJefesProyectos()
         {
             //se cargan los sistemas en la capa de datos DAO
@@ -48,9 +36,6 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaJefesproyectos();
 
         }
-
-
-
         public List<AmbienteBO> obtenerAmbientes()
         {
             //se cargan los sistemas en la capa de datos DAO
@@ -58,5 +43,15 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaAmbientes();
 
         }
+
+
+        public List<AreasBO> obtenerAreas()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaAreas();
+
+        }
+
     }
 }

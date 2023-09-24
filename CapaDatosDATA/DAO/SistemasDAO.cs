@@ -113,7 +113,27 @@ namespace CapaDatosDATA.DAO
             return resultado;
         }
 
+        public List<AreasBO> cargaAreas()
+        {
+            List<AreasBO> resultado = new List<AreasBO>();
 
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerAreas();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                AreasBO estado = new AreasBO();
+
+                estado.idArea = Int32.Parse(r["id_area"].ToString());
+                estado.DescripcionArea = r["nombre_area"].ToString();
+
+                resultado.Add(estado);
+            }
+            return resultado;
+        }
 
 
     }

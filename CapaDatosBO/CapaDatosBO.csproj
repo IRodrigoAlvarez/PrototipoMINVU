@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmbienteBO.cs" />
+    <Compile Include="AreasBO.cs" />
     <Compile Include="EstadosBO.cs" />
     <Compile Include="JefesBO.cs" />
     <Compile Include="LoginBO.cs" />

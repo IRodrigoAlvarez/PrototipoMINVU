@@ -24,7 +24,7 @@ namespace CapaDatosDATA.DA
                 conex.ConnectionString = cadenaConexion;
                 conex.Open();
 
-                string sp_validausuario = @"Call PSM_CARGASISTEMAS";
+                string sp_validausuario = @"Call PSM_SISTEMAS";
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);                
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(ds);
@@ -101,6 +101,9 @@ namespace CapaDatosDATA.DA
 
 
 
+
+
+
         public DataSet obtenerSubSistemasbyID(int sistema)
         {
             DataSet ds = new DataSet();
@@ -153,6 +156,40 @@ namespace CapaDatosDATA.DA
 
                 string sp_validausuario = @"Call PSM_CARGAMBIENTES";
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+            return ds;
+        }
+
+
+
+        public DataSet obtenerAreas()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "PSM_CARGAAREAS";
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
+
+                // Crea el parámetro y lo agrega al comando.
+
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(ds);
 

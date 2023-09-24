@@ -200,6 +200,7 @@
     <Content Include="Views\Seguridad\Login.cshtml" />
     <Content Include="Views\Home\EditarSistemas.cshtml" />
     <Content Include="Views\Home\FrmSistemas.cshtml" />
+    <Content Include="Views\Home\FrmSubsistemas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

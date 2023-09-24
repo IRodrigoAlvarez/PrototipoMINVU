@@ -19,24 +19,20 @@ namespace PrototipoMINVU.Models
      
       
 
-        public string NombreSistemas { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
-        public string DescripcionSistema { get; set; }
-        public int FkSubSistema { get; set; }
 
 
 
 
         // TABLA SUBSISTEMAS
-        public int idSubSistema { get; set; }
-        public string NombreSubSistema { get; set; }
         
-        public int idJefeProyecto { get; set; }
 
         public int idAmbiente { get; set; }
 
 
         public List<AmbienteBO> ListaAmbientes { get; set; }
+        public List<AreasBO> ListaAreas { get; set; }
+
 
         public List<SubSistemasBO> ListaSubSistemas { get; set; }
 
@@ -57,52 +53,54 @@ namespace PrototipoMINVU.Models
 
         public void CargaParametros()
         {
-            SistemasBO sis_Minvu = new SistemasBO();
+            SistemasBO sis_Minvu = new SistemasBO();            
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+
+
+
+            // Se le cargan los sistemas a la variable declarada.            
+            sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
+            ListaSistemas = sis_Minvu.ListaSistemas;                                        
+        }
+
+
+        public void CargarCombos() 
+        {
             EstadosBO estadosBO = new EstadosBO();
+            AreasBO areas = new AreasBO();
             AmbienteBO ambientes = new AmbienteBO();
-
-
+            SistemasBO sis_Minvu = new SistemasBO();
 
 
             SistemasBUSINESS cargador = new SistemasBUSINESS();
-            // Se le cargan los sistemas a la variable declarada.
+
+
+            areas.ListaAreas = cargador.obtenerAreas();
+            ListaAreas = areas.ListaAreas;
+
+            estadosBO.ListaEstados = cargador.obtenerEstados();
+            ListaEstados = estadosBO.ListaEstados;
+
+            sis_Minvu.ListaJefesProyectos = cargador.obtenerJefesProyectos();
+            ListaJefesProyectos = sis_Minvu.ListaJefesProyectos;
 
             ambientes.ListaAmbientes = cargador.obtenerAmbientes();
             ListaAmbientes = ambientes.ListaAmbientes;
 
 
-
-            sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
-            ListaSistemas = sis_Minvu.ListaSistemas;
-
-                
-
-            estadosBO.ListaEstados = cargador.obtenerEstados();
-            ListaEstados = estadosBO.ListaEstados;
-               
         }
-
 
         public void CargaSubsistemasbyID(int id_sistema)
         {
 
-            SistemasBO sis_Minvu = new SistemasBO();
-
             SubSistemasBO subsis = new SubSistemasBO();
-
             SistemasBUSINESS cargador = new SistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
 
-
-
             subsis.ListaSubSistemas = cargador.obtenerSubSistemasbyID(id_sistema);
             ListaSubSistemas = subsis.ListaSubSistemas;
-
-
-            sis_Minvu.ListaJefesProyectos = cargador.obtenerJefesProyectos();
-            ListaJefesProyectos = sis_Minvu.ListaJefesProyectos;
-
+            
         }
 
 

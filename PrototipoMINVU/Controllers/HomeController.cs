@@ -24,19 +24,14 @@ namespace PrototipoMINVU.Controllers
                 return RedirectToAction("Login", "Seguridad");
         }
 
-
-
-
         public ActionResult EditarSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
-
-
-
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaParametros();
+                cargadorSis.CargarCombos();
                 return View(cargadorSis);
             }
             else
@@ -45,13 +40,15 @@ namespace PrototipoMINVU.Controllers
 
         }
 
+
+
+
+
+
+
         [HttpPost]
         public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema)
         {
-
-
-
-
             var alerta = Session["UsuarioConfirmado"];
             Session["ID_SISTEMA"] = id_sistemasedit;
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
@@ -66,6 +63,40 @@ namespace PrototipoMINVU.Controllers
             else
                 return RedirectToAction("Login", "Seguridad");
         }
+
+
+
+
+        [HttpPost]
+        public ActionResult FrmSubsistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_subsistema)
+        {
+            var alerta = Session["UsuarioConfirmado"];
+            Session["ID_SISTEMA"] = id_sistemasedit;
+            Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
+            Session["DESCRIPCION"] = descripcion_subsistema;
+
+
+            if (alerta != null)
+            {
+                Models.Registro cargadorSis = new Models.Registro();
+
+                cargadorSis.CargarCombos();
+
+
+                return View();
+            }
+            else
+                return RedirectToAction("Login", "Seguridad");
+        }
+
+
+
+
+
+
+
+
+
 
 
 

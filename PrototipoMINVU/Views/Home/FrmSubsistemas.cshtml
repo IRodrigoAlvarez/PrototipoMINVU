@@ -1,0 +1,278 @@
+﻿@model PrototipoMINVU.Models.Registro
+
+<body style="background-color: #B2FEFA;">
+
+    <div class="container-fluid">
+        <div class="bg-gradient-primary py-3 shadow-sm">
+            <div class="card">
+                <div class="card shadow">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="font_registro">
+                                <h1>Editar datos del Sub Sistema: <b>@Session["NOMBRE_SISTEMA"]</b></h1>
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="font_registro" id="containerSubSI" >
+
+                            <div class="row">
+                                <div id="FormularioEditarSistema">
+                                    <div class="font_registro">
+                                        <div class="container-fluid">
+                                            <div class="card">
+                                                <div class="card shadow formAddproy">
+                                                    <div class="row rowNorm" style="border: 1px solid red">                                                        
+                                                        <div class="font_registro">
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Nombre SubSistema:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="@Session["NOMBRE_SISTEMA"]" name="id_nombre" />
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Descripcion:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <textarea rows="4" cols="80" name="descripcion">@Session["DESCRIPCION"]</textarea>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>URL Página Inicio:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>URL Modelo de Datos:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Decreto Afecto:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Costo Sistemas [$]:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Dueño de los datos:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Jefe de proyecto:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Tipo control de acceso:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Tipo Alcance SubSistema:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Tipo sistema:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Tipo tecnologia:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Sistema Heredado(Legacy):</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Region:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Estado del sistema:</label>
+                                                                    </b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <input type="text" value="" name="id_nombre" />
+
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-lg-9">
+                                                                  
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <input type="submit" value="ACEPTAR" />
+                                                                    <input type="submit" value="CANCELAR" />
+                                                                </div>
+
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row text-muted">
+                <div class="col-6 text-start">
+                    <p class="mb-0">
+                        <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                    </p>
+                </div>
+                <div class="col-6 text-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+
+
+
+    </script>
+
+</body>
