@@ -30,7 +30,7 @@ namespace PrototipoMINVU.Controllers
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaParametros();
+                cargadorSis.CargaSistemas();
                 cargadorSis.CargarCombos();
                 return View(cargadorSis);
             }
@@ -70,20 +70,14 @@ namespace PrototipoMINVU.Controllers
         [HttpPost]
         public ActionResult FrmSubsistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_subsistema)
         {
-            var alerta = Session["UsuarioConfirmado"];
-            Session["ID_SISTEMA"] = id_sistemasedit;
-            Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
-            Session["DESCRIPCION"] = descripcion_subsistema;
-
-
+            var alerta = Session["UsuarioConfirmado"];                      
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
 
                 cargadorSis.CargarCombos();
-
-
-                return View();
+                cargadorSis.TraeCaractersticasSubSistema(Int32.Parse(id_sistemasedit));
+                return View(cargadorSis);
             }
             else
                 return RedirectToAction("Login", "Seguridad");

@@ -23,199 +23,206 @@
                                         <div class="container-fluid">
                                             <div class="card">
                                                 <div class="card shadow formAddproy">
-                                                    <div class="row rowNorm" style="border: 1px solid red">                                                        
-                                                        <div class="font_registro">
+                                                    @if (Model.SubSistemaExample != null)
+                                                    {
+                                                        <div class="row rowNorm" style="border: 1px solid red">
+                                                            <div class="font_registro">
 
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Nombre SubSistema:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="@Session["NOMBRE_SISTEMA"]" name="id_nombre" />
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Nombre SubSistema:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="@Model.SubSistemaExample.NombreSubSistema" name="id_nombre" />
+                                                                    </div>
+
                                                                 </div>
 
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Descripcion:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <textarea rows="4" cols="80" name="descripcion">@Model.SubSistemaExample.DescripcionSubSistema</textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>URL Página Inicio:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="@Model.SubSistemaExample.URLinicio" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>URL Modelo de Datos:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="@Model.SubSistemaExample.URLdatos" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Decreto Afecto:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="@Model.SubSistemaExample.DecretoAfecto" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Costo Sistemas [$]:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="@Model.SubSistemaExample.CostoSistema" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Dueño de los datos:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Jefe de proyecto:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Tipo control de acceso:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Tipo Alcance SubSistema:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Tipo sistema:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Tipo tecnologia:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Sistema Heredado(Legacy):</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Region:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <b>
+                                                                            <label>Estado del sistema:</label>
+                                                                        </b>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <input type="text" value="" name="id_nombre" />
+
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-lg-9">
+
+                                                                    </div>
+                                                                    <div class="col-lg-3">
+                                                                        <input type="submit" value="ACEPTAR" />
+                                                                        <input type="submit" value="CANCELAR" />
+                                                                    </div>
+
+
+                                                                </div>
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Descripcion:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <textarea rows="4" cols="80" name="descripcion">@Session["DESCRIPCION"]</textarea>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>URL Página Inicio:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>URL Modelo de Datos:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Decreto Afecto:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Costo Sistemas [$]:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Dueño de los datos:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Jefe de proyecto:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Tipo control de acceso:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Tipo Alcance SubSistema:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Tipo sistema:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Tipo tecnologia:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Sistema Heredado(Legacy):</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Region:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Estado del sistema:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    <input type="text" value="" name="id_nombre" />
-
-                                                                </div>
-                                                            </div>
-                                                            <br />
-                                                            <div class="row">
-                                                                <div class="col-lg-9">
-                                                                  
-                                                                </div>
-                                                                <div class="col-lg-3">
-                                                                    <input type="submit" value="ACEPTAR" />
-                                                                    <input type="submit" value="CANCELAR" />
-                                                                </div>
-
-                                                                
-                                                            </div>
                                                         </div>
-                                                        
-                                                    </div>
+
+
+
+
+                                                    }
                                                     <br />
                                                 </div>
                                             </div>

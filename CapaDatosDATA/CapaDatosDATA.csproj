@@ -75,6 +75,7 @@
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DA\JefesDA.cs" />
     <Compile Include="DA\SistemasDA.cs" />
+    <Compile Include="DA\SubSistemasDA.cs" />
     <Compile Include="DA\UsuarioDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

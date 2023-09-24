@@ -11,28 +11,21 @@ namespace PrototipoMINVU.Models
     public class Registro
     {
 
-        // PROTOTIPO
-
-
-        // SISTEMAS
-
-     
-      
-
+    
         public List<SistemasBO> ListaSistemas { get; set; }
 
-
+        public SubSistemasBO SubSistemaExample { get; set; }
 
 
         // TABLA SUBSISTEMAS
-        
+
+
+
 
         public int idAmbiente { get; set; }
-
-
         public List<AmbienteBO> ListaAmbientes { get; set; }
         public List<AreasBO> ListaAreas { get; set; }
-
+        public List<EstadosBO> ListaEstados { get; set; }
 
         public List<SubSistemasBO> ListaSubSistemas { get; set; }
 
@@ -45,19 +38,16 @@ namespace PrototipoMINVU.Models
         public string Descripcion { get; set; }
 
 
-        public List<EstadosBO> ListaEstados { get; set; }
+       
 
 
 
 
 
-        public void CargaParametros()
+        public void CargaSistemas()
         {
             SistemasBO sis_Minvu = new SistemasBO();            
             SistemasBUSINESS cargador = new SistemasBUSINESS();
-
-
-
             // Se le cargan los sistemas a la variable declarada.            
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
             ListaSistemas = sis_Minvu.ListaSistemas;                                        
@@ -94,7 +84,7 @@ namespace PrototipoMINVU.Models
         {
 
             SubSistemasBO subsis = new SubSistemasBO();
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
 
@@ -104,7 +94,20 @@ namespace PrototipoMINVU.Models
         }
 
 
+        public void TraeCaractersticasSubSistema(int id_subsistema)
+        {
 
+            SubSistemasBO subsistema = new SubSistemasBO();
+
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            // Se le cargan los sistemas a la variable declarada.
+
+            subsistema = cargador.TraeCaracteristicasSubsistema(id_subsistema);
+
+            SubSistemaExample = subsistema;
+
+
+        }
 
 
 

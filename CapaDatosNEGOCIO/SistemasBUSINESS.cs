@@ -22,13 +22,7 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaEstados();
 
         }
-        public List<SubSistemasBO> obtenerSubSistemasbyID(int id_sistema)
-        {
-            //se cargan los sistemas en la capa de datos DAO
-            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
-            return back_usuario.cargaSubSistemasbyID(id_sistema);
-
-        }
+       
         public List<JefesBO> obtenerJefesProyectos()
         {
             //se cargan los sistemas en la capa de datos DAO
