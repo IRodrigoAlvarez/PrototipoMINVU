@@ -4,19 +4,19 @@ function GenerarListaAmbiente() {
 
     let IDseleccion = document.getElementById("idAmbiente").value;
     $("#textindexregistro").hide();
-    $("#tablaSISTEMAS").hide();
+    $("#tablaSISTEMASenproduccion").hide();
 
 
 
     if (IDseleccion == 3) {
         $("#containerEditSistema").show();
-        $("#tablaSISTEMAS").show();
+        $("#tablaSISTEMASenproduccion").show();
 
 
 
     } else {
         $("#textindexregistro").show();
-        $("#tablaSISTEMAS").hide();
+        $("#tablaSISTEMASenproduccion").hide();
 
     }
 }
@@ -39,13 +39,13 @@ function GenerarListasubsistemas() {
 
     if (IDseleccion == 1) {
         $("#contSubSI").show();
-        $("#tablaSISTEMAS").show();
+        $("#tablaSISTEMASenproduccion").show();
         
         
 
     } else {
         $("#textindexregistro").show();
-        $("#tablaSISTEMAS").hide();
+        $("#tablaSISTEMASenproduccion").hide();
         $("#containerSubSI").hide();
 
 

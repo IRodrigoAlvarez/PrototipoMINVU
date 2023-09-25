@@ -11,8 +11,13 @@ namespace PrototipoMINVU.Models
     public class Registro
     {
 
-    
         public List<SistemasBO> ListaSistemas { get; set; }
+
+        public List<SistemasBO> ListaSistemasP { get; set; }
+        public List<SistemasBO> ListaSistemasD { get; set; }
+
+        public List<SistemasBO> ListaSistemasT { get; set; }
+
 
         public SubSistemasBO SubSistemaExample { get; set; }
 
@@ -38,7 +43,7 @@ namespace PrototipoMINVU.Models
         public string Descripcion { get; set; }
 
 
-       
+
 
 
 
@@ -46,12 +51,27 @@ namespace PrototipoMINVU.Models
 
         public void CargaSistemas()
         {
-            SistemasBO sis_Minvu = new SistemasBO();            
+            SistemasBO sis_Minvu = new SistemasBO();
             SistemasBUSINESS cargador = new SistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.            
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
-            ListaSistemas = sis_Minvu.ListaSistemas;                                        
+
+
+
+            // se obtienen las listas de los sistemas en produccion, desarrollo y testing respectivamente
+            sis_Minvu.ListaSistemasP = cargador.obtenerSistemasby(3);
+            sis_Minvu.ListaSistemasD = cargador.obtenerSistemasby(1);
+            sis_Minvu.ListaSistemasT = cargador.obtenerSistemasby(2);
+
+
+
+            ListaSistemas = sis_Minvu.ListaSistemas;
+            ListaSistemasP = sis_Minvu.ListaSistemasP;
+            ListaSistemasD = sis_Minvu.ListaSistemasD;
+            ListaSistemasT = sis_Minvu.ListaSistemasT;
+
         }
+
 
 
         public void CargarCombos() 

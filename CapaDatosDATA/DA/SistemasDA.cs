@@ -26,7 +26,7 @@ namespace CapaDatosDATA.DA
 
                 string sp_validausuario = @"Call PSM_SISTEMAS";
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);                
-                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);               
                 da.Fill(ds);
 
             }
@@ -36,6 +36,40 @@ namespace CapaDatosDATA.DA
             }
             return ds;
         }
+
+
+        public DataSet ObtenerSistemasbyAmbiente(int ambiente)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                // Nombre del procedimiento almacenado y configuración del parámetro
+                string sp_validausuario = "PSM_SISTEMASbyambiente";
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure; // Indicar que es un SP
+                comando.Parameters.AddWithValue("@ambiente", ambiente); // Configurar el parámetro
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+            return ds;
+        }
+
+
 
 
         public DataSet obtenerEstados()

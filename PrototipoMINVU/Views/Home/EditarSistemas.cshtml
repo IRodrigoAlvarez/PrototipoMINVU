@@ -51,8 +51,9 @@
 
 
 
+                                @* TABLA PARA SISTEMAS EN PRODUCCION *@
 
-                                <div class="col-lg-12" id="tablaSISTEMAS" >
+                                <div class="col-lg-12" id="tablaSISTEMASenproduccion">
                                     <div class="font_registro">
                                         <div style="text-align: center;"> <b>Sistemas en Produccion Activos</b></div>
                                         <hr />
@@ -92,19 +93,120 @@
 
                                                             </tr>
                                                         }
-                                                    }                                                           
+                                                    }
                                                 </tbody>
                                             </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* TABLA PARA SISTEMAS EN desarrollo *@
+
+                                <div class="col-lg-12" id="tablaSISTEMASendesarrollo">
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Sistemas en desarrollo Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y table-responsive tablaparasistemas">
 
 
+                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N° Sistema</th>
+                                                        <th>Nombre Sistema</th>
+                                                        <th>Descripcion sistema</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaSistemas != null)
+                                                    {
+                                                        foreach (var item in Model.ListaSistemas)
+                                                        {
+                                                            <tr>
+                                                                <td class="id">@item.idSistema</td>
+                                                                <td>@item.NombreSistema</td>
+                                                                <td>@item.descripcion</td>
+                                                                <td class="id">
 
+                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    {
+                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
+                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
+
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                    }
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* TABLA PARA SISTEMAS EN TESTING *@
+
+                                <div class="col-lg-12" id="tablaSISTEMASentesting">
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Sistemas en Testing Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y table-responsive tablaparasistemas">
+
+
+                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N° Sistema</th>
+                                                        <th>Nombre Sistema</th>
+                                                        <th>Descripcion sistema</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaSistemas != null)
+                                                    {
+                                                        foreach (var item in Model.ListaSistemas)
+                                                        {
+                                                            <tr>
+                                                                <td class="id">@item.idSistema</td>
+                                                                <td>@item.NombreSistema</td>
+                                                                <td>@item.descripcion</td>
+                                                                <td class="id">
+
+                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    {
+                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
+                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
+
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                    }
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                @* FORMULARIOS DE EDICION PARA LOS SISTEMAS DEL SISTEMA*@
-                                
+
+
+
+
+
+
+
+
 
 
 
@@ -114,14 +216,8 @@
 
 
 
-
-
-
-
-
-
-
-                            <div class="col-lg-6" id="tablaSISTEMAS" style="display: none; margin-top:3px;">
+                            @* TABLA PARA SISTEMAS EN PRODUCCION *@
+                            <div class="col-lg-6" id="tablaSISTEMASenproduccion" style="display: none; margin-top:3px;">
                                 <div class="font_registro">
                                     <div style="text-align: center;"> <b>Sistemas en Produccion Activos</b></div>
                                     <hr />

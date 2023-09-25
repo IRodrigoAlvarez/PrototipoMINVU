@@ -15,6 +15,17 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaSistemas();
 
         }
+
+        public List<SistemasBO> obtenerSistemasby(int ambiente)
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaSistemasby(ambiente);
+
+        }
+
+
+
         public List<EstadosBO> obtenerEstados()
         {
             //se cargan los sistemas en la capa de datos DAO
