@@ -70,19 +70,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         public List<JefesBO> cargaJefesproyectos()
         {
 
@@ -178,6 +165,26 @@ namespace CapaDatosDATA.DAO
             return resultado;
         }
 
+        public List<DataownerBO> cargaDO()
+        {
+            List<DataownerBO> resultado = new List<DataownerBO>();
 
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerDO();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                DataownerBO estado = new DataownerBO();
+
+                estado.idDataOwner = Int32.Parse(r["id_codigo"].ToString());
+                estado.nombre_data = r["nombre_origen"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
     }
 }

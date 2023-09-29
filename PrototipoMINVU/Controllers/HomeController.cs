@@ -30,22 +30,12 @@ namespace PrototipoMINVU.Controllers
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargarCombos();
                 cargadorSis.CargaSistemas();             
-
                 return View(cargadorSis);
             }
             else
                 return RedirectToAction("Login", "Seguridad");
-
-
         }
-
-
-
-
-
-
 
         [HttpPost]
         public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema)
@@ -71,7 +61,9 @@ namespace PrototipoMINVU.Controllers
         [HttpPost]
         public ActionResult FrmSubsistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_subsistema)
         {
-            var alerta = Session["UsuarioConfirmado"];                      
+            var alerta = Session["UsuarioConfirmado"];
+            Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
+
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
@@ -96,11 +88,10 @@ namespace PrototipoMINVU.Controllers
 
 
         // Funciones backen para la carga o visualización de datos.
+        [HttpPost]
 
-        public ActionResult EditarSubSistema(string id_nombre)
+        public ActionResult EditarSubSistema(Models.Registro Subsistemanuevo)
         {
-            // Recupera el valor de "NOMBRE_SISTEMA" de la sesión
-            string nombreSistema = id_nombre;
 
             // Puedes usar el valor de "nombreSistema" como sea necesario en tu controlador
             // ...

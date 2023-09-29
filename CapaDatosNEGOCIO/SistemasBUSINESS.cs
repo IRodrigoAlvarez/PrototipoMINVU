@@ -49,12 +49,18 @@ namespace CapaDatosNEGOCIO
 
         }
 
-
         public List<AreasBO> obtenerAreas()
         {
             //se cargan los sistemas en la capa de datos DAO
             CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
             return back_usuario.cargaAreas();
+
+        }
+        public List<DataownerBO> obtenerDO()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaDO();
 
         }
 

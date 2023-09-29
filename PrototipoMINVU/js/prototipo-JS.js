@@ -4,20 +4,32 @@ function GenerarListaAmbiente() {
 
     let IDseleccion = document.getElementById("idAmbiente").value;
     $("#textindexregistro").hide();
-    $("#tablaSISTEMASenproduccion").hide();
-
-
-
+    $("#tablaSISTEMAS").hide();
     if (IDseleccion == 3) {
-        $("#containerEditSistema").show();
         $("#tablaSISTEMASenproduccion").show();
+        $("#tablaSISTEMASendesarrollo").hide();
+        $("#tablaSISTEMASentesting").hide();
 
 
+    }
 
-    } else {
-        $("#textindexregistro").show();
+    if (IDseleccion == 1) {
         $("#tablaSISTEMASenproduccion").hide();
+        $("#tablaSISTEMASendesarrollo").show();
+        $("#tablaSISTEMASente").hide();
 
+  
+
+    }
+    if (IDseleccion == 2) {
+        $("#tablaSISTEMASenproduccion").hide();
+        $("#tablaSISTEMASendesarrollo").hide();
+
+        $("#tablaSISTEMASentesting").show();
+
+    }
+     else {
+        $("#textindexregistro").show();
     }
 }
 
