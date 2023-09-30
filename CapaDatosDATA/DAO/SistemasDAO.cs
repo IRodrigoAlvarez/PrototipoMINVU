@@ -186,5 +186,140 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
+
+        public List<ControlBO> cargaControlAcceso()
+        {
+            List<ControlBO> resultado = new List<ControlBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerControlAcceso();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                ControlBO estado = new ControlBO();
+
+                estado.idControlAcceso = Int32.Parse(r["id_control"].ToString());
+                estado.TipoControl = r["tipo_control"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+        public List<AlcanceBO> cargaAlcance()
+        {
+            List<AlcanceBO> resultado = new List<AlcanceBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerAlcance();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                AlcanceBO estado = new AlcanceBO();
+
+                estado.idAlcance = Int32.Parse(r["id_alcance"].ToString());
+                estado.DescripcionAlcance = r["descripcion_alcance"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+        public List<RegionBO> cargaRegiones()
+        {
+            List<RegionBO> resultado = new List<RegionBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerRegiones();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                RegionBO estado = new RegionBO();
+
+                estado.idRegion = Int32.Parse(r["id_region"].ToString());
+                estado.NombreRegion = r["nombre_region"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+
+        public List<LegacyBO> cargaLegacy()
+        {
+            List<LegacyBO> resultado = new List<LegacyBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerLegacy();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                LegacyBO estado = new LegacyBO();
+
+                estado.idLegacy = Int32.Parse(r["id_legacy"].ToString());
+                estado.DescripcionLegacy = r["descripcion_legacy"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+        public List<TipoSistemasBO> cargaTiposistemas()
+        {
+            List<TipoSistemasBO> resultado = new List<TipoSistemasBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerTipoSistemas();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                TipoSistemasBO estado = new TipoSistemasBO();
+
+                estado.idTipoSistema = Int32.Parse(r["id_tiposi"].ToString());
+                estado.TipoSistema = r["descripcion_tipo"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+
+
+        public List<TecnologiaBO> cargaTecnologias()
+        {
+            List<TecnologiaBO> resultado = new List<TecnologiaBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerTecnologias();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                TecnologiaBO estado = new TecnologiaBO();
+
+                estado.idTecnologia = Int32.Parse(r["id_tecnologia"].ToString());
+                estado.TipoTecnologia = r["nombre_tecnologia"].ToString();
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
     }
 }

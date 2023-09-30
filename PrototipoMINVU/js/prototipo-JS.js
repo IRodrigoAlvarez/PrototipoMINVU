@@ -5,32 +5,27 @@ function GenerarListaAmbiente() {
     let IDseleccion = document.getElementById("idAmbiente").value;
     $("#textindexregistro").hide();
     $("#tablaSISTEMAS").hide();
+
+    if (IDseleccion == 1) {
+        $("#tablaSISTEMASenproduccion").hide();
+        $("#tablaSISTEMASendesarrollo").show();
+        $("#tablaSISTEMASentesting").hide();
+
+    }
+    if (IDseleccion == 2) {
+        $("#tablaSISTEMASenproduccion").hide();
+        $("#tablaSISTEMASendesarrollo").hide();
+        $("#tablaSISTEMASentesting").show();
+
+    }
     if (IDseleccion == 3) {
         $("#tablaSISTEMASenproduccion").show();
         $("#tablaSISTEMASendesarrollo").hide();
         $("#tablaSISTEMASentesting").hide();
 
 
-    }
-
-    if (IDseleccion == 1) {
-        $("#tablaSISTEMASenproduccion").hide();
-        $("#tablaSISTEMASendesarrollo").show();
-        $("#tablaSISTEMASente").hide();
-
-  
-
-    }
-    if (IDseleccion == 2) {
-        $("#tablaSISTEMASenproduccion").hide();
-        $("#tablaSISTEMASendesarrollo").hide();
-
-        $("#tablaSISTEMASentesting").show();
-
-    }
-     else {
-        $("#textindexregistro").show();
-    }
+    }   
+    
 }
 
 
@@ -38,7 +33,7 @@ function GenerarListaAmbiente() {
 function abreForm() {
 
     $("#containerEditSistema").show();
-}
+} 
 
 
 

@@ -24,5 +24,17 @@ namespace CapaDatosNEGOCIO
 
         }
 
+
+
+
+        public void EditarSubSistema(int idsistema, SubSistemasBO SistemaNuevo)
+        {
+
+            CapaDatosDATA.DA.SubSistemasDA back_usuario = new CapaDatosDATA.DA.SubSistemasDA();
+
+            back_usuario.EditarSubSistema(idsistema, SistemaNuevo);
+
+        }
+
     }
 }

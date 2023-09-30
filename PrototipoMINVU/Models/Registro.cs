@@ -87,10 +87,38 @@ namespace PrototipoMINVU.Models
             AmbienteBO ambientes = new AmbienteBO();
             SistemasBO sis_Minvu = new SistemasBO();
             DataownerBO dueño_datos = new DataownerBO();
+            ControlBO control = new ControlBO();
+            AlcanceBO alcance = new AlcanceBO();
+            RegionBO region = new RegionBO();
+            LegacyBO legacy = new LegacyBO();
+            TipoSistemasBO tiposistema = new TipoSistemasBO();
+            TecnologiaBO tipotecnologia = new TecnologiaBO();
 
             SistemasBUSINESS cargador = new SistemasBUSINESS();
 
 
+
+            tipotecnologia.ListaTecnologias = cargador.obtenerTecnologias();
+            ListaTecnologia = tipotecnologia.ListaTecnologias;
+
+
+            tiposistema.ListaTiposSistemas = cargador.obtenerTiposistemas();
+            ListaTipoSistemas = tiposistema.ListaTiposSistemas;
+
+
+            legacy.ListaLegacy = cargador.obtenerLegacy();
+            ListaLegacy = legacy.ListaLegacy;
+
+
+            region.ListaRegiones = cargador.obtenerRegiones();
+            ListaRegion = region.ListaRegiones;
+
+
+            alcance.ListaAlcances = cargador.obtenerAlcances();
+            ListaAlcance = alcance.ListaAlcances;
+
+            control.ListaControlAcceso = cargador.obtenerControlAcceso();
+            ListaControlAcceso = control.ListaControlAcceso;
 
 
             dueño_datos.ListaDataOwners = cargador.obtenerDO();
@@ -117,7 +145,6 @@ namespace PrototipoMINVU.Models
             SubSistemasBO subsis = new SubSistemasBO();
             SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
-
 
             subsis.ListaSubSistemas = cargador.obtenerSubSistemasbyID(id_sistema);
             ListaSubSistemas = subsis.ListaSubSistemas;

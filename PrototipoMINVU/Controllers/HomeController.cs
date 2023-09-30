@@ -63,6 +63,7 @@ namespace PrototipoMINVU.Controllers
         {
             var alerta = Session["UsuarioConfirmado"];
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
+            Session["ID_SUBSISTEMA"] = Int32.Parse(id_sistemasedit);
 
             if (alerta != null)
             {
@@ -90,13 +91,23 @@ namespace PrototipoMINVU.Controllers
         // Funciones backen para la carga o visualización de datos.
         [HttpPost]
 
-        public ActionResult EditarSubSistema(Models.Registro Subsistemanuevo)
+        public ActionResult EditarSubSistema(Models.Registro subsistemanuevo, string id_subsistemasedit)
         {
 
-            // Puedes usar el valor de "nombreSistema" como sea necesario en tu controlador
-            // ...
+            SubSistemasBO sistemaeditado = new SubSistemasBO();
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
 
-            return RedirectToAction("FrmSistemas","Home");
+
+
+
+            int id_subsistema = Int32.Parse(id_subsistemasedit);
+            sistemaeditado = subsistemanuevo.SubSistemaExample;
+
+
+
+            cargador.EditarSubSistema(id_subsistema, sistemaeditado);         
+
+            return RedirectToAction("EditarSistemas","Home");
         }
 
 

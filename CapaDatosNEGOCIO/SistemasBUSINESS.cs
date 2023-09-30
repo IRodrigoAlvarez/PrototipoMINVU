@@ -64,5 +64,59 @@ namespace CapaDatosNEGOCIO
 
         }
 
+        public List<ControlBO> obtenerControlAcceso()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaControlAcceso();
+
+        }
+        public List<AlcanceBO> obtenerAlcances()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaAlcance();
+
+        }
+
+        public List<RegionBO> obtenerRegiones()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaRegiones();
+
+        }
+
+        public List<LegacyBO> obtenerLegacy()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaLegacy();
+
+        }
+
+        public List<TipoSistemasBO> obtenerTiposistemas()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaTiposistemas();
+
+        }
+
+        public List<TecnologiaBO> obtenerTecnologias()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+            return back_usuario.cargaTecnologias();
+
+        }
+
+
+
+
+
+
+
+
     }
 }
