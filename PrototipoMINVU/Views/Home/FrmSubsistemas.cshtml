@@ -28,7 +28,7 @@
                                                         using (Html.BeginForm("EditarSubSistema", "Home", FormMethod.Post, new { @class = "user" }))
                                                         {
 
-                                                    <div class="row rowNorm" style="border: 1px solid red">
+                                                    <div class="row rowNorm" >
 
 
                                                         <input type="hidden" value="@Model.SubSistemaExample.idSubSistema" name="id_subsistemasedit" />
@@ -52,6 +52,14 @@
                                                                 </div>
                                                                 <div class="col-lg-8">
                                                                     @Html.TextAreaFor(m => m.SubSistemaExample.DescripcionSubSistema, new { @class = "form-control", rows = 4 })
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>@Html.LabelFor(m => m.SubSistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    @Html.DropDownListFor(m => m.SubSistemaExample.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text" })
                                                                 </div>
                                                             </div>
 
@@ -188,7 +196,7 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <input type="submit" value="ACEPTAR" />
-                                                                    <input type="submit" value="CANCELAR" />
+                                                                    <input type="reset" value="CANCELAR" />
                                                                 </div>
 
 

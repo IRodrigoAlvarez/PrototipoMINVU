@@ -18,6 +18,7 @@ namespace PrototipoMINVU.Models
         public List<SistemasBO> ListaSistemasT { get; set; }
         public SubSistemasBO SubSistemaExample { get; set; }
 
+        public SistemasBO SistemaExample { get; set; }
 
         // TABLA SUBSISTEMAS
         public int idAmbiente { get; set; }
@@ -141,16 +142,28 @@ namespace PrototipoMINVU.Models
 
         public void CargaSubsistemasbyID(int id_sistema)
         {
-
             SubSistemasBO subsis = new SubSistemasBO();
             SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
             subsis.ListaSubSistemas = cargador.obtenerSubSistemasbyID(id_sistema);
             ListaSubSistemas = subsis.ListaSubSistemas;
-            
+
         }
 
+
+        public void CargaSistemabyID(int id_sistema) 
+        {
+            SistemasBO sis_Minvu = new SistemasBO();
+            SistemasBUSINESS cargadorSistemas = new SistemasBUSINESS();
+
+
+            sis_Minvu = cargadorSistemas.obtenerSistemasbyID(id_sistema);
+            SistemaExample = sis_Minvu;
+
+            CargaSubsistemasbyID(id_sistema);
+
+        }
 
         public void TraeCaractersticasSubSistema(int id_subsistema)
         {

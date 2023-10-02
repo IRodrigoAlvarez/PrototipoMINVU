@@ -115,8 +115,25 @@ namespace CapaDatosNEGOCIO
 
 
 
+        public void EditarSistemaGeneral(int idsistema, SistemasBO sistemaeditado) 
+        {
+
+            CapaDatosDATA.DA.SistemasDA back_usuario = new CapaDatosDATA.DA.SistemasDA();
+
+            back_usuario.EditarSistemaGeneral(idsistema, sistemaeditado);
 
 
+        }
+
+
+
+        public SistemasBO obtenerSistemasbyID(int id_sistema)
+        {
+            CapaDatosDATA.DAO.SistemasDAO back_usuario = new CapaDatosDATA.DAO.SistemasDAO();
+
+            return back_usuario.TraeSistemabyid(id_sistema);
+
+        }
 
     }
 }

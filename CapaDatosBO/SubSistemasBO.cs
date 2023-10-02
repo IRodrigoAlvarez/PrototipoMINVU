@@ -9,6 +9,9 @@ namespace CapaDatosBO
     {
 
         public int idSubSistema { get; set; }
+
+        public int idAmbiente { get; set; }
+
         public string NombreSubSistema { get; set; } 
         public string DescripcionSubSistema { get; set; }
         public string URLinicio { get; set; }

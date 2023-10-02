@@ -15,13 +15,10 @@ namespace CapaDatosDATA.DAO
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
-            List<SistemasBO> resultado = new List<SistemasBO>();
-           
-
+            List<SistemasBO> resultado = new List<SistemasBO>();           
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();  
+            SistemasDA Conexion = new SistemasDA(); 
             
-
             ds=Conexion.obtenerSistemas();
             
             foreach (DataRow r in ds.Tables[0].Rows)
@@ -35,8 +32,6 @@ namespace CapaDatosDATA.DAO
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
                 resultado.Add(sistema);
             }
-
-
             return resultado;
         }
 
@@ -52,13 +47,12 @@ namespace CapaDatosDATA.DAO
             SistemasDA Conexion = new SistemasDA();
 
 
-            ds = Conexion.ObtenerSistemasbyAmbiente(ambiente);
+            ds = Conexion.ObtenerSistemabyAmbiente(ambiente);
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 //Se llena la lista con los sistemas
                 SistemasBO sistema = new SistemasBO();
-
                 sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
                 sistema.descripcion = r["descripcion"].ToString();
@@ -298,8 +292,6 @@ namespace CapaDatosDATA.DAO
 
         }
 
-
-
         public List<TecnologiaBO> cargaTecnologias()
         {
             List<TecnologiaBO> resultado = new List<TecnologiaBO>();
@@ -320,6 +312,31 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
 
+        }
+
+
+        public SistemasBO TraeSistemabyid(int id_sistema) 
+        {
+            SistemasBO resultado = new SistemasBO();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.TraeSistemabyid(id_sistema);
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+
+                resultado.idSistema = Int32.Parse(r["id_sistema"].ToString());
+                resultado.NombreSistema = r["nombre_sistema"].ToString();
+
+                resultado.descripcion = r["descripcion"].ToString();
+                resultado.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
+                resultado.AmbienteAlojado = r["nombre_ambiente"].ToString();
+
+            }
+            return resultado;
         }
     }
 }

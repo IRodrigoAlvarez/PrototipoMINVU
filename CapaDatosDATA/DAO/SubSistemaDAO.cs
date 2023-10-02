@@ -93,6 +93,8 @@ namespace CapaDatosDATA.DAO
                 sistema.CostoSistema = Int32.Parse(r["costo_sistema"].ToString());
                 sistema.DescripcionSubSistema = r["descripcion_subsistema"].ToString();
                 sistema.DecretoAfecto = r["decreto_afecto"].ToString();
+
+                sistema.idAmbiente = Int32.Parse(r["id_ambiente"].ToString());
                 sistema.AmbienteAlojado = r["nombre_ambiente"].ToString();
 
 

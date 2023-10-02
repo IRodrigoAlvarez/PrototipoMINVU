@@ -24,83 +24,101 @@
                                             <div class="card">
                                                 <div class="card shadow formAddproy">
                                                     <div class="row rowNorm">                                                       
-                                                            <div class="font_registro">
+                                                        <div class="font_registro">
 
-                                                                <div class="row" style="border:1px solid blue">
-                                                                    <div class="col-lg-4">
-                                                                        <b>
-                                                                            <label>Nombre Sistema:</label>
-                                                                        </b>
+                                                            @using (Html.BeginForm("EditarSistemasGenerales", "Home", FormMethod.Post, new { @class = "user" }))
+                                                            {
+                                                                <input type="hidden" value="@Session["ID_SISTEMA"]" name="id_sistemaedit" />
+
+                                                                <div class="row">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.NombreSistema, "Nombre Sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-8">
+                                                                            @Html.TextBoxFor(m => m.SistemaExample.NombreSistema, new { @class = "form-control" })
+                                                                        </div>
                                                                     </div>
-
-                                                                    <div class="col-lg-8">
-                                                                        
-                                                                        <input type="text" value="@Session["NOMBRE_SISTEMA"]" name="id_nombre"/>
-                                                                       
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-8">
+                                                                            @Html.DropDownListFor(m => m.SistemaExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4">
+                                                                            <b>
+                                                                                <label>Descripcion:</label>
+                                                                            </b>
+                                                                        </div>
+                                                                        <div class="col-lg-8">
+                                                                            <textarea rows="4" cols="50" name="descripcion">@Session["DESCRIPCION"]</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-9">
+                                                                            <!-- Espacio en blanco -->
+                                                                        </div>
+                                                                        <div class="col-lg-3">
+                                                                            <input type="submit" value="ACEPTAR" />
+                                                                            <input type="reset" value="CANCELAR" />
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <b>
-                                                                            <label>Descripcion:</label>
-                                                                        </b>
-                                                                    </div>
-                                                                    <div class="col-lg-8" style="">
-                                                                        <textarea rows="4" cols="50" name="descripcion">@Session["DESCRIPCION"]</textarea>
-
-                                                                    </div>
+                                                            }
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <b>
+                                                                        <label>Lista de sub sistemas:</label>
+                                                                    </b>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <b>
-                                                                            <label>Lista de sub sistemas:</label>
-                                                                        </b>
-                                                                    </div>
-                                                                    <div class="row" id="tablasubsistemas">
+                                                                <div class="row" id="tablasubsistemas">
 
-                                                                        <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>N° Sub Sistema</th>
-                                                                                    <th>Nombre Sub Sistema Asociado</th>
-                                                                                    <th>Jefe del proyecto</th>
-                                                                                    <th>Estado Sistema</th>
-                                                                                    <th>Editar</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                @if (Model.ListaSubSistemas != null)
+                                                                    <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>N° Sub Sistema</th>
+                                                                                <th>Nombre Sub Sistema Asociado</th>
+                                                                                <th>Jefe del proyecto</th>
+                                                                                <th>Estado Sistema</th>
+                                                                                <th>Editar</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @if (Model.ListaSubSistemas != null)
+                                                                            {
+                                                                                foreach (var item in Model.ListaSubSistemas)
                                                                                 {
-                                                                                    foreach (var item in Model.ListaSubSistemas)
-                                                                                    {
-                                                                                        <tr>
-                                                                                            <td class="id">@item.idSubSistema</td>
-                                                                                            <td>@item.NombreSubSistema</td>
-                                                                                            <td>@item.NombreJefeProyecto</td>
-                                                                                            <td>@item.EstadoSubSistema</td>
-                                                                                            <td class="id">
+                                                                                    <tr>
+                                                                                        <td class="id">@item.idSubSistema</td>
+                                                                                        <td>@item.NombreSubSistema</td>
+                                                                                        <td>@item.NombreJefeProyecto</td>
+                                                                                        <td>@item.EstadoSubSistema</td>
+                                                                                        <td class="id">
 
-                                                                                                @using (Html.BeginForm("FrmSubsistemas", "Home", FormMethod.Post, new { @class = "user" }))
-                                                                                                {
-                                                                                                    <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
-                                                                                                    <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
-                                                                                                    <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
+                                                                                            @using (Html.BeginForm("FrmSubsistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                                            {
+                                                                                                <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
+                                                                                                <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
+                                                                                                <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
 
-                                                                                                    <button type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                                                                <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
-                                                                                                }
-                                                                                            </td>
+                                                                                            }
+                                                                                        </td>
 
-                                                                                        </tr>
-                                                                                    }
+                                                                                    </tr>
                                                                                 }
-                                                                            </tbody>
-                                                                        </table>
+                                                                            }
+                                                                        </tbody>
+                                                                    </table>
 
-                                                                    </div>
                                                                 </div>
-                                                                                                                                
                                                             </div>
+
+                                                        </div>
                                                         
                                                     </div>
                                                     <br />

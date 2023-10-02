@@ -38,8 +38,12 @@ namespace PrototipoMINVU.Controllers
         }
 
         [HttpPost]
-        public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema)
+        public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema, string ambiente_sistema)
         {
+            Models.Registro cargadorSis = new Models.Registro();
+
+          
+
             var alerta = Session["UsuarioConfirmado"];
             Session["ID_SISTEMA"] = id_sistemasedit;
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
@@ -47,8 +51,8 @@ namespace PrototipoMINVU.Controllers
 
             if (alerta != null)
             {
-                Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaSubsistemasbyID(Int32.Parse(id_sistemasedit));
+                cargadorSis.CargarCombos();
+                cargadorSis.CargaSistemabyID(Int32.Parse(id_sistemasedit));
                 return View(cargadorSis);
             }
             else
@@ -111,6 +115,22 @@ namespace PrototipoMINVU.Controllers
         }
 
 
+
+
+        [HttpPost]
+        public ActionResult EditarSistemasGenerales(Models.Registro sistemanuevo, string id_subsistemasedit)
+        {
+
+            SistemasBO sistemaeditado = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+
+            int id_subsistema = Int32.Parse(id_subsistemasedit);
+
+            sistemaeditado = sistemanuevo.SistemaExample;
+            cargador.EditarSistemaGeneral(id_subsistema, sistemaeditado);
+
+            return RedirectToAction("EditarSistemas", "Home");
+        }
 
 
     }

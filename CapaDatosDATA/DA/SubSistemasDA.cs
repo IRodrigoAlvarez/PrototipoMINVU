@@ -21,7 +21,8 @@ namespace CapaDatosDATA.DA
                 string usuario = "root";
                 string password = "";
                 string puerto = "3306";
-                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" 
+                    + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
                 conex.ConnectionString = cadenaConexion;
                 conex.Open();
 
