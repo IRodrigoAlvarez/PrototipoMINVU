@@ -26,40 +26,38 @@
                                                     <div class="row rowNorm">                                                       
                                                         <div class="font_registro">
 
-                                                            @using (Html.BeginForm("EditarSistemasGenerales", "Home", FormMethod.Post, new { @class = "user" }))
+                                                            @using (Html.BeginForm("EditarSistemasGenerales", "EditarSistema", FormMethod.Post, new { @class = "user" }))
                                                             {
                                                                 <input type="hidden" value="@Session["ID_SISTEMA"]" name="id_sistemaedit" />
 
                                                                 <div class="row">
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-3" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.SistemaExample.NombreSistema, "Nombre Sistema:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-8">
+                                                                        <div class="col-lg-4">
                                                                             @Html.TextBoxFor(m => m.SistemaExample.NombreSistema, new { @class = "form-control" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-3" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.SistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-8">
-                                                                            @Html.DropDownListFor(m => m.SistemaExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text" })
+                                                                        <div class="col-lg-4">
+                                                                            @Html.DropDownListFor(m => m.SistemaExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class="form-select", @type = "text" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>
-                                                                                <label>Descripcion:</label>
-                                                                            </b>
+                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.descripcion, "Descripción del sistema: ")</b>
+
                                                                         </div>
                                                                         <div class="col-lg-8">
-                                                                            <textarea rows="4" cols="50" name="descripcion">@Session["DESCRIPCION"]</textarea>
+                                                                            @Html.TextAreaFor(m => m.SistemaExample.descripcion, new { @rows = "4", @cols = "50", @class="form-control", @name="descripcion" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-lg-9">
-                                                                            <!-- Espacio en blanco -->
                                                                         </div>
                                                                         <div class="col-lg-3">
                                                                             <input type="submit" value="ACEPTAR" />
@@ -98,7 +96,7 @@
                                                                                         <td>@item.EstadoSubSistema</td>
                                                                                         <td class="id">
 
-                                                                                            @using (Html.BeginForm("FrmSubsistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                                            @using (Html.BeginForm("FrmSubsistemas", "EditarSistema", FormMethod.Post, new { @class = "user" }))
                                                                                             {
                                                                                                 <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
                                                                                                 <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />

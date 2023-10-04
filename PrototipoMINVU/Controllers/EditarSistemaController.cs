@@ -8,27 +8,15 @@ using System.Web.Mvc;
 
 namespace PrototipoMINVU.Controllers
 {
-    public class HomeController : Controller
+    public class EditarSistemaController : Controller
     {
-        //Control de vistas
-        public ActionResult Index()
-        {            
-            var alerta = Session["UsuarioConfirmado"];
-            if (alerta != null)
-            {
-                return View();
-            }
-            else
-                return RedirectToAction("Login", "Seguridad");
-        }
-
         public ActionResult EditarSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaSistemas();             
+                cargadorSis.CargaSistemas();
                 return View(cargadorSis);
             }
             else
@@ -40,7 +28,7 @@ namespace PrototipoMINVU.Controllers
         {
             Models.Registro cargadorSis = new Models.Registro();
 
-          
+
 
             var alerta = Session["UsuarioConfirmado"];
             Session["ID_SISTEMA"] = id_sistemasedit;
@@ -99,9 +87,9 @@ namespace PrototipoMINVU.Controllers
 
 
 
-            cargador.EditarSubSistema(id_subsistema, sistemaeditado);         
+            cargador.EditarSubSistema(id_subsistema, sistemaeditado);
 
-            return RedirectToAction("EditarSistemas","Home");
+            return RedirectToAction("EditarSistemas", "EditarSistema");
         }
 
 
@@ -119,9 +107,7 @@ namespace PrototipoMINVU.Controllers
             sistemaeditado = sistemanuevo.SistemaExample;
             cargador.EditarSistemaGeneral(id_sistema, sistemaeditado);
 
-            return RedirectToAction("EditarSistemas", "Home");
+            return RedirectToAction("EditarSistemas", "EditarSistema");
         }
-
-
     }
 }

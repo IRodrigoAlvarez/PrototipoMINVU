@@ -80,7 +80,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "EditarSistema", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
