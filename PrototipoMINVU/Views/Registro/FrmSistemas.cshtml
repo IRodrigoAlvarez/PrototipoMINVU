@@ -26,7 +26,7 @@
                                                     <div class="row rowNorm">                                                       
                                                         <div class="font_registro">
 
-                                                            @using (Html.BeginForm("EditarSistemasGenerales", "EditarSistema", FormMethod.Post, new { @class = "user" }))
+                                                            @using (Html.BeginForm("EditarSistemasGenerales", "Registro", FormMethod.Post, new { @class = "user" }))
                                                             {
                                                                 <input type="hidden" value="@Session["ID_SISTEMA"]" name="id_sistemaedit" />
 
@@ -96,7 +96,7 @@
                                                                                         <td>@item.EstadoSubSistema</td>
                                                                                         <td class="id">
 
-                                                                                            @using (Html.BeginForm("FrmSubsistemas", "EditarSistema", FormMethod.Post, new { @class = "user" }))
+                                                                                            @using (Html.BeginForm("FrmSubsistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                                             {
                                                                                                 <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
                                                                                                 <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />

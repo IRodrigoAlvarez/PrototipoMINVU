@@ -135,5 +135,31 @@ namespace CapaDatosNEGOCIO
 
         }
 
+
+
+
+        public void agregarsistemageneral(SistemasBO sistema)
+        {
+
+            CapaDatosDATA.DA.SistemasDA back_usuario = new CapaDatosDATA.DA.SistemasDA();
+            CapaDatosDATA.DAO.SistemasDAO back_usuario2 = new CapaDatosDATA.DAO.SistemasDAO();
+
+            int maxid = back_usuario2.obtenerMaxidtablasistemas();
+            sistema.idSistema = maxid + 1;
+
+
+
+            back_usuario.agregasistemageneral(sistema);
+
+
+        }
+
+
+
+
+
+
+
+
     }
 }

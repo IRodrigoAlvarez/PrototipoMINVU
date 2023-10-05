@@ -338,5 +338,34 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
+
+
+        public int obtenerMaxidtablasistemas() 
+        {
+            int resultado = new int();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.MaxIDsistemas();
+            
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                resultado = Int32.Parse(r["MAX(sistemas.id_sistema)"].ToString());
+            }
+            return resultado;
+
+
+
+
+        }
+
+
+
+
+
+
+
+
     }
 }

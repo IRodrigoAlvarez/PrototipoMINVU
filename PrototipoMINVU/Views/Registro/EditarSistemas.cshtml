@@ -1,7 +1,5 @@
 ﻿@model PrototipoMINVU.Models.Registro
 
-
-
 <body style="background-color: #B2FEFA;">
 
     <div class="container-fluid">
@@ -21,8 +19,9 @@
                             <div class="col-lg-12">
                                 <div class="card shadow">
                                     <div class="font_registro">                                        
-                                        En esta pantalla se podrán Editar y actualizar los registros de los sistemas que se han 
-                                        registrado en la base de datos del prototipo.<br />
+                                        En esta pantalla se podrán Editar y actualizar los sistemas que se han 
+                                        registrado en la base de datos del prototipo. También se podrán ingresa los subsistemas a los
+                                        sistemas generales.<br />
                                         Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
                                         modo de prueba según las límitaciones del proyecto.<br />
 
@@ -40,9 +39,8 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-lg-12">
-
-
 
                                 <div class="font_registro">
                                     <label>Seleccione Ambiente:</label>
@@ -80,7 +78,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "EditarSistema", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -131,7 +129,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -180,7 +178,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -229,7 +227,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Home", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />

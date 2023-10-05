@@ -8,8 +8,12 @@ using System.Web.Mvc;
 
 namespace PrototipoMINVU.Controllers
 {
-    public class EditarSistemaController : Controller
+    public class RegistroController : Controller
     {
+
+
+        // FUNCIONES PARA EL RETORNO DE VISTAS
+
         public ActionResult EditarSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
@@ -22,6 +26,30 @@ namespace PrototipoMINVU.Controllers
             else
                 return RedirectToAction("Login", "Seguridad");
         }
+
+        public ActionResult AgregarSistemas()
+        {
+            var alerta = Session["UsuarioConfirmado"];
+            if (alerta != null)
+            {
+                Models.Registro cargadorSis = new Models.Registro();
+                cargadorSis.CargaSistemas();
+                cargadorSis.CargarCombos();
+                return View(cargadorSis);
+            }
+            else
+                return RedirectToAction("Login", "Seguridad");
+        }
+
+
+
+
+
+
+
+
+
+
 
         [HttpPost]
         public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema, string ambiente_sistema)
@@ -52,6 +80,7 @@ namespace PrototipoMINVU.Controllers
         public ActionResult FrmSubsistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_subsistema)
         {
             var alerta = Session["UsuarioConfirmado"];
+
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
             Session["ID_SUBSISTEMA"] = Int32.Parse(id_sistemasedit);
 
@@ -79,17 +108,12 @@ namespace PrototipoMINVU.Controllers
             SubSistemasBO sistemaeditado = new SubSistemasBO();
             SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
 
-
-
-
             int id_subsistema = Int32.Parse(id_subsistemasedit);
+
             sistemaeditado = subsistemanuevo.SubSistemaExample;
-
-
-
             cargador.EditarSubSistema(id_subsistema, sistemaeditado);
 
-            return RedirectToAction("EditarSistemas", "EditarSistema");
+            return RedirectToAction("EditarSistemas", "Registro");
         }
 
 
@@ -107,7 +131,38 @@ namespace PrototipoMINVU.Controllers
             sistemaeditado = sistemanuevo.SistemaExample;
             cargador.EditarSistemaGeneral(id_sistema, sistemaeditado);
 
-            return RedirectToAction("EditarSistemas", "EditarSistema");
+            return RedirectToAction("EditarSistemas", "Registro");
         }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult AgregarSistemaGeneral(Models.Registro sistema) 
+        {
+            SistemasBO sistema_aux = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+
+            sistema_aux = sistema.SistemaExample;
+
+
+
+            cargador.agregarsistemageneral(sistema_aux);
+
+
+
+
+            return RedirectToAction("EditarSistemas", "Registro");
+        }
+
+
+
+
+
+
+
+
+
     }
 }

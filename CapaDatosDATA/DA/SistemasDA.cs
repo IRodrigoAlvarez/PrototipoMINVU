@@ -448,6 +448,92 @@ namespace CapaDatosDATA.DA
         }
 
 
+        public void agregasistemageneral(SistemasBO sistema) 
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "PSM_AGREGASISTEMAGENERAL";
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
+
+                // Crea el parámetro y lo agrega al comando.
+
+                MySqlParameter idSistema = new MySqlParameter("@idsistema", MySqlDbType.Int32);
+                idSistema.Value = sistema.idSistema;
+                comando.Parameters.Add(idSistema);
+
+                MySqlParameter nombre_sistema = new MySqlParameter("@nombre_sistema", MySqlDbType.VarChar);
+                nombre_sistema.Value = sistema.descripcion;
+                comando.Parameters.Add(nombre_sistema);
+
+                MySqlParameter descripcion_sistema = new MySqlParameter("@descripcion_sistema", MySqlDbType.VarChar);
+                descripcion_sistema.Value = sistema.descripcion;
+                comando.Parameters.Add(descripcion_sistema);
+
+                MySqlParameter idambiente = new MySqlParameter("@idambiente", MySqlDbType.Int32);
+                idambiente.Value = sistema.id_AMBIENTE;
+                comando.Parameters.Add(idambiente);
+
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+
+
+
+
+        }
+
+
+
+        public DataSet MaxIDsistemas() 
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "PSM_MaxIDsistemas";
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+
+            return ds;
+        }
+
+
+
 
 
         public DataSet TraeSistemabyid(int idsistema) 

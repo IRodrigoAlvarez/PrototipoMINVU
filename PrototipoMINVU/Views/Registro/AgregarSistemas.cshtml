@@ -1,0 +1,152 @@
+﻿@model PrototipoMINVU.Models.Registro
+
+<body style="background-color: #B2FEFA;">
+
+    <div class="container-fluid">
+        <div class="bg-gradient-primary py-3 shadow-sm">
+            <div class="card">
+                <div class="card shadow">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="font_registro">
+                                <h1>Agregar un Sistema General.</h1>
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="row" id="textindexregistro">
+                            <div class="col-lg-12">
+                                <div class="card shadow">
+                                    <div class="font_registro">
+                                        En esta pantalla se podrá agregar un sistema a la base de datos del prototipo.
+                                        Para poder lograr enlazar un Sub-Sistema a el nuevo sistema general es necesario ir a:<br /><br />
+
+                                        <b>REGISTRO DE SISTEMAS > Editar Sistema</b><br /><br />
+
+                                        Seleccionar el sistema nuevo ingresado, y darle a añadir nuevo sub sistema.<br /><br />
+
+                                        Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
+                                        modo de prueba según las límitaciones del proyecto.<br />
+
+
+                                        Universidad Tecnológica Metropolitana.<br />
+
+                                        <b>Profesor Guía:</b> Yelka Ruiz.<br />
+
+
+                                        <b>Rodrigo Álvarez.</b>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="FormularioAgregarSistema">
+                                <div class="font_registro">
+                                    <div class="container-fluid">
+                                        <div class="card">
+                                            <div class="card shadow formAddproy">
+                                                <h1><center> INGRESE UN SISTEMA NUEVO.</center></h1>
+                                                <hr />
+                                                @using (Html.BeginForm("AgregarSistemaGeneral", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                {
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-lg-4" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.SistemaExample.NombreSistema, "Nombre del Sistema:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            @Html.TextBoxFor(m => m.SistemaExample.NombreSistema, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-4" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.SistemaExample.descripcion, "Descripción del Sistema:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            @Html.TextAreaFor(m => m.SistemaExample.descripcion, new { @class = "form-control", @rows = 4 })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.DescripcionEstado, "Estado del sistema:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.id_Estado, new SelectList(Model.ListaEstados, "idEstado", "DescripcionEstado"), "Seleccione Estado del sistema", new { @id = "idEstado", @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-lg-4" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.SistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.SistemaExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-lg-9">
+
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="submit" value="ACEPTAR" />
+                                                            <input type="reset" value="CANCELAR" />
+                                                        </div>
+
+
+
+                                                    </div>
+                                                }
+                                                <br />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row text-muted">
+            <div class="col-6 text-start">
+                <p class="mb-0">
+                    <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                </p>
+            </div>
+            <div class="col-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

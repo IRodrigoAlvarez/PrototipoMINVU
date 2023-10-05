@@ -110,7 +110,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EditarSistemaController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,13 +199,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Seguridad\Login.cshtml" />
-    <Content Include="Views\EditarSistema\EditarSistemas.cshtml" />
-    <Content Include="Views\EditarSistema\FrmSistemas.cshtml" />
-    <Content Include="Views\EditarSistema\FrmSubsistemas.cshtml" />
+    <Content Include="Views\Registro\EditarSistemas.cshtml" />
+    <Content Include="Views\Registro\FrmSistemas.cshtml" />
+    <Content Include="Views\Registro\FrmSubsistemas.cshtml" />
+    <Content Include="Views\Registro\AgregarSistemas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="vendor\" />
+    <Folder Include="Views\Control\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -11,6 +11,10 @@ namespace PrototipoMINVU.Models
     public class Registro
     {
 
+
+        public int  id_Estado { get; set; }
+
+        public string DescripcionEstado { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
 
         public List<SistemasBO> ListaSistemasP { get; set; }
@@ -23,6 +27,7 @@ namespace PrototipoMINVU.Models
         // TABLA SUBSISTEMAS
         public int idAmbiente { get; set; }
         public int idDataOwner { get; set; }
+
 
         public List<AmbienteBO> ListaAmbientes { get; set; }
         public List<DataownerBO> ListaDO { get; set; }
@@ -59,6 +64,13 @@ namespace PrototipoMINVU.Models
             SistemasBUSINESS cargador = new SistemasBUSINESS();
             AmbienteBO ambientes = new AmbienteBO();
 
+
+
+
+            SistemaExample = sis_Minvu;
+
+
+
             // Se le cargan los sistemas a la variable declarada.            
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
 
@@ -77,6 +89,9 @@ namespace PrototipoMINVU.Models
             ListaSistemasD = sis_Minvu.ListaSistemasD;
             ListaSistemasT = sis_Minvu.ListaSistemasT;
 
+
+
+           
         }
 
 
