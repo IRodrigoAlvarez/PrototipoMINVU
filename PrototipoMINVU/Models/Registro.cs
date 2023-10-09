@@ -24,6 +24,9 @@ namespace PrototipoMINVU.Models
 
         public SistemasBO SistemaExample { get; set; }
 
+        public List<SistemasBO> ListaSistemasEnlazados { get; set; }
+
+
         // TABLA SUBSISTEMAS
         public int idAmbiente { get; set; }
         public int idDataOwner { get; set; }

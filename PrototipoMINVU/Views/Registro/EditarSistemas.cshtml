@@ -42,11 +42,22 @@
 
                             <div class="col-lg-12">
 
-                                <div class="font_registro">
-                                    <label>Seleccione Ambiente:</label>
-                                    @Html.DropDownListFor(m => m.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente", new { @id = "idAmbiente", @type = "text", @onchange = "GenerarListaAmbiente(this.value)" })
-                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="font_registro">
+                                            <label>Seleccione Ambiente:</label>
+                                            @Html.DropDownListFor(m => m.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente", new { @id = "idAmbiente", @type = "text", @onchange = "GenerarListaAmbiente(this.value)" })
+                                        </div>
+                                    </div>
 
+                                    <div class="col-8" style=" text-align:end;">
+                                        <div class="font_registro">
+                                            <button> Sistemas Generales</button>
+                                            <button> Sub-Sistemas normales</button>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 @* TABLA PARA SISTEMAS *@

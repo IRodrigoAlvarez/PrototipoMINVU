@@ -12,6 +12,13 @@ namespace CapaDatosBO
 
         public int idAmbiente { get; set; }
 
+        public int idSistemaenlazado { get; set; }
+
+        public string NombreSistemaEnlazado { get; set; }
+
+
+
+
         public string NombreSubSistema { get; set; } 
         public string DescripcionSubSistema { get; set; }
         public string URLinicio { get; set; }

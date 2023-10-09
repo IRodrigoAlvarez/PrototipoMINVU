@@ -8,6 +8,8 @@ namespace CapaDatosBO
     public class SistemasBO
     {
         public int idSistema { get; set; }
+
+
         public string NombreSistema { get; set; }
 
         public string descripcion { get; set; }

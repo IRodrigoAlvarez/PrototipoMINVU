@@ -66,55 +66,72 @@
                                                                     </div>
                                                                 </div>
                                                             }
+
+
+
+
+
+                                                            
+                                                        <div class="row">
                                                             <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Lista de sub sistemas:</label>
-                                                                    </b>
+                                                                <div class="col-sm-2">
+
                                                                 </div>
-                                                                <div class="row" id="tablasubsistemas">
+                                                                <div class="col-sm-10" style="text-align:end;"> 
+                                                                    <br />
 
-                                                                    <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>N° Sub Sistema</th>
-                                                                                <th>Nombre Sub Sistema Asociado</th>
-                                                                                <th>Jefe del proyecto</th>
-                                                                                <th>Estado Sistema</th>
-                                                                                <th>Editar</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            @if (Model.ListaSubSistemas != null)
-                                                                            {
-                                                                                foreach (var item in Model.ListaSubSistemas)
-                                                                                {
-                                                                                    <tr>
-                                                                                        <td class="id">@item.idSubSistema</td>
-                                                                                        <td>@item.NombreSubSistema</td>
-                                                                                        <td>@item.NombreJefeProyecto</td>
-                                                                                        <td>@item.EstadoSubSistema</td>
-                                                                                        <td class="id">
-
-                                                                                            @using (Html.BeginForm("FrmSubsistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                                            {
-                                                                                                <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
-                                                                                                <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
-                                                                                                <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
-
-                                                                                                <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                                            }
-                                                                                        </td>
-
-                                                                                    </tr>
-                                                                                }
-                                                                            }
-                                                                        </tbody>
-                                                                    </table>
+                                                                    Añadir Sub sistema: <button name="boton_añadirsubsistema">+</button>
 
                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-4">
+                                                                <b>
+                                                                    <label>Lista de sub sistemas:</label>
+                                                                </b>
+                                                            </div>
+                                                            <div class="row" id="tablasubsistemas">
+
+                                                                <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>N° Sub Sistema</th>
+                                                                            <th>Nombre Sub Sistema Asociado</th>
+                                                                            <th>Jefe del proyecto</th>
+                                                                            <th>Estado Sistema</th>
+                                                                            <th>Editar</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @if (Model.ListaSubSistemas != null)
+                                                                        {
+                                                                            foreach (var item in Model.ListaSubSistemas)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td class="id">@item.idSubSistema</td>
+                                                                                    <td>@item.NombreSubSistema</td>
+                                                                                    <td>@item.NombreJefeProyecto</td>
+                                                                                    <td>@item.EstadoSubSistema</td>
+                                                                                    <td class="id">
+
+                                                                                        @using (Html.BeginForm("FrmSubsistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                                        {
+                                                                                            <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
+                                                                                            <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
+                                                                                            <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
+
+                                                                                            <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                                        }
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                            }
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
 
                                                         </div>
                                                         

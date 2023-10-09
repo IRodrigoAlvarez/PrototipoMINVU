@@ -139,7 +139,7 @@ namespace PrototipoMINVU.Controllers
 
 
         [HttpPost]
-        public ActionResult AgregarSistemaGeneral(Models.Registro sistema) 
+        public ActionResult AgregarSistemaGeneral(Models.Registro sistema, string essubsistema) 
         {
             SistemasBO sistema_aux = new SistemasBO();
             SistemasBUSINESS cargador = new SistemasBUSINESS();
@@ -149,9 +149,6 @@ namespace PrototipoMINVU.Controllers
 
 
             cargador.agregarsistemageneral(sistema_aux);
-
-
-
 
             return RedirectToAction("EditarSistemas", "Registro");
         }

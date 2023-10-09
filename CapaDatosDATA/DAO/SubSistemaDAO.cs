@@ -88,6 +88,7 @@ namespace CapaDatosDATA.DAO
 
                 sistema.idSubSistema = Int32.Parse(r["id_subsistema"].ToString());
                 sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
+
                 sistema.URLinicio = r["URLinicio"].ToString();
                 sistema.URLdatos = r["URLdatos"].ToString();
                 sistema.CostoSistema = Int32.Parse(r["costo_sistema"].ToString());
@@ -139,5 +140,7 @@ namespace CapaDatosDATA.DAO
         }
 
 
+
+        
     }
 }
