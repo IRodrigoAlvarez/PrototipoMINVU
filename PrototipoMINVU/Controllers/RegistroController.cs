@@ -35,6 +35,7 @@ namespace PrototipoMINVU.Controllers
                 Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaSistemas();
                 cargadorSis.CargarCombos();
+
                 return View(cargadorSis);
             }
             else
@@ -142,13 +143,37 @@ namespace PrototipoMINVU.Controllers
         public ActionResult AgregarSistemaGeneral(Models.Registro sistema, string essubsistema) 
         {
             SistemasBO sistema_aux = new SistemasBO();
+            SubSistemasBO subsi_aux = new SubSistemasBO();
+
             SistemasBUSINESS cargador = new SistemasBUSINESS();
 
             sistema_aux = sistema.SistemaExample;
 
+            
 
 
-            cargador.agregarsistemageneral(sistema_aux);
+            sistema_aux.id_estado = sistema.id_Estado;
+
+            if (essubsistema == null)
+                cargador.agregarsistema(sistema_aux);
+            else {
+                subsi_aux = sistema.SubSistemaExample;
+
+                subsi_aux.NombreSubSistema = sistema.SistemaExample.NombreSistema;
+                subsi_aux.DescripcionSubSistema = sistema.SistemaExample.descripcion;
+                subsi_aux.id_estado = sistema.id_Estado;
+                subsi_aux.idAmbiente = sistema.SistemaExample.id_AMBIENTE;
+
+                subsi_aux.idSistemaenlazado = sistema.id_sistemaenlazado;
+
+
+
+
+                cargador.agregarsubsistema(subsi_aux);
+            }
+
+
+
 
             return RedirectToAction("EditarSistemas", "Registro");
         }

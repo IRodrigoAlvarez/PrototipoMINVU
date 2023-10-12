@@ -91,7 +91,7 @@ namespace CapaDatosDATA.DAO
 
                 sistema.URLinicio = r["URLinicio"].ToString();
                 sistema.URLdatos = r["URLdatos"].ToString();
-                sistema.CostoSistema = Int32.Parse(r["costo_sistema"].ToString());
+                sistema.CostoSistema = r["costo_sistema"].ToString();
                 sistema.DescripcionSubSistema = r["descripcion_subsistema"].ToString();
                 sistema.DecretoAfecto = r["decreto_afecto"].ToString();
 
@@ -140,7 +140,22 @@ namespace CapaDatosDATA.DAO
         }
 
 
+        public int obtenerMaxidtablasubsistemas()
+        {
+            int resultado = new int();
 
-        
+            DataSet ds = new DataSet();
+            SubSistemasDA Conexion = new SubSistemasDA();
+
+            ds = Conexion.MaxIDsubsistemas();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                resultado = Int32.Parse(r["MAX(sub_sistemas.id_subsistema)"].ToString());
+            }
+            return resultado;
+
+        }
+
     }
 }

@@ -13,6 +13,8 @@ namespace PrototipoMINVU.Models
 
 
         public int  id_Estado { get; set; }
+        public int id_sistemaenlazado { get; set; }
+
 
         public string DescripcionEstado { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
@@ -71,8 +73,6 @@ namespace PrototipoMINVU.Models
 
 
             SistemaExample = sis_Minvu;
-
-
 
             // Se le cargan los sistemas a la variable declarada.            
             sis_Minvu.ListaSistemas = cargador.obtenerSistemas();

@@ -30,7 +30,10 @@ namespace CapaDatosDATA.DAO
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
                 sistema.descripcion = r["descripcion"].ToString();
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
-                resultado.Add(sistema);
+
+
+                if(sistema.idSistema > 0)
+                    resultado.Add(sistema);
             }
             return resultado;
         }
@@ -354,9 +357,6 @@ namespace CapaDatosDATA.DAO
                 resultado = Int32.Parse(r["MAX(sistemas.id_sistema)"].ToString());
             }
             return resultado;
-
-
-
 
         }
 

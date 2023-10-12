@@ -474,7 +474,7 @@ namespace CapaDatosDATA.DA
                 comando.Parameters.Add(idSistema);
 
                 MySqlParameter nombre_sistema = new MySqlParameter("@nombre_sistema", MySqlDbType.VarChar);
-                nombre_sistema.Value = sistema.descripcion;
+                nombre_sistema.Value = sistema.NombreSistema;
                 comando.Parameters.Add(nombre_sistema);
 
                 MySqlParameter descripcion_sistema = new MySqlParameter("@descripcion_sistema", MySqlDbType.VarChar);
@@ -485,6 +485,9 @@ namespace CapaDatosDATA.DA
                 idambiente.Value = sistema.id_AMBIENTE;
                 comando.Parameters.Add(idambiente);
 
+                MySqlParameter idestado = new MySqlParameter("@idestado", MySqlDbType.Int32);
+                idestado.Value = sistema.id_estado;
+                comando.Parameters.Add(idestado);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(ds);

@@ -67,18 +67,7 @@
                                                                             <b> @Html.DropDownListFor(m => m.SubSistemaExample.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text", @class = "form-select" })</b>
                                                                         </div>
                                                                     </div>
-
-                                                                    @*<div class="row">
-                                                                        <div class="col-lg-4">
-                                                                            <b>@Html.LabelFor(m => m.SubSistemaExample.NombreSistemaEnlazado, "Sistemas enlazados:")</b>
-                                                                        </div>
-                                                                        <div class="col-lg-4">
-                                                                            <b> @Html.DropDownListFor(m => m.SubSistemaExample.idAmbiente, new SelectList(Model.ListaSistemasEnlazados, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text", @class = "form-select" })</b>
-                                                                        </div>
-                                                                    </div>*@
-
-
-
+                                                                    
                                                                     <hr />
                                                                     <div class="row">
                                                                         <div class="col-lg-4">
@@ -116,6 +105,16 @@
                                                                         </div>
                                                                         <div class="col-lg-4">
                                                                             @Html.TextBoxFor(m => m.SubSistemaExample.CostoSistema, new { @class = "form-control", type = "number", Name = "costo_sistemaspeso" })
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.LabelFor(m => m.SubSistemaExample.TipoArea, "Area del sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.DropDownListFor(m => m.SubSistemaExample.id_area, new SelectList(Model.ListaAreas, "idArea", "DescripcionArea"), "Seleccione Area del sistema", new { @id = "idDataOwner", @type = "text", @class = "form-select" })</b>
+
                                                                         </div>
                                                                     </div>
 

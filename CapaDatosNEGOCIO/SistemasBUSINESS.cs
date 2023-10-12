@@ -138,7 +138,7 @@ namespace CapaDatosNEGOCIO
 
 
 
-        public void agregarsistemageneral(SistemasBO sistema)
+        public void agregarsistema(SistemasBO sistema)
         {
 
             CapaDatosDATA.DA.SistemasDA back_usuario = new CapaDatosDATA.DA.SistemasDA();
@@ -154,7 +154,22 @@ namespace CapaDatosNEGOCIO
 
         }
 
+        public void agregarsubsistema(SubSistemasBO sistema)
+        {
 
+            CapaDatosDATA.DA.SubSistemasDA back_usuario = new CapaDatosDATA.DA.SubSistemasDA();
+
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario2 = new CapaDatosDATA.DAO.SubSistemaDAO();
+
+            int maxid = back_usuario2.obtenerMaxidtablasubsistemas();
+            sistema.idSubSistema = maxid + 1;
+
+
+
+            back_usuario.agregasubsistema(sistema);
+
+
+        }
 
 
 

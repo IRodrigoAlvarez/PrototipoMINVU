@@ -25,11 +25,9 @@
                                                 <div class="card shadow formAddproy">
                                                     <div class="row rowNorm">                                                       
                                                         <div class="font_registro">
-
                                                             @using (Html.BeginForm("EditarSistemasGenerales", "Registro", FormMethod.Post, new { @class = "user" }))
                                                             {
                                                                 <input type="hidden" value="@Session["ID_SISTEMA"]" name="id_sistemaedit" />
-
                                                                 <div class="row">
                                                                     <div class="row">
                                                                         <div class="col-lg-3" style="text-align:end;">
@@ -68,22 +66,21 @@
                                                             }
 
 
-
-
-
-                                                            
-                                                        <div class="row">
                                                             <div class="row">
-                                                                <div class="col-sm-2">
+                                                             @using (Html.BeginForm("AgregarSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                              {
+                                                                <div class="row">
+                                                                    <div class="col-sm-2">
 
+                                                                    </div>
+                                                                    <div class="col-sm-10" style="text-align:end;">
+                                                                        <br />
+
+                                                                        Añadir Sub sistema: <button type="submit" name="boton_añadirsubsistema">+</button>
+
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-10" style="text-align:end;"> 
-                                                                    <br />
-
-                                                                    Añadir Sub sistema: <button name="boton_añadirsubsistema">+</button>
-
-                                                                </div>
-                                                            </div>
+                                                              }
                                                             <div class="col-lg-4">
                                                                 <b>
                                                                     <label>Lista de sub sistemas:</label>
@@ -130,11 +127,9 @@
                                                                     </tbody>
                                                                 </table>
 
+                                                                </div>
                                                             </div>
-                                                        </div>
-
-                                                        </div>
-                                                        
+                                                        </div>                                                        
                                                     </div>
                                                     <br />
                                                 </div>

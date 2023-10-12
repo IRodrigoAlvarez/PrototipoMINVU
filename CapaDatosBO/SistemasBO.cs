@@ -16,6 +16,9 @@ namespace CapaDatosBO
         public int id_AMBIENTE { get; set; }
         public string AmbienteAlojado { get; set; }
 
+        public int id_estado { get; set; }
+
+        public string DescripcionEstado { get; set; }
 
         public List<SistemasBO> ListaSistemas { get; set; }
 
