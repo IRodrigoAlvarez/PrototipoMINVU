@@ -140,8 +140,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Chart.css" />
     <Content Include="Content\Chart.min.css" />
-    <Content Include="Content\charts.css" />
-    <Content Include="Content\charts.min.css" />
     <Content Include="css\app.css" />
     <Content Include="css\css-prototipo.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -185,7 +183,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="js\app.js.map" />
     <Content Include="css\app.css.map" />
-    <Content Include="Content\charts.css.map" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />

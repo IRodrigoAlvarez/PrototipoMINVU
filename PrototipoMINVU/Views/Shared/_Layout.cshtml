@@ -30,7 +30,7 @@
 </head>
 <body>
     <div class="wrapper" style="margin-top:-50px;">
-        <nav id="sidebar" class="sidebar js-sidebar">
+        <nav id="sidebar" class="sidebar js-sidebar" style="border: 1px solid red">
             <div class="sidebar-content js-simplebar bg-gradient-primary">
                 <br />
                 <div class="container-fluid">
@@ -42,13 +42,19 @@
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <i class="bi bi-file-earmark-bar-graph-fill"></i>
 
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
-                                    <b>REGISTRO DE SISTEMAS</b>
-                                </a>
-                            </h5>
+                            <div class="row">
+                                <div class="col-2">
+                                        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                                </div>
+                                <div class="col-10">
+                                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
+                                            <b>REGISTRO DE SISTEMAS</b>
+                                        </a>
+                                </div>
+
+                                
+                            </div>
                         </div>
 
                         <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -106,7 +112,7 @@
                                 {
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
-                                            <div class="col-2">
+                                            <div class="col-1">
                                                 <i class="bi bi-database-add"></i>
                                             </div>
                                             <div class="col-10">
