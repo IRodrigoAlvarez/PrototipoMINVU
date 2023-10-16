@@ -56,12 +56,18 @@ namespace CapaDatosDATA.DA
                 string usuario = "root";
                 string password = "";
                 string puerto = "3306";
-                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";"
+                    + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
                 conex.ConnectionString = cadenaConexion;
                 conex.Open();
 
-                string sp_validausuario = @"Call PSM_CARGASUBSISTEMAS";
+                string sp_validausuario = "PSM_SUBSISTEMAS";
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
+
+                // Crea el parámetro y lo agrega al comando.
+                
+
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(ds);
 
@@ -72,9 +78,6 @@ namespace CapaDatosDATA.DA
             }
             return ds;
         }
-
-
-
 
         public DataSet CaracteristicasSubSistemasbyID(int sistema)
         {
@@ -109,10 +112,6 @@ namespace CapaDatosDATA.DA
             }
             return ds;
         }
-
-
-
-
 
         public void EditarSubSistema(int idsistema, SubSistemasBO SistemaNuevo)
         {
@@ -209,7 +208,6 @@ namespace CapaDatosDATA.DA
                 throw new Exception("Error en capa de datos: " + ex.Message, ex);
             }
         }
-
 
         public void agregasubsistema(SubSistemasBO sistema)
         {

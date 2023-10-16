@@ -117,15 +117,11 @@ $(document).ready(function () {
 function GeneraDatatable() {
     $('#datatableReg').DataTable({
         "dom": 'B<"float-right"i><"float-left"f>t<"float-left"l><"float-right"p><"clearfix">',
-        "scrollY": "50vh",
+        "scrollY": "60px",
         "scrollX": "100px",
         "scrollCollapse": true,
         "bScrollAutoCss": true,
-        "bProcessing": true,
-        "bRetrieve": true,
-        "bJQueryUI": true,
         "bPaginate": false,
-        "sScrollXInner": "110%",     
         language: {
             "sProcessing": "Procesando...",
             "sZeroRecords": "No se encontraron coincidencias",

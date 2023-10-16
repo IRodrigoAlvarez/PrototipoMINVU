@@ -16,6 +16,15 @@ namespace CapaDatosNEGOCIO
 
         }
 
+        public List<SubSistemasBO> obtenerSubSistemas()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
+            return back_usuario.CargaSubsistemas();
+
+        }
+
+
         public SubSistemasBO TraeCaracteristicasSubsistema(int id_subsistema)
         {
             //se cargan los sistemas en la capa de datos DAO

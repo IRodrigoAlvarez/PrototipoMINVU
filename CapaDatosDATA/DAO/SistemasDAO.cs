@@ -31,7 +31,6 @@ namespace CapaDatosDATA.DAO
                 sistema.descripcion = r["descripcion"].ToString();
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
 
-
                 if(sistema.idSistema > 0)
                     resultado.Add(sistema);
             }

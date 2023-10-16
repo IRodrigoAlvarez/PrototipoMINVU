@@ -97,21 +97,10 @@ textarea{
     margin-bottom: 100px;
 }
 
-/*Index*/
 
-/*#idTHCE {
-        background-image: url('..\img\casoEspecial.png');*/
-/*    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: relative;*/
-    /*width: 40px;
-    height: 25px;
-}*/
 .table-responsive .tablaparasistemas {
-    position: static;
     height: 80vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .table-responsive-y {
@@ -191,17 +180,6 @@ table #tRut {
 
 }
 
-
-
-#tableModal1 thead {
-    background-color: #4268d6;
-    color: #FDFDFD;
-}
-#tableModal2 thead {
-    background-color: #4268d6;
-    color: #FDFDFD;
-}
-
 .custom {
     width: 280px !important;
     height: 50px;
@@ -241,24 +219,7 @@ table #tRut {
     height: max-content;
 }
 
-#btnExportar{
-    margin-left:2rem;
-    margin-bottom:2rem;
-}
-
-#divLeyenda {
-    border-radius: 22px;
-}
-
-.modal-backdrop {
-    background-color: black;
-    opacity: 0.68 !important;
-}
-
 .bg-gradient-primary {
-    /*    background-color: #4e73df;
-    background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
-    background-size: cover*/
     background: #2980B9; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */

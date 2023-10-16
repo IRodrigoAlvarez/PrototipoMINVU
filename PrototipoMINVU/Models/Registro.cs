@@ -57,12 +57,6 @@ namespace PrototipoMINVU.Models
 
 
 
-
-
-
-
-
-
         public void CargaSistemas()
         {
             SistemasBO sis_Minvu = new SistemasBO();
@@ -97,7 +91,16 @@ namespace PrototipoMINVU.Models
            
         }
 
+        public void CargaSubSistemas()
+        {
+            SubSistemasBO sis_Minvu = new SubSistemasBO();
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
 
+
+            sis_Minvu.ListaSubSistemas = cargador.obtenerSubSistemas();
+
+            ListaSubSistemas = sis_Minvu.ListaSubSistemas;
+        }
 
         public void CargarCombos() 
         {
@@ -168,8 +171,7 @@ namespace PrototipoMINVU.Models
             ListaSubSistemas = subsis.ListaSubSistemas;
 
         }
-
-
+      
         public void CargaSistemabyID(int id_sistema) 
         {
             SistemasBO sis_Minvu = new SistemasBO();

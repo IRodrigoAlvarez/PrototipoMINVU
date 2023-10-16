@@ -259,6 +259,58 @@
                                 </div>
 
 
+
+                                @* TABLA PARA SUB SISTEMAS *@
+
+                                <div class="col-lg-12" id="tablaSUBSISTEMAS" style="">
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Tabla de Sub- Sistemas Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y">
+
+                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N° Sistema</th>
+                                                        <th>Nombre Sistema</th>
+                                                        <th>Sistema Enlazado</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaSubSistemas != null)
+                                                    {
+                                                        foreach (var item in Model.ListaSubSistemas)
+                                                        {
+                                                            <tr>
+                                                                <td class="id">@item.idSubSistema</td>
+                                                                <td>@item.NombreSubSistema</td>
+                                                                <td>@item.NombreSistemaEnlazado</td>
+                                                                <td class="id">
+
+
+
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
 
@@ -301,7 +353,16 @@
 
 <script>
 
-    
+    $(document).ready(function () {
+        $('#datatableReg').DataTable(
+
+            {
+            "paging": true, // Habilita la paginación
+            "pageLength": 10, // Número de registros por página
+            "searching": true, // Habilita la búsqueda
+            "lengthChange": true, // Permite cambiar la cantidad de registros por página
+        });
+    });
 
 
 </script>

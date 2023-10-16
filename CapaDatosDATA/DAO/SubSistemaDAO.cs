@@ -14,10 +14,7 @@ namespace CapaDatosDATA.DAO
         public List<SubSistemasBO> cargaSubSistemasbyID(int id_sistema)
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
-
             List<SubSistemasBO> resultado = new List<SubSistemasBO>();
-
-
 
             DataSet ds = new DataSet();
             SubSistemasDA Conexion = new SubSistemasDA();
@@ -39,8 +36,7 @@ namespace CapaDatosDATA.DAO
             return resultado;
         }
 
-
-        public List<SubSistemasBO> EditarSubSistema(int id_sistema, SubSistemasBO SistemaNuevo)
+        public List<SubSistemasBO> CargaSubsistemas()
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
@@ -50,23 +46,23 @@ namespace CapaDatosDATA.DAO
             SubSistemasDA Conexion = new SubSistemasDA();
 
 
-            ds = Conexion.obtenerSubSistemasbyID(id_sistema);
+            ds = Conexion.obtenerSubSistemas();
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 //Se llena la lista con los sistemas
                 SubSistemasBO sistema = new SubSistemasBO();
 
-                sistema.idSubSistema = Int32.Parse(r["id_subsistema"].ToString());
+                sistema.idSubSistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
-                sistema.NombreJefeProyecto = r["nombreJefe"].ToString();
-                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();
-                resultado.Add(sistema);
+                sistema.NombreSistemaEnlazado = r["sistema_enlazado"].ToString();
+                sistema.EstadoSubSistema = r["estado_sistema"].ToString();
+
+                if (sistema.idSubSistema != 0)
+                        resultado.Add(sistema);
             }
             return resultado;
         }
-
-
 
         public SubSistemasBO CaracteristicasSubsistema(int id_subsistema)
         {

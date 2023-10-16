@@ -21,6 +21,7 @@ namespace PrototipoMINVU.Controllers
             {
                 Models.Registro cargadorSis = new Models.Registro();
                 cargadorSis.CargaSistemas();
+                cargadorSis.CargaSubSistemas();
                 return View(cargadorSis);
             }
             else
