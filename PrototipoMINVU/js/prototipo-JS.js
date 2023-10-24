@@ -85,18 +85,6 @@ function GenerarFormulario(){
 //examples
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*filtro de busqueda, paginacion y cantidad de registros.*/
 $(document).ready(function () {
     //GeneraDatatable();
@@ -117,7 +105,7 @@ $(document).ready(function () {
 function GeneraDatatable() {
     $('#datatableReg').DataTable({
         "dom": 'B<"float-right"i><"float-left"f>t<"float-left"l><"float-right"p><"clearfix">',
-        "scrollY": "60px",
+        "scrollY": "40px",
         "scrollX": "100px",
         "scrollCollapse": true,
         "bScrollAutoCss": true,

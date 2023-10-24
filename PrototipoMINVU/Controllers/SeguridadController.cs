@@ -22,6 +22,8 @@ namespace PrototipoMINVU.Controllers
                 return View();
         }
 
+
+
         public ActionResult ValidaUsuario(Models.Usuario usuariomod)
         {
             try
@@ -93,7 +95,9 @@ namespace PrototipoMINVU.Controllers
         {
             Session["objUsuarioBO"] = null;
             Session["strNombre"] = null;
+            Session["UsuarioConfirmado"] = null;
             Session.Abandon();
+
             return View("Login");
 
         }

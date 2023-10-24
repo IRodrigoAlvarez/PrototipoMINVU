@@ -33,7 +33,7 @@
                                                                         <div class="col-lg-3" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.SistemaExample.NombreSistema, "Nombre Sistema:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-8">
                                                                             @Html.TextBoxFor(m => m.SistemaExample.NombreSistema, new { @class = "form-control" })
                                                                         </div>
                                                                     </div>
@@ -51,7 +51,7 @@
 
                                                                         </div>
                                                                         <div class="col-lg-8">
-                                                                            @Html.TextAreaFor(m => m.SistemaExample.descripcion, new { @rows = "4", @cols = "50", @class="form-control", @name="descripcion" })
+                                                                            @Html.TextAreaFor(m => m.SistemaExample.descripcion, new { @rows = "4", @cols = "100", @class="form-control", @name="descripcion" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
@@ -87,7 +87,7 @@
                                                                     }
                                                                 </div>
                                                             </div>
-                                                            <div class="row" id="tablasubsistemas">
+                                                            <div class="row" id="tablasubsistemas" style="margin-left: 0px;">
 
                                                                 <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                                                     <thead>

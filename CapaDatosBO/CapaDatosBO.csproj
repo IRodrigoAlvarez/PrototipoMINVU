@@ -78,6 +78,7 @@
     <Compile Include="LoginBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionBO.cs" />
+    <Compile Include="ReporteGeneralBO.cs" />
     <Compile Include="SistemasBO.cs" />
     <Compile Include="SubSistemasBO.cs" />
     <Compile Include="TecnologiaBO.cs" />

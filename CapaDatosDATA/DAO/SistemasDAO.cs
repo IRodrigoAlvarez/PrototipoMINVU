@@ -10,7 +10,6 @@ namespace CapaDatosDATA.DAO
 {
     public class SistemasDAO
     {
-
         public List<SistemasBO> cargaSistemas()
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
@@ -36,8 +35,6 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
-
-
         public List<SistemasBO> cargaSistemasby(int ambiente)
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
@@ -65,7 +62,6 @@ namespace CapaDatosDATA.DAO
 
             return resultado;
         }
-
         public List<JefesBO> cargaJefesproyectos()
         {
 
@@ -92,8 +88,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
-
         public List<EstadosBO> cargaEstados()
         {
             List<EstadosBO> resultado = new List<EstadosBO>();
@@ -115,8 +109,6 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
-
-
         public List<AmbienteBO> cargaAmbientes()
         {
             List<AmbienteBO> resultado = new List<AmbienteBO>();
@@ -138,7 +130,6 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
-
         public List<AreasBO> cargaAreas()
         {
             List<AreasBO> resultado = new List<AreasBO>();
@@ -160,7 +151,6 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
-
         public List<DataownerBO> cargaDO()
         {
             List<DataownerBO> resultado = new List<DataownerBO>();
@@ -182,7 +172,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
         public List<ControlBO> cargaControlAcceso()
         {
             List<ControlBO> resultado = new List<ControlBO>();
@@ -204,7 +193,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
         public List<AlcanceBO> cargaAlcance()
         {
             List<AlcanceBO> resultado = new List<AlcanceBO>();
@@ -226,7 +214,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
         public List<RegionBO> cargaRegiones()
         {
             List<RegionBO> resultado = new List<RegionBO>();
@@ -248,8 +235,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
-
         public List<LegacyBO> cargaLegacy()
         {
             List<LegacyBO> resultado = new List<LegacyBO>();
@@ -271,7 +256,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
         public List<TipoSistemasBO> cargaTiposistemas()
         {
             List<TipoSistemasBO> resultado = new List<TipoSistemasBO>();
@@ -293,7 +277,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
         public List<TecnologiaBO> cargaTecnologias()
         {
             List<TecnologiaBO> resultado = new List<TecnologiaBO>();
@@ -315,8 +298,6 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-
-
         public SistemasBO TraeSistemabyid(int id_sistema) 
         {
             SistemasBO resultado = new SistemasBO();
@@ -340,8 +321,6 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
-
-
         public int obtenerMaxidtablasistemas() 
         {
             int resultado = new int();
@@ -361,8 +340,60 @@ namespace CapaDatosDATA.DAO
 
 
 
+        public List<ReporteGeneralBO> cargaReporteINTEEX() 
+        {
+            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerReporteINTEGRACIONES();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                ReporteGeneralBO estado = new ReporteGeneralBO();
+
+                estado.idReporte = Int32.Parse(r["id_integracion"].ToString());
+                estado.LabelEjeX = r["nombre_subsistema"].ToString();
+
+                estado.IdEjeY = Int32.Parse(r["id_entidad_ext"].ToString());
+
+                estado.LabelEjeY = r["entidad_externa"].ToString();
 
 
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+
+        public List<ReporteGeneralBO> cargaReporteINTEIN()
+        {
+            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
+
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerReporteINTEGRACIONES();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                ReporteGeneralBO estado = new ReporteGeneralBO();
+
+                estado.idReporte = Int32.Parse(r["id_integracion"].ToString());
+                estado.LabelEjeX = r["nombre_subsistema"].ToString();
+
+                estado.IdEjeY = Int32.Parse(r["id_entidad_int"].ToString());
+
+                estado.LabelEjeY = r["entidad_interna"].ToString();
+
+
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
 
 
 

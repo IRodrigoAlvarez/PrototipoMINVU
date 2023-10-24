@@ -392,7 +392,7 @@ namespace CapaDatosDATA.DA
 
 
 
-        public void EditarSistemaGeneral(int idsistema, SistemasBO SistemaNuevo) 
+        public void EditarSistemaGeneral(int idsistema, SistemasBO SistemaNuevo)
         {
 
             DataSet ds = new DataSet();
@@ -448,7 +448,7 @@ namespace CapaDatosDATA.DA
         }
 
 
-        public void agregasistemageneral(SistemasBO sistema) 
+        public void agregasistemageneral(SistemasBO sistema)
         {
             DataSet ds = new DataSet();
             try
@@ -504,7 +504,7 @@ namespace CapaDatosDATA.DA
 
 
 
-        public DataSet MaxIDsistemas() 
+        public DataSet MaxIDsistemas()
         {
             DataSet ds = new DataSet();
             try
@@ -539,7 +539,7 @@ namespace CapaDatosDATA.DA
 
 
 
-        public DataSet TraeSistemabyid(int idsistema) 
+        public DataSet TraeSistemabyid(int idsistema)
         {
 
             DataSet ds = new DataSet();
@@ -579,6 +579,46 @@ namespace CapaDatosDATA.DA
         }
 
 
+
+
+        public DataSet obtenerReporteINTEGRACIONES()
+        {
+
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "";
+
+                    sp_validausuario = "PSM_REPORTEINTEEX";
+
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.          
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+
+            return ds;
+
+        }
+
+
+
+        
 
     }
 

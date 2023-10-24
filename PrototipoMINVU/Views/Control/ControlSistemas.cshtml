@@ -1,33 +1,125 @@
-﻿
-<div class="row">
-    <div class="col-lg-6">
+﻿@model PrototipoMINVU.Models.Registro
 
-        <div class="row" style="margin-top:20px">
-            <div class="panel panel-default">
-                <div class="panel-heading"><b>Reporte Ventas: 3 Ultimos meses</b> </div>
-                <div class="panel-body">
-                    <canvas id="myBarChart" width="100" height="50"></canvas>
+
+<div class="container-fluid">
+    <div class="bg-gradient-primary py-3 shadow-sm">
+        <div class="card">
+            <div class="card shadow">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="font_registro">
+                            <h2>Control y visualización sistemas.</h2>
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row" id="textindexregistro">
+                        <div class="col-lg-12">
+                            <div class="card shadow">
+                                <div class="font_registro">
+                                    En esta pantalla se podrá controlar los sistemas generales de la base de datos del prototipo.
+                                    Aqui se podrán analizar gráficos cuantitativos, que representan la situación de los sistemas actual
+                                    para la toma de decisiones.<br /><br />
+
+                                    Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
+                                    modo de prueba según las límitaciones del proyecto.<br />
+
+
+                                    Universidad Tecnológica Metropolitana.<br />
+
+                                    <b>Profesor Guía:</b> Yelka Ruiz.<br />
+
+
+                                    <b>Rodrigo Álvarez.</b>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="row">
+
+
+                            <div class="col-lg-5">
+                                <div class="font_registro">
+                                    <b>Seleccione la consulta a ser visualizada mediante un gráfico:</b>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-5" style="margin-left:-100px; margin-top:-5px">
+
+                                <select id="control_select" class="form-select">
+
+                                    <optgroup label="--CONTROL SISTEMAS.--">
+                                        <option value="sistemas_ambiente">Sistemas X por Ambiente.</option>
+                                        <option value="sistemas_estado">Sistemas X Estado.</option>
+                                    </optgroup>
+
+                                    <optgroup label="--CONTROL SUBSISTEMAS.--">
+
+                                        <option value="subsistemas_sistema">Subsistemas X Sistema General.</option>
+                                        <option value="subsistemas_ambiente">Subsistemas X por Ambiente.</option>
+                                        <option value="subsistemas_estado">Subsistemas X Estado.</option>
+
+                                        <option value="subsistemas_tecnologia">Subsistemas X Tipo de Tecnología.</option>
+                                        <option value="subsistemas_area">Subsistemas X Area.</option>
+                                        <option value="subsistemas_data">Subsistemas X Dueño de los datos.</option>
+                                        <option value="subsistemas_tiposistema">Subsistemas X Tipo de Sistema.</option>
+                                        <option value="subsistemas_region">Subsistemas X Región.</option>
+                                        <option value="subsistemas_jefe">Subsistemas X Jefe Proyecto.</option>
+                                        <option value="subsistemas_control">Subsistemas X Control Acceso.</option>
+                                        <option value="subsistemas_alcance">Subsistemas X Alcance.</option>
+                                        <option value="subsistemas_legacy">Subsistemas Heredados (Legacy).</option>
+
+
+                                    </optgroup>
+
+                                    <optgroup label="--CONTROL INTEGRACIONES.--">
+                                        <option value="integraciones_subsistemas" selected>Integraciones de Entidades X subsistema.</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button id="submitBtn">CREAR GRÁFICO</button>
+                                <input type="reset" value="CANCELAR" />
+                            </div>
+
+
+                        </div>
+                    
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><b><center>Integraciones de entidades externas en subsistemas del MINVU.</center></b> </div>
+                                <div class="panel-body">
+                                    <canvas id="myBarChart" width="100" height="50"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><b><center>Integraciones de entidades internas en subsistemas del MINVU.</center></b> </div>
+                                <div class="panel-body">
+                                    <canvas id="myBarChart2" width="100" height="50"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <b>Reporte Productos: 3 Ultimos meses</b>
-                <canvas id="myPieChart" width="100" height="50"></canvas>
-
-
-
-            </div>
         </div>
-
-
-
-
     </div>
-    <div class="col-lg-6">
-
-    </div>
-
 </div>
-
 
 
 <footer class="footer">
@@ -58,61 +150,199 @@
     </div>
 </footer>
 
+
 <script>
 
-    var controlBar = document.getElementById("myBarChart");
-        var graficoBar = new Chart(controlBar, {
-            type: 'bar',
-            data: {
-                labels: ["MUNIN", "TRAZABILIDAD", "RUKAN", "UMBRAL", "SNAT", "SPS"],
-                datasets: [{
-                    label: "N° Sub Sistemas asociados",
-                    backgroundColor: "#BB2100",
-                    borderColor: "rgba(2,117,216,1)",
-                    data: [4215, 5312, 6251, 7841, 9821, 14984],
+    $(document).ready(function ()
+    {
+        $("#submitBtn").click(function ()
+        {
+            // Captura el valor seleccionado en el select
+            let IDseleccion = document.getElementById("control_select").value;
 
-                    backgroundColor: ["#BB2100", "#03B100", "#0083B1", "#0800B1", "#EBFA00", "#FA00D8"],
-                    borderColor: "#000000",
-                    borderWidth: 0,
-                    data: [2, 1, 2, 0, 1, 2],
-                }],
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        
-                        gridLines: {
-                            display: true
-                        },
-                        ticks: {
-                            maxTicksLimit: 6 //=> cuantos puntos X aparareceran
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Sistemas Generales' // Nombre del eje X
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                            max: 3,
-                            maxTicksLimit: 10 //=> cuantos puntos Y aparareceran
-                        },
-                        gridLines: {
-                            display: true
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Cantidad de subsistemas registrados' // Nombre del eje X
-                        }
-                    }],
-                    
-                },
-                legend: {
-                    display: false // => activalo si deseas ver leyenda
-                }
+
+
+
+            if (IDseleccion === "integraciones_subsistemas") {
+
+                $.ajax({
+                    url: '@Url.Action("ReporteINTEEX", "Control")',
+                    type: "GET",
+                    data: { control_select: IDseleccion },
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data)
+                    {
+                        const labelCantidadMap = {};
+
+                        data.forEach(item => {
+                            const labelX = item.LabelEjeX;
+                            const labelY = item.LabelEjeY;
+
+                            // Ignorar elementos con LabelEjeY igual a "Sin información"
+                            if (labelY !== "Sin información") {
+                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
+                                if (labelX !== "Sin información") {
+                                    const label = labelX;
+                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
+                                }
+                            }
+                        });
+
+                        const arrayLabels = Object.keys(labelCantidadMap);
+                        const arrayCantidad = Object.values(labelCantidadMap);
+
+                        const controlBar1 = document.getElementById("myBarChart");
+
+                        // Define un array de colores para las barras
+                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
+
+                        new Chart(controlBar1, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    label: "Cantidad de integraciones con entidades externas",
+                                    backgroundColor: barColors,  // Asigna los colores a las barras
+                                    borderColor: "#000000",
+                                    borderWidth: 0,
+                                    data: arrayCantidad
+                                }],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: arrayLabels.length,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Sistemas Generales'
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: Math.max(...arrayCantidad),
+                                            maxTicksLimit: 10,
+                                        },
+                                        gridLines: {
+                                            display: true,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cantidad de subsistemas registrados'
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    }
+                });
+
+                $.ajax({
+                    url: '@Url.Action("ReporteINTEIN", "Control")',
+                    type: "GET",
+                    data: { control_select: IDseleccion },
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data)
+                    {
+                        const labelCantidadMap = {};
+
+                        data.forEach(item => {
+                            const labelX = item.LabelEjeX;
+                            const labelY = item.LabelEjeY;
+
+                            // Ignorar elementos con LabelEjeY igual a "Sin información"
+                            if (labelY !== "Sin información") {
+                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
+                                if (labelX !== "Sin información") {
+                                    const label = labelX;
+                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
+                                }
+                            }
+                        });
+
+                        const arrayLabels = Object.keys(labelCantidadMap);
+                        const arrayCantidad = Object.values(labelCantidadMap);
+
+                        const controlBar2 = document.getElementById("myBarChart2");
+
+                        // Define un array de colores para las barras
+                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
+
+                        new Chart(controlBar2, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    label: "Cantidad de integraciones con entidades internas",
+                                    backgroundColor: barColors,  // Asigna los colores a las barras
+                                    borderColor: "#000000",
+                                    borderWidth: 0,
+                                    data: arrayCantidad
+                                }],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: arrayLabels.length,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Sistemas Generales'
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: Math.max(...arrayCantidad),
+                                            maxTicksLimit: 10,
+                                        },
+                                        gridLines: {
+                                            display: true,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cantidad de subsistemas registrados'
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    }
+                });
+
             }
         });
+    });
+
+
+
+    // Función para generar colores aleatorios
+    function getRandomColor()
+    {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 
 
 </script>

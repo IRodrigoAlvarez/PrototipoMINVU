@@ -229,3 +229,18 @@ table #tRut {
 }
 
 
+/* Estilo para el select */
+select {
+    width: contain;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+/* Estilo para las opciones del select */
+option {
+    font-size: 16px;
+    background-color: #fff;
+}
