@@ -67,7 +67,7 @@ namespace PrototipoMINVU.Controllers
         [HttpGet]
         public JsonResult ReporteINTEEX()
         {
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
            
             objLista= cargador.ReporteINTEEX();
@@ -78,7 +78,7 @@ namespace PrototipoMINVU.Controllers
         [HttpGet]
         public JsonResult ReporteINTEIN()
         {
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
             objLista = cargador.ReporteINTEIN();      
             

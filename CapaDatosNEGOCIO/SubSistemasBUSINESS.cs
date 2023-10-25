@@ -45,5 +45,32 @@ namespace CapaDatosNEGOCIO
 
         }
 
+
+
+
+
+
+
+
+
+
+
+        public List<ReporteGeneralBO> ReporteINTEEX()
+        {
+
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
+            return back_usuario.cargaReporteINTEEX();
+
+        }
+
+
+        public List<ReporteGeneralBO> ReporteINTEIN()
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
+            return back_usuario.cargaReporteINTEIN();
+
+        }
     }
 }

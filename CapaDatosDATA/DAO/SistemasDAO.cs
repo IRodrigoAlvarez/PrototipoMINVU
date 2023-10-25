@@ -340,60 +340,7 @@ namespace CapaDatosDATA.DAO
 
 
 
-        public List<ReporteGeneralBO> cargaReporteINTEEX() 
-        {
-            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
-
-            DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
-
-            ds = Conexion.obtenerReporteINTEGRACIONES();
-
-            foreach (DataRow r in ds.Tables[0].Rows)
-            {
-                ReporteGeneralBO estado = new ReporteGeneralBO();
-
-                estado.idReporte = Int32.Parse(r["id_integracion"].ToString());
-                estado.LabelEjeX = r["nombre_subsistema"].ToString();
-
-                estado.IdEjeY = Int32.Parse(r["id_entidad_ext"].ToString());
-
-                estado.LabelEjeY = r["entidad_externa"].ToString();
-
-
-                resultado.Add(estado);
-            }
-            return resultado;
-
-        }
-
-
-        public List<ReporteGeneralBO> cargaReporteINTEIN()
-        {
-            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
-
-            DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
-
-            ds = Conexion.obtenerReporteINTEGRACIONES();
-
-            foreach (DataRow r in ds.Tables[0].Rows)
-            {
-                ReporteGeneralBO estado = new ReporteGeneralBO();
-
-                estado.idReporte = Int32.Parse(r["id_integracion"].ToString());
-                estado.LabelEjeX = r["nombre_subsistema"].ToString();
-
-                estado.IdEjeY = Int32.Parse(r["id_entidad_int"].ToString());
-
-                estado.LabelEjeY = r["entidad_interna"].ToString();
-
-
-                resultado.Add(estado);
-            }
-            return resultado;
-
-        }
+       
 
 
         public List<ReporteGeneralBO> cargaSISTEMAXVARIABLE(string control_select)
