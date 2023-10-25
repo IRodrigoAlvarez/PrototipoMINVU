@@ -92,6 +92,8 @@
                         </div>
                     
                     <hr />
+
+
                     <div class="row">
                         <div class="col-lg-6">
 
@@ -161,10 +163,183 @@
             let IDseleccion = document.getElementById("control_select").value;
 
 
+            // CREADOR DE LOS GRÁFICOS de control de sistemas.
+
+            if (IDseleccion === "sistemas_ambiente") {
+                $.ajax({
+                    url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
+                    type: "GET",
+                    data: { control_select: IDseleccion },
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data)
+                    {
+                        const labelCantidadMap = {};
+
+                        data.forEach(item => {
+                            const labelX = item.LabelEjeX;
+                            const labelY = item.LabelEjeY;
+
+                            // Ignorar elementos con LabelEjeY igual a "Sin información"
+                            if (labelY !== "Sin información") {
+                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
+                                if (labelX !== "Sin información") {
+                                    const label = labelX;
+                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
+                                }
+                            }
+                        });
+
+                        const arrayLabels = Object.keys(labelCantidadMap);
+                        const arrayCantidad = Object.values(labelCantidadMap);
+
+                        const controlBar1 = document.getElementById("myBarChart");
+
+                        // Define un array de colores para las barras
+                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
+
+                        new Chart(controlBar1, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    label: "Cantidad de integraciones con entidades externas",
+                                    backgroundColor: barColors,  // Asigna los colores a las barras
+                                    borderColor: "#000000",
+                                    borderWidth: 0,
+                                    data: arrayCantidad
+                                }],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: arrayLabels.length,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Sistemas Generales'
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: Math.max(...arrayCantidad),
+                                            maxTicksLimit: 10,
+                                        },
+                                        gridLines: {
+                                            display: true,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cantidad de subsistemas registrados'
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            if (IDseleccion === "sistemas_estado") {
+                $.ajax({
+                    url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
+                    type: "GET",
+                    data: { control_select: IDseleccion },
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data)
+                    {
+                        const labelCantidadMap = {};
+
+                        data.forEach(item => {
+                            const labelX = item.LabelEjeX;
+                            const labelY = item.LabelEjeY;
+
+                            // Ignorar elementos con LabelEjeY igual a "Sin información"
+                            if (labelY !== "Sin información") {
+                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
+                                if (labelX !== "Sin información") {
+                                    const label = labelX;
+                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
+                                }
+                            }
+                        });
+
+                        const arrayLabels = Object.keys(labelCantidadMap);
+                        const arrayCantidad = Object.values(labelCantidadMap);
+
+                        const controlBar1 = document.getElementById("myBarChart");
+
+                        // Define un array de colores para las barras
+                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
+
+                        new Chart(controlBar1, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    label: "Cantidad de integraciones con entidades externas",
+                                    backgroundColor: barColors,  // Asigna los colores a las barras
+                                    borderColor: "#000000",
+                                    borderWidth: 0,
+                                    data: arrayCantidad
+                                }],
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: arrayLabels.length,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Sistemas Generales'
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: Math.max(...arrayCantidad),
+                                            maxTicksLimit: 10,
+                                        },
+                                        gridLines: {
+                                            display: true,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cantidad de subsistemas registrados'
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    }
+                });
+            }
 
 
+
+            // CREADOR DE LOS GRÁFICOS de control de subsistemas.
+
+
+
+
+            // CREADOR DE LOS GRÁFICOS de control de integración.
             if (IDseleccion === "integraciones_subsistemas") {
-
                 $.ajax({
                     url: '@Url.Action("ReporteINTEEX", "Control")',
                     type: "GET",
@@ -245,7 +420,6 @@
                         });
                     }
                 });
-
                 $.ajax({
                     url: '@Url.Action("ReporteINTEIN", "Control")',
                     type: "GET",
@@ -326,8 +500,21 @@
                         });
                     }
                 });
-
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         });
     });
 

@@ -396,6 +396,36 @@ namespace CapaDatosDATA.DAO
         }
 
 
+        public List<ReporteGeneralBO> cargaSISTEMAXVARIABLE(string control_select)
+        {
+            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
 
+            DataSet ds = new DataSet();
+            SistemasDA Conexion = new SistemasDA();
+
+            ds = Conexion.obtenerReporteSISTEMAXVARIABLE(control_select);
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                ReporteGeneralBO estado = new ReporteGeneralBO();
+
+                estado.idReporte = Int32.Parse(r["idY"].ToString());
+                estado.LabelEjeX = r["etiquetaX"].ToString();
+
+                estado.IdEjeY = Int32.Parse(r["idX"].ToString());
+                estado.LabelEjeY = r["etiquetaY"].ToString();
+
+
+
+                resultado.Add(estado);
+            }
+            return resultado;
+
+        }
+
+
+
+
+        
     }
 }

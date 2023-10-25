@@ -12,7 +12,6 @@ namespace PrototipoMINVU.Controllers
     {
         // FUNCIONES PARA EL RETORNO DE VISTAS
 
-        [HttpPost]
         public ActionResult ControlSistemas(string control_select)
         {
             var alerta = Session["UsuarioConfirmado"];
@@ -23,6 +22,35 @@ namespace PrototipoMINVU.Controllers
             else
                 return RedirectToAction("Login", "Seguridad");
         }
+
+
+
+
+
+
+
+
+
+
+        // CONTROL PARA LOS SISTEMAS (AMBIENTE Y ESTADO)
+
+
+        [HttpGet]
+        public JsonResult ReporteSISTEMAXVARIABLE(string control_select)
+        {
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
+
+            objLista = cargador.ReporteSISTEMAXVARIABLE(control_select);
+
+            return Json(objLista, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
 
 
 
