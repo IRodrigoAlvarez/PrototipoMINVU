@@ -49,7 +49,19 @@ namespace PrototipoMINVU.Controllers
 
 
 
+        // CONTROL PARA LOS SUBSISTEMAS (Caracteristicas generales, depende del parámetro "control_select")
 
+
+        [HttpGet]
+        public JsonResult ReporteSUBSISTEMAXVARIABLE(string control_select)
+        {
+            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
+
+            objLista = cargador.ReporteSUBSISTEMAXVARIABLE(control_select);
+
+            return Json(objLista, JsonRequestBehavior.AllowGet);
+        }
 
 
 

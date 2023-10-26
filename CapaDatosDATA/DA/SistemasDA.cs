@@ -612,6 +612,9 @@ namespace CapaDatosDATA.DA
                 if (control_select == "sistemas_estado")
                     sp_validausuario = "PSM_REPORTESISTEMASESTADOS";
 
+                if (control_select == "subsistemas_sistema")
+                    sp_validausuario = "PSM_REPORTESISTEMASSUBSI";
+
 
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
                 comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.          

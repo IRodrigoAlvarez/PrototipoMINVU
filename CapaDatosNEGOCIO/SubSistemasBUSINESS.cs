@@ -72,5 +72,21 @@ namespace CapaDatosNEGOCIO
             return back_usuario.cargaReporteINTEIN();
 
         }
+
+
+        public List<ReporteGeneralBO> ReporteSUBSISTEMAXVARIABLE(string control_select)
+        {
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.SubSistemaDAO back_usuario = new CapaDatosDATA.DAO.SubSistemaDAO();
+            return back_usuario.cargaSUBSISTEMAXVARIABLE(control_select);
+
+        }
+
+
+
+
+
+
+
     }
 }

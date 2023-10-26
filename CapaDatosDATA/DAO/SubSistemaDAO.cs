@@ -30,7 +30,7 @@ namespace CapaDatosDATA.DAO
                 sistema.idSubSistema = Int32.Parse(r["id_subsistema"].ToString());
                 sistema.NombreSubSistema = r["nombre_subsistema"].ToString();
                 sistema.NombreJefeProyecto = r["nombreJefe"].ToString();
-                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();              
+                sistema.EstadoSubSistema = r["descripcion_estado"].ToString();
                 resultado.Add(sistema);
             }
             return resultado;
@@ -59,7 +59,7 @@ namespace CapaDatosDATA.DAO
                 sistema.EstadoSubSistema = r["estado_sistema"].ToString();
 
                 if (sistema.idSubSistema != 0)
-                        resultado.Add(sistema);
+                    resultado.Add(sistema);
             }
             return resultado;
         }
@@ -211,5 +211,39 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
+
+
+        public List<ReporteGeneralBO> cargaSUBSISTEMAXVARIABLE(string control_select)
+        {
+
+            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
+
+            DataSet ds = new DataSet();
+            SubSistemasDA Conexion = new SubSistemasDA();
+
+            ds = Conexion.obtenerReporteSUBSISTEMAXVARIABLE(control_select);
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                ReporteGeneralBO estado = new ReporteGeneralBO();
+
+                estado.idReporte = Int32.Parse(r["idY"].ToString());
+                estado.LabelEjeX = r["etiquetaX"].ToString();
+
+                estado.IdEjeY = Int32.Parse(r["idX"].ToString());
+                estado.LabelEjeY = r["etiquetaY"].ToString();
+
+
+
+                resultado.Add(estado);
+            }
+            return resultado;
+
+
+
+
+        }
+
     }
+
 }

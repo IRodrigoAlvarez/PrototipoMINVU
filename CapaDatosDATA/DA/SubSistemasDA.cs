@@ -389,5 +389,83 @@ namespace CapaDatosDATA.DA
             return ds;
 
         }
+
+
+        public DataSet obtenerReporteSUBSISTEMAXVARIABLE(string control_select)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "";
+
+
+                if (control_select == "subsistemas_ambiente")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASAMBIENTE";
+                
+                if (control_select == "subsistemas_estado")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASESTADOS";
+
+                if (control_select == "subsistemas_tecnologia")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASTECNO";
+
+                if (control_select == "subsistemas_area")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASAREA";
+
+                if (control_select == "subsistemas_data")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASDATA";
+
+                if (control_select == "subsistemas_tiposistema")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASTIPOSI";
+
+                if (control_select == "subsistemas_region")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASREGION";               
+
+                if (control_select == "subsistemas_jefe")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASJEFEP";
+
+                if (control_select == "subsistemas_control")
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASCONTROL";
+
+                if (control_select == "subsistemas_alcance")
+                    sp_validausuario = "PSM_REPORTESUBALCANCE";
+
+                if (control_select == "subsistemas_legacy")
+                    sp_validausuario = "PSM_REPORTESUBLEGACY";
+
+
+
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.          
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+
+            return ds;
+
+        }
+            
+
+
+
+
+
+
+
+
     }
 }

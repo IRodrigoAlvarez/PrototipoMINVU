@@ -76,19 +76,6 @@ namespace CapaDatosNEGOCIO
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         // FUNCIONES PARA LLENAR COMBOS...
 
         public List<SistemasBO> obtenerSistemas()
