@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-10">
                                         <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
-                                            <b>REGISTRO DE SISTEMAS</b>
+                                            <b>REGISTRO SISTEMAS</b>
                                         </a>
                                 </div>
 
@@ -82,7 +82,7 @@
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col-1">
-                                                <i class="bi bi-bar-chart-line-fill"></i>
+                                                <i class="bi bi-pencil-square"></i>
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
@@ -97,9 +97,8 @@
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingOne">
+                            <i class="bi bi-graph-up-arrow"></i>
                             <h5 class="mb-0">
-                                <i class="bi bi-graph-up-arrow"></i>
-
                                 <a class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseOne">
                                     <b>CONTROL DE SISTEMAS</b>
                                 </a>
@@ -109,11 +108,11 @@
 
                             <div class="card-body">
                                 @using (Html.BeginForm("ControlSistemas", "Control", FormMethod.Post, new { @class = "user" }))
-                                {
+                                 {
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col-1">
-                                                <i class="bi bi-database-add"></i>
+                                                <i class="bi bi-bar-chart-line-fill"></i>
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
@@ -122,24 +121,25 @@
                                             </div>
                                         </div>
                                     </button>
-                                }
+                                 }
                             </div>
 
                             <div class="card-body">
-
-                                <a href="#" class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-2">
-                                            <i class="bi bi-bar-chart-line-fill"></i>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="text-dark">
-                                                Reporte de sistemas.
+                                @using (Html.BeginForm("ReporteSistemas", "Control", FormMethod.Post, new { @class = "user" }))
+                                {
+                                    <button type="submit" class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-2">
+                                                <i class="bi bi-clipboard-check-fill"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">
+                                                    Reporte de sistemas.
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-
+                                    </button>
+                                 }
                             </div>
 
 

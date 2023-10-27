@@ -1,0 +1,94 @@
+﻿@model PrototipoMINVU.Models.Registro
+
+
+<div class="container-fluid">
+    <div class="bg-gradient-primary py-3 shadow-sm">
+        <div class="card">
+            <div class="card shadow">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="font_registro">
+                            <h2>Reportes de sistemas.</h2>
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row" id="textindexregistro">
+                        <div class="col-lg-12">
+                            <div class="card shadow">
+                                <div class="font_registro">
+                                    En esta pantalla se podrá obtener el reporte de los sistemas generales de la base de datos del prototipo.
+                                    Aqui se podrán visualizar, descargar e imprimir los reportes que representan la situación de los sistemas actual
+                                    para tener en papel la información.<br /><br />
+
+                                    Se destaca, que las caracteristicas y/o datos de prueba escogidos para este prototipo y los reportes, son a
+                                    modo de prueba según las límitaciones del proyecto.<br />
+
+                                    Universidad Tecnológica Metropolitana.<br />
+
+                                    <b>Profesor Guía:</b> Yelka Ruiz.<br />
+                                    <b>Rodrigo Álvarez.</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-lg-4" style="text-align:end;">
+                            <b>@Html.LabelFor(m => m.id_sistemaenlazado, "Seleccione Sistema a Reportar:")</b>
+                        </div>
+                        <div class="col-lg-4">
+                            <b> @Html.DropDownListFor(m => m.id_sistemaenlazado, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistemaOrigen", @type = "text", @class = "form-select" })</b>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+
+
+
+                    <div class="row">
+                        <div class="col-lg-4" style="text-align:end;">
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row text-muted">
+            <div class="col-6 text-start">
+                <p class="mb-0">
+                    <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                </p>
+            </div>
+            <div class="col-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

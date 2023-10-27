@@ -12,12 +12,27 @@ namespace PrototipoMINVU.Controllers
     {
         // FUNCIONES PARA EL RETORNO DE VISTAS
 
-        public ActionResult ControlSistemas(string control_select)
+        public ActionResult ControlSistemas()
         {
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {               
                 return View();
+            }
+            else
+                return RedirectToAction("Login", "Seguridad");
+        }
+
+        public ActionResult ReporteSistemas()
+        {
+            var alerta = Session["UsuarioConfirmado"];
+            if (alerta != null)
+            {
+                Models.Registro cargador = new Models.Registro();
+
+                cargador.CargaSistemas();
+                
+                return View(cargador);
             }
             else
                 return RedirectToAction("Login", "Seguridad");
@@ -32,8 +47,8 @@ namespace PrototipoMINVU.Controllers
 
 
 
-        // CONTROL PARA LOS SISTEMAS (AMBIENTE Y ESTADO)
 
+        // CONTROL PARA LOS SISTEMAS (AMBIENTE Y ESTADO)
 
         [HttpGet]
         public JsonResult ReporteSISTEMAXVARIABLE(string control_select)
@@ -51,7 +66,6 @@ namespace PrototipoMINVU.Controllers
 
         // CONTROL PARA LOS SUBSISTEMAS (Caracteristicas generales, depende del parámetro "control_select")
 
-
         [HttpGet]
         public JsonResult ReporteSUBSISTEMAXVARIABLE(string control_select)
         {
@@ -62,15 +76,6 @@ namespace PrototipoMINVU.Controllers
 
             return Json(objLista, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
-
 
 
 
