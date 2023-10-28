@@ -55,6 +55,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -176,6 +179,10 @@
     <Content Include="js\sweetalert2.js" />
     <Content Include="js\tableexport.min.js" />
     <Content Include="js\xlsx.full.min.js" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -184,6 +191,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="js\app.js.map" />
     <Content Include="css\app.css.map" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
@@ -214,6 +222,7 @@
     <Content Include="Views\Registro\AgregarSistemas.cshtml" />
     <Content Include="Views\Control\ControlSistemas.cshtml" />
     <Content Include="Views\Control\ReporteSistemas.cshtml" />
+    <Content Include="Views\Control\ReportePDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

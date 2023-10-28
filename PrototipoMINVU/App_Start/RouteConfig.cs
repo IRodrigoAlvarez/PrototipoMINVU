@@ -18,6 +18,14 @@ namespace PrototipoMINVU
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "GenerarPDF",
+                url: "GenerarPDF",
+                defaults: new { controller = "Control", action = "GenerarPDF" }
+            );
+
+
         }
     }
 }

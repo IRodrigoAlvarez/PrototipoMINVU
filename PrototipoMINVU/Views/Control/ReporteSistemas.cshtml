@@ -48,7 +48,10 @@
 
                     <hr />
 
+                    <input type="button" id="generarPDFButton" value="Generar PDF" onclick="window.open('@Url.Action("GenerarPDF", "Control")', '_blank');" />
 
+
+                    <input type="button" id="generarPDFButton" value="Generar PDF" data-id="@Model.id_sistemaenlazado" onclick="window.open('@Url.Action("GenerarPDF", "Control")?id=' + $(this).data('id'), '_blank');" />
 
 
                     <div class="row">
@@ -92,3 +95,12 @@
         </div>
     </div>
 </footer>
+
+
+
+<script>
+
+
+
+    
+</script>
