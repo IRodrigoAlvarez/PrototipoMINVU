@@ -38,20 +38,24 @@
 
                     <div class="row">
                         <div class="col-lg-4" style="text-align:end;">
-                            <b>@Html.LabelFor(m => m.id_sistemaenlazado, "Seleccione Sistema a Reportar:")</b>
+                            <b>@Html.LabelFor(m => m.id_reportesistema, "Seleccione Sistema a Reportar:")</b>
                         </div>
-                        <div class="col-lg-4">
-                            <b> @Html.DropDownListFor(m => m.id_sistemaenlazado, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @id = "idSistemaOrigen", @type = "text", @class = "form-select" })</b>
+                        <div class="col-lg-2">
+                            @Html.DropDownListFor(m => m.id_reportesistema, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @class = "form-select", @id = "id_reportesistema" })
+
+
+                        </div>
+
+                        <div class="col-lg-1">
+
+                            <input type="button" id="generarPDFButton" value="Generar PDF" />
+
                         </div>
 
                     </div>
 
                     <hr />
 
-                    <input type="button" id="generarPDFButton" value="Generar PDF" onclick="window.open('@Url.Action("GenerarPDF", "Control")', '_blank');" />
-
-
-                    <input type="button" id="generarPDFButton" value="Generar PDF" data-id="@Model.id_sistemaenlazado" onclick="window.open('@Url.Action("GenerarPDF", "Control")?id=' + $(this).data('id'), '_blank');" />
 
 
                     <div class="row">
@@ -60,7 +64,6 @@
                         <div class="col-lg-4">
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -100,7 +103,20 @@
 
 <script>
 
+     $("#generarPDFButton").click(function () {
+        // Obtiene el valor seleccionado en el DropDownList
+        var id_reportesistema = $("#id_reportesistema").val();
+
+        // Asigna el valor al atributo data-id del botón
+        $(this).data('id_reportesistema', id_reportesistema);
+
+        // Abre la nueva ventana o pestaña con el valor actualizado
+        window.open('@Url.Action("GenerarPDF", "Control")?id_reportesistema=' + id_reportesistema, '_blank');
+    });
 
 
-    
+
+
+  
+
 </script>

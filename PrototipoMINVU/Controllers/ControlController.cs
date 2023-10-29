@@ -18,7 +18,7 @@ namespace PrototipoMINVU.Controllers
         {
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
-            {               
+            {
                 return View();
             }
             else
@@ -33,17 +33,16 @@ namespace PrototipoMINVU.Controllers
                 Models.Registro cargador = new Models.Registro();
 
                 cargador.CargaSistemas();
-                
                 return View(cargador);
             }
             else
                 return RedirectToAction("Login", "Seguridad");
         }
 
-        public ActionResult ReportePDF()
-        {            
-            return View();           
-        }
+        //public ActionResult ReportePDF()
+        //{
+        //    return View();
+        //}
 
 
 
@@ -54,28 +53,73 @@ namespace PrototipoMINVU.Controllers
         // FUNCIONES BACKEND PARA LA GENERARCION DE REPORTES
 
 
-        public ActionResult GenerarPDF(string ReporteVista, System.Web.Routing.RouteValueDictionary objrout)
+        //public ActionResult GenerarPDF(string ReporteVista, System.Web.Routing.RouteValueDictionary objrout)
+        //{
+        //    // Establece el nombre de la vista que deseas convertir en PDF
+        //    ReporteVista = "ReportePDF";
+
+        //    // Crea el objeto ActionAsPdf con el nombre de la vista
+        //    var actionPDF = new Rotativa.ActionAsPdf(ReporteVista, objrout)
+        //    {
+        //        // Puedes configurar opciones adicionales aquí
+        //        FileName = "ReportePrototipo.pdf", // Establece el nombre del archivo PDF
+        //        PageSize = Rotativa.Options.Size.Folio,
+        //        PageMargins = new Rotativa.Options.Margins(5, 10, 5, 10)
+        //    };
+
+        //    // Genera el PDF como un byte array
+        //    byte[] pdfData = actionPDF.BuildFile(ControllerContext);
+
+        //    // Establece el tipo MIME para que el navegador muestre el PDF
+        //    Response.AddHeader("Content-Disposition", "inline; filename=ReportePrototipo.pdf");
+        //    return File(pdfData, "application/pdf");
+        //}
+
+
+        public ActionResult GenerarPDF(int id_reportesistema)
         {
             // Establece el nombre de la vista que deseas convertir en PDF
-            ReporteVista = "ReportePDF";
+            string reporteVista = "ReportePDF";
 
-            // Crea el objeto ActionAsPdf con el nombre de la vista
-            var actionPDF = new Rotativa.ActionAsPdf(ReporteVista, objrout)
+
+
+
+            // Crea un modelo o un objeto que contenga los datos que se envian a la vista
+
+            Models.Registro cargador = new Models.Registro();
+
+            cargador.id_reportesistema = id_reportesistema; 
+            cargador.CargaSubsistemasbyID(id_reportesistema);
+
+
+            cargador.GenerarReporteSistema(id_reportesistema);
+
+
+
+
+
+
+
+
+
+            // Genera la vista como un PDF
+            var pdf = new ViewAsPdf(reporteVista, cargador)
             {
-                // Puedes configurar opciones adicionales aquí
-                FileName = "ReportePrototipo.pdf", // Establece el nombre del archivo PDF
+                // Configura opciones adicionales aquí
+                FileName = "ReportePrototipo.pdf",
                 PageSize = Rotativa.Options.Size.Folio,
                 PageMargins = new Rotativa.Options.Margins(5, 10, 5, 10)
             };
 
-            // Genera el PDF como un byte array
-            byte[] pdfData = actionPDF.BuildFile(ControllerContext);
+            // Convierte el PDF en un array de bytes
+            byte[] pdfData = pdf.BuildFile(ControllerContext);
 
             // Establece el tipo MIME para que el navegador muestre el PDF
             Response.AddHeader("Content-Disposition", "inline; filename=ReportePrototipo.pdf");
+
+            // Devuelve el PDF como un FileResult
             return File(pdfData, "application/pdf");
         }
-
 
 
 

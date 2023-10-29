@@ -69,13 +69,6 @@ textarea{
     background-position: center center;
 }
 
-#body404 {
-    /* height: 400px;*/
-    background-image: url('../img/img-view-error.png');
-    /*    background-size: cover;
-    background-repeat: no-repeat;*/
-    background-position: center center;
-}
 
 #divLogoImage {
     background-image: url('../img/logo-portada.png');
@@ -180,10 +173,6 @@ table #tRut {
 
 }
 
-.custom {
-    width: 280px !important;
-    height: 50px;
-}
 
 
 /*Layout*/

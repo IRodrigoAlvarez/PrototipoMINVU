@@ -15,6 +15,8 @@ namespace PrototipoMINVU.Models
         public int  id_Estado { get; set; }
         public int id_sistemaenlazado { get; set; }
 
+        public int id_reportesistema { get; set; }
+
 
         public string DescripcionEstado { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
@@ -200,6 +202,19 @@ namespace PrototipoMINVU.Models
 
 
 
+
+        public void GenerarReporteSistema(int reportesistema)
+        {
+            SistemasBO sis_Minvu = new SistemasBO();
+            SistemasBUSINESS cargadorSistemas = new SistemasBUSINESS();
+
+            sis_Minvu = cargadorSistemas.obtenerSistemasbyID(reportesistema);
+
+           SistemaExample =  sis_Minvu;      
+
+
+
+        }
 
 
 
