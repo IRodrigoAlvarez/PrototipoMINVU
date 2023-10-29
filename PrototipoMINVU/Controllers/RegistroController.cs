@@ -12,7 +12,7 @@ namespace PrototipoMINVU.Controllers
     {
 
 
-        // FUNCIONES PARA EL RETORNO DE VISTAS
+        // ---------------------------FUNCIONES PARA EL RETORNO DE VISTAS
 
         public ActionResult EditarSistemas()
         {
@@ -47,6 +47,7 @@ namespace PrototipoMINVU.Controllers
 
 
 
+        // ---------------------FUNCIONES BACKEND PARA EL FUNCIONAMIENTO DEL SISTEMA.
 
 
 

@@ -1,48 +1,3 @@
-/*Modals*/
-div #div-allContent {
-    border-color: #4268d6;
-    border-width: 1px;
-    border-style: groove;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-@media (max-width: 1000px) {
-    #div-allContent {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-#div-btns {
-    padding: 10px;
-
-}
-
-textarea{
-
-    resize:none;
-}
-
-
-.custombtn {
-    width: 100px;
-    height: 80px;
-    margin-right: 5px;
-}
-
-#div-btnsModal {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    padding-top: 2em;
-}
-#btnExportar2, #btnExportar3, #btnExportar4{
-    float: right;
-}
 
 /*Login*/
 #id-LI {
@@ -121,29 +76,6 @@ thead {
 th {
     text-align: center;
 }
-
-
-
-
-table #tDiag {
-   padding-left:7em !important;
-   padding-right: 7em !important;
-
-}
-
-table #tRut {
-    padding-left: 4em !important;
-    padding-right: 4em !important;
-}
-
-
-
-
-
-.font_calibri {
-    font: 22px calibri;
-}
-
 
 
 .font_registro {

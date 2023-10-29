@@ -12,7 +12,7 @@ namespace PrototipoMINVU.Controllers
 {
     public class ControlController : Controller
     {
-        // FUNCIONES PARA EL RETORNO DE VISTAS
+        // ---------------------------FUNCIONES PARA EL RETORNO DE VISTAS
 
         public ActionResult ControlSistemas()
         {
@@ -39,66 +39,21 @@ namespace PrototipoMINVU.Controllers
                 return RedirectToAction("Login", "Seguridad");
         }
 
-        //public ActionResult ReportePDF()
-        //{
-        //    return View();
-        //}
+  
 
-
-
-
-
-
-
-        // FUNCIONES BACKEND PARA LA GENERARCION DE REPORTES
-
-
-        //public ActionResult GenerarPDF(string ReporteVista, System.Web.Routing.RouteValueDictionary objrout)
-        //{
-        //    // Establece el nombre de la vista que deseas convertir en PDF
-        //    ReporteVista = "ReportePDF";
-
-        //    // Crea el objeto ActionAsPdf con el nombre de la vista
-        //    var actionPDF = new Rotativa.ActionAsPdf(ReporteVista, objrout)
-        //    {
-        //        // Puedes configurar opciones adicionales aquí
-        //        FileName = "ReportePrototipo.pdf", // Establece el nombre del archivo PDF
-        //        PageSize = Rotativa.Options.Size.Folio,
-        //        PageMargins = new Rotativa.Options.Margins(5, 10, 5, 10)
-        //    };
-
-        //    // Genera el PDF como un byte array
-        //    byte[] pdfData = actionPDF.BuildFile(ControllerContext);
-
-        //    // Establece el tipo MIME para que el navegador muestre el PDF
-        //    Response.AddHeader("Content-Disposition", "inline; filename=ReportePrototipo.pdf");
-        //    return File(pdfData, "application/pdf");
-        //}
-
-
+        // ---------------------FUNCIONES BACKEND PARA EL FUNCIONAMIENTO DEL SISTEMA.
         public ActionResult GenerarPDF(int id_reportesistema)
         {
             // Establece el nombre de la vista que deseas convertir en PDF
             string reporteVista = "ReportePDF";
 
-
-
-
-            // Crea un modelo o un objeto que contenga los datos que se envian a la vista
+            // Se crea un modelo que contenga los datos que se envian a la vista
 
             Models.Registro cargador = new Models.Registro();
-
             cargador.id_reportesistema = id_reportesistema; 
             cargador.CargaSubsistemasbyID(id_reportesistema);
 
-
             cargador.GenerarReporteSistema(id_reportesistema);
-
-
-
-
-
-
 
 
 
@@ -125,6 +80,8 @@ namespace PrototipoMINVU.Controllers
 
 
 
+
+
         // CONTROL PARA LOS SISTEMAS (AMBIENTE Y ESTADO)
 
         [HttpGet]
@@ -137,8 +94,6 @@ namespace PrototipoMINVU.Controllers
 
             return Json(objLista, JsonRequestBehavior.AllowGet);
         }
-
-
 
 
         // CONTROL PARA LOS SUBSISTEMAS (Caracteristicas generales, depende del parámetro "control_select")

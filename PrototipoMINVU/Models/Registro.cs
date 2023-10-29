@@ -17,7 +17,6 @@ namespace PrototipoMINVU.Models
 
         public int id_reportesistema { get; set; }
 
-
         public string DescripcionEstado { get; set; }
         public List<SistemasBO> ListaSistemas { get; set; }
 
@@ -80,7 +79,6 @@ namespace PrototipoMINVU.Models
             sis_Minvu.ListaSistemasP = cargador.obtenerSistemasby(3);
             sis_Minvu.ListaSistemasD = cargador.obtenerSistemasby(1);
             sis_Minvu.ListaSistemasT = cargador.obtenerSistemasby(2);
-
 
 
             ListaSistemas = sis_Minvu.ListaSistemas;
@@ -198,10 +196,6 @@ namespace PrototipoMINVU.Models
             SubSistemaExample = subsistema;
 
         }
-
-
-
-
 
         public void GenerarReporteSistema(int reportesistema)
         {
