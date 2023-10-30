@@ -23,6 +23,20 @@ namespace PrototipoMINVU.Controllers
         }
 
 
+        public ActionResult CambiaPass()
+        {
+            var alerta = Session["UsuarioConfirmado"];
+
+            if (alerta != null)
+            {
+                return View();
+            }
+            else                
+                return RedirectToAction("Index", "Home");
+        }
+
+
+
 
         public ActionResult ValidaUsuario(Models.Usuario usuariomod)
         {

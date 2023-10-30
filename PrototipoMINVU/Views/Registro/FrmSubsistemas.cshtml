@@ -10,7 +10,7 @@
 
                         <div class="row">
                             <div class="font_registro">
-                                <h1>Editar datos del Sub Sistema: <b>@Session["NOMBRE_SISTEMA"]</b></h1>
+                                <h2>Editar datos del Sub Sistema: <b>@Session["NOMBRE_SISTEMA"]</b></h2>
                                 <hr />
                             </div>
                         </div>
@@ -31,8 +31,9 @@
                                                             <div class="row rowNorm" >
                                                                 <input type="hidden" value="@Model.SubSistemaExample.idSubSistema" name="id_subsistemasedit" />
                                                                 <div class="font_registro">
+                                                                    <br />
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.NombreSubSistema, "Nombre SubSistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -41,7 +42,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.DescripcionSubSistema, "Descripción SubSistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -49,7 +50,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.EstadoSubSistema, "Estado del sistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -60,7 +61,7 @@
                                                                     <hr />
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -70,7 +71,7 @@
                                                                     
                                                                     <hr />
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.URLinicio, "URL Inicio:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -80,7 +81,7 @@
 
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.URLdatos, "URL Modelo Datos:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -90,7 +91,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.DecretoAfecto, "Decreto Afecto:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -100,7 +101,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.CostoSistema, "Costo Sistemas [$]:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -109,7 +110,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoArea, "Area del sistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -119,7 +120,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.DueñoDatos, "Dueño de los datos:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -129,7 +130,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.NombreJefeProyecto, "Jefe de proyecto:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -139,7 +140,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoControlAcceso, "Control de Acceso:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -148,7 +149,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoAlcance, "Alcance del Sub sistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -158,7 +159,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoSistema, "Tipo del Sistema :")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -168,7 +169,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoTecnologia, "Tipo de Tecnología :")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -177,7 +178,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.TipoLegacy, "Sistema Heredado(Legacy):")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
@@ -187,7 +188,7 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SubSistemaExample.Region, "Región:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">

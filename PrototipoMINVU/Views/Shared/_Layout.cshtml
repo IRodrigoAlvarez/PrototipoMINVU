@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
-                                                    Visualización de sistemas.
+                                                    - Visualización de sistemas.
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
-                                                    Reporte de sistemas.
+                                                    - Reporte de sistemas.
                                                 </div>
                                             </div>
                                         </div>
@@ -195,14 +195,17 @@
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
 
-                                        <button class="dropdown-item btnPass" href="#" data-toggle="modal" data-target="#cambioPassword" onclick="">
-                                            <i class="align-middle me-1" data-feather="settings"></i>
-                                            Cambiar Contraseña
-                                        </button>
+                                        @using (Html.BeginForm("CambiaPass", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                        {
+                                            <button class="dropdown-item btnPass" href="#" data-toggle="modal" data-target="#cambioPassword" onclick="">
+                                                <i class="align-middle me-1" data-feather="settings"></i>
+                                                Cambiar Contraseña
+                                            </button>
+                                        }
+                                            <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
+                                            <div class="dropdown-divider"></div>
 
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
-                                        <div class="dropdown-divider"></div>
                                         @using (Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Post, new { @class = "user" }))
                                         {
                                             <button type="submit" class="dropdown-item" href="#">Salir</button>

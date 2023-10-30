@@ -10,8 +10,16 @@ namespace PrototipoMINVU.Models
     {        
         [Required]
         public int Rut { get; set; }
+
+
         [Required]
         public string Contrasena { get; set; }
+
+
+        [Required]
+        public string ContrasenaNueva { get; set; }
+
+
 
         public string Nombre { get; set; }
         

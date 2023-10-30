@@ -222,6 +222,7 @@
     <Content Include="Views\Control\ControlSistemas.cshtml" />
     <Content Include="Views\Control\ReporteSistemas.cshtml" />
     <Content Include="Views\Control\ReportePDF.cshtml" />
+    <Content Include="Views\Seguridad\CambiaPass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
