@@ -210,6 +210,8 @@
                         // Define un array de colores para las barras
                         const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
 
+
+                        // GRÁFICO DE BARRA
                         new Chart(controlBar1, {
                             type: 'bar',
                             data: {
@@ -261,7 +263,7 @@
                             }
                         });
 
-
+                        // GRÁFICO DE TORTA
                         new Chart(controlPie1, {
                             type: 'pie',
                             data: {
