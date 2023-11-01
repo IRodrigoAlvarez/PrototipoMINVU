@@ -101,9 +101,7 @@
                     <hr />
                     <div class="row">
 
-                        <div class="col-lg-3">
 
-                        </div>
                         <div class="col-lg-6">
 
                             <div class="panel panel-default" id="panel1">
@@ -114,31 +112,17 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-3">
-
-                        </div>
-                       
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-3">
-
-                        </div>
 
                         <div class="col-lg-6">
 
                             <div class="panel panel-default" id="panel2">
                                 <div class="panel-heading"></div>
                                 <div class="panel-body">
-                                    <canvas id="myBarChart2" width="100" height="50"></canvas>
+                                    <canvas id="myPieChart" width="100" height="50"></canvas>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-3">
-
-                        </div>
 
                     </div>
 
@@ -221,6 +205,7 @@
                         const arrayCantidad = Object.values(labelCantidadMap);
 
                         const controlBar1 = document.getElementById("myBarChart");
+                        const controlPie1 = document.getElementById("myPieChart");
 
                         // Define un array de colores para las barras
                         const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
@@ -275,6 +260,36 @@
                                 }
                             }
                         });
+
+
+                        new Chart(controlPie1, {
+                            type: 'pie',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    data: arrayCantidad,
+                                    backgroundColor: barColors
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: 'N° de Subsistemas enlazados según Sistema General' // Aquí puedes ingresar el título que desees
+                                }
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var dataset = data.datasets[0];
+                                        var label = data.labels[tooltipItem.index];
+                                        var value = dataset.data[tooltipItem.index];
+                                        return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                                    }
+                                }
+                            }
+
+                        });
+                               
                     }
                 });
             }
