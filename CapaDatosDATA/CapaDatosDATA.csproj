@@ -118,12 +118,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\SistemasDAO.cs" />
-    <Compile Include="DAO\SubSistemaDAO.cs" />
+    <Compile Include="DAO\ModulosDAO.cs" />
+    <Compile Include="DAO\SistemaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DA\JefesDA.cs" />
+    <Compile Include="DA\ModulosDA.cs" />
     <Compile Include="DA\SistemasDA.cs" />
-    <Compile Include="DA\SubSistemasDA.cs" />
     <Compile Include="DA\UsuarioDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

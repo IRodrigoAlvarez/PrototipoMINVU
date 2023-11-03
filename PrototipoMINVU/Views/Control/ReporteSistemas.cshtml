@@ -38,10 +38,10 @@
 
                     <div class="row">
                         <div class="col-lg-4" style="text-align:end;">
-                            <b>@Html.LabelFor(m => m.id_reportesistema, "Seleccione Sistema a Reportar:")</b>
+                            <b>@Html.LabelFor(m => m.id_reportesistema, "Seleccione Modulo a Reportar:")</b>
                         </div>
                         <div class="col-lg-2">
-                            @Html.DropDownListFor(m => m.id_reportesistema, new SelectList(Model.ListaSistemas, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @class = "form-select", @id = "id_reportesistema" })
+                            @Html.DropDownListFor(m => m.id_reportesistema, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @class = "form-select", @id = "id_reportesistema" })
 
 
                         </div>

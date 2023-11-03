@@ -1,0 +1,141 @@
+﻿@model PrototipoMINVU.Models.Registro
+
+<body style="background-color: #B2FEFA;">
+
+    <div class="container-fluid">
+        <div class="bg-gradient-primary py-3 shadow-sm">
+            <div class="card">
+                <div class="card shadow">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="font_registro">
+                                <h1>Editar datos del Módulo: <b>@Session["NOMBRE_SISTEMA"]</b></h1>
+                                <hr />
+                            </div>
+                        </div>                
+
+                        <div class="font_registro" id="containerSubSI" >                       
+
+                            <div class="row">
+                                <div id="FormularioEditarSistema" >
+                                    <div class="font_registro">
+                                        <div class="container-fluid">
+                                            <div class="card">
+                                                <div class="card shadow formAddproy">
+                                                    <div class="row rowNorm">                                                       
+                                                        <div class="font_registro">
+                                                            @using (Html.BeginForm("EditarModulo", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                            {
+                                                                <input type="hidden" value="@Session["ID_MODULO"]" name="id_sistemaedit" />
+                                                                <div class="row">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                            <b>@Html.LabelFor(m => m.ModuloExample.NombreSistema, "Nombre Módulo:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-8">
+                                                                            @Html.TextBoxFor(m => m.ModuloExample.NombreSistema, new { @class = "form-control" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                            <b>@Html.LabelFor(m => m.ModuloExample.AmbienteAlojado, "Ambiente del módulo:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.DropDownListFor(m => m.ModuloExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class = "form-select", @type = "text" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                            <b>@Html.LabelFor(m => m.ModuloExample.DescripcionEstado, "Estado del Modulo:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.DropDownListFor(m => m.ModuloExample.id_estado, new SelectList(Model.ListaEstados, "idEstado", "DescripcionEstado"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class = "form-select", @type = "text" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                            <b>@Html.LabelFor(m => m.ModuloExample.descripcion, "Descripción del módulo: ")</b>
+
+                                                                        </div>
+                                                                        <div class="col-lg-8">
+                                                                            @Html.TextAreaFor(m => m.ModuloExample.descripcion, new { @rows = "4", @cols = "100", @class = "form-control", @name = "descripcion" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-9">
+                                                                        </div>
+                                                                        <div class="col-lg-3">
+                                                                            <input type="submit" value="ACEPTAR" />
+                                                                            <input type="reset" value="CANCELAR" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            <br />
+                                                        
+                                                        </div>                                                        
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row text-muted">
+                <div class="col-6 text-start">
+                    <p class="mb-0">
+                        <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                    </p>
+                </div>
+                <div class="col-6 text-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+
+
+
+    </script>
+
+</body>
+
+

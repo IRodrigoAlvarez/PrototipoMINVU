@@ -10,128 +10,214 @@
 
                         <div class="row">
                             <div class="font_registro">
-                                <h1>Editar datos del Sistema: <b>@Session["NOMBRE_SISTEMA"]</b></h1>
+                                <h2>Editar datos del Sistema: <b>@Session["NOMBRE_SISTEMA"]</b></h2>
                                 <hr />
                             </div>
-                        </div>                
+                        </div>
 
-                        <div class="font_registro" id="containerSubSI" >                       
+                        <div class="font_registro" id="containerSubSI" >
 
                             <div class="row">
-                                <div id="FormularioEditarSistema" >
+                                <div id="FormularioEditarSistema">
                                     <div class="font_registro">
                                         <div class="container-fluid">
                                             <div class="card">
                                                 <div class="card shadow formAddproy">
-                                                    <div class="row rowNorm">                                                       
-                                                        <div class="font_registro">
-                                                            @using (Html.BeginForm("EditarSistemasGenerales", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                            {
-                                                                <input type="hidden" value="@Session["ID_SISTEMA"]" name="id_sistemaedit" />
-                                                                <div class="row">
+                                                    @if (Model.SistemaExample != null)
+                                                    {
+                                                        using (Html.BeginForm("EditarSistema", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                        {
+
+                                                            <div class="row rowNorm" >
+                                                                <input type="hidden" value="@Model.SistemaExample.id_sistema" name="id_subsistemasedit" />
+                                                                <div class="font_registro">
+                                                                    <br />
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SistemaExample.NombreSistema, "Nombre Sistema:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-8">
+                                                                        <div class="col-lg-4">
                                                                             @Html.TextBoxFor(m => m.SistemaExample.NombreSistema, new { @class = "form-control" })
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.DescripcionSistema, "Descripción Sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.TextAreaFor(m => m.SistemaExample.DescripcionSistema, new { @class = "form-control", rows = 4 })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.EstadoSistema, "Estado del sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>  @Html.DropDownListFor(m => m.SistemaExample.id_estado, new SelectList(Model.ListaEstados, "idEstado", "DescripcionEstado"), "Seleccione Estado del Subsistema", new { @id = "id_sistema", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr />
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
                                                                             <b>@Html.LabelFor(m => m.SistemaExample.AmbienteAlojado, "Ambiente del sistema:")</b>
                                                                         </div>
                                                                         <div class="col-lg-4">
-                                                                            @Html.DropDownListFor(m => m.SistemaExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class="form-select", @type = "text" })
+                                                                            <b> @Html.DropDownListFor(m => m.SistemaExample.idAmbiente, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @type = "text", @class = "form-select" })</b>
                                                                         </div>
                                                                     </div>
+                                                                    
+                                                                    <hr />
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
-                                                                            <b>@Html.LabelFor(m => m.SistemaExample.descripcion, "Descripción del sistema: ")</b>
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.URLinicio, "URL Inicio:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.TextBoxFor(m => m.SistemaExample.URLinicio, new { @class = "form-control" })
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.URLdatos, "URL Modelo Datos:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.TextBoxFor(m => m.SistemaExample.URLdatos, new { @class = "form-control" })
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.DecretoAfecto, "Decreto Afecto:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.TextBoxFor(m => m.SistemaExample.DecretoAfecto, new { @class = "form-control" })
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.CostoSistema, "Costo Sistemas [$]:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            @Html.TextBoxFor(m => m.SistemaExample.CostoSistema, new { @class = "form-control", type = "number", Name = "costo_sistemaspeso" })
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoArea, "Area del sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.DropDownListFor(m => m.SistemaExample.id_area, new SelectList(Model.ListaAreas, "idArea", "DescripcionArea"), "Seleccione Area del sistema", new { @id = "idDataOwner", @type = "text", @class = "form-select" })</b>
 
                                                                         </div>
-                                                                        <div class="col-lg-8">
-                                                                            @Html.TextAreaFor(m => m.SistemaExample.descripcion, new { @rows = "4", @cols = "100", @class="form-control", @name="descripcion" })
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.DueñoDatos, "Dueño de los datos:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>@Html.DropDownListFor(m => m.SistemaExample.id_dataowner, new SelectList(Model.ListaDO, "idDataOwner", "nombre_data"), "Seleccione Dueño de los datos", new { @id = "idDataOwner", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.NombreJefeProyecto, "Jefe de proyecto:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b> @Html.DropDownListFor(m => m.SistemaExample.id_jefeproyecto, new SelectList(Model.ListaJefesProyectos, "idJefeProyecto", "NombreJefeProyecto"), "Seleccione jefe de proyecto", new { @id = "IdJefeproyecto", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoControlAcceso, "Control de Acceso:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b> @Html.DropDownListFor(m => m.SistemaExample.id_control, new SelectList(Model.ListaControlAcceso, "idControlAcceso", "TipoControl"), "Seleccione Control de Acceso ", new { @id = "idControlAcceso", @type = "text", @class = "form-select" })</b>
+
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoAlcance, "Alcance del Sistema:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>  @Html.DropDownListFor(m => m.SistemaExample.id_alcance, new SelectList(Model.ListaAlcance, "idAlcance", "DescripcionAlcance"), "Seleccione Alcance", new { @id = "idAlcance", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoSistema, "Tipo del Sistema :")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>  @Html.DropDownListFor(m => m.SistemaExample.id_tiposistema, new SelectList(Model.ListaTipoSistemas, "idTipoSistema", "TipoSistema"), "Seleccione Tipo Sistema", new { @id = "idTipoSistema", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoTecnologia, "Tipo de Tecnología :")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>  @Html.DropDownListFor(m => m.SistemaExample.id_tipotecnologia, new SelectList(Model.ListaTecnologia, "idTecnologia", "TipoTecnologia"), "Seleccione Tipo Tecnologia", new { @id = "idTecnologia", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.TipoLegacy, "Sistema Heredado(Legacy):")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b> @Html.DropDownListFor(m => m.SistemaExample.id_legacy, new SelectList(Model.ListaLegacy, "idLegacy", "DescripcionLegacy"), "Es el sistema Heredado?", new { @id = "idLegacy", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-4" style="text-align:end">
+                                                                            <b>@Html.LabelFor(m => m.SistemaExample.Region, "Región:")</b>
+                                                                        </div>
+                                                                        <div class="col-lg-4">
+                                                                            <b>  @Html.DropDownListFor(m => m.SistemaExample.id_region, new SelectList(Model.ListaRegion, "idRegion", "NombreRegion"), "Seleccione Region", new { @id = "idRegion", @type = "text", @class = "form-select" })</b>
+
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <br />
+                                                                    <div class="row">
                                                                         <div class="col-lg-9">
+
                                                                         </div>
                                                                         <div class="col-lg-3">
                                                                             <input type="submit" value="ACEPTAR" />
                                                                             <input type="reset" value="CANCELAR" />
                                                                         </div>
+
+
                                                                     </div>
                                                                 </div>
-                                                            }
-
-                                                            <br />
-                                                        <div class="row">
-
-                                                            <div class="row">
-                                                                <div class="col-lg-4">
-                                                                    <b>
-                                                                        <label>Lista de sub sistemas:</label>
-                                                                    </b>
-                                                                </div>
-                                                                <div class="col-lg-8">
-                                                                    @using (Html.BeginForm("AgregarSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <div class="row">
-                                                                            <div class="col-sm-11" style="text-align:end;">
-                                                                                Añadir Sub sistema: <button type="submit" name="boton_añadirsubsistema">+</button>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" id="tablasubsistemas" style="margin-left: 0px;">
-
-                                                                <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>N° Sub Sistema</th>
-                                                                            <th>Nombre Sub Sistema Asociado</th>
-                                                                            <th>Jefe del proyecto</th>
-                                                                            <th>Estado Sistema</th>
-                                                                            <th>Editar</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @if (Model.ListaSubSistemas != null)
-                                                                        {
-                                                                            foreach (var item in Model.ListaSubSistemas)
-                                                                            {
-                                                                                <tr>
-                                                                                    <td class="id">@item.idSubSistema</td>
-                                                                                    <td>@item.NombreSubSistema</td>
-                                                                                    <td>@item.NombreJefeProyecto</td>
-                                                                                    <td>@item.EstadoSubSistema</td>
-                                                                                    <td class="id">
-
-                                                                                        @using (Html.BeginForm("FrmSubsistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                                        {
-                                                                                            <input type="hidden" value="@item.idSubSistema" name="id_sistemasedit" />
-                                                                                            <input type="hidden" value="@item.NombreSubSistema" name="nombre_sistemasedit" />
-                                                                                            <input type="hidden" value="@item.DescripcionSubSistema" name="descripcion_subsistema" />
-
-                                                                                            <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                                        }
-                                                                                    </td>
-
-                                                                                </tr>
-                                                                            }
-                                                                        }
-                                                                    </tbody>
-                                                                </table>
 
                                                             </div>
-                                                        </div>
-                                                        </div>                                                        
-                                                    </div>
+
+                                                        }
+
+
+                                                    }
                                                     <br />
                                                 </div>
                                             </div>
@@ -139,7 +225,7 @@
                                     </div>
                                 </div>
 
-                               
+
 
                             </div>
 
@@ -192,5 +278,3 @@
     </script>
 
 </body>
-
-

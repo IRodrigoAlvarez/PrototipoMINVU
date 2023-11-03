@@ -20,8 +20,8 @@
                                 <div class="card shadow">
                                     <div class="font_registro">                                        
                                         En esta pantalla se podrán Editar y actualizar los sistemas que se han 
-                                        registrado en la base de datos del prototipo. También se podrán ingresa los subsistemas a los
-                                        sistemas generales.<br />
+                                        registrado en la base de datos del prototipo.<br />
+                                        También se podrán ingresa los módulos a los sistemas generales.<br />
                                         Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
                                         modo de prueba según las límitaciones del proyecto.<br />
 
@@ -52,27 +52,26 @@
 
                                     <div class="col-8" style=" text-align:end;">
                                         <div class="font_registro">
-                                            <button> Sistemas Generales</button>
-                                            <button> Sub-Sistemas normales</button>
+                                            <button> Sistemas Generales.</button>
+                                            <button> Modulos de sistemas.</button>
 
                                         </div>
                                     </div>
                                 </div>
 
-
                                 @* TABLA PARA SISTEMAS *@
 
-                                <div class="col-lg-12" id="tablaSISTEMAS">
+                                <div class="col-lg-12" id="tablaSistemas">
                                     <div class="font_registro">
                                         <div style="text-align: center;"> <b>Tabla de Sistemas Activos</b></div>
                                         <hr />
                                         <div class="table-responsive-y table-responsive tablaparasistemas">
-                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                                 <thead>
                                                     <tr>
-                                                        <th>N° Sistema</th>
+                                                        <th>Código Sistema</th>
                                                         <th>Nombre Sistema</th>
-                                                        <th>Descripcion sistema</th>
+                                                        <th>Estado Sistema</th>
                                                         <th>Editar</th>
                                                     </tr>
                                                 </thead>
@@ -82,18 +81,15 @@
                                                         foreach (var item in Model.ListaSistemas)
                                                         {
                                                             <tr>
-                                                                <td class="id">@item.idSistema</td>
+                                                                <td class="id">@item.id_sistema</td>
                                                                 <td>@item.NombreSistema</td>
-                                                                <td>@item.descripcion</td>
+                                                                <td>@item.EstadoSistema</td>
                                                                 <td class="id">
 
                                                                     @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
-                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
-                                                                        <input type="hidden" value="@item.id_AMBIENTE" name="ambiente_sistema" />
-
+                                                                        <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
+                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />                                                                       
 
                                                                         <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
@@ -109,7 +105,65 @@
                                     </div>
                                 </div>
 
-                                @* TABLA PARA SISTEMAS EN desarrollo *@
+                                @* TABLA PARA MODULOS *@
+
+                                <div class="col-lg-12" id="tablaSISTEMAS">
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Tabla de Modulos Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y">
+
+                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th >N° MODULOS</th>
+                                                        <th>Nombre del Sistema</th>
+                                                        <th>Estado</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaModulos != null)
+                                                    {
+                                                        foreach (var item in Model.ListaModulos)
+                                                        {
+                                                            <tr>
+                                                                <td class="id">@item.idSistema</td>
+                                                                <td>@item.NombreSistema</td>
+                                                                <td></td>
+                                                                <td class="id">
+
+                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                    {
+                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
+                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                    }
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                @* TABLA PARA MODULOS EN desarrollo *@
 
                                 <div class="col-lg-12" id="tablaSISTEMASendesarrollo" style="display:none;">
                                     <div class="font_registro">
@@ -138,7 +192,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -158,7 +212,7 @@
                                     </div>
                                 </div>
 
-                                @* TABLA PARA SISTEMAS EN TESTING *@
+                                @* TABLA PARA MODULOS EN TESTING *@
 
                                 <div class="col-lg-12" id="tablaSISTEMASentesting" style="display:none;">
                                     <div class="font_registro">
@@ -187,7 +241,7 @@
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -207,7 +261,7 @@
                                     </div>
                                 </div>
 
-                                @* TABLA PARA SISTEMAS EN PRODUCCION *@
+                                @* TABLA PARA MODULOS EN PRODUCCION *@
 
                                 <div class="col-lg-12" id="tablaSISTEMASenproduccion" style="display:none;">
                                     <div class="font_registro">
@@ -216,10 +270,10 @@
                                         <div class="table-responsive-y table-responsive tablaparasistemas">
 
 
-                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                                 <thead>
                                                     <tr>
-                                                        <th>N° Sistema</th>
+                                                        <th >N° Sistema</th>
                                                         <th>Nombre Sistema</th>
                                                         <th>Descripcion sistema</th>
                                                         <th>Editar</th>
@@ -231,12 +285,12 @@
                                                         foreach (var item in Model.ListaSistemasP)
                                                         {
                                                             <tr>
-                                                                <td class="id">@item.idSistema</td>
+                                                                <td class="id" >@item.idSistema</td>
                                                                 <td>@item.NombreSistema</td>
                                                                 <td>@item.descripcion</td>
                                                                 <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
                                                                     {
                                                                         <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
                                                                         <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
@@ -256,48 +310,7 @@
                                     </div>
                                 </div>
 
-                                @* TABLA PARA SUB SISTEMAS *@
 
-                                <div class="col-lg-12" id="tablaSUBSISTEMAS" style="display:none">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Tabla de Sub- Sistemas Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y">
-
-                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>N° Sistema</th>
-                                                        <th>Nombre Sistema</th>
-                                                        <th>Sistema Enlazado</th>
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaSubSistemas != null)
-                                                    {
-                                                        foreach (var item in Model.ListaSubSistemas)
-                                                        {
-                                                            <tr>
-                                                                <td class="id">@item.idSubSistema</td>
-                                                                <td>@item.NombreSubSistema</td>
-                                                                <td>@item.NombreSistemaEnlazado</td>
-                                                                <td class="id">
-
-
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                </td>
-
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>

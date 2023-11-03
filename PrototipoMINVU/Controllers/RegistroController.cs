@@ -20,8 +20,8 @@ namespace PrototipoMINVU.Controllers
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
+                cargadorSis.CargaModulos();
                 cargadorSis.CargaSistemas();
-                cargadorSis.CargaSubSistemas();
                 return View(cargadorSis);
             }
             else
@@ -34,7 +34,7 @@ namespace PrototipoMINVU.Controllers
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
-                cargadorSis.CargaSistemas();
+                cargadorSis.CargaModulos();
                 cargadorSis.CargarCombos();
 
                 return View(cargadorSis);
@@ -55,21 +55,17 @@ namespace PrototipoMINVU.Controllers
 
 
         [HttpPost]
-        public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_sistema, string ambiente_sistema)
+        public ActionResult FrmModulos(string id_sistemasedit, string nombre_sistemasedit)
         {
             Models.Registro cargadorSis = new Models.Registro();
 
-
-
             var alerta = Session["UsuarioConfirmado"];
-            Session["ID_SISTEMA"] = id_sistemasedit;
+            Session["ID_MODULO"] = id_sistemasedit;
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
-            Session["DESCRIPCION"] = descripcion_sistema;
-
             if (alerta != null)
             {
                 cargadorSis.CargarCombos();
-                cargadorSis.CargaSistemabyID(Int32.Parse(id_sistemasedit));
+                cargadorSis.CargaModulobyID(Int32.Parse(id_sistemasedit));
                 return View(cargadorSis);
             }
             else
@@ -80,24 +76,35 @@ namespace PrototipoMINVU.Controllers
 
 
         [HttpPost]
-        public ActionResult FrmSubsistemas(string id_sistemasedit, string nombre_sistemasedit, string descripcion_subsistema)
+        public ActionResult FrmSistemas(string id_sistemasedit, string nombre_sistemasedit)
         {
             var alerta = Session["UsuarioConfirmado"];
 
             Session["NOMBRE_SISTEMA"] = nombre_sistemasedit;
-            Session["ID_SUBSISTEMA"] = Int32.Parse(id_sistemasedit);
+            Session["ID_SISTEMA"] = Int32.Parse(id_sistemasedit);
 
             if (alerta != null)
             {
                 Models.Registro cargadorSis = new Models.Registro();
 
                 cargadorSis.CargarCombos();
-                cargadorSis.TraeCaractersticasSubSistema(Int32.Parse(id_sistemasedit));
+                cargadorSis.TraeCaractersticasSistema(Int32.Parse(id_sistemasedit));
                 return View(cargadorSis);
             }
             else
                 return RedirectToAction("Login", "Seguridad");
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -105,34 +112,34 @@ namespace PrototipoMINVU.Controllers
         // Funciones backen para la carga o visualización de datos.
         [HttpPost]
 
-        public ActionResult EditarSubSistema(Models.Registro subsistemanuevo, string id_subsistemasedit)
-        {
-
-            SubSistemasBO sistemaeditado = new SubSistemasBO();
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
-
-            int id_subsistema = Int32.Parse(id_subsistemasedit);
-
-            sistemaeditado = subsistemanuevo.SubSistemaExample;
-            cargador.EditarSubSistema(id_subsistema, sistemaeditado);
-
-            return RedirectToAction("EditarSistemas", "Registro");
-        }
-
-
-
-
-        [HttpPost]
-        public ActionResult EditarSistemasGenerales(Models.Registro sistemanuevo, string id_sistemaedit)
+        public ActionResult EditarSistema(Models.Registro sistemanuevo, string id_subsistemasedit)
         {
 
             SistemasBO sistemaeditado = new SistemasBO();
             SistemasBUSINESS cargador = new SistemasBUSINESS();
 
-            int id_sistema = Int32.Parse(id_sistemaedit);
+            int id_subsistema = Int32.Parse(id_subsistemasedit);
 
             sistemaeditado = sistemanuevo.SistemaExample;
-            cargador.EditarSistemaGeneral(id_sistema, sistemaeditado);
+            cargador.EditarSistema(id_subsistema, sistemaeditado);
+
+            return RedirectToAction("EditarSistemas", "Registro");
+        }
+
+
+
+
+        [HttpPost]
+        public ActionResult EditarModulo(Models.Registro sistemanuevo, string id_sistemaedit)
+        {
+
+            ModuloBO sistemaeditado = new ModuloBO();
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
+
+            int id_sistema = Int32.Parse(id_sistemaedit);
+
+            sistemaeditado = sistemanuevo.ModuloExample;
+            cargador.EditarModulo(id_sistema, sistemaeditado);
 
             return RedirectToAction("EditarSistemas", "Registro");
         }
@@ -142,36 +149,31 @@ namespace PrototipoMINVU.Controllers
 
 
         [HttpPost]
-        public ActionResult AgregarSistemaGeneral(Models.Registro sistema, string essubsistema) 
+        public ActionResult RegistraModuloSistema(Models.Registro sistema, string essistema) 
         {
+            ModuloBO modulo_aux = new ModuloBO();
             SistemasBO sistema_aux = new SistemasBO();
-            SubSistemasBO subsi_aux = new SubSistemasBO();
 
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
-
-            sistema_aux = sistema.SistemaExample;
-
-            
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
+            SistemasBUSINESS cargador2 = new SistemasBUSINESS();
 
 
-            sistema_aux.id_estado = sistema.id_Estado;
+            modulo_aux = sistema.ModuloExample;       
+            modulo_aux.id_estado = sistema.id_Estado;
 
-            if (essubsistema == null)
-                cargador.agregarsistema(sistema_aux);
+
+
+            if (essistema == null)
+                cargador.agregarmodulo(modulo_aux);
             else {
-                subsi_aux = sistema.SubSistemaExample;
+                sistema_aux = sistema.SistemaExample;
 
-                subsi_aux.NombreSubSistema = sistema.SistemaExample.NombreSistema;
-                subsi_aux.DescripcionSubSistema = sistema.SistemaExample.descripcion;
-                subsi_aux.id_estado = sistema.id_Estado;
-                subsi_aux.idAmbiente = sistema.SistemaExample.id_AMBIENTE;
+                sistema_aux.NombreSistema = sistema.ModuloExample.NombreSistema;
+                sistema_aux.DescripcionSistema = sistema.ModuloExample.descripcion;
+                sistema_aux.id_estado = sistema.id_Estado;
+                sistema_aux.idAmbiente = sistema.ModuloExample.id_AMBIENTE;
 
-                subsi_aux.idSistemaenlazado = sistema.id_sistemaenlazado;
-
-
-
-
-                cargador.agregarsubsistema(subsi_aux);
+                cargador2.agregarsistema(sistema_aux);
             }
 
 

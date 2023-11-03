@@ -32,7 +32,7 @@ namespace PrototipoMINVU.Controllers
             {
                 Models.Registro cargador = new Models.Registro();
 
-                cargador.CargaSistemas();
+                cargador.CargaModulos();
                 return View(cargador);
             }
             else
@@ -51,9 +51,9 @@ namespace PrototipoMINVU.Controllers
 
             Models.Registro cargador = new Models.Registro();
             cargador.id_reportesistema = id_reportesistema; 
-            cargador.CargaSubsistemasbyID(id_reportesistema);
+            cargador.CargaModulobyID(id_reportesistema);
 
-            cargador.GenerarReporteSistema(id_reportesistema);
+            cargador.GenerarReporteModulo(id_reportesistema);
 
 
 
@@ -101,7 +101,7 @@ namespace PrototipoMINVU.Controllers
         [HttpGet]
         public JsonResult ReporteSUBSISTEMAXVARIABLE(string control_select)
         {
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
 
             objLista = cargador.ReporteSUBSISTEMAXVARIABLE(control_select);
@@ -116,7 +116,7 @@ namespace PrototipoMINVU.Controllers
         [HttpGet]
         public JsonResult ReporteINTEEX()
         {
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
            
             objLista= cargador.ReporteINTEEX();
@@ -127,7 +127,7 @@ namespace PrototipoMINVU.Controllers
         [HttpGet]
         public JsonResult ReporteINTEIN()
         {
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
             objLista = cargador.ReporteINTEIN();      
             

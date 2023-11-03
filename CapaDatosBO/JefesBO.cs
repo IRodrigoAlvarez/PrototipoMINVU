@@ -20,7 +20,7 @@ namespace CapaDatosBO
 
         public string Descripcion { get; set; }
 
-        public List<SubSistemasBO> ListaJefesProyectos { get; set; }
+        public List<SistemasBO> ListaJefesProyectos { get; set; }
 
     }
 }

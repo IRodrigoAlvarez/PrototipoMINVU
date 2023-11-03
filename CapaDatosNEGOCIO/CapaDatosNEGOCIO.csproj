@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModulosBUSINESS.cs" />
     <Compile Include="SistemasBUSINESS.cs" />
-    <Compile Include="SubSistemasBUSINESS.cs" />
     <Compile Include="UsuarioBUSINESS.cs" />
   </ItemGroup>
   <ItemGroup>

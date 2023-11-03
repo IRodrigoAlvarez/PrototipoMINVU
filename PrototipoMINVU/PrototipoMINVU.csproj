@@ -216,8 +216,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Seguridad\Login.cshtml" />
     <Content Include="Views\Registro\EditarSistemas.cshtml" />
+    <Content Include="Views\Registro\FrmModulos.cshtml" />
     <Content Include="Views\Registro\FrmSistemas.cshtml" />
-    <Content Include="Views\Registro\FrmSubsistemas.cshtml" />
     <Content Include="Views\Registro\AgregarSistemas.cshtml" />
     <Content Include="Views\Control\ControlSistemas.cshtml" />
     <Content Include="Views\Control\ReporteSistemas.cshtml" />

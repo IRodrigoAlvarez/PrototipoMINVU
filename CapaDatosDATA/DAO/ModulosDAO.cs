@@ -8,53 +8,54 @@ using System.Web;
 
 namespace CapaDatosDATA.DAO
 {
-    public class SistemasDAO
+    public class ModulosDAO
     {
-        public List<SistemasBO> cargaSistemas()
+        public List<ModuloBO> cargaModulos()
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
-            List<SistemasBO> resultado = new List<SistemasBO>();           
+            List<ModuloBO> resultado = new List<ModuloBO>();           
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA(); 
+            ModulosDA Conexion = new ModulosDA(); 
             
-            ds=Conexion.obtenerSistemas();
+            ds=Conexion.obtenerModulos();
             
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 //Se llena la lista con los sistemas
-                SistemasBO sistema = new SistemasBO();
+                ModuloBO sistema = new ModuloBO();
 
-                sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
-                sistema.NombreSistema = r["nombre_sistema"].ToString();
-                sistema.descripcion = r["descripcion"].ToString();
+                sistema.idSistema = Int32.Parse(r["id_modulo"].ToString());
+                sistema.NombreSistema = r["nombre_modulo"].ToString();
+                sistema.descripcion = r["descripcion_modulo"].ToString();
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
+                sistema.id_estado = Int32.Parse(r["id_estado"].ToString());
 
-                if(sistema.idSistema > 0)
+                if (sistema.idSistema > 0)
                     resultado.Add(sistema);
             }
             return resultado;
         }
-        public List<SistemasBO> cargaSistemasby(int ambiente)
+        public List<ModuloBO> cargaModulosby(int ambiente)
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
 
-            List<SistemasBO> resultado = new List<SistemasBO>();
+            List<ModuloBO> resultado = new List<ModuloBO>();
 
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
 
-            ds = Conexion.ObtenerSistemabyAmbiente(ambiente);
+            ds = Conexion.ObtenerModulobyAmbiente(ambiente);
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 //Se llena la lista con los sistemas
-                SistemasBO sistema = new SistemasBO();
-                sistema.idSistema = Int32.Parse(r["id_sistema"].ToString());
-                sistema.NombreSistema = r["nombre_sistema"].ToString();
-                sistema.descripcion = r["descripcion"].ToString();
+                ModuloBO sistema = new ModuloBO();
+                sistema.idSistema = Int32.Parse(r["id_modulo"].ToString());
+                sistema.NombreSistema = r["nombre_modulo"].ToString();
+                sistema.descripcion = r["descripcion_modulo"].ToString();
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
                 resultado.Add(sistema);
             }
@@ -76,8 +77,8 @@ namespace CapaDatosDATA.DAO
             {
                 //Se llena la lista con los jefes de proyectos que Existen en la bddd
                 JefesBO estado = new JefesBO();
-                estado.idJefeProyecto = Int32.Parse(r["idJefe"].ToString());
-                estado.NombreJefeProyecto = r["nombreJefe"].ToString();
+                estado.idJefeProyecto = Int32.Parse(r["id_jefe"].ToString());
+                estado.NombreJefeProyecto = r["nombre_jefe"].ToString();
                 estado.RUT = Int32.Parse(r["rut"].ToString());
                 estado.Titulo = r["titulo"].ToString();
                 estado.Experiencia = r["experiencia"].ToString();
@@ -93,7 +94,7 @@ namespace CapaDatosDATA.DAO
             List<EstadosBO> resultado = new List<EstadosBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerEstados();
 
@@ -114,7 +115,7 @@ namespace CapaDatosDATA.DAO
             List<AmbienteBO> resultado = new List<AmbienteBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerAmbientes();
 
@@ -135,7 +136,7 @@ namespace CapaDatosDATA.DAO
             List<AreasBO> resultado = new List<AreasBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerAreas();
 
@@ -156,7 +157,7 @@ namespace CapaDatosDATA.DAO
             List<DataownerBO> resultado = new List<DataownerBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerDO();
 
@@ -165,7 +166,7 @@ namespace CapaDatosDATA.DAO
                 //Se llena la lista con los proyectos que tiene el sistema MUNIN
                 DataownerBO estado = new DataownerBO();
 
-                estado.idDataOwner = Int32.Parse(r["id_codigo"].ToString());
+                estado.idDataOwner = Int32.Parse(r["id_dataow"].ToString());
                 estado.nombre_data = r["nombre_origen"].ToString();
                 resultado.Add(estado);
             }
@@ -177,7 +178,7 @@ namespace CapaDatosDATA.DAO
             List<ControlBO> resultado = new List<ControlBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerControlAcceso();
 
@@ -198,7 +199,7 @@ namespace CapaDatosDATA.DAO
             List<AlcanceBO> resultado = new List<AlcanceBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerAlcance();
 
@@ -219,7 +220,7 @@ namespace CapaDatosDATA.DAO
             List<RegionBO> resultado = new List<RegionBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerRegiones();
 
@@ -240,7 +241,7 @@ namespace CapaDatosDATA.DAO
             List<LegacyBO> resultado = new List<LegacyBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerLegacy();
 
@@ -261,7 +262,7 @@ namespace CapaDatosDATA.DAO
             List<TipoSistemasBO> resultado = new List<TipoSistemasBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerTipoSistemas();
 
@@ -270,7 +271,7 @@ namespace CapaDatosDATA.DAO
                 //Se llena la lista con los proyectos que tiene el sistema MUNIN
                 TipoSistemasBO estado = new TipoSistemasBO();
 
-                estado.idTipoSistema = Int32.Parse(r["id_tiposi"].ToString());
+                estado.idTipoSistema = Int32.Parse(r["id_tiposistema"].ToString());
                 estado.TipoSistema = r["descripcion_tipo"].ToString();
                 resultado.Add(estado);
             }
@@ -282,7 +283,7 @@ namespace CapaDatosDATA.DAO
             List<TecnologiaBO> resultado = new List<TecnologiaBO>();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
             ds = Conexion.obtenerTecnologias();
 
@@ -298,42 +299,41 @@ namespace CapaDatosDATA.DAO
             return resultado;
 
         }
-        public SistemasBO TraeSistemabyid(int id_sistema) 
+        public ModuloBO TraeModulobyid(int id_sistema) 
         {
-            SistemasBO resultado = new SistemasBO();
+            ModuloBO resultado = new ModuloBO();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
-            ds = Conexion.TraeSistemabyid(id_sistema);
+            ds = Conexion.TraeModulobyid(id_sistema);
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
-                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                //Se llena la lista con los modulos que tiene el la base de datos
 
-                resultado.idSistema = Int32.Parse(r["id_sistema"].ToString());
-                resultado.NombreSistema = r["nombre_sistema"].ToString();
-
-                resultado.descripcion = r["descripcion"].ToString();
-                resultado.DescripcionEstado = r["descripcion_estado"].ToString();
+                resultado.idSistema = Int32.Parse(r["id_modulo"].ToString());
+                resultado.NombreSistema = r["nombre_modulo"].ToString();
+                resultado.id_estado = Int32.Parse(r["id_estado"].ToString());
+                resultado.descripcion = r["descripcion_modulo"].ToString();
                 resultado.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
                 resultado.AmbienteAlojado = r["nombre_ambiente"].ToString();
 
             }
             return resultado;
         }
-        public int obtenerMaxidtablasistemas() 
+        public int obtenerMaxidtablamodulos() 
         {
             int resultado = new int();
 
             DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
+            ModulosDA Conexion = new ModulosDA();
 
-            ds = Conexion.MaxIDsistemas();
+            ds = Conexion.MaxIDmodulos();
             
             foreach (DataRow r in ds.Tables[0].Rows)
             {
-                resultado = Int32.Parse(r["MAX(sistemas.id_sistema)"].ToString());
+                resultado = Int32.Parse(r["MAX(modulos.id_modulo)"].ToString());
             }
             return resultado;
 
@@ -344,32 +344,7 @@ namespace CapaDatosDATA.DAO
        
 
 
-        public List<ReporteGeneralBO> cargaSISTEMAXVARIABLE(string control_select)
-        {
-            List<ReporteGeneralBO> resultado = new List<ReporteGeneralBO>();
-
-            DataSet ds = new DataSet();
-            SistemasDA Conexion = new SistemasDA();
-
-            ds = Conexion.obtenerReporteSISTEMAXVARIABLE(control_select);
-
-            foreach (DataRow r in ds.Tables[0].Rows)
-            {
-                ReporteGeneralBO estado = new ReporteGeneralBO();
-
-                estado.idReporte = Int32.Parse(r["idY"].ToString());
-                estado.LabelEjeX = r["etiquetaX"].ToString();
-
-                estado.IdEjeY = Int32.Parse(r["idX"].ToString());
-                estado.LabelEjeY = r["etiquetaY"].ToString();
-
-
-
-                resultado.Add(estado);
-            }
-            return resultado;
-
-        }
+      
 
 
 

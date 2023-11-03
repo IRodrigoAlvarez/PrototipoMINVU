@@ -13,33 +13,36 @@ namespace PrototipoMINVU.Models
 
 
         public int  id_Estado { get; set; }
-        public int id_sistemaenlazado { get; set; }
 
         public int id_reportesistema { get; set; }
 
         public string DescripcionEstado { get; set; }
-        public List<SistemasBO> ListaSistemas { get; set; }
+        public List<ModuloBO> ListaModulos { get; set; }
 
-        public List<SistemasBO> ListaSistemasP { get; set; }
-        public List<SistemasBO> ListaSistemasD { get; set; }
-        public List<SistemasBO> ListaSistemasT { get; set; }
-        public SubSistemasBO SubSistemaExample { get; set; }
+        public List<ModuloBO> ListaSistemasP { get; set; }
+        public List<ModuloBO> ListaSistemasD { get; set; }
+        public List<ModuloBO> ListaSistemasT { get; set; }
+
+
 
         public SistemasBO SistemaExample { get; set; }
 
-        public List<SistemasBO> ListaSistemasEnlazados { get; set; }
+
+        public ModuloBO ModuloExample { get; set; }
 
 
-        // TABLA SUBSISTEMAS
         public int idAmbiente { get; set; }
-        public int idDataOwner { get; set; }
 
 
         public List<AmbienteBO> ListaAmbientes { get; set; }
         public List<DataownerBO> ListaDO { get; set; }
         public List<AreasBO> ListaAreas { get; set; }
         public List<EstadosBO> ListaEstados { get; set; }
-        public List<SubSistemasBO> ListaSubSistemas { get; set; }
+
+
+
+        public List<SistemasBO> ListaSistemas { get; set; }
+
         public List<JefesBO> ListaJefesProyectos { get; set; }
 
         public List<ControlBO> ListaControlAcceso { get; set; }
@@ -51,37 +54,31 @@ namespace PrototipoMINVU.Models
         public List<AlcanceBO> ListaAlcance { get; set; }
 
 
-        public int Costo_Proyecto { get; set; }
-        public int Presupuesto { get; set; }
-        public string Descripcion { get; set; }
-        public string Nombre_dueñodatos { get; set; }
 
-
-
-        public void CargaSistemas()
+        public void CargaModulos()
         {
-            SistemasBO sis_Minvu = new SistemasBO();
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            ModuloBO sis_Minvu = new ModuloBO();
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
             AmbienteBO ambientes = new AmbienteBO();
 
 
 
 
-            SistemaExample = sis_Minvu;
+            ModuloExample = sis_Minvu;
 
             // Se le cargan los sistemas a la variable declarada.            
-            sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
+            sis_Minvu.ListaModulos = cargador.obtenerModulos();
 
             ambientes.ListaAmbientes = cargador.obtenerAmbientes();
             ListaAmbientes = ambientes.ListaAmbientes;
 
             // se obtienen las listas de los sistemas en produccion, desarrollo y testing respectivamente
-            sis_Minvu.ListaSistemasP = cargador.obtenerSistemasby(3);
-            sis_Minvu.ListaSistemasD = cargador.obtenerSistemasby(1);
-            sis_Minvu.ListaSistemasT = cargador.obtenerSistemasby(2);
+            sis_Minvu.ListaSistemasP = cargador.obtenerModulosby(3);
+            sis_Minvu.ListaSistemasD = cargador.obtenerModulosby(1);
+            sis_Minvu.ListaSistemasT = cargador.obtenerModulosby(2);
 
 
-            ListaSistemas = sis_Minvu.ListaSistemas;
+            ListaModulos = sis_Minvu.ListaModulos;
             ListaSistemasP = sis_Minvu.ListaSistemasP;
             ListaSistemasD = sis_Minvu.ListaSistemasD;
             ListaSistemasT = sis_Minvu.ListaSistemasT;
@@ -91,15 +88,15 @@ namespace PrototipoMINVU.Models
            
         }
 
-        public void CargaSubSistemas()
+        public void CargaSistemas()
         {
-            SubSistemasBO sis_Minvu = new SubSistemasBO();
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBO sis_Minvu = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
 
 
-            sis_Minvu.ListaSubSistemas = cargador.obtenerSubSistemas();
+            sis_Minvu.ListaSistemas = cargador.obtenerSistemas();
 
-            ListaSubSistemas = sis_Minvu.ListaSubSistemas;
+            ListaSistemas = sis_Minvu.ListaSistemas;
         }
 
         public void CargarCombos() 
@@ -107,7 +104,7 @@ namespace PrototipoMINVU.Models
             EstadosBO estadosBO = new EstadosBO();
             AreasBO areas = new AreasBO();
             AmbienteBO ambientes = new AmbienteBO();
-            SistemasBO sis_Minvu = new SistemasBO();
+            ModuloBO sis_Minvu = new ModuloBO();
             DataownerBO dueño_datos = new DataownerBO();
             ControlBO control = new ControlBO();
             AlcanceBO alcance = new AlcanceBO();
@@ -116,7 +113,7 @@ namespace PrototipoMINVU.Models
             TipoSistemasBO tiposistema = new TipoSistemasBO();
             TecnologiaBO tipotecnologia = new TecnologiaBO();
 
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
 
 
 
@@ -161,50 +158,64 @@ namespace PrototipoMINVU.Models
 
         }
 
-        public void CargaSubsistemasbyID(int id_sistema)
+        public void CargaSistemasbyID(int id_sistema)
         {
-            SubSistemasBO subsis = new SubSistemasBO();
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBO subsis = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
-            subsis.ListaSubSistemas = cargador.obtenerSubSistemasbyID(id_sistema);
-            ListaSubSistemas = subsis.ListaSubSistemas;
+            subsis.ListaSistemas = cargador.obtenerSistemasbyID(id_sistema);
+            ListaSistemas = subsis.ListaSistemas;
 
         }
       
-        public void CargaSistemabyID(int id_sistema) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void CargaModulobyID(int id_sistema) 
         {
-            SistemasBO sis_Minvu = new SistemasBO();
-            SistemasBUSINESS cargadorSistemas = new SistemasBUSINESS();
+            ModuloBO sis_Minvu = new ModuloBO();
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
 
 
-            sis_Minvu = cargadorSistemas.obtenerSistemasbyID(id_sistema);
-            SistemaExample = sis_Minvu;
+            sis_Minvu = cargador.obtenerModulobyID(id_sistema);
+            ModuloExample = sis_Minvu;
 
-            CargaSubsistemasbyID(id_sistema);
+            //CargaSubsistemasbyID(id_sistema);
 
         }
 
-        public void TraeCaractersticasSubSistema(int id_subsistema)
+        public void TraeCaractersticasSistema(int id_sistema)
         {
 
-            SubSistemasBO subsistema = new SubSistemasBO();
-            SubSistemasBUSINESS cargador = new SubSistemasBUSINESS();
+            SistemasBO sistema = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
-            subsistema = cargador.TraeCaracteristicasSubsistema(id_subsistema);
-            SubSistemaExample = subsistema;
+            sistema = cargador.TraeCaracteristicasSistema(id_sistema);
+            SistemaExample = sistema;
 
         }
 
-        public void GenerarReporteSistema(int reportesistema)
+        public void GenerarReporteModulo(int reportesistema)
         {
-            SistemasBO sis_Minvu = new SistemasBO();
-            SistemasBUSINESS cargadorSistemas = new SistemasBUSINESS();
+            ModuloBO sis_Minvu = new ModuloBO();
+            ModulosBUSINESS cargadorSistemas = new ModulosBUSINESS();
 
-            sis_Minvu = cargadorSistemas.obtenerSistemasbyID(reportesistema);
+            sis_Minvu = cargadorSistemas.obtenerModulobyID(reportesistema);
 
-           SistemaExample =  sis_Minvu;      
+           ModuloExample =  sis_Minvu;      
 
 
 

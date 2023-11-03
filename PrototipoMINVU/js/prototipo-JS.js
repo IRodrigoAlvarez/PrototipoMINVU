@@ -4,7 +4,7 @@ function GenerarListaAmbiente() {
 
     let IDseleccion = document.getElementById("idAmbiente").value;
     $("#textindexregistro").hide();
-    $("#tablaSISTEMAS").hide();
+    $("#tablaMODULOS").hide();
 
     if (IDseleccion == 1) {
         $("#tablaSISTEMASenproduccion").hide();
