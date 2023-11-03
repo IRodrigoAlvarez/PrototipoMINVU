@@ -25,11 +25,11 @@ namespace CapaDatosNEGOCIO
         }
 
 
-        public SistemasBO TraeCaracteristicasSistema(int id_subsistema)
+        public SistemasBO TraeCaracteristicasSistema(int id_sistema)
         {
             //se cargan los sistemas en la capa de datos DAO
             CapaDatosDATA.DAO.SistemaDAO back_usuario = new CapaDatosDATA.DAO.SistemaDAO();
-            return back_usuario.CaracteristicasSistema(id_subsistema);
+            return back_usuario.CaracteristicasSistema(id_sistema);
 
         }
 
@@ -44,11 +44,6 @@ namespace CapaDatosNEGOCIO
             back_usuario.EditarSistema(idsistema, SistemaNuevo);
 
         }
-
-
-
-
-
 
 
         public void agregarsistema(SistemasBO sistema)

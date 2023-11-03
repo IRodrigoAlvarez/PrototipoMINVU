@@ -264,7 +264,7 @@ namespace CapaDatosDATA.DA
                 comando.Parameters.Add(URLdatos);
 
                 MySqlParameter costosistema = new MySqlParameter("@costosistema", MySqlDbType.Int32);
-                costosistema.Value = Int32.Parse(sistema.CostoSistema);
+                costosistema.Value = sistema.CostoSistema;
                 comando.Parameters.Add(costosistema);
 
                 
@@ -355,7 +355,6 @@ namespace CapaDatosDATA.DA
 
             return ds;
         }
-
 
 
         public DataSet obtenerReporteINTEGRACIONES()

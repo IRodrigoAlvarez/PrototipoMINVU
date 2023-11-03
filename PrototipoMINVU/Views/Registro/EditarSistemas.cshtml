@@ -72,6 +72,8 @@
                                                         <th>Código Sistema</th>
                                                         <th>Nombre Sistema</th>
                                                         <th>Estado Sistema</th>
+                                                        <th>Ambiente Sistema</th>
+
                                                         <th>Editar</th>
                                                     </tr>
                                                 </thead>
@@ -80,23 +82,24 @@
                                                     {
                                                         foreach (var item in Model.ListaSistemas)
                                                         {
-                                                            <tr>
-                                                                <td class="id">@item.id_sistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.EstadoSistema</td>
-                                                                <td class="id">
+                                                        <tr>
+                                                            <td class="id">@item.id_sistema</td>
+                                                            <td>@item.NombreSistema</td>
+                                                            <td>@item.EstadoSistema</td>
+                                                            <td>@item.AmbienteAlojado</td>
+                                                            <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />                                                                       
+                                                                @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                {
+                                                                    <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
+                                                                    <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
 
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                                    <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
-                                                                    }
-                                                                </td>
+                                                                }
+                                                            </td>
 
-                                                            </tr>
+                                                        </tr>
                                                         }
                                                     }
                                                 </tbody>

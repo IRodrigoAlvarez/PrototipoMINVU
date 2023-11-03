@@ -17,7 +17,7 @@ namespace CapaDatosBO
         public string URLinicio { get; set; }
         public string URLdatos { get; set; }
         public string DecretoAfecto { get; set; }
-        public string CostoSistema { get; set; }
+        public int CostoSistema { get; set; }
 
 
         public int id_estado { get; set; }

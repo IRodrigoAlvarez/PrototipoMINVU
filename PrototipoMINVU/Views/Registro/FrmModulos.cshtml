@@ -25,45 +25,47 @@
                                                 <div class="card shadow formAddproy">
                                                     <div class="row rowNorm">                                                       
                                                         <div class="font_registro">
+                                                            <h2><center> Editar un Modulo de sistemas</center></h2>
+                                                            <hr />
                                                             @using (Html.BeginForm("EditarModulo", "Registro", FormMethod.Post, new { @class = "user" }))
                                                             {
                                                                 <input type="hidden" value="@Session["ID_MODULO"]" name="id_sistemaedit" />
                                                                 <div class="row">
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-5" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.ModuloExample.NombreSistema, "Nombre Módulo:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-8">
+                                                                        <div class="col-lg-7">
                                                                             @Html.TextBoxFor(m => m.ModuloExample.NombreSistema, new { @class = "form-control" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-5" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.ModuloExample.AmbienteAlojado, "Ambiente del módulo:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-7">
                                                                             @Html.DropDownListFor(m => m.ModuloExample.id_AMBIENTE, new SelectList(Model.ListaAmbientes, "idAmbiente", "DescripcionAmbiente"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class = "form-select", @type = "text" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-5" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.ModuloExample.DescripcionEstado, "Estado del Modulo:")</b>
                                                                         </div>
-                                                                        <div class="col-lg-4">
+                                                                        <div class="col-lg-7">
                                                                             @Html.DropDownListFor(m => m.ModuloExample.id_estado, new SelectList(Model.ListaEstados, "idEstado", "DescripcionEstado"), "Seleccione Ambiente del sistema", new { @id = "idAmbiente", @class = "form-select", @type = "text" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-3" style="text-align:end;">
+                                                                        <div class="col-lg-5" style="text-align:end;">
                                                                             <b>@Html.LabelFor(m => m.ModuloExample.descripcion, "Descripción del módulo: ")</b>
 
                                                                         </div>
-                                                                        <div class="col-lg-8">
+                                                                        <div class="col-lg-7">
                                                                             @Html.TextAreaFor(m => m.ModuloExample.descripcion, new { @rows = "4", @cols = "100", @class = "form-control", @name = "descripcion" })
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-lg-9">
+                                                                        <div class="col-lg-8">
                                                                         </div>
                                                                         <div class="col-lg-3">
                                                                             <input type="submit" value="ACEPTAR" />
@@ -74,7 +76,7 @@
                                                             }
 
                                                             <br />
-                                                        
+
                                                         </div>                                                        
                                                     </div>
                                                     <br />

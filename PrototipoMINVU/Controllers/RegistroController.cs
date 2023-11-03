@@ -112,16 +112,16 @@ namespace PrototipoMINVU.Controllers
         // Funciones backen para la carga o visualización de datos.
         [HttpPost]
 
-        public ActionResult EditarSistema(Models.Registro sistemanuevo, string id_subsistemasedit)
+        public ActionResult EditarSistema(Models.Registro sistemanuevo, string id_sistemasedit)
         {
 
             SistemasBO sistemaeditado = new SistemasBO();
             SistemasBUSINESS cargador = new SistemasBUSINESS();
 
-            int id_subsistema = Int32.Parse(id_subsistemasedit);
+            int id_sistema = Int32.Parse(id_sistemasedit);
 
             sistemaeditado = sistemanuevo.SistemaExample;
-            cargador.EditarSistema(id_subsistema, sistemaeditado);
+            cargador.EditarSistema(id_sistema, sistemaeditado);
 
             return RedirectToAction("EditarSistemas", "Registro");
         }

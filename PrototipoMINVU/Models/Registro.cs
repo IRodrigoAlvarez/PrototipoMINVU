@@ -168,18 +168,7 @@ namespace PrototipoMINVU.Models
             ListaSistemas = subsis.ListaSistemas;
 
         }
-      
-
-
-
-
-
-
-
-
-
-
-
+     
 
 
 
@@ -216,8 +205,6 @@ namespace PrototipoMINVU.Models
             sis_Minvu = cargadorSistemas.obtenerModulobyID(reportesistema);
 
            ModuloExample =  sis_Minvu;      
-
-
 
         }
 

@@ -55,6 +55,8 @@ namespace CapaDatosDATA.DAO
 
                 sistema.id_sistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
+                sistema.EstadoSistema = r["descripcion_estado"].ToString();
+                sistema.AmbienteAlojado = r["nombre_ambiente"].ToString();
 
                 if (sistema.id_sistema != 0)
                     resultado.Add(sistema);
@@ -85,7 +87,9 @@ namespace CapaDatosDATA.DAO
 
                 sistema.URLinicio = r["URLinicio"].ToString();
                 sistema.URLdatos = r["URLdatos"].ToString();
-                sistema.CostoSistema = r["costo_sistema"].ToString();
+                sistema.CostoSistema = Int32.Parse(r["costo_sistema"].ToString());
+
+
                 sistema.DescripcionSistema = r["descripcion_sistema"].ToString();
                 sistema.DecretoAfecto = r["decreto_afecto"].ToString();
 
