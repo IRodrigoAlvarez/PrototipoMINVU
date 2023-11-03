@@ -1,11 +1,7 @@
 ﻿using CapaDatosBO;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-
 namespace CapaDatosDATA.DA
 {
     public class SistemasDA
