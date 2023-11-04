@@ -82,7 +82,7 @@ namespace PrototipoMINVU.Controllers
 
 
 
-        // CONTROL PARA LOS SISTEMAS (AMBIENTE Y ESTADO)
+        // CONTROL PARA LOS SISTEMAS Y SUS CARACTERISTICAS.
 
         [HttpGet]
         public JsonResult ReporteSISTEMAXVARIABLE(string control_select)
@@ -96,10 +96,10 @@ namespace PrototipoMINVU.Controllers
         }
 
 
-        // CONTROL PARA LOS SUBSISTEMAS (Caracteristicas generales, depende del parámetro "control_select")
+        // CONTROL PARA LOS MODULOS (Caracteristicas generales, depende del parámetro "control_select")
 
         [HttpGet]
-        public JsonResult ReporteSUBSISTEMAXVARIABLE(string control_select)
+        public JsonResult ReporteMODULOXVARIABLE(string control_select)
         {
             SistemasBUSINESS cargador = new SistemasBUSINESS();
             List<ReporteGeneralBO> objLista = new List<ReporteGeneralBO>();
@@ -137,7 +137,25 @@ namespace PrototipoMINVU.Controllers
 
 
 
+        public ActionResult MapaIntegraciones()
+        {
+            // Genera el código SVG y configura el modelo.
+            string svgContent = @"<svg width=""800"" height=""600"" xmlns=""http://www.w3.org/2000/svg"">
+                             <!-- Dibuja sistemas -->
+                             <circle cx=""100"" cy=""100"" r=""50"" fill=""blue"" />
+                             <circle cx=""300"" cy=""100"" r=""50"" fill=""red"" />
+                             
+                             <!-- Dibuja flechas de conexión -->
+                             <line x1=""150"" y1=""100"" x2=""250"" y2=""100"" stroke=""black"" />
+                          </svg>";
 
+            var model = new Models.Registro()
+            {
+                SVGContent = svgContent
+            };
+
+            return View(model);
+        }
 
 
     }

@@ -48,12 +48,6 @@ namespace PrototipoMINVU.Controllers
 
 
         // ---------------------FUNCIONES BACKEND PARA EL FUNCIONAMIENTO DEL SISTEMA.
-
-
-
-
-
-
         [HttpPost]
         public ActionResult FrmModulos(string id_sistemasedit, string nombre_sistemasedit)
         {

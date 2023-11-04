@@ -223,6 +223,7 @@
     <Content Include="Views\Control\ReporteSistemas.cshtml" />
     <Content Include="Views\Control\ReportePDF.cshtml" />
     <Content Include="Views\Seguridad\CambiaPass.cshtml" />
+    <Content Include="Views\Control\MapaIntegraciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

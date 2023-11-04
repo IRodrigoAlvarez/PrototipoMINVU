@@ -11,27 +11,26 @@ namespace PrototipoMINVU.Models
     public class Registro
     {
 
+        public string SVGContent { get; set; }
 
         public int  id_Estado { get; set; }
 
         public int id_reportesistema { get; set; }
 
-        public string DescripcionEstado { get; set; }
         public List<ModuloBO> ListaModulos { get; set; }
-
-        public List<ModuloBO> ListaSistemasP { get; set; }
-        public List<ModuloBO> ListaSistemasD { get; set; }
-        public List<ModuloBO> ListaSistemasT { get; set; }
-
-
-
+    
         public SistemasBO SistemaExample { get; set; }
-
-
         public ModuloBO ModuloExample { get; set; }
 
+        public string DescripcionEstado { get; set; }
 
         public int idAmbiente { get; set; }
+
+
+
+
+
+
 
 
         public List<AmbienteBO> ListaAmbientes { get; set; }
@@ -52,6 +51,10 @@ namespace PrototipoMINVU.Models
         public List<LegacyBO> ListaLegacy { get; set; }
         public List<TipoSistemasBO> ListaTipoSistemas { get; set; }
         public List<AlcanceBO> ListaAlcance { get; set; }
+
+        public List<ModuloBO> ListaSistemasP { get; set; }
+        public List<ModuloBO> ListaSistemasD { get; set; }
+        public List<ModuloBO> ListaSistemasT { get; set; }
 
 
 
@@ -158,20 +161,6 @@ namespace PrototipoMINVU.Models
 
         }
 
-        public void CargaSistemasbyID(int id_sistema)
-        {
-            SistemasBO subsis = new SistemasBO();
-            SistemasBUSINESS cargador = new SistemasBUSINESS();
-            // Se le cargan los sistemas a la variable declarada.
-
-            subsis.ListaSistemas = cargador.obtenerSistemasbyID(id_sistema);
-            ListaSistemas = subsis.ListaSistemas;
-
-        }
-     
-
-
-
         public void CargaModulobyID(int id_sistema) 
         {
             ModuloBO sis_Minvu = new ModuloBO();
@@ -185,6 +174,20 @@ namespace PrototipoMINVU.Models
 
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void TraeCaractersticasSistema(int id_sistema)
         {
 
@@ -196,6 +199,8 @@ namespace PrototipoMINVU.Models
             SistemaExample = sistema;
 
         }
+
+
 
         public void GenerarReporteModulo(int reportesistema)
         {
@@ -209,6 +214,25 @@ namespace PrototipoMINVU.Models
         }
 
 
+
+
+
+
+
+
+
+
+
+        public void CargaSistemasbyID(int id_sistema)
+        {
+            SistemasBO subsis = new SistemasBO();
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
+            // Se le cargan los sistemas a la variable declarada.
+
+            subsis.ListaSistemas = cargador.obtenerSistemasbyID(id_sistema);
+            ListaSistemas = subsis.ListaSistemas;
+
+        }
 
     }
 }

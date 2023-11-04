@@ -554,13 +554,39 @@ namespace CapaDatosDATA.DA
 
 
                 if (control_select == "sistemas_ambiente")
-                    sp_validausuario = "PSM_REPORTESISTEMASAMBIENTE";
+                    sp_validausuario = "PSM_GRAFICO_AMBIENTE";
 
                 if (control_select == "sistemas_estado")
-                    sp_validausuario = "PSM_REPORTESISTEMASESTADOS";
+                    sp_validausuario = "PSM_GRAFICO_ESTADO";
 
-                if (control_select == "subsistemas_sistema")
-                    sp_validausuario = "PSM_REPORTESISTEMASSUBSI";
+                if (control_select == "sistemas_area")
+                    sp_validausuario = "PSM_GRAFICO_AREAS";
+
+                if (control_select == "sistemas_tecnologia")
+                    sp_validausuario = "PSM_GRAFICO_TECNOLOGIA";
+
+                if (control_select == "sistemas_tiposistema")
+                    sp_validausuario = "PSM_GRAFICO_TIPOSI";
+
+                if (control_select == "sistemas_region")
+                    sp_validausuario = "PSM_GRAFICO_REGION";
+
+                if (control_select == "sistemas_jefe")
+                    sp_validausuario = "PSM_GRAFICO_JEFE";
+
+                if (control_select == "sistemas_control")
+                    sp_validausuario = "PSM_GRAFICO_CONTROL";
+
+                if (control_select == "sistemas_alcance")
+                    sp_validausuario = "PSM_GRAFICO_ALCANCE";
+
+                if (control_select == "sistemas_legacy")
+                    sp_validausuario = "PSM_GRAFICO_LEGACY";
+
+                if (control_select == "sistemas_data")
+                    sp_validausuario = "PSM_GRAFICO_DATAOW";
+              
+
 
 
                 MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);

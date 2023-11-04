@@ -57,30 +57,34 @@
                                 <optgroup label="--CONTROL SISTEMAS.--">
                                     <option value="sistemas_ambiente">Sistemas X Ambiente.</option>
                                     <option value="sistemas_estado">Sistemas X Estado.</option>
-                                    <option value="subsistemas_sistema">Subsistemas X Sistema General.</option>
+
+
+                                    <option value="sistemas_modulos">Sistemas X Módulos.</option>
+
+
+                                    <option value="sistemas_tecnologia">Sistemas X Tipo de Tecnología.</option>
+                                    <option value="sistemas_area">Sistemas X Area.</option>
+                                    <option value="sistemas_data">Sistemas X Dueño de los datos.</option>
+                                    <option value="sistemas_tiposistema">Sistemas X Tipo de Sistema.</option>
+                                    <option value="sistemas_region">Sistemas X Región.</option>
+                                    <option value="sistemas_jefe">Sistemas X Jefe Proyecto.</option>
+                                    <option value="sistemas_control">Sistemas X Control Acceso.</option>
+                                    <option value="sistemas_alcance">Sistemas X Alcance.</option>
+                                    <option value="sistemas_legacy">Sistemas Heredados (Legacy).</option>
 
                                 </optgroup>
 
-                                <optgroup label="--CONTROL SUBSISTEMAS.--">
+                                <optgroup label="--CONTROL MODULOS.--">
 
-                                    <option value="subsistemas_ambiente">Subsistemas X por Ambiente.</option>
-                                    <option value="subsistemas_estado">Subsistemas X Estado.</option>
-
-                                    <option value="subsistemas_tecnologia">Subsistemas X Tipo de Tecnología.</option>
-                                    <option value="subsistemas_area">Subsistemas X Area.</option>
-                                    <option value="subsistemas_data">Subsistemas X Dueño de los datos.</option>
-                                    <option value="subsistemas_tiposistema">Subsistemas X Tipo de Sistema.</option>
-                                    <option value="subsistemas_region">Subsistemas X Región.</option>
-                                    <option value="subsistemas_jefe">Subsistemas X Jefe Proyecto.</option>
-                                    <option value="subsistemas_control">Subsistemas X Control Acceso.</option>
-                                    <option value="subsistemas_alcance">Subsistemas X Alcance.</option>
-                                    <option value="subsistemas_legacy">Subsistemas Heredados (Legacy).</option>
-
+                                    <option value="sistemas_ambiente">Módulos X por Ambiente.</option>
+                                    <option value="sistemas_estado">Módulos X Estado.</option>
 
                                 </optgroup>
 
                                 <optgroup label="--CONTROL INTEGRACIONES.--">
-                                    <option value="integraciones_subsistemas">Integraciones de Entidades X subsistema.</option>
+                                    <option value="integraciones_sistemas">Tipo de integración X Sistema.</option>
+                                    <option value="integraciones_sistemas">Tipo de integración X Módulo.</option>
+
                                 </optgroup>
                             </select>
                         </div>
@@ -123,6 +127,16 @@
                             </div>
                         </div>
 
+
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <p>Tu contenido HTML aquí.</p>
+                            <div id="svgContainer">
+                                @Html.Raw(Model.SVGContent)
+                            </div>
+                        </div>
 
                     </div>
 
@@ -176,740 +190,130 @@
 
 
             // CREADOR DE LOS GRÁFICOS de control de sistemas.
+            $.ajax({
+                url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
+                type: "GET",
+                data: { control_select: IDseleccion },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    const labelCantidadMap = {};
 
-            if (IDseleccion === "subsistemas_sistema") {
-                $.ajax({
-                    url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
-                    type: "GET",
-                    data: { control_select: IDseleccion },
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        const labelCantidadMap = {};
+                    data.forEach(item => {
+                        const labelX = item.LabelEjeX;
+                        const labelY = item.LabelEjeY;
 
-                        data.forEach(item => {
-                            const labelX = item.LabelEjeX;
-                            const labelY = item.LabelEjeY;
-
-                            // Ignorar elementos con LabelEjeY igual a "Sin información"
-                            if (labelY !== "Sin información") {
-                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                if (labelX !== "Sin información") {
-                                    const label = labelX;
-                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                }
+                        // Ignorar elementos con LabelEjeY igual a "Sin información"
+                        if (labelY !== "Sin información") {
+                            // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
+                            if (labelX !== "Sin información") {
+                                const label = labelX;
+                                labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
                             }
-                        });
-
-                        const arrayLabels = Object.keys(labelCantidadMap);
-                        const arrayCantidad = Object.values(labelCantidadMap);
-
-                        const controlBar1 = document.getElementById("myBarChart");
-                        const controlPie1 = document.getElementById("myPieChart");
-
-                        // Define un array de colores para las barras
-                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-
-                        // GRÁFICO DE BARRA
-                        new Chart(controlBar1, {
-                            type: 'bar',
-                            data: {
-                                labels: arrayLabels,
-                                datasets: [{
-                                    label: "N° SubSistemas Enlazados",
-                                    backgroundColor: barColors,  // Asigna los colores a las barras
-                                    borderColor: "#000000",
-                                    borderWidth: 0,
-                                    data: arrayCantidad
-                                }],
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: 'N° de Subsistemas enlazados según Sistema General' // Aquí puedes ingresar el título que desees
-                                },
-                                scales: {
-                                    xAxes: [{
-                                        gridLines: {
-                                            display: false
-                                        },
-                                        ticks: {
-                                            maxTicksLimit: arrayLabels.length,
-                                        },
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Sistemas Generales'
-                                        }
-                                    }],
-                                    yAxes: [{
-                                        ticks: {
-                                            min: 0,
-                                            max: Math.max(...arrayCantidad),
-                                            maxTicksLimit: 10,
-                                        },
-                                        gridLines: {
-                                            display: true,
-                                        },
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Subsistemas registrados'
-                                        }
-                                    }],
-                                },
-                                legend: {
-                                    display: false
-                                }
-                            }
-                        });
-
-                        // GRÁFICO DE TORTA
-                        new Chart(controlPie1, {
-                            type: 'pie',
-                            data: {
-                                labels: arrayLabels,
-                                datasets: [{
-                                    data: arrayCantidad,
-                                    backgroundColor: barColors
-                                }]
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: 'N° de Subsistemas enlazados según Sistema General' // Aquí puedes ingresar el título que desees
-                                }
-                            },
-                            tooltips: {
-                                callbacks: {
-                                    label: function (tooltipItem, data) {
-                                        var dataset = data.datasets[0];
-                                        var label = data.labels[tooltipItem.index];
-                                        var value = dataset.data[tooltipItem.index];
-                                        return label + ': ' + value; // Personaliza la etiqueta del tooltip
-                                    }
-                                }
-                            }
-
-                        });
-                               
-                    }
-                });
-            }
-            else
-            {
-                if (IDseleccion === "sistemas_ambiente") {
-                    $.ajax({
-                        url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
-                        type: "GET",
-                        data: { control_select: IDseleccion },
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-                            const labelCantidadMap = {};
-
-                            data.forEach(item => {
-                                const labelX = item.LabelEjeX;
-                                const labelY = item.LabelEjeY;
-
-                                // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                if (labelY !== "Sin información") {
-                                    // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                    if (labelX !== "Sin información") {
-                                        const label = labelX;
-                                        labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                    }
-                                }
-                            });
-
-                            const arrayLabels = Object.keys(labelCantidadMap);
-                            const arrayCantidad = Object.values(labelCantidadMap);
-
-                            const controlBar1 = document.getElementById("myBarChart");
-
-                            // Define un array de colores para las barras
-                            const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                            new Chart(controlBar1, {
-                                type: 'bar',
-                                data: {
-                                    labels: arrayLabels,
-                                    datasets: [{
-                                        label: "N° de Sistemas",
-                                        backgroundColor: barColors,  // Asigna los colores a las barras
-                                        borderColor: "#000000",
-                                        borderWidth: 0,
-                                        data: arrayCantidad
-                                    }],
-                                },
-                                options: {
-                                    title: {
-                                        display: true,
-                                        text: 'N° de Sistemas enlazados según Ambiente alojado' // Aquí puedes ingresar el título que desees
-                                    },
-                                    scales: {
-                                        xAxes: [{
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                maxTicksLimit: arrayLabels.length,
-                                            },
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Tipos de Ambientes Registrados'
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            ticks: {
-                                                min: 0,
-                                                max: Math.max(...arrayCantidad),
-                                                maxTicksLimit: 10,
-                                            },
-                                            gridLines: {
-                                                display: true,
-                                            },
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Sistemas Registrados'
-                                            }
-                                        }],
-                                    },
-                                    legend: {
-                                        display: false
-                                    }
-                                }
-                            });
                         }
                     });
-                }
-                else {
-                    if (IDseleccion === "sistemas_estado") {
-                        $.ajax({
-                            url: '@Url.Action("ReporteSISTEMAXVARIABLE", "Control")',
-                            type: "GET",
-                            data: { control_select: IDseleccion },
-                            dataType: "json",
-                            contentType: "application/json; charset=utf-8",
-                            success: function (data) {
-                                const labelCantidadMap = {};
 
-                                data.forEach(item => {
-                                    const labelX = item.LabelEjeX;
-                                    const labelY = item.LabelEjeY;
+                    const arrayLabels = Object.keys(labelCantidadMap);
+                    const arrayCantidad = Object.values(labelCantidadMap);
 
-                                    // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                    if (labelY !== "Sin información") {
-                                        // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                        if (labelX !== "Sin información") {
-                                            const label = labelX;
-                                            labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                        }
-                                    }
-                                });
+                    const controlBar1 = document.getElementById("myBarChart");
+                    const controlPie1 = document.getElementById("myPieChart");
 
-                                const arrayLabels = Object.keys(labelCantidadMap);
-                                const arrayCantidad = Object.values(labelCantidadMap);
+                    // Define un array de colores para las barras
+                    const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
 
-                                const controlBar1 = document.getElementById("myBarChart");
+                    var partes = IDseleccion.split("_");
+                    var estado = partes[1];
 
-                                // Define un array de colores para las barras
-                                const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
+                    if (estado === "data")
+                        estado = "Dueño de los datos";
 
-                                var arreglo = IDseleccion.split("_");
-
-                                new Chart(controlBar1, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: arrayLabels,
-                                        datasets: [{
-                                            label: "N° de Sistemas",
-                                            backgroundColor: barColors,  // Asigna los colores a las barras
-                                            borderColor: "#000000",
-                                            borderWidth: 0,
-                                            data: arrayCantidad
-                                        }],
+                    // GRÁFICO DE BARRA
+                    new Chart(controlBar1, {
+                        type: 'bar',
+                        data: {
+                            labels: arrayLabels,
+                            datasets: [{
+                                label: "N° Sistemas ",
+                                backgroundColor: barColors,  // Asigna los colores a las barras
+                                borderColor: "#000000",
+                                borderWidth: 0,
+                                data: arrayCantidad
+                            }],
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
+                            },
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        display: false
                                     },
-                                    options: {
-                                        title: {
-                                            display: true,
-                                            text: 'N° de Sistemas enlazados según tipo de Estado' // Aquí puedes ingresar el título que desees
-                                        },
-                                        scales: {
-                                            xAxes: [{
-                                                gridLines: {
-                                                    display: false
-                                                },
-                                                ticks: {
-                                                    maxTicksLimit: arrayLabels.length,
-                                                },
-                                                scaleLabel: {
-                                                    display: true,
-                                                    labelString: 'Tipos de ' + arreglo[1]
-                                                }
-                                            }],
-                                            yAxes: [{
-                                                ticks: {
-                                                    min: 0,
-                                                    max: Math.max(...arrayCantidad),
-                                                    maxTicksLimit: 10,
-                                                },
-                                                gridLines: {
-                                                    display: true,
-                                                },
-                                                scaleLabel: {
-                                                    display: true,
-                                                    labelString: 'Sistemas registrados'
-                                                }
-                                            }],
-                                        },
-                                        legend: {
-                                            display: false
-                                        }
+                                    ticks: {
+                                        maxTicksLimit: arrayLabels.length,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Sistemas Generales'
                                     }
-                                });
-                            }
-                        });
-                    }
-                    else {
-
-                        // CREADOR DE LOS GRÁFICOS de control de integración.
-                        if (IDseleccion === "integraciones_subsistemas") {
-                            $.ajax({
-                                url: '@Url.Action("ReporteINTEEX", "Control")',
-                                type: "GET",
-                                data: { control_select: IDseleccion },
-                                dataType: "json",
-                                contentType: "application/json; charset=utf-8",
-                                success: function (data) {
-                                    const labelCantidadMap = {};
-
-                                    data.forEach(item => {
-                                        const labelX = item.LabelEjeX;
-                                        const labelY = item.LabelEjeY;
-
-                                        // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                        if (labelY !== "Sin información") {
-                                            // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                            if (labelX !== "Sin información") {
-                                                const label = labelX;
-                                                labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                            }
-                                        }
-                                    });
-
-                                    const arrayLabels = Object.keys(labelCantidadMap);
-                                    const arrayCantidad = Object.values(labelCantidadMap);
-
-                                    const controlBar1 = document.getElementById("myBarChart");
-
-                                    // Define un array de colores para las barras
-                                    const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                                    new Chart(controlBar1, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: arrayLabels,
-                                            datasets: [{
-                                                label: "Cantidad de integraciones con entidades externas",
-                                                backgroundColor: barColors,  // Asigna los colores a las barras
-                                                borderColor: "#000000",
-                                                borderWidth: 0,
-                                                data: arrayCantidad
-                                            }],
-                                        },
-                                        options: {
-                                            title: {
-                                                display: true,
-                                                text: 'Integraciones de entidades externas en subsistemas del MINVU.' // Aquí puedes ingresar el título que desees
-                                            },
-                                            scales: {
-                                                xAxes: [{
-                                                    gridLines: {
-                                                        display: false
-                                                    },
-                                                    ticks: {
-                                                        maxTicksLimit: arrayLabels.length,
-                                                    },
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: 'Sistemas Generales'
-                                                    }
-                                                }],
-                                                yAxes: [{
-                                                    ticks: {
-                                                        min: 0,
-                                                        max: Math.max(...arrayCantidad),
-                                                        maxTicksLimit: 10,
-                                                    },
-                                                    gridLines: {
-                                                        display: true,
-                                                    },
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: 'Cantidad de subsistemas registrados'
-                                                    }
-                                                }],
-                                            },
-                                            legend: {
-                                                display: false
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-                            $.ajax({
-                                url: '@Url.Action("ReporteINTEIN", "Control")',
-                                type: "GET",
-                                data: { control_select: IDseleccion },
-                                dataType: "json",
-                                contentType: "application/json; charset=utf-8",
-                                success: function (data) {
-                                    const labelCantidadMap = {};
-
-                                    data.forEach(item => {
-                                        const labelX = item.LabelEjeX;
-                                        const labelY = item.LabelEjeY;
-
-                                        // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                        if (labelY !== "Sin información") {
-                                            // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                            if (labelX !== "Sin información") {
-                                                const label = labelX;
-                                                labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                            }
-                                        }
-                                    });
-
-                                    const arrayLabels = Object.keys(labelCantidadMap);
-                                    const arrayCantidad = Object.values(labelCantidadMap);
-
-                                    const controlBar2 = document.getElementById("myBarChart2");
-
-                                    // Define un array de colores para las barras
-                                    const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                                    new Chart(controlBar2, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: arrayLabels,
-                                            datasets: [{
-                                                label: "Cantidad de integraciones con entidades internas",
-                                                backgroundColor: barColors,  // Asigna los colores a las barras
-                                                borderColor: "#000000",
-                                                borderWidth: 0,
-                                                data: arrayCantidad
-                                            }],
-                                        },
-                                        options: {
-                                            title: {
-                                                display: true,
-                                                text: 'Integraciones de entidades internas en subsistemas del MINVU.' // Aquí puedes ingresar el título que desees
-                                            },
-                                            scales: {
-                                                xAxes: [{
-                                                    gridLines: {
-                                                        display: false
-                                                    },
-                                                    ticks: {
-                                                        maxTicksLimit: arrayLabels.length,
-                                                    },
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: 'Sistemas Generales'
-                                                    }
-                                                }],
-                                                yAxes: [{
-                                                    ticks: {
-                                                        min: 0,
-                                                        max: Math.max(...arrayCantidad),
-                                                        maxTicksLimit: 10,
-                                                    },
-                                                    gridLines: {
-                                                        display: true,
-                                                    },
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: 'Cantidad de subsistemas registrados'
-                                                    }
-                                                }],
-                                            },
-                                            legend: {
-                                                display: false
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                        else {
-                            // CREADOR DE LOS GRÁFICOS de control de subsistemas.
-
-                            if (IDseleccion === "subsistemas_ambiente") {
-                               $.ajax({
-                                    url: '@Url.Action("ReporteSUBSISTEMAXVARIABLE", "Control")',
-                                    type: "GET",
-                                    data: { control_select: IDseleccion },
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    success: function (data)
-                                    {
-                                        const labelCantidadMap = {};
-
-                                        data.forEach(item => {
-                                            const labelX = item.LabelEjeX;
-                                            const labelY = item.LabelEjeY;
-
-                                            // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                            if (labelY !== "Sin información") {
-                                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                                if (labelX !== "Sin información") {
-                                                    const label = labelX;
-                                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                                }
-                                            }
-                                        });
-
-                                        const arrayLabels = Object.keys(labelCantidadMap);
-                                        const arrayCantidad = Object.values(labelCantidadMap);
-
-                                        const controlBar1 = document.getElementById("myBarChart");
-
-                                        // Define un array de colores para las barras
-                                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                                        new Chart(controlBar1, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: arrayLabels,
-                                                datasets: [{
-                                                    label: "SubSistemas en este ambiente",
-                                                    backgroundColor: barColors,  // Asigna los colores a las barras
-                                                    borderColor: "#000000",
-                                                    borderWidth: 0,
-                                                    data: arrayCantidad
-                                                }],
-                                            },
-                                            options: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'N° de Subsistemas enlazados según Ambiente alojado del MINVU.' // Aquí puedes ingresar el título que desees
-                                                },
-                                                scales: {
-                                                    xAxes: [{
-                                                        gridLines: {
-                                                            display: false
-                                                        },
-                                                        ticks: {
-                                                            maxTicksLimit: arrayLabels.length,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'Tipos de Ambientes'
-                                                        }
-                                                    }],
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0,
-                                                            max: Math.max(...arrayCantidad),
-                                                            maxTicksLimit: 10,
-                                                        },
-                                                        gridLines: {
-                                                            display: true,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'SubSistemas registrados'
-                                                        }
-                                                    }],
-                                                },
-                                                legend: {
-                                                    display: false
-                                                }
-                                            }
-                                        });
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max: Math.max(...arrayCantidad),
+                                        maxTicksLimit: 10,
+                                    },
+                                    gridLines: {
+                                        display: true,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Sistemas registrados'
                                     }
-                                });
-                            }
-
-                            if (IDseleccion === "subsistemas_estado") {
-                                $.ajax({
-                                    url: '@Url.Action("ReporteSUBSISTEMAXVARIABLE", "Control")',
-                                    type: "GET",
-                                    data: { control_select: IDseleccion },
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    success: function (data) {
-                                        const labelCantidadMap = {};
-
-                                        data.forEach(item => {
-                                            const labelX = item.LabelEjeX;
-                                            const labelY = item.LabelEjeY;
-
-                                            // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                            if (labelY !== "Sin información") {
-                                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                                if (labelX !== "Sin información") {
-                                                    const label = labelX;
-                                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                                }
-                                            }
-                                        });
-
-                                        const arrayLabels = Object.keys(labelCantidadMap);
-                                        const arrayCantidad = Object.values(labelCantidadMap);
-
-                                        const controlBar1 = document.getElementById("myBarChart");
-
-                                        // Define un array de colores para las barras
-                                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                                        new Chart(controlBar1, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: arrayLabels,
-                                                datasets: [{
-                                                    label: "SubSistemas en este estado",
-                                                    backgroundColor: barColors,  // Asigna los colores a las barras
-                                                    borderColor: "#000000",
-                                                    borderWidth: 0,
-                                                    data: arrayCantidad
-                                                }],
-                                            },
-                                            options: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'N° de Subsistemas enlazados según tipo de Estado ' + 'del MINVU.' // Aquí puedes ingresar el título que desees
-                                                },
-                                                scales: {
-                                                    xAxes: [{
-                                                        gridLines: {
-                                                            display: false
-                                                        },
-                                                        ticks: {
-                                                            maxTicksLimit: arrayLabels.length,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'Tipos de Estados'
-                                                        }
-                                                    }],
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0,
-                                                            max: Math.max(...arrayCantidad),
-                                                            maxTicksLimit: 10,
-                                                        },
-                                                        gridLines: {
-                                                            display: true,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'SubSistemas registrados'
-                                                        }
-                                                    }],
-                                                },
-                                                legend: {
-                                                    display: false
-                                                }
-                                            }
-                                        });
-                                    }
-                                });
-                            } else {
-                                $.ajax({
-                                    url: '@Url.Action("ReporteSUBSISTEMAXVARIABLE", "Control")',
-                                    type: "GET",
-                                    data: { control_select: IDseleccion },
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    success: function (data)
-                                    {
-                                        const labelCantidadMap = {};
-
-                                        data.forEach(item => {
-                                            const labelX = item.LabelEjeX;
-                                            const labelY = item.LabelEjeY;
-
-                                            // Ignorar elementos con LabelEjeY igual a "Sin información"
-                                            if (labelY !== "Sin información") {
-                                                // Incluye el conteo solo cuando LabelEjeX no sea igual a "Sin información"
-                                                if (labelX !== "Sin información") {
-                                                    const label = labelX;
-                                                    labelCantidadMap[label] = (labelCantidadMap[label] || 0) + 1;
-                                                }
-                                            }
-                                        });
-
-                                        const arrayLabels = Object.keys(labelCantidadMap);
-                                        const arrayCantidad = Object.values(labelCantidadMap);
-
-                                        const controlBar1 = document.getElementById("myBarChart");
-
-                                        // Define un array de colores para las barras
-                                        const barColors = Array.from({ length: arrayLabels.length }, () => getRandomColor());
-
-                                        var arreglo = IDseleccion.split("_");
-
-                                        if (arreglo[1] === "data")
-                                            arreglo[1] = "Dueño de los datos";
-
-                                        new Chart(controlBar1, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: arrayLabels,
-                                                datasets: [{
-                                                    label: "SubSistemas registrados",
-                                                    backgroundColor: barColors,  // Asigna los colores a las barras
-                                                    borderColor: "#000000",
-                                                    borderWidth: 0,
-                                                    data: arrayCantidad
-                                                }],
-                                            },
-                                            options: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'N° de Subsistemas enlazados según ' + arreglo[1].toUpperCase() + ' del MINVU.' 
-                                                },
-                                                scales: {
-                                                    xAxes: [{
-                                                        gridLines: {
-                                                            display: false
-                                                        },
-                                                        ticks: {
-                                                            maxTicksLimit: arrayLabels.length,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'Tipos de ' + arreglo[1]
-                                                        }
-                                                    }],
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0,
-                                                            max: Math.max(...arrayCantidad),
-                                                            maxTicksLimit: 10,
-                                                        },
-                                                        gridLines: {
-                                                            display: true,
-                                                        },
-                                                        scaleLabel: {
-                                                            display: true,
-                                                            labelString: 'SubSistemas registrados'
-                                                        }
-                                                    }],
-                                                },
-                                                legend: {
-                                                    display: false
-                                                }
-                                            }
-                                        });
-                                    }
-                                });
+                                }],
+                            },
+                            legend: {
+                                display: false
                             }
                         }
-                    }
+                    });
+
+                    // GRÁFICO DE TORTA
+                    new Chart(controlPie1, {
+                        type: 'pie',
+                        data: {
+                            labels: arrayLabels,
+                            datasets: [{
+                                data: arrayCantidad,
+                                backgroundColor: barColors
+                            }]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
+                            }
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var dataset = data.datasets[0];
+                                    var label = data.labels[tooltipItem.index];
+                                    var value = dataset.data[tooltipItem.index];
+                                    return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                                }
+                            }
+                        }
+
+                    });
+                               
                 }
-            }
+            });
+            
+            
+            
         });
     });
 
