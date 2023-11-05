@@ -41,14 +41,11 @@ namespace PrototipoMINVU.Controllers
         public ActionResult CambiarPassword(Models.Usuario objUsuario)
         {
 
-
             if (objUsuario.Contrasena == objUsuario.ContrasenaNueva)
             {
 
 
             }
-
-
 
             return RedirectToAction("Index", "Home");
         }

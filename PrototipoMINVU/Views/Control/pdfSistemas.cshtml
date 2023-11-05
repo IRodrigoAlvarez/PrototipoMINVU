@@ -77,7 +77,8 @@
                             <hr style="border: 1px solid black" />
 
                             En este reporte se puede visualizar el nombre, el estado y el ambiente del sistema.
-                            También se muestran los primeros 5 subsistemas que están enlazados principalmente a este sistema.
+                            También se podrán ver los distintos tipos de integración que tiene con los modulos y/o 
+                            sistemas en la base de datos.<br />
                             Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
                             modo de prueba según las límitaciones del proyecto.<br />
 
@@ -108,8 +109,14 @@
                     <hr style="border: 1px solid black" />
 
                     <div class="col-12" style="">
+                        <label>Descripción del Modulo:</label>
+                        <p style="text-align:center">@Model.SistemaExample.DescripcionSistema</p>
+                    </div>
+                    <hr style="border: 1px solid black" />
+
+                    <div class="col-12" style="">
                         <label> Estado del Sistema: </label>
-                        <p style="text-align:center"> @Model.SistemaExample.DescripcionEstado</p>
+                        <p style="text-align:center"> @Model.SistemaExample.EstadoSistema</p>
                     </div>
                     <hr style="border: 1px solid black" />
 
@@ -128,7 +135,7 @@
             <div class="col-lg-4">
                 <b>
                     <label>
-                        Lista de Sub Sistemas del sistema @Model.SistemaExample.NombreSistema :
+                        Lista de Integraciones del sistema @Model.SistemaExample.NombreSistema :
                     </label>
                 </b>
             </div>
@@ -138,25 +145,25 @@
         <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
             <thead>
                 <tr>
-                    <th>N° Sistema</th>
-                    <th>Nombre Sistema</th>
-                    <th>Jefe proyecto</th>
-                    <th>Estado Sistema</th>
+                    <th>N° Integración</th>
+                    <th>Nombre Origen</th>
+                    <th>Nombre Destino</th>
+                    <th>Tipo integración</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model.ListaSubSistemas != null)
+                @if (Model.ListaSistemas != null)
                 {
                     int aux = 1;
-                    foreach (var item in Model.ListaSubSistemas)
+                    foreach (var item in Model.ListaSistemas)
                     {
                         if (aux <= 5)
                         {
                             <tr>
                                 <td class="id">@aux</td>
-                                <td>@item.NombreSubSistema</td>
+                                <td>@item.NombreSistema</td>
                                 <td>@item.NombreJefeProyecto</td>
-                                <td>@item.EstadoSubSistema</td>
+                                <td>@item.EstadoSistema</td>
                             </tr>
                         }
 

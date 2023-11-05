@@ -17,6 +17,8 @@ namespace PrototipoMINVU.Models
 
         public int id_reportesistema { get; set; }
 
+        public int id_reportemodulo { get; set; }
+
         public List<ModuloBO> ListaModulos { get; set; }
     
         public SistemasBO SistemaExample { get; set; }
@@ -215,22 +217,54 @@ namespace PrototipoMINVU.Models
 
 
 
-
-
-
-
-
-
-
-
-        public void CargaSistemasbyID(int id_sistema)
+        public void CargaMapaintegracion()
         {
-            SistemasBO subsis = new SistemasBO();
+            string svgContent = @"
+
+                             <svg width=""700"" height=""600"" style=""border:1px solid black;"" xmlns=""http://www.w3.org/2000/svg"">
+                             <!-- Dibuja sistemas -->
+                                
+                              <text x=""50"" y=""70"" font-size=""12"" text-anchor=""middle"">RUKAN</text>
+                             <circle cx=""50"" cy=""100"" r=""20"" fill=""green"" />
+
+                              <text x=""100"" y=""70"" font-size=""12"" text-anchor=""middle"">UMBRAL</text>\
+                             <circle cx=""100"" cy=""100"" r=""20"" fill=""red"" />
+
+                              <text x=""150"" y=""70"" font-size=""12"" text-anchor=""middle"">SIAC</text>
+                             <circle cx=""150"" cy=""100"" r=""20"" fill=""green"" />
+
+                              <text x=""200"" y=""70"" font-size=""12"" text-anchor=""middle"">SPS</text>
+                             <circle cx=""200"" cy=""100"" r=""20"" fill=""red"" />
+
+                             <circle cx=""250"" cy=""100"" r=""20"" fill=""green"" />
+                             <circle cx=""300"" cy=""100"" r=""20"" fill=""red"" />
+                             <circle cx=""350"" cy=""100"" r=""20"" fill=""green"" />
+                             
+"" />
+                             
+
+
+
+                             
+                             <!-- Dibuja flechas de conexión -->
+                             
+                          </svg>";
+            SVGContent = svgContent;
+
+        }
+
+
+
+
+
+
+
+        public void CargaSistemabyID(int id_sistema)
+        {
             SistemasBUSINESS cargador = new SistemasBUSINESS();
             // Se le cargan los sistemas a la variable declarada.
 
-            subsis.ListaSistemas = cargador.obtenerSistemasbyID(id_sistema);
-            ListaSistemas = subsis.ListaSistemas;
+            SistemaExample = cargador.obtenerSistemasbyID(id_sistema);
 
         }
 

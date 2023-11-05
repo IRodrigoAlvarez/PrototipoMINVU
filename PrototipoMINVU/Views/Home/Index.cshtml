@@ -37,10 +37,16 @@
                             <div class="col-lg-6" >
                                 <div class="col-lg-8" >
                                     <div class="font_calibri">
-                                        Nombre del Sistema:
+                                        Estado de los modulos:
                                         <hr />
-                                        Estado del Sistema:
+                                        Estado de los Sistemas:
                                         <hr />
+                                        <div>
+                                            <div id="svgContainer">
+                                                @Html.Raw(Model.SVGContent)
+                                            </div>
+                                        </div>
+
                                         N° Usuarios:
                                         <hr />
                                     </div>

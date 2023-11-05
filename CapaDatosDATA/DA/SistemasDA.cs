@@ -10,7 +10,7 @@ namespace CapaDatosDATA.DA
 {
     public class SistemasDA
     {
-        public DataSet obtenerSistemasbyID(int sistema)
+        public DataSet obtenerSistemabyID(int sistema)
         {
             DataSet ds = new DataSet();
             try

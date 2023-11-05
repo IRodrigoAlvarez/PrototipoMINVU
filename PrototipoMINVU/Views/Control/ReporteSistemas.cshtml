@@ -38,33 +38,35 @@
 
                     <div class="row">
                         <div class="col-lg-4" style="text-align:end;">
-                            <b>@Html.LabelFor(m => m.id_reportesistema, "Seleccione Modulo a Reportar:")</b>
+                            <b>@Html.LabelFor(m => m.id_reportemodulo, "Seleccione Modulo a Reportar:")</b>
+                        </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownListFor(m => m.id_reportemodulo, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Modulo", new { @class = "form-select", @id = "id_reportemodulo" })
                         </div>
                         <div class="col-lg-2">
-                            @Html.DropDownListFor(m => m.id_reportesistema, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Sistema", new { @class = "form-select", @id = "id_reportesistema" })
-
-
+                            <input type="button" id="generarPDFModulo" value="Generar PDF" />
                         </div>
 
-                        <div class="col-lg-1">
+                    </div>
+                    <hr />
 
-                            <input type="button" id="generarPDFButton" value="Generar PDF" />
-
+                    <div class="row">
+                        <div class="col-lg-4" style="text-align:end;">
+                            <b>@Html.LabelFor(m => m.id_reportesistema, "Seleccione Sistema a Reportar:")</b>
                         </div>
+                        <div class="col-lg-3">
+                            @Html.DropDownListFor(m => m.id_reportesistema, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema", new { @class = "form-select", @id = "id_reportesistema" })
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="button" id="generarPDFSistemas" value="Generar PDF" />
+                        </div>
+
 
                     </div>
 
                     <hr />
-
-
-
-                    <div class="row">
-                        <div class="col-lg-4" style="text-align:end;">
-                        </div>
-                        <div class="col-lg-4">
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -103,7 +105,7 @@
 
 <script>
 
-     $("#generarPDFButton").click(function () {
+    $("#generarPDFSistemas").click(function () {
         // Obtiene el valor seleccionado en el DropDownList
         var id_reportesistema = $("#id_reportesistema").val();
 
@@ -111,12 +113,21 @@
         $(this).data('id_reportesistema', id_reportesistema);
 
         // Abre la nueva ventana o pestaña con el valor actualizado
-        window.open('@Url.Action("GenerarPDF", "Control")?id_reportesistema=' + id_reportesistema, '_blank');
+        window.open('@Url.Action("GenerarPDFSistema", "Control")?id_reportesistema=' + id_reportesistema, '_blank');
+    });
+
+    $("#generarPDFModulo").click(function () {
+        // Obtiene el valor seleccionado en el DropDownList
+        var id_reportemodulo = $("#id_reportemodulo").val();
+
+        // Asigna el valor al atributo data-id del botón
+        $(this).data('id_reportemodulo', id_reportemodulo);
+
+        // Abre la nueva ventana o pestaña con el valor actualizado
+        window.open('@Url.Action("GenerarPDFModulo", "Control")?id_reportemodulo=' + id_reportemodulo, '_blank');
     });
 
 
 
-
-  
 
 </script>

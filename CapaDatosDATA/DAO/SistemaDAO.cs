@@ -11,29 +11,29 @@ namespace CapaDatosDATA.DAO
     public class SistemaDAO
     {
 
-        public List<SistemasBO> cargaSistemasbyID(int id_sistema)
+        public SistemasBO cargaSistemabyID(int id_sistema)
         {
             // aquí se establece el dataset que se va a utilizar en la capa de Negocios, desde la base de datos(DA). 
-            List<SistemasBO> resultado = new List<SistemasBO>();
+            SistemasBO sistema = new SistemasBO();
 
             DataSet ds = new DataSet();
             SistemasDA Conexion = new SistemasDA();
 
 
-            ds = Conexion.obtenerSistemasbyID(id_sistema);
+            ds = Conexion.obtenerSistemabyID(id_sistema);
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 //Se llena la lista con los sistemas
-                SistemasBO sistema = new SistemasBO();
 
                 sistema.id_sistema = Int32.Parse(r["id_sistema"].ToString());
                 sistema.NombreSistema = r["nombre_sistema"].ToString();
+                sistema.DescripcionSistema = r["descripcion_sistema"].ToString();
                 sistema.NombreJefeProyecto = r["nombre_jefe"].ToString();
                 sistema.EstadoSistema = r["descripcion_estado"].ToString();
-                resultado.Add(sistema);
+                sistema.AmbienteAlojado = r["nombre_ambiente"].ToString();
             }
-            return resultado;
+            return sistema;
         }
 
         public List<SistemasBO> CargaSistemas()
