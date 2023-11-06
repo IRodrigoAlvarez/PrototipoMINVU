@@ -19,7 +19,7 @@ namespace PrototipoMINVU.Controllers
                 Models.Registro cargador = new Models.Registro();
 
                 cargador.CargaMapaintegracion();
-                 
+                cargador.CargaSistemas();                 
                 return View(cargador);
             }
             else

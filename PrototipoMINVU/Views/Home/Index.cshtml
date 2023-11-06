@@ -20,17 +20,17 @@
                                         <h2> Bienvenida /o al Prototipo de Sistemas del MINVU</h2>
                                         <hr />
                                         Bienvenidos al prototipo de sistemas para el registro y control de los sistemas del MINVU. Este prototipo está desarrollado
-                                        con fines educativos y no lucrativos. Está hecho con el fin de obtener el título de ingeniería civil en computación, mención
+                                        con fines educaprototipotivos y no lucrativos. Está hecho con el fin de obtener el título de ingeniería civil en computación, mención
                                         informática en la UTEM.<br />
-                                        En este prototipo se podrán agregar y/o editar las  caracteristicas de los sistemas del MINVU, y de los que se vayan agregando al sistema.
-                                        También se podrán visualizar a través de una serie de gráficos y tablas de datos. Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a 
+                                        En este  se podrán agregar y/o editar las  caracteristicas de los sistemas del MINVU, y de los que se vayan agregando al sistema.
+                                        También se podrán visualizar a través de una serie de gráficos y tablas de datos. Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
                                         modo de prueba según las límitaciones del proyecto.<br />
                                         Esta interfaz es un ejemplo del prototipo a modo de imagen.<br /><br />
                                         Universidad Tecnológica Metropolitana.<br />
                                         <b>Profesor Guía:</b> Yelka Ruiz.<br /><br />
                                         <b>Rodrigo Álvarez.</b>
 
-                                       
+
                                     </div>                                                                    
                                 </div>
                             </div>
@@ -43,8 +43,58 @@
                                         <hr />
                                         <div>
                                             <div id="svgContainer">
-                                                @Html.Raw(Model.SVGContent)
-                                            </div>
+                                                <svg width=" 700" height=" 600" style="border:1px solid black;" xmlns="http: //www.w3.org/2000/svg">
+                                                    <!-- Dibuja sistemas -->
+
+                                                    @if (Model.ListaSistemas != null)
+                                                    {
+
+                                                        foreach (var item in Model.ListaSistemas)
+                                                        {
+                                                            int aux=20;
+                                                            
+                                                            if (item.EstadoSistema == "Activo")
+                                                            {
+                                                                <circle cx="@aux" cy=" 50" r="20" fill=" green" />
+
+
+
+                                                            }
+                                                            @*<td>@item.NombreSistema</td>
+                                                            <td></td>
+                                                            <td>@item.AmbienteAlojado</td>
+                                                            <td class="id">
+
+                                                                @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                {
+                                                                    <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
+                                                                    <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+
+                                                                    <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                }
+                                                            </td>
+
+                                                            </tr>*@
+                                                        }
+                                                    }
+                                                    <text x="20" y="20" font-size=" 12" text-anchor="middle">RUKAN</text>
+                                                    <circle cx="20" cy=" 50" r="20" fill=" green" />
+
+                                                    <text x="70" y="20" font-size="12" text-anchor="middle">UMBRAL</text>
+                                                    <circle cx=" 70" cy=" 50" r=" 20" fill=" red" />
+
+                                                    <text x="120" y="20" font-size="12" text-anchor="middle">SIAC</text>
+                                                    <circle cx="120" cy="50" r="20" fill="green" />
+
+                                                    <text x="170" y="20" font-size=" 12" text-anchor="middle">SPS</text>
+                                                    <circle cx="170" cy="50" r="20" fill="red" />
+
+                                                </svg>
+
+                                            </div><!-- Dibuja flechas de conexión -->
+
+
                                         </div>
 
                                         N° Usuarios:

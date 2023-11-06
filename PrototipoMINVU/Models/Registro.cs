@@ -252,14 +252,7 @@ namespace PrototipoMINVU.Models
 
                              <circle cx=""250"" cy=""100"" r=""20"" fill=""green"" />
                              <circle cx=""300"" cy=""100"" r=""20"" fill=""red"" />
-                             <circle cx=""350"" cy=""100"" r=""20"" fill=""green"" />
-                             
-"" />
-                             
-
-
-
-                             
+                             <circle cx=""350"" cy=""100"" r=""20"" fill=""green"" />                             
                              <!-- Dibuja flechas de conexión -->
                              
                           </svg>";
