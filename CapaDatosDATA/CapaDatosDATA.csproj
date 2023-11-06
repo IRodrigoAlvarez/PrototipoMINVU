@@ -118,9 +118,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\IntegraDAO.cs" />
     <Compile Include="DAO\ModulosDAO.cs" />
     <Compile Include="DAO\SistemaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DA\IntegraDA.cs" />
     <Compile Include="DA\JefesDA.cs" />
     <Compile Include="DA\ModulosDA.cs" />
     <Compile Include="DA\SistemasDA.cs" />

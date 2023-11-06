@@ -73,6 +73,7 @@
     <Compile Include="ControlBO.cs" />
     <Compile Include="DataownerBO.cs" />
     <Compile Include="EstadosBO.cs" />
+    <Compile Include="IntegraBO.cs" />
     <Compile Include="JefesBO.cs" />
     <Compile Include="LegacyBO.cs" />
     <Compile Include="LoginBO.cs" />

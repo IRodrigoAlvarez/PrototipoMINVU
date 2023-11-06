@@ -114,6 +114,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ControlController.cs" />
+    <Compile Include="Controllers\IntegracionesController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
@@ -224,6 +225,8 @@
     <Content Include="Views\Control\pdfModulo.cshtml" />
     <Content Include="Views\Seguridad\CambiaPass.cshtml" />
     <Content Include="Views\Control\pdfSistemas.cshtml" />
+    <Content Include="Views\Integraciones\Integraciones.cshtml" />
+    <Content Include="Views\Integraciones\addIntegration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

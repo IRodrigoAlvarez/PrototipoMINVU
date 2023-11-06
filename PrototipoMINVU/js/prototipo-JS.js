@@ -1,5 +1,33 @@
 // javascript para abrir el formulario de los sistemas 
 
+
+
+function bloqdes()
+{
+    var sistemaOrigen = $('#id_sistemaorigen');
+    var moduloOrigen = $('#id_moduloorigen');
+
+    var selectedValueSistema = sistemaOrigen.val();
+    var selectedValueModulo = moduloOrigen.val();
+
+    if (selectedValueSistema === "") {
+        moduloOrigen.prop('disabled', false); // Habilita el elemento
+    } else {
+        moduloOrigen.prop('disabled', true); // Deshabilita el elemento
+    }
+    
+    if (selectedValueModulo === "") {
+        sistemaOrigen.prop('disabled', false); // Habilita el elemento
+    } else {
+        sistemaOrigen.prop('disabled', true); // Deshabilita el elemento
+    }
+}
+
+
+
+
+
+
 function GenerarListaAmbiente() {
 
     let IDseleccion = document.getElementById("idAmbiente").value;

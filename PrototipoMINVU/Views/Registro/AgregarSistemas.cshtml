@@ -49,13 +49,13 @@
                                     <div class="container-fluid">
                                         <div class="card">
                                             <div class="card shadow formAddproy">
-                                                <h1><center> INGRESE UN SISTEMA NUEVO.</center></h1>
+                                                <h3><center> INGRESE UN SISTEMA NUEVO.</center></h3>
                                                 <hr />
                                                 @using (Html.BeginForm("RegistraModuloSistema", "Registro", FormMethod.Post, new { @class = "user" }))
                                                 {
                                                     <br />
                                                     <div class="row">
-                                                        <div class="col-lg-4" style="text-align:end;">
+                                                        <div class="col-lg-5" style="text-align:end;">
                                                             <b>@Html.LabelFor(m => m.ModuloExample.NombreSistema, "Nombre del Sistema:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -65,7 +65,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-lg-4" style="text-align:end;">
+                                                        <div class="col-lg-5" style="text-align:end;">
                                                             <b>@Html.LabelFor(m => m.ModuloExample.descripcion, "Descripción del Sistema:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -75,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-4" style="text-align:end;">
+                                                        <div class="col-lg-5" style="text-align:end;">
                                                             <b>@Html.LabelFor(m => m.DescripcionEstado, "Estado del sistema:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -84,7 +84,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-lg-4" style="text-align:end;">
+                                                        <div class="col-lg-5" style="text-align:end;">
                                                             <b>@Html.LabelFor(m => m.ModuloExample.AmbienteAlojado, "Ambiente del sistema:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -106,7 +106,7 @@
                                                         <div class="row" id="parteFormulario" style="display: none; text-align: end;">                                                           
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.URLinicio, "URL Inicio:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -116,7 +116,7 @@
 
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.URLdatos, "URL Modelo Datos:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -126,7 +126,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.DecretoAfecto, "Decreto Afecto:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -136,7 +136,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.CostoSistema, "Costo Sistemas [CLP $]:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -145,7 +145,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.id_area, "Area del Sistema:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -155,7 +155,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.DueñoDatos, "Dueño de los datos:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -165,7 +165,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.NombreJefeProyecto, "Jefe de proyecto:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -175,7 +175,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.TipoControlAcceso, "Control de Acceso:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -184,7 +184,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.TipoAlcance, "Alcance del Sub sistema:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -194,7 +194,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.TipoSistema, "Tipo del Sistema :")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -204,7 +204,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.TipoTecnologia, "Tipo de Tecnología :")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -213,7 +213,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.TipoLegacy, "Sistema Heredado(Legacy):")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">
@@ -223,7 +223,7 @@
                                                             </div>
 
                                                             <div class="row">
-                                                                <div class="col-lg-4">
+                                                                <div class="col-lg-5">
                                                                     <b>@Html.LabelFor(m => m.SistemaExample.Region, "Región:")</b>
                                                                 </div>
                                                                 <div class="col-lg-4">

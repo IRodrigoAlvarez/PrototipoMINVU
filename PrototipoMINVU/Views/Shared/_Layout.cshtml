@@ -91,6 +91,44 @@
                                     </button>
                                 }
                             </div>
+
+
+                            <div class="card-body">
+                                @using (Html.BeginForm("Integraciones", "Integraciones", FormMethod.Post, new { @class = "user" }))
+                                {
+                                    <button type="submit" class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="bi bi-bounding-box"></i>                                            
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">
+                                                    - Agregar Integración.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                }
+                            </div>
+
+
+                            <div class="card-body">
+                                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "user" }))
+                                {
+                                    <button type="submit" class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-1">
+                                                <i class="bi bi-gear"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">
+                                                    - Editar Integración.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                }
+                            </div>
                         </div>
                     </div>
 
