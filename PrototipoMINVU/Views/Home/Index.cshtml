@@ -48,11 +48,11 @@
 
                                                     @if (Model.ListaSistemas != null)
                                                     {
-
+                                                        int aux = 20;
                                                         foreach (var item in Model.ListaSistemas)
                                                         {
-                                                            int aux=20;
-                                                            
+
+
                                                             if (item.EstadoSistema == "Activo")
                                                             {
                                                                 <circle cx="@aux" cy=" 50" r="20" fill=" green" />
@@ -60,6 +60,9 @@
 
 
                                                             }
+
+
+                                                            aux = aux + 50;
                                                             @*<td>@item.NombreSistema</td>
                                                             <td></td>
                                                             <td>@item.AmbienteAlojado</td>

@@ -15,7 +15,12 @@ namespace PrototipoMINVU.Controllers
             var alerta = Session["UsuarioConfirmado"];
             if (alerta != null)
             {
-                return View();
+                Models.Registro cargador = new Models.Registro();
+
+                cargador.CargaIntegraciones();
+
+
+                return View(cargador);
             }
             else
                 return RedirectToAction("Login", "Seguridad");

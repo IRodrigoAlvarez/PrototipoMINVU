@@ -57,8 +57,9 @@ namespace PrototipoMINVU.Models
         public List<LegacyBO> ListaLegacy { get; set; }
         public List<TipoSistemasBO> ListaTipoSistemas { get; set; }
         public List<AlcanceBO> ListaAlcance { get; set; }
-        public List<IntegraBO> ListaIntegraciones { get; set; }
+        public List<IntegraBO> ListaTipoIntegraciones { get; set; }
 
+        public List<IntegraBO> ListaIntegraciones { get; set; }
 
 
 
@@ -133,9 +134,16 @@ namespace PrototipoMINVU.Models
 
             IntegracionesBUSINESS cargador = new IntegracionesBUSINESS();
 
-            integra.ListaIntegraciones = cargador.obtenerTipoIntegraciones();
+            integra.ListaTipoIntegraciones = cargador.obtenerTipoIntegraciones();
+            integra.ListaIntegraciones = cargador.obtenerIntegraciones();
 
+
+
+            ListaTipoIntegraciones = integra.ListaTipoIntegraciones;
             ListaIntegraciones = integra.ListaIntegraciones;
+
+
+
 
         }
 

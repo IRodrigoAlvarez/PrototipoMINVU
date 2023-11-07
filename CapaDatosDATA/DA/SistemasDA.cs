@@ -585,7 +585,21 @@ namespace CapaDatosDATA.DA
 
                 if (control_select == "sistemas_data")
                     sp_validausuario = "PSM_GRAFICO_DATAOW";
-              
+
+
+                if (control_select == "modulos_estado")
+                    sp_validausuario = "";
+
+                if (control_select == "modulos_ambiente")
+                    sp_validausuario = "";
+
+
+                if (control_select == "integraciones_sistemas")
+                    sp_validausuario = "";
+
+                if (control_select == "integraciones_modulos")
+                    sp_validausuario = "";
+
 
 
 

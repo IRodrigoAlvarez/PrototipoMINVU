@@ -27,7 +27,8 @@ namespace CapaDatosDATA.DAO
                 estado.id_tipointegracion = Int32.Parse(r["id_tipointeg"].ToString());
                 estado.tipo_integracion = r["tipo_integracion"].ToString();
 
-                resultado.Add(estado);
+                if(estado.id_tipointegracion>0)
+                    resultado.Add(estado);
             }
             return resultado;
         }
@@ -47,6 +48,40 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
 
+        }
+
+
+        public List<IntegraBO> cargaIntegraciones()
+        {
+            List<IntegraBO> resultado = new List<IntegraBO>();
+
+            DataSet ds = new DataSet();
+            IntegraDA Conexion = new IntegraDA();
+
+            ds = Conexion.obtenerIntegraciones();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                IntegraBO integracion = new IntegraBO();
+
+                integracion.id_integracion = Int32.Parse(r["id_integracion"].ToString());
+                integracion.tipo_integracion = r["tipo_integracion"].ToString();
+
+                integracion.nombre_sistema_origen = r["Sistema_Origen"].ToString();
+
+                integracion.nombre_sistema_destino = r["Sistema_Destino"].ToString();
+                integracion.nombre_sistema_destino2 = r["Sistema_Destino2"].ToString();
+
+                integracion.nombre_modulo_origen = r["Modulo_Origen"].ToString();
+                integracion.nombre_modulo_destino = r["Modulo_Destino"].ToString();
+                integracion.nombre_modulo_destino2 = r["Modulo_Destino2"].ToString();
+
+
+                if(integracion.id_integracion>0)
+                    resultado.Add(integracion);
+            }
+            return resultado;
         }
 
 

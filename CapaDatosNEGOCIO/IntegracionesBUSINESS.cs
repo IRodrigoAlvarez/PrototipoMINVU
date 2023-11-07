@@ -35,6 +35,16 @@ namespace CapaDatosNEGOCIO
 
         }
 
+        public List<IntegraBO> obtenerIntegraciones()
+        {
+
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DAO.IntegraDAO back_usuario = new CapaDatosDATA.DAO.IntegraDAO();
+            return back_usuario.cargaIntegraciones();
+
+        }
+
+
 
 
     }

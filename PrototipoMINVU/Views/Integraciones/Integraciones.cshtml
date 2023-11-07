@@ -25,7 +25,7 @@
                                 <div class="card shadow">
                                     <div class="font_registro">
                                         En esta pantalla se podrán agregar una integración a los sistemas que se han
-                                        registrado en la base de datos del prototipo.También se podrá indicar el tipo de la integración,
+                                        registrado en la base de datos del prototipo. También se podrá indicar el tipo de la integración,
                                         junto con los sistemas o módulos de origen o de destino.<br /><br />
 
                                         Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
@@ -64,22 +64,75 @@
                                             <thead>
                                                 <tr>
                                                     <th>N° Integración.</th>
-                                                    <th>Tipo integración.</th>
-                                                    <th>Nombre origen.</th>
-                                                    <th>Nombre destino. </th>
+                                                    <th>Tipo Integración.</th>
 
-                                                    <th>Editar</th>
+                                                    <th>Nombre Sistema origen.</th>
+                                                    <th>Nombre Modulo origen.</th>
+
+                                                    <th>Nombre Sistema Destino. </th>
+                                                    <th>Nombre Sistema Destino2. </th>
+
+                                                    <th>Nombre Modulo Destino. </th>
+                                                    <th>Nombre Modulo Destino2. </th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                @if (Model.ListaIntegraciones != null)
+                                                {
+                                                    foreach (var item in Model.ListaIntegraciones)
+                                                    {
+                                                        <tr>
 
-                                                </tr>
+                                                            <td>
+                                                                @item.id_integracion
+                                                            </td>
+                                                            <td>@item.tipo_integracion</td>
+                                                            <td>
+                                                                @if (item.nombre_sistema_origen != "Sin información")
+                                                                {
+                                                                    @item.nombre_sistema_origen
+                                                                }
+
+                                                            </td>
+                                                            <td>
+                                                                @if (item.nombre_modulo_origen != "Sin información")
+                                                                {
+                                                                    @item.nombre_modulo_origen
+                                                                }
+
+                                                            </td>
+                                                            <td>
+                                                                @if (item.nombre_sistema_destino != "Sin información")
+                                                                {
+                                                                    @item.nombre_sistema_destino
+                                                                }
+
+                                                            </td>
+                                                            <td>
+                                                                @if (item.nombre_sistema_destino2 != "Sin información")
+                                                                {
+                                                                    @item.nombre_sistema_destino2
+                                                                }
+
+                                                            </td>
+                                                            <td>
+                                                                @if (item.nombre_modulo_destino != "Sin información")
+                                                                {
+                                                                    @item.nombre_modulo_destino
+                                                                }
+
+                                                            </td>
+                                                            <td>
+                                                                @if (item.nombre_modulo_destino2 != "Sin información")
+                                                                {
+                                                                    @item.nombre_modulo_destino2
+                                                                }
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
                                             </tbody>
                                         </table>
                                     </div>

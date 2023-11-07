@@ -61,46 +61,52 @@
                                                             <b>@Html.LabelFor(m => m.IntegracionExample.tipo_integracion, "Seleccione Tipo de Integración:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            @Html.DropDownListFor(m => m.IntegracionExample.id_tipointegracion, new SelectList(Model.ListaIntegraciones, "id_tipointegracion", "tipo_integracion"), "Seleccione Tipo Integracion", new { @class = "form-select" })
+                                                            @Html.DropDownListFor(m => m.IntegracionExample.id_tipointegracion, new SelectList(Model.ListaTipoIntegraciones, "id_tipointegracion", "tipo_integracion"), "Seleccione Tipo Integracion", new { @class = "form-select" })
                                                         </div>
                                                     </div>
 
                                                     <hr />
                                                     <div class="row">
                                                         <div class="col-lg-5" style="text-align:end;">
-                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_origen, "Nombre Origen:")</b>
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_origen, "Nombre Origen:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             @Html.DropDownListFor(m => m.IntegracionExample.id_sistemaorigen, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Origen", new { @class = "form-select", @id = "id_sistemaorigen", @onchange = "bloqdes(this.value);" })
 
                                                         </div>
-                                                      
+
                                                         <div class="col-lg-5" style="text-align:end;">
-                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_destino, "Nombre Destino:")</b>
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_destino, "Nombre Destino:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_destino2, "Nombre Segundo Destino:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino2, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
                                                         </div>
                                                     </div>
 
                                                     <hr />
                                                     <div class="row">
                                                         <div class="col-lg-5" style="text-align:end;">
-                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_origen, "Nombre Origen:")</b>
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_origen, "Nombre Origen:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             @Html.DropDownListFor(m => m.IntegracionExample.id_moduloorigen, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Origen", new { @class = "form-select", @id = "id_moduloorigen", @onchange = "bloqdes(this.value);" })
                                                         </div>
 
                                                         <div class="col-lg-5" style="text-align:end;">
-                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_destino, "Nombre Destino:")</b>
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_destino, "Nombre Destino:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <b> @Html.DropDownListFor(m => m.IntegracionExample.id_modulodestino, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Destino", new { @type = "text", @class = "form-select" })</b>
                                                         </div>
 
                                                         <div class="col-lg-5" style="text-align:end;">
-                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_destino2, "Nombre Segundo Destino:")</b>
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_destino2, "Nombre Segundo Destino:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <b> @Html.DropDownListFor(m => m.IntegracionExample.id_modulodestino2, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Destino", new { @type = "text", @class = "form-select" })</b>

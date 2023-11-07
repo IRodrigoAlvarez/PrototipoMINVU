@@ -18,17 +18,20 @@ namespace CapaDatosBO
 
         public int id_entidadexterna { get; set; }
 
-
-
-        public String nombreintegracion { get; set; }
-        public String nombre_origen { get; set; }
-        public String nombre_destino { get; set; }
-        public String nombre_destino2 { get; set; }
+        public String nombre_sistema_origen { get; set; }
+        public String nombre_sistema_destino { get; set; }
+        public String nombre_sistema_destino2 { get; set; }
+        public String nombre_modulo_origen { get; set; }
+        public String nombre_modulo_destino { get; set; }
+        public String nombre_modulo_destino2 { get; set; }
 
         public String tipo_integracion { get; set; }
 
 
+        public List<IntegraBO> ListaTipoIntegraciones { get; set; }
+
         public List<IntegraBO> ListaIntegraciones { get; set; }
+
 
     }
 }
