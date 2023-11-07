@@ -85,7 +85,7 @@
                                                             <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_destino2, "Nombre Segundo Destino:")</b>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino2, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino2, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
                                                         </div>
                                                     </div>
 

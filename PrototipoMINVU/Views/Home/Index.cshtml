@@ -43,59 +43,81 @@
                                         <hr />
                                         <div>
                                             <div id="svgContainer">
-                                                <svg width=" 700" height=" 600" style="border:1px solid black;" xmlns="http: //www.w3.org/2000/svg">
-                                                    <!-- Dibuja sistemas -->
+                                                <svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
 
+                                                    <!-- Dibuja sistemas -->
                                                     @if (Model.ListaSistemas != null)
                                                     {
-                                                        int aux = 20;
+                                                        int aux = 100;
+                                                        int y = 70; // Inicializa la posición en "y"
+
                                                         foreach (var item in Model.ListaSistemas)
                                                         {
-
-
-                                                            if (item.EstadoSistema == "Activo")
+                                                            if (item.EstadoSistema == "Activo" || item.EstadoSistema == "Iniciado")
                                                             {
-                                                                <circle cx="@aux" cy=" 50" r="20" fill=" green" />
+                                                                int aux2 = 0;
+                                                                aux2 = y - 30;
+                                                                <text>
 
+                                                                    <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                </text>
+
+                                                                <circle cx="@aux" cy="@y" r="20" fill="green" />
+                                                            }
+                                                            else
+                                                            {
+                                                                if (item.EstadoSistema == "Pendiente" || item.EstadoSistema == "Negociando")
+                                                                {
+                                                                    int aux2 = 0;
+                                                                    aux2 = y - 30;
+                                                                    <text>
+
+                                                                        <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                    </text>
+
+                                                                    <circle cx="@aux" cy="@y" r="20" fill="blue" />
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    if (item.EstadoSistema == "Dado de baja")
+                                                                    {
+                                                                        int aux2 = 0;
+                                                                        aux2 = y - 30;
+                                                                        <text>
+
+                                                                            <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                        </text>
+
+                                                                        <circle cx="@aux" cy="@y" r="20" fill="black" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        int aux2 = 0;
+                                                                        aux2 = y - 30;
+                                                                        <text>
+                                                                            <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                        </text>
+                                                                        <circle cx="@aux" cy="@y" r="20" fill="red" />
+}
+
+                                                                }
 
 
                                                             }
+                                                            aux = aux + 170;
 
-
-                                                            aux = aux + 50;
-                                                            @*<td>@item.NombreSistema</td>
-                                                            <td></td>
-                                                            <td>@item.AmbienteAlojado</td>
-                                                            <td class="id">
-
-                                                                @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                {
-                                                                    <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
-                                                                    <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-
-                                                                    <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                }
-                                                            </td>
-
-                                                            </tr>*@
+                                                            // Si aux llega a 650, ajusta la posición en "y" para la siguiente fila
+                                                            if (aux >= 700)
+                                                            {
+                                                                aux = 100; // Restablece la posición en "x"
+                                                                y = y + 70; // Ajusta la posición en "y" para la siguiente fila
+                                                            }
                                                         }
                                                     }
-                                                    <text x="20" y="20" font-size=" 12" text-anchor="middle">RUKAN</text>
-                                                    <circle cx="20" cy=" 50" r="20" fill=" green" />
-
-                                                    <text x="70" y="20" font-size="12" text-anchor="middle">UMBRAL</text>
-                                                    <circle cx=" 70" cy=" 50" r=" 20" fill=" red" />
-
-                                                    <text x="120" y="20" font-size="12" text-anchor="middle">SIAC</text>
-                                                    <circle cx="120" cy="50" r="20" fill="green" />
-
-                                                    <text x="170" y="20" font-size=" 12" text-anchor="middle">SPS</text>
-                                                    <circle cx="170" cy="50" r="20" fill="red" />
-
                                                 </svg>
+                                            </div>
 
-                                            </div><!-- Dibuja flechas de conexión -->
 
 
                                         </div>
