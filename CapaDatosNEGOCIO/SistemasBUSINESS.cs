@@ -63,6 +63,14 @@ namespace CapaDatosNEGOCIO
 
         }
 
+        public void EliminarSistema(int id_sistemadelete)
+        {
+
+            CapaDatosDATA.DA.SistemasDA back_usuario = new CapaDatosDATA.DA.SistemasDA();
+
+            back_usuario.EliminarSistema(id_sistemadelete);
+        }
+
         public List<ReporteGeneralBO> ReporteSISTEMAXVARIABLE(string control_select)
         {
             //se cargan los sistemas en la capa de datos DAO

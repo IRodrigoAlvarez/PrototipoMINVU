@@ -91,8 +91,17 @@ namespace PrototipoMINVU.Controllers
 
 
 
+        [HttpPost]
+        public void EliminarSistema(string id_sistemasedit)
+        {
 
+            SistemasBUSINESS cargador = new SistemasBUSINESS();
 
+            int id_sistemaeliminar = Int32.Parse(id_sistemasedit);
+
+            cargador.EliminarSistema(id_sistemaeliminar);
+
+        }
 
 
 

@@ -21,7 +21,7 @@ namespace CapaDatosDATA.DA
                 string usuario = "root";
                 string password = "";
                 string puerto = "3306";
-                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" 
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";"
                     + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
                 conex.ConnectionString = cadenaConexion;
                 conex.Open();
@@ -66,7 +66,7 @@ namespace CapaDatosDATA.DA
                 comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
 
                 // Crea el parámetro y lo agrega al comando.
-                
+
 
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 da.Fill(ds);
@@ -267,7 +267,7 @@ namespace CapaDatosDATA.DA
                 costosistema.Value = sistema.CostoSistema;
                 comando.Parameters.Add(costosistema);
 
-                
+
 
                 MySqlParameter decretoafecto = new MySqlParameter("@decretoafecto", MySqlDbType.VarChar);
                 decretoafecto.Value = sistema.DecretoAfecto;
@@ -293,7 +293,7 @@ namespace CapaDatosDATA.DA
                 idregion.Value = sistema.id_region;
                 comando.Parameters.Add(idregion);
 
-               
+
 
 
                 MySqlParameter idjefeproyecto = new MySqlParameter("@idjefeproyecto", MySqlDbType.Int32);
@@ -323,7 +323,7 @@ namespace CapaDatosDATA.DA
             {
                 throw new Exception("Error en capa de datos: " + ex.Message, ex);
             }
-        }   
+        }
 
         public DataSet MaxIDsistemas()
         {
@@ -413,7 +413,7 @@ namespace CapaDatosDATA.DA
 
                 if (control_select == "subsistemas_ambiente")
                     sp_validausuario = "PSM_REPORTESUBSISTEMASAMBIENTE";
-                
+
                 if (control_select == "subsistemas_estado")
                     sp_validausuario = "PSM_REPORTESUBSISTEMASESTADOS";
 
@@ -430,7 +430,7 @@ namespace CapaDatosDATA.DA
                     sp_validausuario = "PSM_REPORTESUBSISTEMASTIPOSI";
 
                 if (control_select == "subsistemas_region")
-                    sp_validausuario = "PSM_REPORTESUBSISTEMASREGION";               
+                    sp_validausuario = "PSM_REPORTESUBSISTEMASREGION";
 
                 if (control_select == "subsistemas_jefe")
                     sp_validausuario = "PSM_REPORTESUBSISTEMASJEFEP";
@@ -619,6 +619,47 @@ namespace CapaDatosDATA.DA
         }
 
 
+
+
+        public void EliminarSistema(int sistemadelete) 
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                MySqlConnection conex = new MySqlConnection();
+                string servidor = "localhost";
+                string bd = "prototipominvu";
+                string usuario = "root";
+                string password = "";
+                string puerto = "3306";
+                string cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";"
+                    + "user id=" + usuario + ";" + "password=" + password + ";" + "database=" + bd + ";";
+                conex.ConnectionString = cadenaConexion;
+                conex.Open();
+
+                string sp_validausuario = "PSM_DELETESISTEMA";
+                MySqlCommand comando = new MySqlCommand(sp_validausuario, conex);
+                comando.CommandType = CommandType.StoredProcedure;  // Especifica que es un procedimiento almacenado.
+
+                // Crea el parámetro y lo agrega al comando.
+                MySqlParameter idSistemadelete = new MySqlParameter("@idsistema", MySqlDbType.Int32);
+                idSistemadelete.Value = sistemadelete;
+                comando.Parameters.Add(idSistemadelete);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(comando);
+                da.Fill(ds);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en capa de datos: " + ex.Message, ex);
+            }
+
+
+
+
+        }
 
     }
 }

@@ -82,24 +82,30 @@
                                                     {
                                                         foreach (var item in Model.ListaSistemas)
                                                         {
-                                                        <tr>
-                                                            <td class="id">@item.id_sistema</td>
-                                                            <td>@item.NombreSistema</td>
-                                                            <td>@item.EstadoSistema</td>
-                                                            <td>@item.AmbienteAlojado</td>
-                                                            <td class="id">
+                                                            <tr>
+                                                                <td class="id">@item.id_sistema</td>
+                                                                <td>@item.NombreSistema</td>
+                                                                <td>@item.EstadoSistema</td>
+                                                                <td>@item.AmbienteAlojado</td>
+                                                                <td class="id">
 
-                                                                @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                {
-                                                                    <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
-                                                                    <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                    {
+                                                                        <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
+                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
 
-                                                                    <button type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
-                                                                }
-                                                            </td>
+                                                                    }
 
-                                                        </tr>
+                                                                    <input type="hidden" value="@item.id_sistema" id ="id_sistemadelete" name="id_sistemadelete" />
+
+                                                                    <button type="button" data-toggle="modal" data-id-sistema="@item.id_sistema.ToString()" data-target="#confirmDeleteModal" data->
+                                                                        <i class="bi bi-x-circle-fill"></i>
+                                                                    </button>
+                                                                </td>
+
+                                                            </tr>
                                                         }
                                                     }
                                                 </tbody>
@@ -119,7 +125,7 @@
                                             <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                                 <thead>
                                                     <tr>
-                                                        <th >N° MODULOS</th>
+                                                        <th>N° MODULOS</th>
                                                         <th>Nombre del Sistema</th>
                                                         <th>Estado</th>
                                                         <th>Editar</th>
@@ -157,161 +163,34 @@
 
 
 
+                                @*MODAL CONFIRMACION PARA ELIMINAR*@
 
+                                <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Confirmar Eliminación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas eliminar este sistema?
+                                                <input type="hidden" id="idSistemaToDelete" name="id_sistema" />
 
-
-
-
-
-
-
-
-                                @* TABLA PARA MODULOS EN desarrollo *@
-
-                                <div class="col-lg-12" id="tablaSISTEMASendesarrollo" style="display:none;">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Sistemas en Desarrollo Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y table-responsive tablaparasistemas">
-
-
-                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>N° Sistema</th>
-                                                        <th>Nombre Sistema</th>
-                                                        <th>Descripcion sistema</th>
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaSistemasD != null)
-                                                    {
-                                                        foreach (var item in Model.ListaSistemasD)
-                                                        {
-                                                            <tr>
-                                                                <td class="id">@item.idSistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.descripcion</td>
-                                                                <td class="id">
-
-                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                    }
-                                                                </td>
-
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                                                
+                                                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                @* TABLA PARA MODULOS EN TESTING *@
-
-                                <div class="col-lg-12" id="tablaSISTEMASentesting" style="display:none;">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Sistemas en Testing Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y table-responsive tablaparasistemas">
 
 
-                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>N° Sistema</th>
-                                                        <th>Nombre Sistema</th>
-                                                        <th>Descripcion sistema</th>
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaSistemasT != null)
-                                                    {
-                                                        foreach (var item in Model.ListaSistemasT)
-                                                        {
-                                                            <tr>
-                                                                <td class="id">@item.idSistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.descripcion</td>
-                                                                <td class="id">
 
-                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                    }
-                                                                </td>
-
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                @* TABLA PARA MODULOS EN PRODUCCION *@
-
-                                <div class="col-lg-12" id="tablaSISTEMASenproduccion" style="display:none;">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Sistemas en Produccion Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y table-responsive tablaparasistemas">
-
-
-                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th >N° Sistema</th>
-                                                        <th>Nombre Sistema</th>
-                                                        <th>Descripcion sistema</th>
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaSistemasP != null)
-                                                    {
-                                                        foreach (var item in Model.ListaSistemasP)
-                                                        {
-                                                            <tr>
-                                                                <td class="id" >@item.idSistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.descripcion</td>
-                                                                <td class="id">
-
-                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-                                                                        <input type="hidden" value="@item.descripcion" name="descripcion_sistema" />
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                    }
-                                                                </td>
-
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
 
 
 
@@ -365,6 +244,34 @@
             "pageLength": 10, // Número de registros por página
             "searching": true, // Habilita la búsqueda
             "lengthChange": true, // Permite cambiar la cantidad de registros por página
+        });
+    });
+
+    $(document).ready(function () {
+        // Captura el clic en el botón "Eliminar" del botón original
+        $("button[data-target='#confirmDeleteModal']").on("click", function () {
+            var idSistema = $(this).data("id-sistema");
+            $("#idSistemaToDelete").val(idSistema); // Asigna el valor al campo oculto
+        });
+
+        // Captura el clic en el botón de confirmación del modal
+        $("#confirmDeleteButton").on("click", function () {
+            var idSistema = $("#idSistemaToDelete").val(); // Obtiene el valor del campo oculto
+
+            // Realiza una solicitud AJAX para eliminar el sistema
+            $.ajax({
+                type: "POST",
+                url: "/Registro/EliminarSistema", // Ruta al controlador y acción correspondiente
+                data: { id_sistemasedit: idSistema },
+                success: function (data) {
+                    // Maneja la respuesta de la eliminación si es necesario
+
+                    location.reload();
+                },
+                error: function () {
+                    // Maneja cualquier error si ocurre
+                }
+            });
         });
     });
 

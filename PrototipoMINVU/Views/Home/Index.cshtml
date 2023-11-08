@@ -39,34 +39,26 @@
                                     <div class="font_calibri">
                                         Estado de los modulos:
                                         <hr />
+
+                                        N° Usuarios:
+                                        <hr />
                                         Estado de los Sistemas:
                                         <hr />
+
                                         <div>
-                                            <div id="svgContainer">
-                                                <svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
+                                            <div class="font_registro">
+                                                <div id="svgContainer">
+                                                    <svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg">
 
-                                                    <!-- Dibuja sistemas -->
-                                                    @if (Model.ListaSistemas != null)
-                                                    {
-                                                        int aux = 100;
-                                                        int y = 70; // Inicializa la posición en "y"
-
-                                                        foreach (var item in Model.ListaSistemas)
+                                                        <!-- Dibuja sistemas -->
+                                                        @if (Model.ListaSistemas != null)
                                                         {
-                                                            if (item.EstadoSistema == "Activo" || item.EstadoSistema == "Iniciado")
-                                                            {
-                                                                int aux2 = 0;
-                                                                aux2 = y - 30;
-                                                                <text>
+                                                            int aux = 100;
+                                                            int y = 70; // Inicializa la posición en "y"
 
-                                                                    <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
-                                                                </text>
-
-                                                                <circle cx="@aux" cy="@y" r="20" fill="green" />
-                                                            }
-                                                            else
+                                                            foreach (var item in Model.ListaSistemas)
                                                             {
-                                                                if (item.EstadoSistema == "Pendiente" || item.EstadoSistema == "Negociando")
+                                                                if (item.EstadoSistema == "Activo" || item.EstadoSistema == "Iniciado")
                                                                 {
                                                                     int aux2 = 0;
                                                                     aux2 = y - 30;
@@ -75,12 +67,11 @@
                                                                         <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
                                                                     </text>
 
-                                                                    <circle cx="@aux" cy="@y" r="20" fill="blue" />
+                                                                    <circle cx="@aux" cy="@y" r="20" fill="green" />
                                                                 }
                                                                 else
                                                                 {
-
-                                                                    if (item.EstadoSistema == "Dado de baja")
+                                                                    if (item.EstadoSistema == "Pendiente" || item.EstadoSistema == "Negociando")
                                                                     {
                                                                         int aux2 = 0;
                                                                         aux2 = y - 30;
@@ -89,41 +80,75 @@
                                                                             <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
                                                                         </text>
 
-                                                                        <circle cx="@aux" cy="@y" r="20" fill="black" />
+                                                                        <circle cx="@aux" cy="@y" r="20" fill="blue" />
                                                                     }
                                                                     else
                                                                     {
-                                                                        int aux2 = 0;
-                                                                        aux2 = y - 30;
-                                                                        <text>
-                                                                            <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
-                                                                        </text>
-                                                                        <circle cx="@aux" cy="@y" r="20" fill="red" />
-}
+
+                                                                        if (item.EstadoSistema == "Dado de baja")
+                                                                        {
+                                                                            int aux2 = 0;
+                                                                            aux2 = y - 30;
+                                                                            <text>
+
+                                                                                <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                            </text>
+
+                                                                            <circle cx="@aux" cy="@y" r="20" fill="black" />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            int aux2 = 0;
+                                                                            aux2 = y - 30;
+                                                                            <text>
+                                                                                <text x="@aux" y="@aux2" font-size="12" text-anchor="middle" fill="black">@item.NombreSistema</text>
+                                                                            </text>
+                                                                            <circle cx="@aux" cy="@y" r="20" fill="red" />
+                                                                        }
+
+                                                                    }
+
 
                                                                 }
+                                                                aux = aux + 170;
 
-
-                                                            }
-                                                            aux = aux + 170;
-
-                                                            // Si aux llega a 650, ajusta la posición en "y" para la siguiente fila
-                                                            if (aux >= 700)
-                                                            {
-                                                                aux = 100; // Restablece la posición en "x"
-                                                                y = y + 70; // Ajusta la posición en "y" para la siguiente fila
+                                                                // Si aux llega a 650, ajusta la posición en "y" para la siguiente fila
+                                                                if (aux >= 700)
+                                                                {
+                                                                    aux = 100; // Restablece la posición en "x"
+                                                                    y = y + 70; // Ajusta la posición en "y" para la siguiente fila
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                </svg>
+
+
+
+
+
+                                                        <text x="80" y="460" font-size="17" text-anchor="middle" font-weight="bold" fill="black">Leyenda de estados: </text>
+                                                        <line x1="0" y1="470" x2="700" y2="470" style="stroke: black; stroke-width: 2" />
+
+                                                        <text x="100" y="500" font-size="12" text-anchor="middle" fill="black">Activo/Iniciado</text>
+                                                        <circle cx="100" cy="530" r="20" fill="green" />
+
+                                                        <text x="270" y="500" font-size="12" text-anchor="middle" fill="black">Pendiente/Negociando</text>
+                                                        <circle cx="270" cy="530" r="20" fill="blue" />
+
+                                                        <text x="440" y="500" font-size="12" text-anchor="middle" fill="black">Cancelado/Rechazado</text>
+                                                        <circle cx="440" cy="530" r="20" fill="red" />
+
+                                                        <text x="610" y="500" font-size="12" text-anchor="middle" fill="black">Dado de Baja</text>
+                                                        <circle cx="610" cy="530" r="20" fill="Black" />
+
+
+                                                    </svg>
+                                                </div>
                                             </div>
 
 
 
                                         </div>
 
-                                        N° Usuarios:
-                                        <hr />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
