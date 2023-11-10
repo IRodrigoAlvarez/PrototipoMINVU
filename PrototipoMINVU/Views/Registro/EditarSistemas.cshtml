@@ -131,64 +131,66 @@
 
                                     @* TABLA PARA MODULOS *@
 
-                                    <div class="col-lg-6" id="tablaSISTEMAS">
-                                        <div class="font_registro">
-                                            <div style="text-align: center;"> <b>Tabla de Modulos Activos</b></div>
-                                            <hr />
-                                            <div class="table-responsive-y">
-                                                <div class="table-container">
-                                                    <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>N° MODULOS</th>
-                                                                <th>Nombre del Sistema</th>
-                                                                <th>Estado</th>
-                                                                <th>Ambiente</th>
-                                                                <th>Editar</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @if (Model.ListaModulos != null)
+                                <div class="col-lg-6" id="tablaSISTEMAS">
+                                    <button id="exportButton">Exportar a Excel</button>
+
+                                    <div class="font_registro">
+                                        <div style="text-align: center;"> <b>Tabla de Modulos Activos</b></div>
+                                        <hr />
+                                        <div class="table-responsive-y">
+                                            <div class="table-container">
+                                                <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg2">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>N° MODULOS</th>
+                                                            <th>Nombre del Sistema</th>
+                                                            <th>Estado</th>
+                                                            <th>Ambiente</th>
+                                                            <th>Editar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model.ListaModulos != null)
+                                                        {
+                                                            int aux = 1;
+
+                                                            foreach (var item in Model.ListaModulos)
                                                             {
-                                                                int aux = 1;
+                                                                <tr>
+                                                                    <td>@aux@*@item.idSistema*@</td>
+                                                                    <td>@item.NombreSistema</td>
+                                                                    <td>@item.DescripcionEstado</td>
+                                                                    <td>@item.AmbienteAlojado</td>
 
-                                                                foreach (var item in Model.ListaModulos)
-                                                                {
-                                                                    <tr>
-                                                                        <td>@aux@*@item.idSistema*@</td>
-                                                                        <td>@item.NombreSistema</td>
-                                                                        <td>@item.DescripcionEstado</td>
-                                                                        <td>@item.AmbienteAlojado</td>
+                                                                    <td class="id">
 
-                                                                        <td class="id">
+                                                                        @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                        {
+                                                                            <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
+                                                                            <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
 
-                                                                            @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                            {
-                                                                                <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                                <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+                                                                            <button type="submit"><i class="bi bi-pencil-square"></i></button>
 
-                                                                                <button type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                                        }
 
-                                                                            }
+                                                                        <input type="hidden" value="@item.idSistema" id="id_modulodelete" name="id_modulodelete" />
 
-                                                                            <input type="hidden" value="@item.idSistema" id="id_modulodelete" name="id_modulodelete" />
+                                                                        <button type="button" data-toggle="modal" data-id-modulo="@item.idSistema.ToString()" data-target="#confirmDeleteModalModulos" data->
+                                                                            <i class="bi bi-x-circle-fill"></i>
+                                                                        </button>
+                                                                    </td>
 
-                                                                            <button type="button" data-toggle="modal" data-id-modulo="@item.idSistema.ToString()" data-target="#confirmDeleteModalModulos" data->
-                                                                                <i class="bi bi-x-circle-fill"></i>
-                                                                            </button>
-                                                                        </td>
+                                                                </tr>
+                                                                aux++;
 
-                                                                    </tr>
-                                                                    aux++;
-
-                                                                }
                                                             }
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                        }
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                                 </div>
 
@@ -332,33 +334,47 @@
                 url: "/Registro/EliminarModulo", // Ruta al controlador y acción correspondiente
                 data: { id_sistemasedit: idSistema },
                 success: function (data) {
-                    // Maneja la respuesta de la eliminación si es necesario
 
                     location.reload();
-                },
-                error: function () {
-                    // Maneja cualquier error si ocurre
                 }
+                
             });
         });
     });
 
+
+
+
+
     // Función para exportar la tabla a Excel
     function exportToExcel() {
-        // Obtén la tabla por su ID
-        var table = document.getElementById('datatableReg');
 
-        // Convierte la tabla a un objeto de trabajo de SheetJS
-        var ws = XLSX.utils.table_to_sheet(table);
+        // Verifica la existencia de las tablas
+        var tableSistemas = document.getElementById('datatableReg');
+        var tableModulos = document.getElementById('datatableReg2');
+
+        if (!tableSistemas || !tableModulos) {
+            // Muestra un mensaje de error si alguna de las tablas no existe
+            alert('No se encontraron todas las tablas necesarias para exportar.');
+            return;
+        }
+
+        // Convierte las tablas a objetos de trabajo de SheetJS
+        var wsSistemas = XLSX.utils.table_to_sheet(tableSistemas);
+        var wsModulos = XLSX.utils.table_to_sheet(tableModulos);
 
         // Crea un libro de Excel
         var wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, 'Sistemas');
+
+        // Añade las hojas al libro
+        XLSX.utils.book_append_sheet(wb, wsSistemas, 'Sistemas');
+        XLSX.utils.book_append_sheet(wb, wsModulos, 'Modulos');
 
         // Guarda el libro como un archivo Excel
         var fileName = 'ReporteExcel-PrototipoMINVU.xlsx';
         XLSX.writeFile(wb, fileName);
     }
+
 
     // Asigna la función al evento clic del botón
     document.getElementById('exportButton').addEventListener('click', exportToExcel);

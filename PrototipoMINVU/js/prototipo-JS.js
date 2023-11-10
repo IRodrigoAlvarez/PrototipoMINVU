@@ -113,29 +113,6 @@ function GenerarFormulario(){
 //examples
 
 
-
-/* funcion exportar index */
-function fBtnExportar() {
-    const $btnExportar = document.querySelector("#btnExportar"),
-        $datatablePriori = document.querySelector("#datatableReg");
-
-    //Quitar ver y PDF
-    $("#datatableReg th:first-child, #datatableReg td:first-child").remove();
-    $("#datatableReg th:first-child, #datatableReg td:first-child").remove();   
-
-    let tableExport = new TableExport($datatablePriori,
-        {
-            exportButtons: false,
-            filename: "PrototipoSistemas-report",
-            sheetname: "Mi tabla de Excel",
-        });
-
-    let datos = tableExport.getExportData();
-    let preferenciasDocumento = datos.datatablePriori.xlsx;
-    tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
-    location.reload();
-}
-
 function fBtnExportar2() {
 	$('#modalCargando').show();						   
     $.ajax({

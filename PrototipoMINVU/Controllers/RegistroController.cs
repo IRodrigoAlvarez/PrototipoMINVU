@@ -91,6 +91,15 @@ namespace PrototipoMINVU.Controllers
 
 
 
+
+
+
+
+
+
+
+        // Funciones backen para la carga o visualización de datos.
+
         [HttpPost]
         public void EliminarSistema(string id_sistemasedit)
         {
@@ -102,8 +111,6 @@ namespace PrototipoMINVU.Controllers
             cargador.EliminarSistema(id_sistemaeliminar);
 
         }
-
-
 
         [HttpPost]
         public void EliminarModulo(string id_sistemasedit)
@@ -117,11 +124,7 @@ namespace PrototipoMINVU.Controllers
 
         }
 
-
-
-        // Funciones backen para la carga o visualización de datos.
         [HttpPost]
-
         public ActionResult EditarSistema(Models.Registro sistemanuevo, string id_sistemasedit)
         {
 
@@ -135,9 +138,6 @@ namespace PrototipoMINVU.Controllers
 
             return RedirectToAction("EditarSistemas", "Registro");
         }
-
-
-
 
         [HttpPost]
         public ActionResult EditarModulo(Models.Registro sistemanuevo, string id_sistemaedit)
@@ -153,10 +153,6 @@ namespace PrototipoMINVU.Controllers
 
             return RedirectToAction("EditarSistemas", "Registro");
         }
-
-
-
-
 
         [HttpPost]
         public ActionResult RegistraModuloSistema(Models.Registro sistema, string essistema) 
@@ -191,12 +187,6 @@ namespace PrototipoMINVU.Controllers
 
             return RedirectToAction("EditarSistemas", "Registro");
         }
-
-
-
-
-
-
 
 
 

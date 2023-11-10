@@ -1,4 +1,5 @@
 
+
 /*Login*/
 #id-LI {
     font-family: 'Oleo Script', cursive;
@@ -103,25 +104,10 @@ th {
 }
 
 
-
-
-#datatableReg thead {
-    background-color: #EB3C46;
-    color: white;
-
-}
-
-
-
 /*Layout*/
     #content {
     background: #b4ecfc;
     height: max-content;
-    /*   background-image: url('/img/hospital-HPH.jpg');
-    background-size: cover;*/
-    /*background: #B2FEFA;*/ /* fallback for old browsers */
-    /*background: -webkit-linear-gradient(to bottom, #0ED2F7, #B2FEFA);*/ /* Chrome 10-25, Safari 5.1-6 */
-    /*background: linear-gradient(to top, #0ED2F7, #B2FEFA);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {

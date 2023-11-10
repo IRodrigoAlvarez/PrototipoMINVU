@@ -17,7 +17,7 @@ namespace PSMIN.HELPERS
                 if (!Directory.Exists(ruta_log))
                     Directory.CreateDirectory(ruta_log);
 
-                string Ex_Sistema = "PriorizadorInterConsultasHPH";
+                string Ex_Sistema = "PrototipoSistemasMINVU";
                 string nombreArchivo = Ex_Sistema + "_" + Ex_Formulario + ".txt";
                 string Lin_Archivo = Ex_Procedimiento + ";" + DateTime.Now.ToString("yyyy-MM-dd") + ";" + DateTime.Now.ToString("HH:mm:ss") + ";" + Ex_Mensaje + Environment.NewLine;
                 File.AppendAllText(Path.Combine(ruta_log, nombreArchivo), Lin_Archivo);
