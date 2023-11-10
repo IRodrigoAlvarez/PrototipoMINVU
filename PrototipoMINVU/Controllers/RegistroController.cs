@@ -103,15 +103,6 @@ namespace PrototipoMINVU.Controllers
 
         }
 
-
-
-
-
-
-
-
-
-
         // Funciones backen para la carga o visualización de datos.
         [HttpPost]
 
