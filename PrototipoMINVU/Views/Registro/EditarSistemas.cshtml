@@ -1,5 +1,10 @@
 ﻿@model PrototipoMINVU.Models.Registro
+<head>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+</head>
 <body style="background-color: #B2FEFA;">
 
     <div class="container-fluid">
@@ -59,109 +64,133 @@
                                     </div>
                                 </div>
 
-                                @* TABLA PARA SISTEMAS *@
+                                <br />
+                                <div class="row">
+                                    @* TABLA PARA SISTEMAS *@
 
-                                <div class="col-lg-12" id="tablaSistemas">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Tabla de Sistemas Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y table-responsive tablaparasistemas">
-                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Código Sistema</th>
-                                                        <th>Nombre Sistema</th>
-                                                        <th>Estado Sistema</th>
-                                                        <th>Ambiente Sistema</th>
+                                    <div class="col-lg-6" id="tablaSistemas">
+                                        <button id="exportButton">Exportar a Excel</button>
 
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaSistemas != null)
-                                                    {
-                                                        foreach (var item in Model.ListaSistemas)
-                                                        {
+                                        <div class="font_registro">
+                                            <div style="text-align: center;"> <b>Tabla de Sistemas Activos</b></div>
+                                            <hr />
+                                            <div class="table-responsive-y table-responsive tablaparasistemas">
+                                                <div class="table-container">
+                                                    <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                        <thead>
                                                             <tr>
-                                                                <td class="id">@item.id_sistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.EstadoSistema</td>
-                                                                <td>@item.AmbienteAlojado</td>
-                                                                <td class="id">
+                                                                <th>Código Sistema</th>
+                                                                <th>Nombre Sistema</th>
+                                                                <th>Estado Sistema</th>
+                                                                <th>Ambiente Sistema</th>
 
-                                                                    @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                    }
-
-                                                                    <input type="hidden" value="@item.id_sistema" id ="id_sistemadelete" name="id_sistemadelete" />
-
-                                                                    <button type="button" data-toggle="modal" data-id-sistema="@item.id_sistema.ToString()" data-target="#confirmDeleteModal" data->
-                                                                        <i class="bi bi-x-circle-fill"></i>
-                                                                    </button>
-                                                                </td>
-
+                                                                <th>Editar</th>
                                                             </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.ListaSistemas != null)
+                                                            {
+                                                                int aux = 1;
+
+                                                                foreach (var item in Model.ListaSistemas)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@aux@*@item.id_sistema*@</td>
+                                                                        <td>@item.NombreSistema</td>
+                                                                        <td>@item.EstadoSistema</td>
+                                                                        <td>@item.AmbienteAlojado</td>
+                                                                        <td class="id">
+
+                                                                            @using (Html.BeginForm("FrmSistemas", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                            {
+                                                                                <input type="hidden" value="@item.id_sistema" name="id_sistemasedit" />
+                                                                                <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+
+                                                                                <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                            }
+
+                                                                            <input type="hidden" value="@item.id_sistema" id="id_sistemadelete" name="id_sistemadelete" />
+
+                                                                            <button type="button" data-toggle="modal" data-id-sistema="@item.id_sistema.ToString()" data-target="#confirmDeleteModal" data->
+                                                                                <i class="bi bi-x-circle-fill"></i>
+                                                                            </button>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    aux++;
+
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                @* TABLA PARA MODULOS *@
+                                    @* TABLA PARA MODULOS *@
 
-                                <div class="col-lg-12" id="tablaSISTEMAS">
-                                    <div class="font_registro">
-                                        <div style="text-align: center;"> <b>Tabla de Modulos Activos</b></div>
-                                        <hr />
-                                        <div class="table-responsive-y">
-
-                                            <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>N° MODULOS</th>
-                                                        <th>Nombre del Sistema</th>
-                                                        <th>Estado</th>
-                                                        <th>Editar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if (Model.ListaModulos != null)
-                                                    {
-                                                        foreach (var item in Model.ListaModulos)
-                                                        {
+                                    <div class="col-lg-6" id="tablaSISTEMAS">
+                                        <div class="font_registro">
+                                            <div style="text-align: center;"> <b>Tabla de Modulos Activos</b></div>
+                                            <hr />
+                                            <div class="table-responsive-y">
+                                                <div class="table-container">
+                                                    <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                        <thead>
                                                             <tr>
-                                                                <td class="id">@item.idSistema</td>
-                                                                <td>@item.NombreSistema</td>
-                                                                <td>@item.DescripcionEstado</td>
-                                                                <td class="id">
-
-                                                                    @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
-                                                                    {
-                                                                        <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
-                                                                        <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
-
-                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
-
-                                                                    }
-                                                                </td>
-
+                                                                <th>N° MODULOS</th>
+                                                                <th>Nombre del Sistema</th>
+                                                                <th>Estado</th>
+                                                                <th>Ambiente</th>
+                                                                <th>Editar</th>
                                                             </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.ListaModulos != null)
+                                                            {
+                                                                int aux = 1;
+
+                                                                foreach (var item in Model.ListaModulos)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@aux@*@item.idSistema*@</td>
+                                                                        <td>@item.NombreSistema</td>
+                                                                        <td>@item.DescripcionEstado</td>
+                                                                        <td>@item.AmbienteAlojado</td>
+
+                                                                        <td class="id">
+
+                                                                            @using (Html.BeginForm("FrmModulos", "Registro", FormMethod.Post, new { @class = "user" }))
+                                                                            {
+                                                                                <input type="hidden" value="@item.idSistema" name="id_sistemasedit" />
+                                                                                <input type="hidden" value="@item.NombreSistema" name="nombre_sistemasedit" />
+
+                                                                                <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                            }
+
+                                                                            <input type="hidden" value="@item.idSistema" id="id_modulodelete" name="id_modulodelete" />
+
+                                                                            <button type="button" data-toggle="modal" data-id-modulo="@item.idSistema.ToString()" data-target="#confirmDeleteModalModulos" data->
+                                                                                <i class="bi bi-x-circle-fill"></i>
+                                                                            </button>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    aux++;
+
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-
-
 
                                 @*MODAL CONFIRMACION PARA ELIMINAR*@
 
@@ -180,15 +209,36 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                                                
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                 <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="modal" id="confirmDeleteModalModulos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Confirmar Eliminación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas eliminar este Modulo?
+                                                <input type="hidden" id="idModulosToDelete" name="id_sistema" />
 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-danger" id="confirmDeleteButtonModulos">Eliminar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
@@ -237,17 +287,6 @@
 <script>
 
     $(document).ready(function () {
-        $('#datatableReg').DataTable(
-
-            {
-            "paging": true, // Habilita la paginación
-            "pageLength": 10, // Número de registros por página
-            "searching": true, // Habilita la búsqueda
-            "lengthChange": true, // Permite cambiar la cantidad de registros por página
-        });
-    });
-
-    $(document).ready(function () {
         // Captura el clic en el botón "Eliminar" del botón original
         $("button[data-target='#confirmDeleteModal']").on("click", function () {
             var idSistema = $(this).data("id-sistema");
@@ -275,6 +314,55 @@
         });
     });
 
+
+    $(document).ready(function () {
+        // Captura el clic en el botón "Eliminar" del botón original
+        $("button[data-target='#confirmDeleteModalModulos']").on("click", function () {
+            var idSistema = $(this).data("id-modulo");
+            $("#idModulosToDelete").val(idSistema); // Asigna el valor al campo oculto
+        });
+
+        // Captura el clic en el botón de confirmación del modal
+        $("#confirmDeleteButtonModulos").on("click", function () {
+            var idSistema = $("#idModulosToDelete").val(); // Obtiene el valor del campo oculto
+
+            // Realiza una solicitud AJAX para eliminar el sistema
+            $.ajax({
+                type: "POST",
+                url: "/Registro/EliminarModulo", // Ruta al controlador y acción correspondiente
+                data: { id_sistemasedit: idSistema },
+                success: function (data) {
+                    // Maneja la respuesta de la eliminación si es necesario
+
+                    location.reload();
+                },
+                error: function () {
+                    // Maneja cualquier error si ocurre
+                }
+            });
+        });
+    });
+
+    // Función para exportar la tabla a Excel
+    function exportToExcel() {
+        // Obtén la tabla por su ID
+        var table = document.getElementById('datatableReg');
+
+        // Convierte la tabla a un objeto de trabajo de SheetJS
+        var ws = XLSX.utils.table_to_sheet(table);
+
+        // Crea un libro de Excel
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sistemas');
+
+        // Guarda el libro como un archivo Excel
+        var fileName = 'ReporteExcel-PrototipoMINVU.xlsx';
+        XLSX.writeFile(wb, fileName);
+    }
+
+    // Asigna la función al evento clic del botón
+    document.getElementById('exportButton').addEventListener('click', exportToExcel);
+ 
 
 </script>
 

@@ -40,8 +40,14 @@ namespace CapaDatosNEGOCIO
 
         }
 
-       
 
+        public void EliminarModulo(int id_sistemadelete)
+        {
+
+            CapaDatosDATA.DA.ModulosDA back_usuario = new CapaDatosDATA.DA.ModulosDA();
+
+            back_usuario.EliminaModulo(id_sistemadelete);
+        }
 
 
 

@@ -60,85 +60,87 @@
                                     <div style="text-align: center;"> <b>Tabla de Integraciones </b></div>
                                     <hr />
                                     <div class="table-responsive-y table-responsive tablaparasistemas">
-                                        <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
-                                            <thead>
-                                                <tr>
-                                                    <th>N° Integración.</th>
+                                        <div class="table-container">
+                                            <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N° Integración.</th>
 
-                                                    <th>Sistema origen.</th>
+                                                        <th>Sistema origen.</th>
 
-                                                    <th>Modulo origen.</th>
-                                                    <th>Tipo Integración.</th>
-
-
-                                                    <th>Sistema Destino. </th>
-
-                                                    <th>Modulo Destino. </th>
+                                                        <th>Modulo origen.</th>
+                                                        <th>Tipo Integración.</th>
 
 
-                                                    <th>2° Modulo Destino. </th>
-                                                    <th>2° Sistema Destino. </th>
+                                                        <th>Sistema Destino. </th>
+
+                                                        <th>Modulo Destino. </th>
 
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (Model.ListaIntegraciones != null)
-                                                {
-                                                    int aux = 1;
-                                                    foreach (var item in Model.ListaIntegraciones)
+                                                        <th>2° Modulo Destino. </th>
+                                                        <th>2° Sistema Destino. </th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.ListaIntegraciones != null)
                                                     {
-                                                        <tr>
+                                                        int aux = 1;
+                                                        foreach (var item in Model.ListaIntegraciones)
+                                                        {
+                                                            <tr>
 
-                                                            <td>@aux@*@item.id_integracion*@</td>
-                                                            <td>
-                                                                @if (item.nombre_sistema_origen != "Sin información")
-                                                                {
-                                                                    @item.nombre_sistema_origen
-                                                                }
-                                                            </td>
+                                                                <td>@aux@*@item.id_integracion*@</td>
+                                                                <td>
+                                                                    @if (item.nombre_sistema_origen != "Sin información")
+                                                                    {
+                                                                        @item.nombre_sistema_origen
+                                                                    }
+                                                                </td>
 
-                                                            <td>
-                                                                @if (item.nombre_modulo_origen != "Sin información")
-                                                                {
-                                                                    @item.nombre_modulo_origen
-                                                                }
-                                                            </td>
-                                                            <td>@item.tipo_integracion</td>
+                                                                <td>
+                                                                    @if (item.nombre_modulo_origen != "Sin información")
+                                                                    {
+                                                                        @item.nombre_modulo_origen
+                                                                    }
+                                                                </td>
+                                                                <td>@item.tipo_integracion</td>
 
-                                                            <td>
-                                                                @if (item.nombre_sistema_destino != "Sin información")
-                                                                {
-                                                                    @item.nombre_sistema_destino
-                                                                }
-                                                            </td>
+                                                                <td>
+                                                                    @if (item.nombre_sistema_destino != "Sin información")
+                                                                    {
+                                                                        @item.nombre_sistema_destino
+                                                                    }
+                                                                </td>
 
-                                                            <td>
-                                                                @if (item.nombre_modulo_destino != "Sin información")
-                                                                {
-                                                                    @item.nombre_modulo_destino
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.nombre_modulo_destino2 != "Sin información")
-                                                                {
-                                                                    @item.nombre_modulo_destino2
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.nombre_sistema_destino2 != "Sin información")
-                                                                {
-                                                                    @item.nombre_sistema_destino2
-                                                                }
-                                                            </td>
-                                                        </tr>
+                                                                <td>
+                                                                    @if (item.nombre_modulo_destino != "Sin información")
+                                                                    {
+                                                                        @item.nombre_modulo_destino
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.nombre_modulo_destino2 != "Sin información")
+                                                                    {
+                                                                        @item.nombre_modulo_destino2
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.nombre_sistema_destino2 != "Sin información")
+                                                                    {
+                                                                        @item.nombre_sistema_destino2
+                                                                    }
+                                                                </td>
+                                                            </tr>
 
-                                                        aux++;
+                                                            aux++;
 
+                                                        }
                                                     }
-                                                 }
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

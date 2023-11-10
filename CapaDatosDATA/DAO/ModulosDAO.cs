@@ -324,6 +324,12 @@ namespace CapaDatosDATA.DAO
             }
             return resultado;
         }
+
+
+
+
+
+
         public int obtenerMaxidtablamodulos() 
         {
             int resultado = new int();

@@ -655,10 +655,6 @@ namespace CapaDatosDATA.DA
             {
                 throw new Exception("Error en capa de datos: " + ex.Message, ex);
             }
-
-
-
-
         }
 
     }

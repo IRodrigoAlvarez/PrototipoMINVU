@@ -103,6 +103,22 @@ namespace PrototipoMINVU.Controllers
 
         }
 
+
+
+        [HttpPost]
+        public void EliminarModulo(string id_sistemasedit)
+        {
+
+            ModulosBUSINESS cargador = new ModulosBUSINESS();
+
+            int id_sistemaeliminar = Int32.Parse(id_sistemasedit);
+
+            cargador.EliminarModulo(id_sistemaeliminar);
+
+        }
+
+
+
         // Funciones backen para la carga o visualización de datos.
         [HttpPost]
 
