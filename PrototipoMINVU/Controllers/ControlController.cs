@@ -53,6 +53,7 @@ namespace PrototipoMINVU.Controllers
             Models.Registro cargador = new Models.Registro();
             cargador.id_reportesistema = id_reportemodulo; 
             cargador.CargaModulobyID(id_reportemodulo);
+            cargador.CargaIntegraciones();
 
             cargador.GenerarReporteModulo(id_reportemodulo);
 
@@ -88,6 +89,7 @@ namespace PrototipoMINVU.Controllers
             cargador.id_reportesistema = id_reportesistema;
 
             cargador.CargaSistemabyID(id_reportesistema);
+            cargador.CargaIntegracionesby(id_reportesistema);
 
 
 

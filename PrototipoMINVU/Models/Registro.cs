@@ -61,6 +61,7 @@ namespace PrototipoMINVU.Models
 
         public List<IntegraBO> ListaIntegraciones { get; set; }
 
+        public List<IntegraBO> ListaIntegracionesSistemaby { get; set; }
 
 
 
@@ -138,9 +139,20 @@ namespace PrototipoMINVU.Models
             integra.ListaIntegraciones = cargador.obtenerIntegraciones();
 
 
-
             ListaTipoIntegraciones = integra.ListaTipoIntegraciones;
             ListaIntegraciones = integra.ListaIntegraciones;
+
+        }
+
+        public void CargaIntegracionesby(int sistema)
+        {
+            IntegraBO integra = new IntegraBO();
+
+            IntegracionesBUSINESS cargador = new IntegracionesBUSINESS();
+
+            integra.ListaIntegracionesby = cargador.obtenerIntegracionesSistemaby(sistema);
+
+            ListaIntegracionesSistemaby = integra.ListaIntegracionesby;
 
 
 

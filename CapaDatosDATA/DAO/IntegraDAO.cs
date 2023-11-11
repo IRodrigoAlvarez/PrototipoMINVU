@@ -85,5 +85,36 @@ namespace CapaDatosDATA.DAO
         }
 
 
+
+        public List<IntegraBO> cargaIntegracionesSistemasby(int sistema)
+        {
+            List<IntegraBO> resultado = new List<IntegraBO>();
+
+            DataSet ds = new DataSet();
+            IntegraDA Conexion = new IntegraDA();
+
+            ds = Conexion.obtenerIntegracionesSistemasby(sistema);
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los proyectos que tiene el sistema MUNIN
+                IntegraBO integracion = new IntegraBO();
+
+                integracion.id_integracion = Int32.Parse(r["id_integracion"].ToString());
+                integracion.tipo_integracion = r["tipo_integracion"].ToString();
+
+                integracion.nombre_sistema_origen = r["Sistema_Origen"].ToString();
+
+                integracion.nombre_sistema_destino = r["Sistema_Destino"].ToString();
+
+                integracion.nombre_modulo_destino = r["Modulo_Destino"].ToString();
+
+
+                resultado.Add(integracion);
+            }
+            return resultado;
+        }
+
+
     }
 }

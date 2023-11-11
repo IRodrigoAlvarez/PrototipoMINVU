@@ -32,6 +32,9 @@ namespace CapaDatosBO
 
         public List<IntegraBO> ListaIntegraciones { get; set; }
 
+        public List<IntegraBO> ListaIntegracionesby { get; set; }
+
+
 
     }
 }

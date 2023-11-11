@@ -588,17 +588,17 @@ namespace CapaDatosDATA.DA
 
 
                 if (control_select == "modulos_estado")
-                    sp_validausuario = "";
+                    sp_validausuario = "PSM_MODULO_ESTADO";
 
                 if (control_select == "modulos_ambiente")
-                    sp_validausuario = "";
+                    sp_validausuario = "PSM_MODULO_AMBIENTE";
 
 
                 if (control_select == "integraciones_sistemas")
-                    sp_validausuario = "";
+                    sp_validausuario = "PSM_INTEGRACION_SISTEMAS";
 
                 if (control_select == "integraciones_modulos")
-                    sp_validausuario = "";
+                    sp_validausuario = "PSM_INTEGRACIONES_MODULOS";
 
 
 

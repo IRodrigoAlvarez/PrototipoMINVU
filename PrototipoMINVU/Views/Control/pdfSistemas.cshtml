@@ -75,16 +75,15 @@
                         <div class="font_calibri">
                             <h3 style="text-align: center">Reporte General de Control de los Sistemas del MINVU</h3>
                             <hr style="border: 1px solid black" />
-
                             En este reporte se puede visualizar el nombre, el estado y el ambiente del sistema.
-                            También se podrán ver los distintos tipos de integración que tiene con los modulos y/o 
+                            También se podrán ver los distintos tipos de integración que tiene con los modulos y/o
                             sistemas en la base de datos.<br />
                             Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
-                            modo de prueba según las límitaciones del proyecto.<br />
+                            modo de prueba según las límitaciones del proyecto.<br /><br />
 
                             Esta interfaz es un ejemplo del prototipo a modo de imagen.<br /><br />
                             Universidad Tecnológica Metropolitana.<br />
-                            <b>Profesor Guía:</b> Yelka Ruiz.<br /><br />
+                            <b>Profesor Guía:</b> Yelka Ruiz.<br />
                             <b>Rodrigo Álvarez.</b>
 
 
@@ -142,37 +141,75 @@
 
         </div>
 
-        <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+        <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
             <thead>
                 <tr>
                     <th>N° Integración</th>
-                    <th>Nombre Origen</th>
-                    <th>Nombre Destino</th>
+                    <th>Sistema Origen</th>
                     <th>Tipo integración</th>
+                    <th>Nombre Sistema Destino</th>
+                    <th>Nombre Módulo Destino</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model.ListaSistemas != null)
+                @if (Model.ListaIntegracionesSistemaby != null)
                 {
                     int aux = 1;
-                    foreach (var item in Model.ListaSistemas)
+                    foreach (var item in Model.ListaIntegracionesSistemaby)
                     {
                         if (aux <= 5)
                         {
                             <tr>
-                                <td class="id">@aux</td>
-                                <td>@item.NombreSistema</td>
-                                <td>@item.NombreJefeProyecto</td>
-                                <td>@item.EstadoSistema</td>
+
+                                <td>@aux</td>
+                                <td>@item.nombre_sistema_origen</td>
+                                <td>@item.tipo_integracion</td>
+                                <td>@item.nombre_sistema_destino</td>
+                                <td>@item.nombre_modulo_destino</td>
                             </tr>
+
+                            aux++;
                         }
 
-                        aux++;
                     }
                 }
             </tbody>
         </table>
     </div>
 
+
+    <table align="center" border="1" style="width:auto; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
+        <thead>
+            <tr>
+                <th>N° Integración</th>
+                <th>Sistema Origen</th>
+                <th>Tipo integración</th>
+                <th>Nombre Sistema Destino</th>
+                <th>Nombre Módulo Destino</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ListaIntegracionesSistemaby != null)
+            {
+                int aux = 6;
+                foreach (var item in Model.ListaIntegracionesSistemaby)
+                {
+                    if (aux > 5)
+                    {
+                        <tr>
+                            <td>@aux</td>
+                            <td>@item.nombre_sistema_origen</td>
+                            <td>@item.tipo_integracion</td>
+                            <td>@item.nombre_sistema_destino</td>
+                            <td>@item.nombre_modulo_destino</td>
+                        </tr>
+
+                        aux++;
+                    }
+
+                }
+            }
+        </tbody>
+    </table>
 </body>
 </html>

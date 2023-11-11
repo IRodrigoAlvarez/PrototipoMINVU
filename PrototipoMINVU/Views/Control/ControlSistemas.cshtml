@@ -185,7 +185,8 @@
                 data: { control_select: IDseleccion },
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
+                success: function (data)
+                {
                     const labelCantidadMap = {};
 
                     data.forEach(item => {
@@ -217,87 +218,254 @@
                     if (estado === "data")
                         estado = "Dueño de los datos";
 
-                    // GRÁFICO DE BARRA
-                    new Chart(controlBar1, {
-                        type: 'bar',
-                        data: {
-                            labels: arrayLabels,
-                            datasets: [{
-                                label: "N° Sistemas ",
-                                backgroundColor: barColors,  // Asigna los colores a las barras
-                                borderColor: "#000000",
-                                borderWidth: 0,
-                                data: arrayCantidad
-                            }],
-                        },
-                        options: {
-                            title: {
-                                display: true,
-                                text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
-                            },
-                            scales: {
-                                xAxes: [{
-                                    gridLines: {
-                                        display: false
-                                    },
-                                    ticks: {
-                                        maxTicksLimit: arrayLabels.length,
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Sistemas Generales'
-                                    }
-                                }],
-                                yAxes: [{
-                                    ticks: {
-                                        min: 0,
-                                        max: Math.max(...arrayCantidad),
-                                        maxTicksLimit: 10,
-                                    },
-                                    gridLines: {
-                                        display: true,
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Sistemas registrados'
-                                    }
-                                }],
-                            },
-                            legend: {
-                                display: false
-                            }
-                        }
-                    });
+                    if (partes[0] === "sistemas")
+                    {
 
-                    // GRÁFICO DE TORTA
-                    new Chart(controlPie1, {
-                        type: 'pie',
-                        data: {
-                            labels: arrayLabels,
-                            datasets: [{
-                                data: arrayCantidad,
-                                backgroundColor: barColors
-                            }]
-                        },
-                        options: {
-                            title: {
-                                display: true,
-                                text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
-                            }
-                        },
-                        tooltips: {
-                            callbacks: {
-                                label: function (tooltipItem, data) {
-                                    var dataset = data.datasets[0];
-                                    var label = data.labels[tooltipItem.index];
-                                    var value = dataset.data[tooltipItem.index];
-                                    return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                        // GRÁFICO DE BARRA
+                        new Chart(controlBar1, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    label: "N° Sistemas ",
+                                    backgroundColor: barColors,  // Asigna los colores a las barras
+                                    borderColor: "#000000",
+                                    borderWidth: 0,
+                                    data: arrayCantidad
+                                }],
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+
+
+                                    text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: arrayLabels.length,
+                                        }
+                                       
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: Math.max(...arrayCantidad),
+                                            maxTicksLimit: 10,
+                                        },
+                                        gridLines: {
+                                            display: true,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Sistemas registrados'
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
                                 }
                             }
-                        }
+                        });
 
-                    });
-                               
+                        // GRÁFICO DE TORTA
+                        new Chart(controlPie1, {
+                            type: 'pie',
+                            data: {
+                                labels: arrayLabels,
+                                datasets: [{
+                                    data: arrayCantidad,
+                                    backgroundColor: barColors
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: 'N° de Sistemas según ' + estado // Aquí puedes ingresar el título que desees
+                                }
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var dataset = data.datasets[0];
+                                        var label = data.labels[tooltipItem.index];
+                                        var value = dataset.data[tooltipItem.index];
+                                        return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                                    }
+                                }
+                            }
+
+                        });
+
+                    } else {
+
+                        if (partes[0] === "modulos") {
+
+                            // GRÁFICO DE BARRA
+                            new Chart(controlBar1, {
+                                type: 'bar',
+                                data: {
+                                    labels: arrayLabels,
+                                    datasets: [{
+                                        label: "N° Modulos ",
+                                        backgroundColor: barColors,  // Asigna los colores a las barras
+                                        borderColor: "#000000",
+                                        borderWidth: 0,
+                                        data: arrayCantidad
+                                    }],
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+
+
+                                        text: 'N° de Modulos  ' + estado // Aquí puedes ingresar el título que desees
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false
+                                            },
+                                            ticks: {
+                                                maxTicksLimit: arrayLabels.length,
+                                            },
+                                        }],
+                                        yAxes: [{
+                                            ticks: {
+                                                min: 0,
+                                                max: Math.max(...arrayCantidad),
+                                                maxTicksLimit: 10,
+                                            },
+                                            gridLines: {
+                                                display: true,
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Módulos Registrados'
+                                            }
+                                        }],
+                                    },
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            });
+
+                            // GRÁFICO DE TORTA
+                            new Chart(controlPie1, {
+                                type: 'pie',
+                                data: {
+                                    labels: arrayLabels,
+                                    datasets: [{
+                                        data: arrayCantidad,
+                                        backgroundColor: barColors
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: 'N° de Módulos según ' + estado // Aquí puedes ingresar el título que desees
+                                    }
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function (tooltipItem, data) {
+                                            var dataset = data.datasets[0];
+                                            var label = data.labels[tooltipItem.index];
+                                            var value = dataset.data[tooltipItem.index];
+                                            return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                                        }
+                                    }
+                                }
+
+                            });
+
+                        } else {
+
+                            // GRÁFICO DE BARRA
+                            new Chart(controlBar1, {
+                                type: 'bar',
+                                data: {
+                                    labels: arrayLabels,
+                                    datasets: [{
+                                        label: "Sistemas con esta integración ",
+                                        backgroundColor: barColors,  // Asigna los colores a las barras
+                                        borderColor: "#000000",
+                                        borderWidth: 0,
+                                        data: arrayCantidad
+                                    }],
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+
+
+                                        text: 'N° de Integraciones según el tipo de integración' // Aquí puedes ingresar el título que desees
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false
+                                            },
+                                            ticks: {
+                                                maxTicksLimit: arrayLabels.length,
+                                            },
+                                        }],
+                                        yAxes: [{
+                                            ticks: {
+                                                min: 0,
+                                                max: Math.max(...arrayCantidad),
+                                                maxTicksLimit: 10,
+                                            },
+                                            gridLines: {
+                                                display: true,
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'N° Integraciones de Sistemas'
+                                            }
+                                        }],
+                                    },
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            });
+
+                            // GRÁFICO DE TORTA
+                            new Chart(controlPie1, {
+                                type: 'pie',
+                                data: {
+                                    labels: arrayLabels,
+                                    datasets: [{
+                                        data: arrayCantidad,
+                                        backgroundColor: barColors
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: 'N° de Integraciones de ' + estado+' según sistemas' // Aquí puedes ingresar el título que desees
+                                    }
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function (tooltipItem, data) {
+                                            var dataset = data.datasets[0];
+                                            var label = data.labels[tooltipItem.index];
+                                            var value = dataset.data[tooltipItem.index];
+                                            return label + ': ' + value; // Personaliza la etiqueta del tooltip
+                                        }
+                                    }
+                                }
+
+                            });
+                        }                       
+                    }
                 }
             });
             
