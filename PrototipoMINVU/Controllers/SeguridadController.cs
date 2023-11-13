@@ -23,6 +23,55 @@ namespace PrototipoMINVU.Controllers
         }
 
 
+
+        [HttpPost]
+        public ActionResult RegistroUsuario()
+        {
+             return View();
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult RegistraUsuario(Models.Usuario usuarionuevo)
+        {
+
+            UsuarioBO usuario = new UsuarioBO();
+
+            UsuarioBUSINESS cargador = new UsuarioBUSINESS();
+
+
+            usuario.intRut = usuarionuevo.Rut;
+            usuario.strPass = usuarionuevo.Contrasena;
+            usuario.strNombre = usuarionuevo.Nombre;
+            
+
+
+
+
+
+
+            return RedirectToAction("Login","Seguridad");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public ActionResult CambiaPass()
         {
             var alerta = Session["UsuarioConfirmado"];

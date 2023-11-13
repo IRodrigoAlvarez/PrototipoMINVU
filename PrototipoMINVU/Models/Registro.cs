@@ -154,10 +154,23 @@ namespace PrototipoMINVU.Models
 
             ListaIntegracionesSistemaby = integra.ListaIntegracionesby;
 
-
-
-
         }
+
+
+        public void CargaIntegracionby(int integracion)
+        {
+
+            IntegracionesBUSINESS cargador = new IntegracionesBUSINESS();
+
+            IntegracionExample = cargador.obtenerIntegracionby(integracion);
+
+
+            CargaSistemas();
+            CargaModulos();
+            CargaIntegraciones();
+        }
+
+
 
 
         public void CargarCombos() 

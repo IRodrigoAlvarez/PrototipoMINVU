@@ -227,6 +227,8 @@
     <Content Include="Views\Control\pdfSistemas.cshtml" />
     <Content Include="Views\Integraciones\Integraciones.cshtml" />
     <Content Include="Views\Integraciones\addIntegration.cshtml" />
+    <Content Include="Views\Seguridad\RegistroUsuario.cshtml" />
+    <Content Include="Views\Integraciones\EditarIntegracion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

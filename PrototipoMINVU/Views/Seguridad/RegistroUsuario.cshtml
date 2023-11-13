@@ -1,11 +1,7 @@
-﻿ @model PrototipoMINVU.Models.Usuario
+﻿@model PrototipoMINVU.Models.Usuario
 @{
     Layout = null;
 }
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,14 +36,27 @@
                             <div class="col-lg-6">
                                 <div id="div-login" class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h3 text-gray-800 mb-4">Inicio de sesión.</h1>
+                                        <h1 class="h3 text-gray-800 mb-4">Registro de Usuario.</h1>
                                     </div>
-                                    @using (Html.BeginForm("ValidaUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                    @using (Html.BeginForm("RegistraUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
                                     {
+
                                         <div class="form-group ">
 
                                             @Html.TextBoxFor(m => m.Rut, new { @class = "form-control box-success", @placeholder = "Usuario(RUT)", @type = "text", @onkeypress = "return solonumeros(event)", @maxlength = "8", @required = "required", @title = "Ingrese parámetros" })
                                             @Html.ValidationMessageFor(m => m.Rut, null, new { @class = "text-danger" })
+
+                                        </div>
+                                        <div class="form-group ">
+
+                                            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control box-success", @placeholder = "Nombre de usuario", @type = "text", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.Nombre, null, new { @class = "text-danger" })
+
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.PasswordFor(m => m.CorreoElectronico, new { @class = "form-control box-success", @placeholder = "Correo Electronico", @type = "text", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.CorreoElectronico, null, new { @class = "text-danger" })
 
                                         </div>
                                         <div class="form-group">
@@ -58,16 +67,24 @@
                                         </div>
                                         <div class="form-group">
 
-                                        </div>
-                                        <button type="submit" class="btn btn-outline-success btn-user btn-block "><b>Iniciar Sesión</b></button>
-                                    }
+                                            @Html.PasswordFor(m => m.Repetircontraseña, new { @class = "form-control box-success", @placeholder = " Repetir Contraseña", @type = "password", @required = "required", @title = "Ingrese parámetros" })
+                                            @Html.ValidationMessageFor(m => m.Repetircontraseña, null, new { @class = "text-danger" })
 
-                                    <hr>
-                                    @using (Html.BeginForm("RegistroUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
-                                    {
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                        </div>
                                         <button type="submit" class="btn btn-outline-success btn-user btn-block "><b>Registrar Usuario</b></button>
                                     }
 
+                                    <hr>
+
+                                    @using (Html.BeginForm("Login", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                    {
+                                        <button type="submit" class="btn btn-outline-success btn-user btn-block "><b>Cancelar</b></button>
+                                    }
                                     <div>
                                         <footer class="sticky-footer ">
                                             <div class="container my-auto">

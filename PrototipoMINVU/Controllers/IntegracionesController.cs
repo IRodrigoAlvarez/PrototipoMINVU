@@ -52,6 +52,28 @@ namespace PrototipoMINVU.Controllers
 
 
 
+        public ActionResult EditarIntegracion(string id_integracionedit)
+        {
+            var alerta = Session["UsuarioConfirmado"];
+            if (alerta != null)
+            {
+
+                Models.Registro cargador = new Models.Registro();
+
+
+                cargador.CargaIntegracionby(Int32.Parse(id_integracionedit));
+
+                return View(cargador);
+            }
+            else
+                return RedirectToAction("Login", "Seguridad");
+        }
+
+
+
+
+
+
 
         // FUNCIONES BACKEND PARA EL FUNCIONAMIENTO DE LAS INTEGRACIONES
         public ActionResult RegistrarIntegracion(Models.Registro modelointegracion) 
@@ -70,7 +92,21 @@ namespace PrototipoMINVU.Controllers
             return RedirectToAction("Integraciones","Integraciones");
         }
 
+        public ActionResult EditarIntegraciones(Models.Registro modelointegracion)
 
+        {
+
+            IntegraBO integra = new IntegraBO();
+
+            IntegracionesBUSINESS cargador = new IntegracionesBUSINESS();
+
+            integra = modelointegracion.IntegracionExample;
+
+            cargador.AgregarIntegracion(integra);
+
+
+            return RedirectToAction("Integraciones", "Integraciones");
+        }
 
 
 

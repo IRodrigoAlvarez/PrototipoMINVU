@@ -1,0 +1,226 @@
+﻿@model PrototipoMINVU.Models.Registro
+
+<body style="background-color: #B2FEFA;">
+
+    <div class="container-fluid">
+        <div class="bg-gradient-primary py-3 shadow-sm">
+            <div class="card">
+                <div class="card shadow">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="font_registro">
+                                <h2>Agregar una Integracion de sistemas.</h2>
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="row" id="textindexregistro">
+                            <div class="col-lg-12">
+                                <div class="card shadow">
+                                    <div class="col-lg-12">
+                                        <div class="font_registro">
+                                            En esta pantalla se podrán agregar una integración a los sistemas que se han
+                                            registrado en la base de datos del prototipo.También se podrá indicar el tipo de la integración,
+                                            junto con los sistemas o módulos de origen o de destino.<br /><br />
+
+                                            Se destaca, que las caracteristicas y/o datos escogidos para este prototipo, son a
+                                            modo de prueba según las límitaciones del proyecto.<br />
+
+
+                                            Universidad Tecnológica Metropolitana.<br />
+
+                                            <b>Profesor Guía:</b> Yelka Ruiz.<br />
+
+                                            <b>Rodrigo Álvarez.</b>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="FormularioAgregarSistema">
+                                <div class="font_registro">
+                                    <div class="container-fluid">
+                                        <div class="card">
+                                            <div class="card shadow formAddproy">
+                                                <h3 style="text-align:center;"> EDITAR INTEGRACION ENTRE SISTEMAS.</h3>
+                                                <hr />
+                                                @using (Html.BeginForm("EditarIntegraciones", "Integraciones", FormMethod.Post, new { @class = "user" }))
+                                                {
+                                                    <br />
+                                                    <div class="row">
+
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.tipo_integracion, "Seleccione Tipo de Integración:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            @Html.DropDownListFor(m => m.IntegracionExample.id_tipointegracion, new SelectList(Model.ListaTipoIntegraciones, "id_tipointegracion", "tipo_integracion"), "Seleccione Tipo Integracion", new { @class = "form-select" })
+                                                        </div>
+                                                    </div>
+
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_origen, "Nombre Origen:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            @Html.DropDownListFor(m => m.IntegracionExample.id_sistemaorigen, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Origen", new { @class = "form-select", @id = "id_sistemaorigen", @onchange = "bloqdes(this.value);" })
+
+                                                        </div>
+
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_destino, "Nombre Destino:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_sistema_destino2, "Nombre Segundo Destino:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_sistemadestino2, new SelectList(Model.ListaSistemas, "id_sistema", "NombreSistema"), "Seleccione Sistema Destino", new { @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_origen, "Nombre Origen:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            @Html.DropDownListFor(m => m.IntegracionExample.id_moduloorigen, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Origen", new { @class = "form-select", @id = "id_moduloorigen", @onchange = "bloqdes(this.value);" })
+                                                        </div>
+
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_destino, "Nombre Destino:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_modulodestino, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Destino", new { @type = "text", @class = "form-select" })</b>
+                                                        </div>
+
+                                                        <div class="col-lg-5" style="text-align:end;">
+                                                            <b>@Html.LabelFor(m => m.IntegracionExample.nombre_modulo_destino2, "Nombre Segundo Destino:")</b>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <b> @Html.DropDownListFor(m => m.IntegracionExample.id_modulodestino2, new SelectList(Model.ListaModulos, "idSistema", "NombreSistema"), "Seleccione Módulo Destino", new { @type = "text", @class = "form-select" })</b>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-lg-9">
+
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input type="submit" value="ACEPTAR" />
+                                                            <input type="reset" value="CANCELAR" />
+                                                        </div>
+
+
+
+                                                    </div>
+                                                }
+                                                <br />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row text-muted">
+            <div class="col-6 text-start">
+                <p class="mb-0">
+                    <a class="text-muted"> <span>Copyright &copy; Universidad Tecnológica Metropolitana - Facultad Ingenieria</span></a>								&copy;
+                </p>
+            </div>
+            <div class="col-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/beneficios/vivienda/" target="_blank">Vivienda</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/noticias/" target="_blank">Noticia</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/sobre-minvu/" target="_blank">Sobre MINVU</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://www.minvu.gob.cl/preguntas-frecuentes/" target="_blank">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    // Obtener el checkbox y la parte del formulario por su ID
+    const checkbox = document.getElementById("mostrarParte");
+    const parteFormulario = document.getElementById("parteFormulario");
+
+    // Agregar un event listener al checkbox
+    checkbox.addEventListener("change", function () {
+        // Si el checkbox está marcado, muestra la parte del formulario; de lo contrario, se ocúlta
+        if (this.checked) {
+            parteFormulario.style.display = "block";
+        } else {
+            parteFormulario.style.display = "none";
+        }
+    });
+
+
+    $(document).ready(function () {
+        // Obtener los elementos DropDownList
+        var sistemaOrigenDropDown = $('#id_sistemaorigen');
+        var moduloOrigenDropDown = $('#id_moduloorigen');
+
+        // Establecer un controlador de cambio en el sistemaOrigenDropDown
+        sistemaOrigenDropDown.change(function () {
+            // Obtener el valor seleccionado del sistemaOrigenDropDown
+            var selectedValue = sistemaOrigenDropDown.val();
+
+            // Bloquear o desbloquear el moduloOrigenDropDown
+            if (selectedValue === "0") {
+                moduloOrigenDropDown.prop('disabled', false);
+            } else {
+                moduloOrigenDropDown.prop('disabled', true);
+            }
+        });
+
+        // Establecer un controlador de cambio en el moduloOrigenDropDown
+        moduloOrigenDropDown.change(function () {
+            // Obtener el valor seleccionado del moduloOrigenDropDown
+            var selectedValue = moduloOrigenDropDown.val();
+
+            // Bloquear o desbloquear el sistemaOrigenDropDown
+            if (selectedValue === "0") {
+                sistemaOrigenDropDown.prop('disabled', false);
+            } else {
+                sistemaOrigenDropDown.prop('disabled', true);
+            }
+        });
+    });
+
+</script>

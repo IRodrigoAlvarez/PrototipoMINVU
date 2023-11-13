@@ -79,6 +79,7 @@
 
                                                         <th>2° Modulo Destino. </th>
                                                         <th>2° Sistema Destino. </th>
+                                                        <th>Editar</th>
 
 
                                                     </tr>
@@ -131,6 +132,25 @@
                                                                     {
                                                                         @item.nombre_sistema_destino2
                                                                     }
+                                                                </td>
+
+
+                                                                <td>
+
+                                                                    @using (Html.BeginForm("EditarIntegracion", "Integraciones", FormMethod.Post, new { @class = "user" }))
+                                                                    {
+                                                                        <input type="hidden" value="@item.id_integracion" name="id_integracionedit" />
+
+                                                                        <button type="submit"><i class="bi bi-pencil-square"></i></button>
+
+                                                                    }
+
+                                                                    @*<input type="hidden" value="@item.idSistema" id="id_modulodelete" name="id_modulodelete" />
+
+                                                                    <button type="button" data-toggle="modal" data-id-modulo="@item.idSistema.ToString()" data-target="#confirmDeleteModalModulos" data->
+                                                                        <i class="bi bi-x-circle-fill"></i>
+                                                                    </button>*@
+
                                                                 </td>
                                                             </tr>
 
