@@ -179,6 +179,7 @@
     <Content Include="js\sweetalert2.js" />
     <Content Include="js\tableexport.min.js" />
     <Content Include="js\xlsx.full.min.js" />
+    <Content Include="prototipominvu.sql" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
