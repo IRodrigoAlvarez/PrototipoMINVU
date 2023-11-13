@@ -28,4 +28,4 @@ Servicio MySQL > Admin > http://localhost/phpmyadmin/ > Agregar nueva base de da
 7.- Abrir un proyecto o solución.<br>
 8.- Seleccionar la carpeta descargada desde el repositorio y abrir archivo de proyecto SLN:
 
-Prototipo-MINVU-desarrollo.zip > PrototipoMINVU.sln
+Prototipo-MINVU-desarrollo.zip > PrototipoMINVU > PrototipoMINVU.sln
