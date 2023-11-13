@@ -65,5 +65,27 @@ namespace CapaDatosNEGOCIO
 
         }
 
+
+        public void EditarIntegracion(IntegraBO integra)
+        {
+
+            //se cargan los sistemas en la capa de datos DAO
+            CapaDatosDATA.DA.IntegraDA back_usuario = new CapaDatosDATA.DA.IntegraDA();
+            back_usuario.EditarIntegracion(integra);
+
+        }
+
+
+        public void EliminarIntegracion (int id_integracion)
+        {
+
+            CapaDatosDATA.DA.IntegraDA back_usuario = new CapaDatosDATA.DA.IntegraDA();
+            back_usuario.EliminarIntegracion(id_integracion);
+
+
+
+
+        }
+
     }
 }

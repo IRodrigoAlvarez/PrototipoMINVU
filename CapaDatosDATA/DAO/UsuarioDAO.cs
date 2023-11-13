@@ -12,9 +12,6 @@ namespace CapaDatosDATA.DAO
     {
         public UsuarioBO ValidaUsuario(LoginBO loginBO)
         {
-            // aquí se establece el dataset a utilizar en el sistema, desde la base de datos 
-            // si está válido o no está valido y lo retorna.
-
 
             UsuarioDA Conexion = new UsuarioDA();
             DataSet dsUsuario = Conexion.obtenerUsuario(loginBO.intRut, loginBO.strPassword, loginBO.strPasswordUpper);
@@ -28,15 +25,28 @@ namespace CapaDatosDATA.DAO
                 // para modo de prueba aceptados ingresar a cuaqluier usuario
                 resultado.boolGenerica = false;
                 resultado.boolVigente = true;
-
             }
-
-
-
-
-            
-
             return resultado;
         }
+
+
+        public int obtenerMaxIdUsuario()
+        {
+
+            int resultado = new int();
+
+            DataSet ds = new DataSet();
+            UsuarioDA Conexion = new UsuarioDA();
+
+            ds = Conexion.MaxIDusuario();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                resultado = Int32.Parse(r["MAX(usuario.idUsuario)"].ToString());
+            }
+            return resultado;
+
+        }
+
     }
 }

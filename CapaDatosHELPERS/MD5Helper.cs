@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPH.HELPERS
+namespace PSMIN.HELPERS
 {
     public static class MD5Helper
     {

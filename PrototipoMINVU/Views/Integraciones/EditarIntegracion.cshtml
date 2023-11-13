@@ -51,6 +51,8 @@
                                                 <hr />
                                                 @using (Html.BeginForm("EditarIntegraciones", "Integraciones", FormMethod.Post, new { @class = "user" }))
                                                 {
+                                                    @Html.HiddenFor(m => m.IntegracionExample.id_integracion)
+
                                                     <br />
                                                     <div class="row">
 

@@ -70,11 +70,6 @@ namespace PrototipoMINVU.Controllers
         }
 
 
-
-
-
-
-
         // FUNCIONES BACKEND PARA EL FUNCIONAMIENTO DE LAS INTEGRACIONES
         public ActionResult RegistrarIntegracion(Models.Registro modelointegracion) 
         
@@ -92,6 +87,7 @@ namespace PrototipoMINVU.Controllers
             return RedirectToAction("Integraciones","Integraciones");
         }
 
+
         public ActionResult EditarIntegraciones(Models.Registro modelointegracion)
 
         {
@@ -102,13 +98,24 @@ namespace PrototipoMINVU.Controllers
 
             integra = modelointegracion.IntegracionExample;
 
-            cargador.AgregarIntegracion(integra);
+
+            cargador.EditarIntegracion(integra);
 
 
             return RedirectToAction("Integraciones", "Integraciones");
         }
 
+        [HttpPost]
+        public void EliminarIntegracion(string id_integracionedit)
+        {
 
+            IntegracionesBUSINESS cargador = new IntegracionesBUSINESS();
+
+            int id_sistemaeliminar = Int32.Parse(id_integracionedit);
+
+            cargador.EliminarIntegracion(id_sistemaeliminar);
+
+        }
 
     }
 }

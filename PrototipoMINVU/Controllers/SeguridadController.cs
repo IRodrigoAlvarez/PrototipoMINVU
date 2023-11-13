@@ -46,12 +46,16 @@ namespace PrototipoMINVU.Controllers
             usuario.intRut = usuarionuevo.Rut;
             usuario.strPass = usuarionuevo.Contrasena;
             usuario.strNombre = usuarionuevo.Nombre;
-            
+            usuario.strRepeatPass = usuarionuevo.Repetircontraseña;
+            usuario.Correoelectronico = usuarionuevo.CorreoElectronico;
+           
 
+            if(usuario.strPass == usuario.strRepeatPass)
+            {
 
-
-
-
+                cargador.RegistrarUsuario(usuario);
+                return RedirectToAction("Login", "Seguridad");
+            }
 
             return RedirectToAction("Login","Seguridad");
         }

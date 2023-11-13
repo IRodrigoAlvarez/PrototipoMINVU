@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             }
-                         </div>
+                        </div>
                         <div class="row">
 
                             <div class="col-lg-12" id="tablaIntegraciones">
@@ -60,6 +60,8 @@
                                     <div style="text-align: center;"> <b>Tabla de Integraciones </b></div>
                                     <hr />
                                     <div class="table-responsive-y table-responsive tablaparasistemas">
+
+
                                         <div class="table-container">
                                             <table align="center" border="1" style="width:contain; height:contain;" class="table table-bordered table-hover table-condensed table-striped shadow-lg bg-white position-static" id="datatableReg">
                                                 <thead>
@@ -145,11 +147,11 @@
 
                                                                     }
 
-                                                                    @*<input type="hidden" value="@item.idSistema" id="id_modulodelete" name="id_modulodelete" />
+                                                                    <input type="hidden" value="@item.id_integracion" name="id_integracionedit" />
 
-                                                                    <button type="button" data-toggle="modal" data-id-modulo="@item.idSistema.ToString()" data-target="#confirmDeleteModalModulos" data->
+                                                                    <button type="button" data-toggle="modal" data-id-integracion="@item.id_integracion.ToString()" data-target="#confirmDeleteModal" data->
                                                                         <i class="bi bi-x-circle-fill"></i>
-                                                                    </button>*@
+                                                                    </button>
 
                                                                 </td>
                                                             </tr>
@@ -166,6 +168,28 @@
                             </div>
                         </div>
 
+                        <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Confirmar Eliminación</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Estás seguro de que deseas eliminar esta integración?
+                                        <input type="hidden" id="idIntegracionToDelete" name="id_integracion" />
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -202,6 +226,40 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+
+        $(document).ready(function () {
+            // Captura el clic en el botón "Eliminar" del botón original
+            $("button[data-target='#confirmDeleteModal']").on("click", function () {
+                var idSistema = $(this).data("id-integracion");
+                $("#idIntegracionToDelete").val(idSistema); // Asigna el valor al campo oculto
+            });
+
+            // Captura el clic en el botón de confirmación del modal
+            $("#confirmDeleteButton").on("click", function () {
+                var idSistema = $("#idIntegracionToDelete").val(); // Obtiene el valor del campo oculto
+
+                // Realiza una solicitud AJAX para eliminar el sistema
+                $.ajax({
+                    type: "POST",
+                    url: "/Integraciones/EliminarIntegracion", // Ruta al controlador y acción correspondiente
+                    data: { id_integracionedit: idSistema },
+                    success: function (data) {
+                        // Maneja la respuesta de la eliminación si es necesario
+
+                        location.reload();
+                    },
+                    error: function () {
+                        // Maneja cualquier error si ocurre
+                    }
+                });
+            });
+        });
+
+    </script>
+
 
 </body>
 </html>
