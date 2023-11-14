@@ -12,9 +12,9 @@ Los programas necesarios para poder ejecutar el Prototipo de Sistemas son:
 - Visual Studio (Ejecución y compilación Prototipo).
 
 
-
+<br>
 1.- En el XAMPP es necesario iniciar los módulos de Apache y MySQL para la inicialización de los servidores locales. <br>
-2.- Descargar el código desde la rama de desarollo. <br><br>
+2.- Descargar el código desde la rama de desarollo. <br>
 <b>3.- Desde la aplicación de XAMPP seleccionar:</b>
 
 Servicio MySQL > Admin > http://localhost/phpmyadmin/ > Agregar nueva base de datos.
