@@ -29,6 +29,7 @@ namespace CapaDatosDATA.DAO
                 sistema.NombreSistema = r["nombre_modulo"].ToString();
                 sistema.DescripcionEstado = r["descripcion_estado"].ToString();
                 sistema.descripcion = r["descripcion_modulo"].ToString();
+                sistema.AmbienteAlojado = r["nombre_ambiente"].ToString();
                 sistema.id_AMBIENTE = Int32.Parse(r["id_ambiente"].ToString());
                 sistema.id_estado = Int32.Parse(r["id_estado"].ToString());
 
