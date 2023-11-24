@@ -41,20 +41,46 @@
                 </div>
                 <br />
                 <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
 
-                            <div class="row">
-                                <div class="col-2">
+
+                    
+
+                     @*REGISTROOOOO*@
+                    <div class="card">
+
+                        @if (Session["TipoUsuario"].ToString() != "Visualizador")
+                        {
+                            <div class="card-header" id="headingOne">
+                                <div class="row">
+                                    <div class="col-2">
                                         <i class="bi bi-file-earmark-bar-graph-fill"></i>
-                                </div>
-                                <div class="col-10">
+                                    </div>
+                                    <div class="col-10">
                                         <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
                                             <b>REGISTRO SISTEMAS</b>
                                         </a>
-                                </div>                                
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="card-header" id="headingOne">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne" style="pointer-events: none; cursor: default;">
+                                            <b>REGISTRO SISTEMAS</b>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+
 
                         <div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
@@ -100,7 +126,7 @@
                                     <button type="submit" class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col-1">
-                                                <i class="bi bi-bounding-box"></i>                                            
+                                                <i class="bi bi-bounding-box"></i>
                                             </div>
                                             <div class="col-10">
                                                 <div class="text-dark">
@@ -111,10 +137,12 @@
                                     </button>
                                 }
                             </div>
-                           
+
                         </div>
                     </div>
 
+
+                    @*CONTROOOOOL*@
                     <div class="card">
 
 
@@ -226,14 +254,30 @@
                                                 Cambiar Contraseña
                                             </button>
                                         }
+
+
+                                        @if (Session["TipoUsuario"].ToString() == "Admin")
+                                        {
+
+                                            using (Html.BeginForm("RegistroUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                            {
+                                                <button class="dropdown-item btnPass" href="#" data-toggle="modal" data-target="#cambioPassword" onclick="">
+                                                    <i class="align-middle me-1" data-feather="settings"></i>
+                                                    Agregar Usuario
+                                                </button>
+                                            }
+                                        }
+
+
+
                                             <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
+                                            <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Centro de ayuda</a>
                                             <div class="dropdown-divider"></div>
 
-                                        @using (Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Post, new { @class = "user" }))
-                                        {
-                                            <button type="submit" class="dropdown-item" href="#">Salir</button>
-                                        }
+                                            @using (Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Post, new { @class = "user" }))
+                                            {
+                                                <button type="submit" class="dropdown-item" href="#">Salir</button>
+                                            }
                                         </div>
                                 </div>
                             </div>

@@ -122,22 +122,20 @@ namespace PrototipoMINVU.Controllers
                 var UsuarioValidado = Certificador.validaUsuario(UsuarioLogin);
 
 
-
-
-
                 //si el objeto es distinto de null, entonces la cuenta no está registrado
                 if (UsuarioValidado != null)
                 {
-                    //si la cuenta está habilitada o baneada, se le cambia el estado a boolVigente.
+                    //si la cuenta está inhabilitada o baneada,  boolVigente es falsa.
                     if (UsuarioValidado.boolVigente == true)
                     {
 
                         Session["UsuarioConfirmado"] = UsuarioValidado;
+                        Session["TipoUsuario"] = UsuarioValidado.strTipousuario;
                         Session["strNombre"] = UsuarioValidado.strNombre;
 
                         Session.Timeout = 700;
 
-                        //si el usuario o la contraseña están íncorrectos, se le cambia el estado a boolGenérica.
+                        //si el usuario o la contraseña están íncorrectos, boolGenérica es falsa.
                         if (UsuarioValidado.boolGenerica == false)
                         {
                             return RedirectToAction("Index", "Home");

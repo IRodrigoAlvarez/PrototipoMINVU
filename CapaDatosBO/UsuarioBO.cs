@@ -7,7 +7,6 @@ namespace CapaDatosBO
 {
     public class UsuarioBO
     {
-        public int intID { get; set; }
         public String strNombre { get; set; }
 
         public String Correoelectronico { get; set; }
@@ -18,6 +17,18 @@ namespace CapaDatosBO
         public String strRepeatPass { get; set; }
 
         public String strNewPass { get; set; }
+
+
+
+
+
+
+        public int intIDtipousuario { get; set; }
+
+
+        public String strTipousuario { get; set; }
+
+
 
         public Boolean boolVigente { get; set; }
         public Boolean boolGenerica { get; set; }
