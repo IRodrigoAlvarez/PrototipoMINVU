@@ -71,9 +71,9 @@ namespace CapaDatosDATA.DA
                 RUT.Value = usuarionuevo.intRut;
                 comando.Parameters.Add(RUT);
 
-                MySqlParameter RUT = new MySqlParameter("@idtipousuario", MySqlDbType.Int32);
-                RUT.Value = usuarionuevo.intRut;
-                comando.Parameters.Add(RUT);
+                MySqlParameter idtipousuario = new MySqlParameter("@idtipousuario", MySqlDbType.Int32);
+                idtipousuario.Value = usuarionuevo.intIDtipousuario;
+                comando.Parameters.Add(idtipousuario);
 
                 MySqlParameter CORREO = new MySqlParameter("@correo", MySqlDbType.VarChar);
                 CORREO.Value = usuarionuevo.Correoelectronico;
