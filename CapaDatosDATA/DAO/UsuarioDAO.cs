@@ -32,6 +32,31 @@ namespace CapaDatosDATA.DAO
         }
 
 
+        public List<UsuarioBO> CargaListaTipoUsuarios()
+        {
+            List<UsuarioBO> resultado = new List<UsuarioBO>();
+
+            DataSet ds = new DataSet();
+            UsuarioDA Conexion = new UsuarioDA();
+
+
+            ds = Conexion.obtenerTipoUsuarios();
+
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //Se llena la lista con los sistemas
+                UsuarioBO usuario = new UsuarioBO();
+
+                usuario.intIDtipousuario = Int32.Parse(r["id_tipousuario"].ToString());
+                usuario.strTipousuario = r["descripcion_usuario"].ToString();
+                
+                if (usuario.intIDtipousuario != 0)
+                    resultado.Add(usuario);
+            }
+            return resultado;
+
+        }
+
         public int obtenerMaxIdUsuario()
         {
 

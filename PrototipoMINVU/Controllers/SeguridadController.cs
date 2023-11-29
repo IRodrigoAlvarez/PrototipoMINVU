@@ -27,7 +27,12 @@ namespace PrototipoMINVU.Controllers
         [HttpPost]
         public ActionResult RegistroUsuario()
         {
-             return View();
+            Models.Usuario cargador = new Models.Usuario();
+
+            cargador.CargatipoUsuarios();            
+
+
+            return View(cargador);
         }
 
 
@@ -46,6 +51,7 @@ namespace PrototipoMINVU.Controllers
             usuario.intRut = usuarionuevo.Rut;
             usuario.strPass = usuarionuevo.Contrasena;
             usuario.strNombre = usuarionuevo.Nombre;
+            usuario.intIDtipousuario = usuarionuevo.IdTipoUsuario;
             usuario.strRepeatPass = usuarionuevo.Repetircontraseña;
             usuario.Correoelectronico = usuarionuevo.CorreoElectronico;
            

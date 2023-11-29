@@ -36,5 +36,20 @@ namespace CapaDatosNEGOCIO
             back_usuario.RegistrarUsuario(Usuario);
 
         }
+
+
+        public List<UsuarioBO> CargaTipoUsuarios() 
+        {
+
+            CapaDatosDATA.DAO.UsuarioDAO back_usuario = new CapaDatosDATA.DAO.UsuarioDAO();
+            return back_usuario.CargaListaTipoUsuarios();
+
+
+        }
+
+
+
+
+
     }
 }

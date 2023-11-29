@@ -36,29 +36,39 @@
                             <div class="col-lg-6">
                                 <div id="div-login" class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h3 text-gray-800 mb-4">Registro de Usuario.</h1>
+                                        <h1 class="h3 text-gray-800 mb-4">Registro de Cuenta de Acceso.</h1>
                                     </div>
                                     @using (Html.BeginForm("RegistraUsuario", "Seguridad", FormMethod.Post, new { @class = "user" }))
                                     {
 
-                                        <div class="form-group ">
-
+                                        <div class="form-group">
                                             @Html.TextBoxFor(m => m.Rut, new { @class = "form-control box-success", @placeholder = "Usuario(RUT)", @type = "text", @onkeypress = "return solonumeros(event)", @maxlength = "8", @required = "required", @title = "Ingrese parámetros" })
                                             @Html.ValidationMessageFor(m => m.Rut, null, new { @class = "text-danger" })
-
                                         </div>
+
                                         <div class="form-group ">
 
                                             @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control box-success", @placeholder = "Nombre de usuario", @type = "text", @required = "required" })
                                             @Html.ValidationMessageFor(m => m.Nombre, null, new { @class = "text-danger" })
 
                                         </div>
+
+                                        <div class="form-group ">
+
+                                            <b>@Html.DropDownListFor(m => m.IdTipoUsuario, new SelectList(Model.ListaTipoUsuarios, "intIDtipousuario", "strTipousuario"), "Seleccione Permisos de usuario", new { @id = "idtipoUsuario", @type = "text", @class = "form-control" })</b>
+
+
+                                        </div>
+
+
                                         <div class="form-group">
 
                                             @Html.PasswordFor(m => m.CorreoElectronico, new { @class = "form-control box-success", @placeholder = "Correo Electronico", @type = "text", @required = "required" })
                                             @Html.ValidationMessageFor(m => m.CorreoElectronico, null, new { @class = "text-danger" })
 
                                         </div>
+
+
                                         <div class="form-group">
 
                                             @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control box-success", @placeholder = "Contraseña", @type = "password", @required = "required", @title = "Ingrese parámetros" })
@@ -152,31 +162,6 @@
     </script>
 
 
-    @if (ViewBag.resp != null)
-    {
-        <script>
-
-            if (@ViewBag.mensaje < 0) {
-
-                AlertError("Error en validación: Rut o Contraseña incorrecta");
-
-
-            } else {
-
-                AlertExito("Contraseña actualizada con Exito!");
-
-            }
-
-            if (@ViewBag.mensaje < -1) {
-
-                AlertError2("Cuenta inhabilitada, porfavor contacte a soporte.");
-
-            }
-
-
-        </script>
-
-    }
 
 </body>
 

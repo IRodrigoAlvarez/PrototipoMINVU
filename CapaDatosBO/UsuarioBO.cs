@@ -36,6 +36,13 @@ namespace CapaDatosBO
         public int idUsuario { get; set; }
         public int intRut { get; set; }
 
- 
+
+
+
+
+
+        public List<UsuarioBO> ListaTipoUsuario { get; set; }
+
+
     }
 }
